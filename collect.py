@@ -23,7 +23,9 @@ import html
 import json
 import re
 import sys
+import threading
 import time
+from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from urllib.parse import parse_qsl, urlencode, urljoin, urlsplit, urlunsplit
@@ -240,12 +242,13 @@ def entries_from_feed(content: bytes, feed: dict, max_items: int) -> list[dict]:
 GDELT_API = "https://api.gdeltproject.org/api/v2/doc/doc"
 
 
-def gdelt_query(session, query: str, timespan: str, maxrecords: int, timeout: int) -> list[dict]:
+def gdelt_query(session, query: str, timespan: str, maxrecords: int, timeout: int, deadline: float) -> list[dict]:
     params = {"query": query, "mode": "artlist", "format": "json", "timespan": timespan, "maxrecords": str(maxrecords), "sort": "datedesc"}
-    for attempt in range(4):
+    for attempt in range(3):
         r = session.get(GDELT_API, params=params, timeout=timeout, headers={"User-Agent": UA})
-        if r.status_code == 429 and attempt < 3:
-            time.sleep(20 * (attempt + 1))
+        wait = 15 * (attempt + 1)
+        if r.status_code == 429 and attempt < 2 and time.monotonic() + wait + timeout < deadline:
+            time.sleep(wait)
             continue
         break
     r.raise_for_status()
@@ -286,6 +289,7 @@ def main() -> int:
     session = requests.Session()
     fixtures = Path(args.offline_fixtures) if args.offline_fixtures else None
 
+    T0 = time.monotonic()
     status = {"generatedAt": iso(NOW), "feeds": [], "gdelt": []}
     new_ids: list[str] = []
 
@@ -329,60 +333,81 @@ def main() -> int:
         new_ids.append(iid)
         return True
 
-    # RSS / Atom
-    for feed in sources["feeds"]:
-        fid = feed["id"]
-        st = state["feeds"].setdefault(fid, {"fails": 0})
+    # RSS / Atom: fetch in parallel (network bound), then parse and classify in order
+    tls = threading.local()
+
+    def sess():
+        if not hasattr(tls, "s"):
+            tls.s = requests.Session()
+        return tls.s
+
+    def fetch_feed(feed: dict, st: dict, rec: dict) -> bytes:
         cands = [u for u in ([st.get("working")] + [feed.get("url")] + list(feed.get("alt", []))) if u]
         cands = list(dict.fromkeys(cands))
         url = cands[0] if cands else (st.get("discovered") or "")
-        rec = {"id": fid, "name": feed["name"], "url": url, "ok": False, "items": 0, "new": 0}
+        rec["url"] = url
+        if fixtures:
+            p = fixtures / f"{feed['id']}.xml"
+            if not p.exists():
+                raise FileNotFoundError("no fixture")
+            return p.read_bytes()
+        for cu in cands:
+            try:
+                rr = http_get(sess(), cu, timeout)
+                if looks_like_feed(rr.content):
+                    st["working"] = cu
+                    rec["url"] = cu
+                    return rr.content
+            except requests.RequestException:
+                continue
+        if st.get("discovered") or not cands or st.get("fails", 0) >= 2:
+            found = st.get("discovered") or discover(sess(), feed.get("home", ""), timeout)
+            if found:
+                url = found
+                st["discovered"] = found
+                rec["url"] = found
+                rec["discovered"] = True
+        if not url:
+            raise ValueError("no feed url and auto-discovery found none")
+        if url in cands:
+            raise ValueError("no candidate url returned a feed (tried %d)" % len(cands))
+        rr = http_get(sess(), url, timeout)
+        if not looks_like_feed(rr.content):
+            st.pop("discovered", None)
+            raise ValueError("discovered url is not a feed")
+        return rr.content
+
+    jobs = []
+    for feed in sources["feeds"]:
+        st = state["feeds"].setdefault(feed["id"], {"fails": 0})
+        rec = {"id": feed["id"], "name": feed["name"], "url": "", "ok": False, "items": 0, "new": 0}
+        jobs.append((feed, st, rec))
+    workers = sources.get("defaults", {}).get("workers", 16)
+    with ThreadPoolExecutor(max_workers=workers) as pool:
+        futs = [pool.submit(fetch_feed, f, st, rec) for f, st, rec in jobs]
+        results = []
+        for fut in futs:
+            try:
+                results.append((fut.result(), None))
+            except Exception as ex:  # noqa: BLE001 - one bad feed must not stop the run
+                results.append((None, ex))
+    for (feed, st, rec), (content, err) in zip(jobs, results):
         try:
-            if fixtures:
-                p = fixtures / f"{fid}.xml"
-                if not p.exists():
-                    raise FileNotFoundError("no fixture")
-                content = p.read_bytes()
-            else:
-                content = None
-                for cu in cands:
-                    try:
-                        rr = http_get(session, cu, timeout)
-                        if looks_like_feed(rr.content):
-                            content, url = rr.content, cu
-                            st["working"] = cu
-                            rec["url"] = cu
-                            break
-                    except requests.RequestException:
-                        continue
-                if content is None and (st.get("discovered") or not cands or st.get("fails", 0) >= 2):
-                    found = st.get("discovered") or discover(session, feed.get("home", ""), timeout)
-                    if found:
-                        url = found
-                        st["discovered"] = found
-                        st["fails"] = 0
-                        rec["url"] = found
-                        rec["discovered"] = True
-                if content is None:
-                    if not url:
-                        raise ValueError("no feed url and auto-discovery found none")
-                    rr = http_get(session, url, timeout)
-                    if not looks_like_feed(rr.content):
-                        st.pop("discovered", None)
-                        raise ValueError("response is not a feed (tried %d urls)" % max(1, len(cands)))
-                    content = rr.content
+            if err:
+                raise err
             entries = entries_from_feed(content, feed, max_items)
             src = dict(feed, via="rss")
             n_new = sum(1 for e in entries if add(e, src))
             rec.update(ok=True, items=len(entries), new=n_new)
             st["fails"] = 0
             st["lastOk"] = iso(NOW)
-        except Exception as ex:  # noqa: BLE001 - one bad feed must not stop the run
+        except Exception as ex:  # noqa: BLE001
             st["fails"] = st.get("fails", 0) + 1
             rec["error"] = f"{type(ex).__name__}: {str(ex)[:160]}"
             rec["fails"] = st["fails"]
         rec["lastOk"] = st.get("lastOk")
         status["feeds"].append(rec)
+    status["rssSeconds"] = round(time.monotonic() - T0, 1)
 
     # GDELT
     g = sources.get("gdelt", {})
@@ -391,8 +416,13 @@ def main() -> int:
         queries = [(fid, spec["gdelt"] + " sourcelang:english") for fid, spec in cls_cfg["files"].items() if spec.get("gdelt")]
         if g.get("turkish_query"):
             queries.append(("turkey", g["turkish_query"].strip() + " sourcelang:turkish"))
+        deadline = time.monotonic() + g.get("budget_seconds", 360)
         for i, (fid, q) in enumerate(queries):
             rec = {"file": fid, "query": q, "ok": False, "items": 0, "kept": 0, "new": 0}
+            if not fixtures and time.monotonic() > deadline:
+                rec["error"] = "skipped: GDELT time budget used up"
+                status["gdelt"].append(rec)
+                continue
             try:
                 if fixtures:
                     p = fixtures / f"gdelt-{fid}.json"
@@ -400,7 +430,7 @@ def main() -> int:
                 else:
                     if i:
                         time.sleep(g.get("pause_seconds", 6))
-                    arts = gdelt_query(session, q, g.get("timespan", "4h"), g.get("maxrecords", 120), timeout + 10)
+                    arts = gdelt_query(session, q, g.get("timespan", "4h"), g.get("maxrecords", 120), timeout + 10, deadline)
                 rec["items"] = len(arts)
                 for a in arts:
                     dom = domain_of(a.get("url", ""))
@@ -492,6 +522,7 @@ def main() -> int:
         "gdeltOk": sum(1 for g_ in status["gdelt"] if g_["ok"]), "gdeltTotal": len(status["gdelt"]),
         "newItems": len(new_ids), "newsItems48h": len(news), "thinktankItems": len(tts),
         "failing": [f["id"] for f in status["feeds"] if not f["ok"]],
+        "seconds": round(time.monotonic() - T0, 1),
     }
     dump_json(data / "status.json", status)
     state["runs"] = (state.get("runs", []) + [{"at": iso(NOW), "new": len(new_ids), "feedsOk": ok}])[-50:]

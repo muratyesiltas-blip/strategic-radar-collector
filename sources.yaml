@@ -12,7 +12,8 @@
 # Edit this file freely: the next run picks it up.
 
 defaults:
-  timeout: 20
+  timeout: 12
+  workers: 16
   max_items_per_feed: 40
 
 feeds:
@@ -103,7 +104,8 @@ gdelt:
   enabled: true
   timespan: 4h
   maxrecords: 120
-  pause_seconds: 10
+  pause_seconds: 6
+  budget_seconds: 300
   turkish_query: (Erdoğan OR Fidan OR TBMM OR "AK Parti" OR CHP OR MHP OR "DEM Parti" OR PKK OR "Dışişleri" OR "Milli Savunma")
   domains:
     reuters.com:
