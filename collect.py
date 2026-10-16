@@ -32,7 +32,7 @@ import feedparser
 import requests
 import yaml
 
-UA = "Mozilla/5.0 (compatible; StrategicRadarCollector/1.0; +https://github.com/)"
+UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36"
 FILES = ["turkey", "syria", "iran", "israel", "gulf", "pkk", "mideast", "russia", "europe"]
 NEWS_WINDOW_H = 48
 TT_WINDOW_D = 5
@@ -161,11 +161,11 @@ class Classifier:
     def turkey(self, text: str) -> bool:
         return bool(self.boost.search(text))
 
-    def assign(self, text: str, feed_files: list[str], feed_type: str) -> tuple[list[str], dict]:
+    def assign(self, text: str, feed_files: list[str], feed_type: str, all_relevant: bool = False) -> tuple[list[str], dict]:
         h = self.hits(text)
         files = {f for f, n in h.items() if n >= self.min_hits}
-        # A single-file national or official feed keeps its own file even without a keyword hit.
-        if len(feed_files) == 1 and feed_type in ("local", "official", "party", "diaspora"):
+        # A country-focused feed (all_relevant: true in sources.yaml) keeps its own file even without a keyword hit.
+        if all_relevant and feed_files:
             files.add(feed_files[0])
         else:
             files |= {f for f in feed_files if f in h}
@@ -178,9 +178,14 @@ ALT = re.compile(r"<link[^>]+rel=[\"']alternate[\"'][^>]*>", re.I)
 
 
 def http_get(session, url, timeout):
-    r = session.get(url, timeout=timeout, headers={"User-Agent": UA, "Accept": "application/rss+xml, application/atom+xml, application/xml, text/xml, text/html;q=0.8, */*;q=0.5"})
+    r = session.get(url, timeout=timeout, headers={"User-Agent": UA, "Accept": "application/rss+xml, application/atom+xml, application/xml, text/xml, text/html;q=0.8, */*;q=0.5", "Accept-Language": "en-US,en;q=0.9,tr;q=0.8"})
     r.raise_for_status()
     return r
+
+
+def site_of(u: str) -> str:
+    parts = domain_of(u).split(".")
+    return ".".join(parts[-3:]) if len(parts) > 2 and len(parts[-1]) == 2 and parts[-2] in ("com", "org", "co", "gov", "net", "ac") else ".".join(parts[-2:])
 
 
 def looks_like_feed(content: bytes) -> bool:
@@ -197,7 +202,9 @@ def discover(session, home: str, timeout: int) -> str | None:
             if re.search(r"(rss|atom)\+xml", tag, re.I):
                 m = re.search(r"href=[\"']([^\"']+)[\"']", tag, re.I)
                 if m:
-                    return urljoin(r.url, html.unescape(m.group(1)))
+                    cand = urljoin(r.url, html.unescape(m.group(1)))
+                    if site_of(cand) == site_of(home):
+                        return cand
     except requests.RequestException:
         pass
     base = "{0.scheme}://{0.netloc}".format(urlsplit(home))
@@ -235,7 +242,12 @@ GDELT_API = "https://api.gdeltproject.org/api/v2/doc/doc"
 
 def gdelt_query(session, query: str, timespan: str, maxrecords: int, timeout: int) -> list[dict]:
     params = {"query": query, "mode": "artlist", "format": "json", "timespan": timespan, "maxrecords": str(maxrecords), "sort": "datedesc"}
-    r = session.get(GDELT_API, params=params, timeout=timeout, headers={"User-Agent": UA})
+    for attempt in range(4):
+        r = session.get(GDELT_API, params=params, timeout=timeout, headers={"User-Agent": UA})
+        if r.status_code == 429 and attempt < 3:
+            time.sleep(20 * (attempt + 1))
+            continue
+        break
     r.raise_for_status()
     txt = r.text.strip()
     if not txt.startswith("{"):
@@ -291,7 +303,7 @@ def main() -> int:
             files = [f for f in FILES if f in clf.hits(text)] or list(src.get("files", []))
             hits = clf.hits(text)
         else:
-            files, hits = clf.assign(text, src.get("files", []), src["type"])
+            files, hits = clf.assign(text, src.get("files", []), src["type"], bool(src.get("all_relevant")))
             if not files:
                 return False
         iid = hashlib.sha1(key.encode()).hexdigest()[:16]
@@ -321,7 +333,9 @@ def main() -> int:
     for feed in sources["feeds"]:
         fid = feed["id"]
         st = state["feeds"].setdefault(fid, {"fails": 0})
-        url = feed.get("url") or st.get("discovered") or ""
+        cands = [u for u in ([st.get("working")] + [feed.get("url")] + list(feed.get("alt", []))) if u]
+        cands = list(dict.fromkeys(cands))
+        url = cands[0] if cands else (st.get("discovered") or "")
         rec = {"id": fid, "name": feed["name"], "url": url, "ok": False, "items": 0, "new": 0}
         try:
             if fixtures:
@@ -330,19 +344,33 @@ def main() -> int:
                     raise FileNotFoundError("no fixture")
                 content = p.read_bytes()
             else:
-                if not url or st.get("fails", 0) >= 3:
-                    found = discover(session, feed.get("home", ""), timeout)
+                content = None
+                for cu in cands:
+                    try:
+                        rr = http_get(session, cu, timeout)
+                        if looks_like_feed(rr.content):
+                            content, url = rr.content, cu
+                            st["working"] = cu
+                            rec["url"] = cu
+                            break
+                    except requests.RequestException:
+                        continue
+                if content is None and (st.get("discovered") or not cands or st.get("fails", 0) >= 2):
+                    found = st.get("discovered") or discover(session, feed.get("home", ""), timeout)
                     if found:
                         url = found
                         st["discovered"] = found
                         st["fails"] = 0
                         rec["url"] = found
                         rec["discovered"] = True
-                if not url:
-                    raise ValueError("no feed url and auto-discovery found none")
-                content = http_get(session, url, timeout).content
-                if not looks_like_feed(content):
-                    raise ValueError("response is not a feed")
+                if content is None:
+                    if not url:
+                        raise ValueError("no feed url and auto-discovery found none")
+                    rr = http_get(session, url, timeout)
+                    if not looks_like_feed(rr.content):
+                        st.pop("discovered", None)
+                        raise ValueError("response is not a feed (tried %d urls)" % max(1, len(cands)))
+                    content = rr.content
             entries = entries_from_feed(content, feed, max_items)
             src = dict(feed, via="rss")
             n_new = sum(1 for e in entries if add(e, src))
@@ -381,7 +409,7 @@ def main() -> int:
                         continue
                     rec["kept"] += 1
                     lang = "tr" if "turkish" in q else "en"
-                    src = {"name": meta["name"], "type": meta["type"], "rel": meta["rel"], "files": [fid], "kind": "news", "via": "gdelt", "lang": lang, "id": "gdelt"}
+                    src = {"name": meta["name"], "type": meta["type"], "rel": meta["rel"], "files": [fid], "kind": meta.get("kind", "news"), "via": "gdelt", "lang": lang, "id": "gdelt", "all_relevant": False}
                     if add({"title": clean(a.get("title"), 300), "url": a["url"], "time": gdelt_time(a.get("seendate")), "summary": ""}, src):
                         rec["new"] += 1
                 rec["ok"] = True
