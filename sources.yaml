@@ -1,0 +1,207 @@
+# Strategic Radar collector: source catalog
+#
+# Each feed: id, name, url (RSS/Atom), home (site front page, used to auto-discover
+# a feed when url is missing or broken), files (Strategic Radar file ids the feed
+# feeds by default; the keyword classifier adds or confirms files), type
+# (international | local | official | party | diaspora | thinktank), lang, rel
+# (Admiralty source-reliability letter A-F; the model still sets the credibility
+# number), kind (news | thinktank).
+#
+# A feed that fails three runs in a row is retried with auto-discovery from
+# `home`. data/status.json shows the health of every feed after each run.
+# Edit this file freely: the next run picks it up.
+
+defaults:
+  timeout: 20
+  max_items_per_feed: 40
+
+feeds:
+  # ---------- International ----------
+  - {id: bbc-world, name: BBC News, url: "https://feeds.bbci.co.uk/news/world/rss.xml", home: "https://www.bbc.com/news/world", files: [], type: international, lang: en, rel: B, kind: news}
+  - {id: bbc-me, name: BBC News, url: "https://feeds.bbci.co.uk/news/world/middle_east/rss.xml", home: "https://www.bbc.com/news/world/middle_east", files: [mideast], type: international, lang: en, rel: B, kind: news}
+  - {id: bbc-europe, name: BBC News, url: "https://feeds.bbci.co.uk/news/world/europe/rss.xml", home: "https://www.bbc.com/news/world/europe", files: [europe], type: international, lang: en, rel: B, kind: news}
+  - {id: guardian-world, name: The Guardian, url: "https://www.theguardian.com/world/rss", home: "https://www.theguardian.com/world", files: [], type: international, lang: en, rel: B, kind: news}
+  - {id: aljazeera, name: Al Jazeera, url: "https://www.aljazeera.com/xml/rss/all.xml", home: "https://www.aljazeera.com", files: [], type: international, lang: en, rel: B, kind: news}
+  - {id: almonitor, name: Al-Monitor, url: "https://www.al-monitor.com/rss", home: "https://www.al-monitor.com", files: [], type: international, lang: en, rel: B, kind: news}
+  - {id: un-news, name: UN News, url: "https://news.un.org/feed/subscribe/en/news/all/rss.xml", home: "https://news.un.org/en/", files: [], type: official, lang: en, rel: A, kind: news}
+  - {id: defensenews, name: Defense News, url: "https://www.defensenews.com/arc/outboundfeeds/rss/", home: "https://www.defensenews.com", files: [], type: international, lang: en, rel: B, kind: news}
+  - {id: breakingdefense, name: Breaking Defense, url: "https://breakingdefense.com/feed/", home: "https://breakingdefense.com", files: [], type: international, lang: en, rel: B, kind: news}
+
+  # ---------- Türkiye (national outlets only) ----------
+  - {id: aa-en, name: Anadolu Agency, url: "https://www.aa.com.tr/en/rss/default?cat=guncel", home: "https://www.aa.com.tr/en", files: [turkey], type: local, lang: en, rel: B, kind: news}
+  - {id: aa-tr, name: Anadolu Ajansı, url: "https://www.aa.com.tr/tr/rss/default?cat=guncel", home: "https://www.aa.com.tr/tr", files: [turkey], type: local, lang: tr, rel: B, kind: news}
+  - {id: dailysabah, name: Daily Sabah, url: "", home: "https://www.dailysabah.com", files: [turkey], type: local, lang: en, rel: C, kind: news}
+  - {id: hdn, name: Hürriyet Daily News, url: "", home: "https://www.hurriyetdailynews.com", files: [turkey], type: local, lang: en, rel: B, kind: news}
+  - {id: turkiyetoday, name: Türkiye Today, url: "https://www.turkiyetoday.com/feed/", home: "https://www.turkiyetoday.com", files: [turkey], type: local, lang: en, rel: C, kind: news}
+  - {id: turkishminute, name: Turkish Minute, url: "https://www.turkishminute.com/feed/", home: "https://www.turkishminute.com", files: [turkey], type: diaspora, lang: en, rel: C, kind: news}
+  - {id: t24, name: T24, url: "https://t24.com.tr/rss", home: "https://t24.com.tr", files: [turkey], type: local, lang: tr, rel: B, kind: news}
+  - {id: bianet-en, name: Bianet, url: "", home: "https://bianet.org/english", files: [turkey, pkk], type: local, lang: en, rel: B, kind: news}
+  - {id: medyascope, name: Medyascope, url: "https://medyascope.tv/feed/", home: "https://medyascope.tv", files: [turkey], type: local, lang: tr, rel: B, kind: news}
+  - {id: trthaber, name: TRT Haber, url: "", home: "https://www.trthaber.com", files: [turkey], type: local, lang: tr, rel: B, kind: news}
+
+  # ---------- Syria / Kurds / PKK ----------
+  - {id: enab-en, name: Enab Baladi, url: "https://english.enabbaladi.net/feed/", home: "https://english.enabbaladi.net", files: [syria], type: local, lang: en, rel: B, kind: news}
+  - {id: syriadirect, name: Syria Direct, url: "https://syriadirect.org/feed/", home: "https://syriadirect.org", files: [syria], type: local, lang: en, rel: B, kind: news}
+  - {id: npa-en, name: North Press Agency, url: "https://npasyria.com/en/feed/", home: "https://npasyria.com/en/", files: [syria, pkk], type: local, lang: en, rel: C, kind: news}
+  - {id: sana-en, name: SANA, url: "", home: "https://sana.sy/en/", files: [syria], type: official, lang: en, rel: C, kind: news}
+  - {id: anf-en, name: ANF News, url: "https://anfenglish.com/feed.rss", home: "https://anfenglish.com", files: [pkk], type: party, lang: en, rel: C, kind: news}
+  - {id: rudaw-en, name: Rudaw, url: "", home: "https://www.rudaw.net/english", files: [pkk, mideast], type: local, lang: en, rel: B, kind: news}
+  - {id: k24-en, name: Kurdistan24, url: "", home: "https://www.kurdistan24.net/en", files: [pkk, mideast], type: local, lang: en, rel: C, kind: news}
+  - {id: hawar-en, name: Hawar News (ANHA), url: "", home: "https://hawarnews.com/en", files: [syria, pkk], type: party, lang: en, rel: C, kind: news}
+
+  # ---------- Iran ----------
+  - {id: iranintl, name: Iran International, url: "", home: "https://www.iranintl.com/en", files: [iran], type: diaspora, lang: en, rel: C, kind: news}
+  - {id: iranwire, name: IranWire, url: "https://iranwire.com/en/feed/", home: "https://iranwire.com/en/", files: [iran], type: diaspora, lang: en, rel: C, kind: news}
+  - {id: tehrantimes, name: Tehran Times, url: "https://www.tehrantimes.com/rss", home: "https://www.tehrantimes.com", files: [iran], type: official, lang: en, rel: C, kind: news}
+  - {id: amwaj, name: Amwaj.media, url: "", home: "https://amwaj.media", files: [iran, gulf, mideast], type: international, lang: en, rel: B, kind: news}
+  - {id: irna-en, name: IRNA, url: "", home: "https://en.irna.ir", files: [iran], type: official, lang: en, rel: C, kind: news}
+
+  # ---------- Israel ----------
+  - {id: toi, name: Times of Israel, url: "https://www.timesofisrael.com/feed/", home: "https://www.timesofisrael.com", files: [israel], type: local, lang: en, rel: B, kind: news}
+  - {id: jpost, name: Jerusalem Post, url: "https://www.jpost.com/rss/rssfeedsfrontpage.aspx", home: "https://www.jpost.com", files: [israel], type: local, lang: en, rel: B, kind: news}
+  - {id: haaretz, name: Haaretz, url: "", home: "https://www.haaretz.com", files: [israel], type: local, lang: en, rel: B, kind: news}
+  - {id: ynet-en, name: Ynetnews, url: "", home: "https://www.ynetnews.com", files: [israel], type: local, lang: en, rel: B, kind: news}
+
+  # ---------- Gulf ----------
+  - {id: arabnews, name: Arab News, url: "https://www.arabnews.com/cat/1/rss.xml", home: "https://www.arabnews.com", files: [gulf], type: local, lang: en, rel: B, kind: news}
+  - {id: aawsat-en, name: Asharq Al-Awsat, url: "", home: "https://english.aawsat.com", files: [gulf, mideast], type: local, lang: en, rel: B, kind: news}
+  - {id: thenational, name: The National, url: "https://www.thenationalnews.com/arc/outboundfeeds/rss/?outputType=xml", home: "https://www.thenationalnews.com", files: [gulf], type: local, lang: en, rel: B, kind: news}
+  - {id: gulfnews, name: Gulf News, url: "", home: "https://gulfnews.com", files: [gulf], type: local, lang: en, rel: B, kind: news}
+  - {id: dohanews, name: Doha News, url: "https://dohanews.co/feed/", home: "https://dohanews.co", files: [gulf], type: local, lang: en, rel: C, kind: news}
+  - {id: kuwaittimes, name: Kuwait Times, url: "https://kuwaittimes.com/feed/", home: "https://kuwaittimes.com", files: [gulf], type: local, lang: en, rel: C, kind: news}
+  - {id: qna-en, name: Qatar News Agency, url: "", home: "https://www.qna.org.qa/en", files: [gulf], type: official, lang: en, rel: B, kind: news}
+
+  # ---------- Middle East ----------
+  - {id: lorient, name: L'Orient Today, url: "", home: "https://today.lorientlejour.com", files: [mideast], type: local, lang: en, rel: B, kind: news}
+  - {id: ahram, name: Ahram Online, url: "", home: "https://english.ahram.org.eg", files: [mideast], type: local, lang: en, rel: C, kind: news}
+
+  # ---------- Russia-Ukraine ----------
+  - {id: kyivindependent, name: Kyiv Independent, url: "https://kyivindependent.com/news-archive/rss/", home: "https://kyivindependent.com", files: [russia], type: local, lang: en, rel: B, kind: news}
+  - {id: upravda-en, name: Ukrainska Pravda, url: "https://www.pravda.com.ua/eng/rss/", home: "https://www.pravda.com.ua/eng/", files: [russia], type: local, lang: en, rel: B, kind: news}
+  - {id: ukrinform, name: Ukrinform, url: "https://www.ukrinform.net/rss/block-lastnews", home: "https://www.ukrinform.net", files: [russia], type: official, lang: en, rel: B, kind: news}
+  - {id: meduza-en, name: Meduza, url: "https://meduza.io/rss/en/all", home: "https://meduza.io/en", files: [russia], type: local, lang: en, rel: B, kind: news}
+  - {id: tass-en, name: TASS, url: "https://tass.com/rss/v2.xml", home: "https://tass.com", files: [russia], type: official, lang: en, rel: C, kind: news}
+  - {id: novayagazeta-eu, name: Novaya Gazeta Europe, url: "", home: "https://novayagazeta.eu", files: [russia], type: local, lang: en, rel: B, kind: news}
+  - {id: interfax-ua, name: Interfax-Ukraine, url: "", home: "https://en.interfax.com.ua", files: [russia], type: local, lang: en, rel: B, kind: news}
+
+  # ---------- Europe ----------
+  - {id: politico-eu, name: Politico Europe, url: "https://www.politico.eu/feed/", home: "https://www.politico.eu", files: [europe], type: international, lang: en, rel: B, kind: news}
+  - {id: euractiv, name: Euractiv, url: "https://www.euractiv.com/feed/", home: "https://www.euractiv.com", files: [europe], type: international, lang: en, rel: B, kind: news}
+  - {id: euobserver, name: EUobserver, url: "", home: "https://euobserver.com", files: [europe], type: international, lang: en, rel: B, kind: news}
+  - {id: euronews, name: Euronews, url: "https://www.euronews.com/rss?level=theme&name=news", home: "https://www.euronews.com", files: [europe], type: international, lang: en, rel: B, kind: news}
+  - {id: kathimerini, name: Kathimerini, url: "", home: "https://www.ekathimerini.com", files: [europe, turkey], type: local, lang: en, rel: B, kind: news}
+  - {id: cyprusmail, name: Cyprus Mail, url: "https://cyprus-mail.com/feed/", home: "https://cyprus-mail.com", files: [europe, turkey], type: local, lang: en, rel: B, kind: news}
+  - {id: nato, name: NATO, url: "https://www.nato.int/cps/rss/en/natohq/rssFeed.xsl/rssFeed.xml", home: "https://www.nato.int", files: [europe], type: official, lang: en, rel: A, kind: news}
+
+  # ---------- Think tanks (feed the Think Tank Brief) ----------
+  - {id: tt-csis, name: CSIS, url: "", home: "https://www.csis.org/analysis", files: [], type: thinktank, lang: en, rel: B, kind: thinktank}
+  - {id: tt-iiss, name: IISS, url: "", home: "https://www.iiss.org/online-analysis/", files: [], type: thinktank, lang: en, rel: B, kind: thinktank}
+  - {id: tt-hudson, name: Hudson Institute, url: "", home: "https://www.hudson.org/research", files: [], type: thinktank, lang: en, rel: B, kind: thinktank}
+  - {id: tt-isw, name: ISW / CTP, url: "", home: "https://www.understandingwar.org", files: [], type: thinktank, lang: en, rel: B, kind: thinktank}
+  - {id: tt-rand, name: RAND, url: "", home: "https://www.rand.org/pubs.html", files: [], type: thinktank, lang: en, rel: B, kind: thinktank}
+  - {id: tt-seta, name: SETA, url: "", home: "https://www.setav.org/en", files: [], type: thinktank, lang: en, rel: B, kind: thinktank}
+  - {id: tt-rusi, name: RUSI, url: "", home: "https://www.rusi.org/explore-our-research", files: [], type: thinktank, lang: en, rel: B, kind: thinktank}
+  - {id: tt-swp, name: SWP, url: "", home: "https://www.swp-berlin.org/en", files: [], type: thinktank, lang: en, rel: B, kind: thinktank}
+  - {id: tt-cfr, name: CFR, url: "", home: "https://www.cfr.org", files: [], type: thinktank, lang: en, rel: B, kind: thinktank}
+  - {id: tt-ecfr, name: ECFR, url: "https://ecfr.eu/feed/", home: "https://ecfr.eu", files: [], type: thinktank, lang: en, rel: B, kind: thinktank}
+  - {id: tt-icg, name: International Crisis Group, url: "", home: "https://www.crisisgroup.org", files: [], type: thinktank, lang: en, rel: B, kind: thinktank}
+  - {id: tt-inss, name: INSS, url: "https://www.inss.org.il/feed/", home: "https://www.inss.org.il", files: [israel], type: thinktank, lang: en, rel: B, kind: thinktank}
+  - {id: tt-carnegie, name: Carnegie Endowment, url: "", home: "https://carnegieendowment.org", files: [], type: thinktank, lang: en, rel: B, kind: thinktank}
+  - {id: tt-brookings, name: Brookings, url: "https://www.brookings.edu/feed/", home: "https://www.brookings.edu", files: [], type: thinktank, lang: en, rel: B, kind: thinktank}
+  - {id: tt-chatham, name: Chatham House, url: "", home: "https://www.chathamhouse.org", files: [], type: thinktank, lang: en, rel: B, kind: thinktank}
+  - {id: tt-atlantic, name: Atlantic Council, url: "https://www.atlanticcouncil.org/feed/", home: "https://www.atlanticcouncil.org", files: [], type: thinktank, lang: en, rel: B, kind: thinktank}
+  - {id: tt-twi, name: Washington Institute, url: "", home: "https://www.washingtoninstitute.org", files: [], type: thinktank, lang: en, rel: B, kind: thinktank}
+  - {id: tt-mei, name: Middle East Institute, url: "", home: "https://www.mei.edu", files: [], type: thinktank, lang: en, rel: B, kind: thinktank}
+  - {id: tt-orsam, name: ORSAM, url: "", home: "https://orsam.org.tr/en", files: [], type: thinktank, lang: en, rel: B, kind: thinktank}
+  - {id: tt-iram, name: İRAM, url: "", home: "https://www.iramcenter.org/en", files: [iran], type: thinktank, lang: en, rel: B, kind: thinktank}
+  - {id: tt-majalla, name: Al Majalla, url: "", home: "https://en.majalla.com", files: [], type: thinktank, lang: en, rel: B, kind: thinktank}
+  - {id: tt-warontherocks, name: War on the Rocks, url: "https://warontherocks.com/feed/", home: "https://warontherocks.com", files: [], type: thinktank, lang: en, rel: B, kind: thinktank}
+
+# GDELT DOC 2.0 (free, updated every 15 minutes) fills the gap for outlets
+# without public feeds: wires (Reuters, AP, AFP, Bloomberg), the FT and the
+# national press in the allowlist below. Queries run per file; results are
+# kept only when the domain is in gdelt.domains.
+gdelt:
+  enabled: true
+  timespan: "4h"          # look-back per run (runs every 2 hours, with overlap)
+  maxrecords: 120
+  pause_seconds: 6        # GDELT asks for at most one request every 5 seconds
+  turkish_query: '(Erdoğan OR Fidan OR TBMM OR "AK Parti" OR CHP OR MHP OR "DEM Parti" OR PKK OR "Dışişleri" OR "Milli Savunma")' 
+  domains:
+    reuters.com: {name: Reuters, rel: B, type: international}
+    apnews.com: {name: AP, rel: B, type: international}
+    france24.com: {name: France 24 / AFP, rel: B, type: international}
+    bloomberg.com: {name: Bloomberg, rel: B, type: international}
+    ft.com: {name: Financial Times, rel: B, type: international}
+    bbc.com: {name: BBC News, rel: B, type: international}
+    bbc.co.uk: {name: BBC News, rel: B, type: international}
+    aljazeera.com: {name: Al Jazeera, rel: B, type: international}
+    al-monitor.com: {name: Al-Monitor, rel: B, type: international}
+    politico.eu: {name: Politico Europe, rel: B, type: international}
+    dailysabah.com: {name: Daily Sabah, rel: C, type: local}
+    hurriyetdailynews.com: {name: Hürriyet Daily News, rel: B, type: local}
+    aa.com.tr: {name: Anadolu Agency, rel: B, type: local}
+    trtworld.com: {name: TRT World, rel: C, type: local}
+    turkiyetoday.com: {name: Türkiye Today, rel: C, type: local}
+    bianet.org: {name: Bianet, rel: B, type: local}
+    timesofisrael.com: {name: Times of Israel, rel: B, type: local}
+    haaretz.com: {name: Haaretz, rel: B, type: local}
+    jpost.com: {name: Jerusalem Post, rel: B, type: local}
+    ynetnews.com: {name: Ynetnews, rel: B, type: local}
+    arabnews.com: {name: Arab News, rel: B, type: local}
+    aawsat.com: {name: Asharq Al-Awsat, rel: B, type: local}
+    thenationalnews.com: {name: The National, rel: B, type: local}
+    gulfnews.com: {name: Gulf News, rel: B, type: local}
+    khaleejtimes.com: {name: Khaleej Times, rel: B, type: local}
+    timesofoman.com: {name: Times of Oman, rel: C, type: local}
+    rudaw.net: {name: Rudaw, rel: B, type: local}
+    kurdistan24.net: {name: Kurdistan24, rel: C, type: local}
+    iranintl.com: {name: Iran International, rel: C, type: diaspora}
+    tehrantimes.com: {name: Tehran Times, rel: C, type: official}
+    kyivindependent.com: {name: Kyiv Independent, rel: B, type: local}
+    pravda.com.ua: {name: Ukrainska Pravda, rel: B, type: local}
+    ukrinform.net: {name: Ukrinform, rel: B, type: official}
+    meduza.io: {name: Meduza, rel: B, type: local}
+    tass.com: {name: TASS, rel: C, type: official}
+    euractiv.com: {name: Euractiv, rel: B, type: international}
+    euronews.com: {name: Euronews, rel: B, type: international}
+    ekathimerini.com: {name: Kathimerini, rel: B, type: local}
+    cyprus-mail.com: {name: Cyprus Mail, rel: B, type: local}
+    theguardian.com: {name: The Guardian, rel: B, type: international}
+    lemonde.fr: {name: Le Monde, rel: B, type: local}
+    spiegel.de: {name: Der Spiegel, rel: B, type: local}
+    lorientlejour.com: {name: L'Orient Today, rel: B, type: local}
+    enabbaladi.net: {name: Enab Baladi, rel: B, type: local}
+    npasyria.com: {name: North Press Agency, rel: C, type: local}
+    # Turkish-language national press (GDELT turkish query)
+    hurriyet.com.tr: {name: Hürriyet, rel: B, type: local}
+    milliyet.com.tr: {name: Milliyet, rel: B, type: local}
+    sabah.com.tr: {name: Sabah, rel: C, type: local}
+    ntv.com.tr: {name: NTV, rel: B, type: local}
+    cnnturk.com: {name: CNN Türk, rel: B, type: local}
+    haberturk.com: {name: Habertürk, rel: B, type: local}
+    cumhuriyet.com.tr: {name: Cumhuriyet, rel: B, type: local}
+    t24.com.tr: {name: T24, rel: B, type: local}
+    karar.com: {name: Karar, rel: B, type: local}
+    birgun.net: {name: BirGün, rel: C, type: local}
+    trthaber.com: {name: TRT Haber, rel: B, type: local}
+    medyascope.tv: {name: Medyascope, rel: B, type: local}
+
+# Copied from meta/sourcepolicy.blockedDomains (keep in sync; the Claude tasks
+# check the live policy again before writing anything).
+blocked_domains:
+  - bursahayat.com.tr
+  - easternherald.com
+  - politikars.com
+  - vakit61.com
+  - 24newshd.tv
+  - eurasiantimes.com
+  - benzinga.com
+  - lavocedinewyork.com
+  - hathalyoum.net
+  - dailyindependent.com.pk
+  - energyconnects.com
+  - wikipedia.org
+  - manaramagazine.org
+  - greekcitytimes.com
+  - greekreporter.com

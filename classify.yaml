@@ -1,0 +1,44 @@
+# Keyword classifier: decides which Strategic Radar files an item belongs to.
+# Matching is case-insensitive on title + summary, on word boundaries.
+# An item from a feed that already names files keeps them when at least one
+# keyword of that file matches, or when the feed is single-file and local.
+# `gdelt` is the GDELT search expression for the file (GDELT syntax: OR inside
+# parentheses, quoted phrases).
+
+files:
+  turkey:
+    keywords: [Türkiye, Turkey, Turkish, Türk, Erdoğan, Erdogan, Ankara, Fidan, "Hakan Fidan", "Yaşar Güler", "Yasar Guler", MİT, TBMM, "AK Parti", "AK Party", AKP, CHP, MHP, "DEM Party", "DEM Parti", Bahçeli, Bahceli, İmamoğlu, Imamoglu, Bosphorus, Istanbul, İstanbul, Incirlik, İncirlik, Kürecik, Kurecik, Baykar, Bayraktar, Aselsan, TUSAŞ, TUSAS, SSB, "Turkish Straits", Montreux, Cumhurbaşkanı, Dışişleri, MSB]
+    gdelt: '(Turkey OR Türkiye OR Erdogan OR Ankara OR "Hakan Fidan" OR Turkish)'
+  syria:
+    keywords: [Syria, Syrian, Damascus, Sharaa, "al-Sharaa", Shaibani, HTS, Aleppo, Idlib, Raqqa, "Deir ez-Zor", "Deir Ezzor", Latakia, Tartus, Homs, Hama, Sweida, Suwayda, Daraa, Quneitra, SDF, "Syrian Democratic Forces", Mazloum, Kobani, Manbij, Hasakah, Qamishli, Suriye, Şam]
+    gdelt: '(Syria OR Damascus OR Sharaa OR SDF OR Aleppo OR Idlib)'
+  iran:
+    keywords: [Iran, Iranian, Tehran, Khamenei, Pezeshkian, Araghchi, IRGC, "Revolutionary Guard", Hormuz, Natanz, Fordow, Isfahan, Bushehr, rial, Basij, Larijani, İran, Tahran]
+    gdelt: '(Iran OR Tehran OR Khamenei OR Pezeshkian OR Araghchi OR IRGC OR Hormuz)'
+  israel:
+    keywords: [Israel, Israeli, Netanyahu, IDF, Knesset, Mossad, "Shin Bet", "Tel Aviv", Jerusalem, Smotrich, "Ben-Gvir", "Ben Gvir", Gantz, Lapid, "Eyal Zamir", İsrail]
+    gdelt: '(Israel OR Netanyahu OR IDF OR Knesset OR "Tel Aviv")'
+  gulf:
+    keywords: ["Saudi Arabia", Saudi, Riyadh, "Mohammed bin Salman", MBS, UAE, Emirati, "Abu Dhabi", Dubai, Qatar, Qatari, Doha, Kuwait, Bahrain, Manama, Oman, Omani, Muscat, GCC, "Gulf Cooperation Council", Aramco, Makkah, Mecca, Houthi, Houthis, Yemen, Körfez, Suudi, Katar, Umman]
+    gdelt: '("Saudi Arabia" OR Riyadh OR UAE OR "Abu Dhabi" OR Qatar OR Doha OR Kuwait OR Bahrain OR Oman OR GCC)'
+  pkk:
+    keywords: [PKK, KCK, HPG, Öcalan, Ocalan, İmralı, Imrali, Qandil, Kandil, "DEM Party", "DEM Parti", "terror-free", "terörsüz", "Kurdistan Workers", YPG, PYD, SDF, Kurdish, Kurds, Kürt, KRG, Erbil, Sinjar, Sincar, Makhmour, "Duran Kalkan", "Cemil Bayık", "Murat Karayılan"]
+    gdelt: '(PKK OR Ocalan OR Qandil OR "DEM Party" OR KRG OR Erbil OR Sinjar OR YPG)'
+  mideast:
+    keywords: [Lebanon, Lebanese, Hezbollah, Beirut, Gaza, Hamas, "West Bank", Palestinian, "Palestinian Authority", Abbas, Iraq, Iraqi, Baghdad, Sudani, PMF, "Popular Mobilization", Jordan, Amman, Egypt, Egyptian, Cairo, Sisi, Yemen, Houthi, Houthis, "Red Sea", "Bab el-Mandeb", "Bab al-Mandab", Aden, Sanaa, Lübnan, Irak, Mısır, Ürdün]
+    gdelt: '(Lebanon OR Hezbollah OR Gaza OR Hamas OR Iraq OR Baghdad OR Jordan OR Egypt OR Yemen OR Houthi OR "Red Sea")'
+  russia:
+    keywords: [Russia, Russian, Moscow, Kremlin, Putin, Lavrov, Peskov, Ukraine, Ukrainian, Kyiv, Kiev, Zelensky, Zelenskyy, Donbas, Donetsk, Luhansk, Zaporizhzhia, Kherson, Kharkiv, Crimea, Sevastopol, Odesa, Odessa, "Black Sea", Pokrovsk, Kursk, Rusya, Ukrayna, Karadeniz]
+    gdelt: '(Russia OR Ukraine OR Putin OR Zelensky OR Kremlin OR Kyiv OR "Black Sea")'
+  europe:
+    keywords: ["European Union", EU, Brussels, "European Commission", "von der Leyen", Kallas, "European Council", "European Parliament", NATO, Rutte, Macron, Merz, Starmer, Meloni, Tusk, Greece, Greek, Athens, Mitsotakis, Cyprus, Cypriot, Nicosia, Christodoulides, Schengen, Frontex, "customs union", ReArm, Avrupa, Yunanistan, Kıbrıs]
+    gdelt: '("European Union" OR Brussels OR "von der Leyen" OR NATO OR Macron OR Merz OR Starmer OR Greece OR Cyprus)'
+
+# Items that touch Türkiye get a relevance boost in every file.
+turkey_boost: [Türkiye, Turkey, Turkish, Erdoğan, Erdogan, Ankara, Fidan]
+
+# Minimum keyword hits for a general (multi-file) feed item to be kept in a file.
+min_hits_general: 1
+
+# Items whose title matches any of these are dropped (sport, lifestyle, markets noise).
+negative: [football, soccer, "Süper Lig", "Super Lig", UEFA, FIFA, "Champions League", basketball, volleyball, tennis, Formula 1, "F1", transfer window, goalkeeper, striker, horoscope, recipe, celebrity, "box office", "Eurovision", fashion week, "weather forecast", "hava durumu", "maç", "golf", "NBA"]
