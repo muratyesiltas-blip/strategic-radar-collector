@@ -469,6 +469,13 @@ def main() -> int:
                 if lose is a:
                     break
 
+    # AI layer (optional; needs the ANTHROPIC_API_KEY secret). Never breaks the feed.
+    try:
+        import enrich
+        status["ai"] = enrich.run(items, data, NOW, sources.get("ai", {}) or {})
+    except Exception as ex:  # noqa: BLE001
+        status["ai"] = {"enabled": False, "error": f"{type(ex).__name__}: {str(ex)[:200]}"}
+
     # prune store
     cutoff = NOW - timedelta(hours=STORE_KEEP_H)
     items = {k: v for k, v in items.items() if (parse_iso(v["time"]) or NOW) > cutoff or (parse_iso(v["firstSeen"]) or NOW) > NOW - timedelta(hours=12)}
@@ -478,9 +485,15 @@ def main() -> int:
         out = {k: x[k] for k in ("id", "title", "url", "outlet", "domain", "type", "lang", "rel", "time", "firstSeen", "summary", "files", "tr", "score") if k in x}
         if x.get("alsoReportedBy"):
             out["alsoReportedBy"] = x["alsoReportedBy"]
+        if x.get("ai"):
+            out["ai"] = {k: v for k, v in x["ai"].items() if k not in ("at", "files")}
+        if x.get("brief"):
+            out["brief"] = {k: v for k, v in x["brief"].items() if k != "at"}
+        if x.get("story"):
+            out["story"] = x["story"]
         return out
 
-    news = [x for x in items.values() if x["kind"] == "news" and not x.get("dupOf") and (parse_iso(x["time"]) or NOW) > NOW - timedelta(hours=NEWS_WINDOW_H)]
+    news = [x for x in items.values() if x["kind"] == "news" and not x.get("dupOf") and not x.get("aiDrop") and (parse_iso(x["time"]) or NOW) > NOW - timedelta(hours=NEWS_WINDOW_H)]
     per_file = {}
     for fid in FILES:
         L = [x for x in news if fid in x["files"]]
@@ -491,7 +504,7 @@ def main() -> int:
         "generatedAt": iso(NOW), "windowHours": NEWS_WINDOW_H,
         "counts": {f: len(per_file[f]) for f in FILES},
         "newThisRun": len([i for i in new_ids if items.get(i, {}).get("kind") == "news"]),
-        "note": "Credible-source items of the last 48 hours, grouped by Strategic Radar file, newest first. rel = Admiralty source-reliability letter; the analyst sets the credibility number. firstSeen = when the collector first saw the item (use it to pick items since the last sweep). Summaries come from the feeds; open the url before citing a detail that is not in the title or summary.",
+        "note": "Credible-source items of the last 48 hours, grouped by Strategic Radar file, newest first. When present, ai = Claude Haiku triage (score 0-10, desk, one-sentence sum, title_en, actors, event, place) and story = the stories.json cluster id; items the model scored below 2 are left out. rel = Admiralty source-reliability letter; the analyst sets the credibility number. firstSeen = when the collector first saw the item (use it to pick items since the last sweep). Summaries come from the feeds; open the url before citing a detail that is not in the title or summary.",
         "files": per_file,
     }
     dump_json(data / "latest.json", latest, compact=True)
@@ -523,6 +536,7 @@ def main() -> int:
         "newItems": len(new_ids), "newsItems48h": len(news), "thinktankItems": len(tts),
         "failing": [f["id"] for f in status["feeds"] if not f["ok"]],
         "seconds": round(time.monotonic() - T0, 1),
+        "ai": {k: status.get("ai", {}).get(k) for k in ("enabled", "usdRun", "usdMonth", "stopped") if k in status.get("ai", {})},
     }
     dump_json(data / "status.json", status)
     state["runs"] = (state.get("runs", []) + [{"at": iso(NOW), "new": len(new_ids), "feedsOk": ok}])[-50:]
