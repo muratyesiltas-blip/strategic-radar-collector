@@ -28,6 +28,21 @@ FILES = ["turkey", "syria", "iran", "israel", "gulf", "pkk", "mideast", "russia"
 DESKS = ["milpol", "geo", "fp", "stratint"]
 # USD per million tokens (input, output); cache reads cost 10% of input.
 PRICES = {"haiku": (1.0, 5.0), "sonnet": (3.0, 15.0), "opus": (5.0, 25.0)}
+# 5.x generation list prices (prompts under 100k tokens; Haiku 5.5 is 5x above 100k).
+PRICES_V5 = {"haiku": (0.10, 0.50), "sonnet": (2.0, 10.0), "opus": (5.0, 25.0)}
+
+
+def prices(model: str, prompt_tokens: int, override: dict | None = None) -> tuple:
+    fam = family(model)
+    if override and override.get(fam):
+        return tuple(override[fam])
+    m = re.search(r"-(\d+)(?:-\d+)?", model)
+    if m and int(m.group(1)) >= 5:
+        pin, pout = PRICES_V5[fam]
+        if fam == "haiku" and prompt_tokens > 100_000:
+            pin, pout = pin * 5, pout * 5
+        return pin, pout
+    return PRICES[fam]
 UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36"
 
 
@@ -60,6 +75,9 @@ class Claude:
         self.run_usd = 0.0
         self.calls = 0
         self.errors: list[str] = []
+        self.err_counts: dict = {}
+        self.thinking_param = True  # send thinking: disabled until the API says it does not accept it
+        self.truncated = 0
         self.models = self._pick_models()
 
     # ----- models -----
@@ -96,7 +114,8 @@ class Claude:
             raise BudgetExceeded("daily cap reached")
 
     def _book(self, model: str, u: dict, task: str):
-        pin, pout = PRICES[family(model)]
+        ptok = u.get("input_tokens", 0) + u.get("cache_creation_input_tokens", 0) + u.get("cache_read_input_tokens", 0)
+        pin, pout = prices(model, ptok, self.cfg.get("prices"))
         inp = u.get("input_tokens", 0) + 1.25 * u.get("cache_creation_input_tokens", 0) + 0.1 * u.get("cache_read_input_tokens", 0)
         usd = (inp * pin + u.get("output_tokens", 0) * pout) / 1e6
         day = self.now.strftime("%Y-%m-%d")
@@ -121,25 +140,41 @@ class Claude:
         if self.mock:
             self._book(model, {"input_tokens": len(system + user) // 4, "output_tokens": max_tokens // 4}, task)
             return mock_answer(task, user)
-        body = {
-            "model": model, "max_tokens": max_tokens,
-            "system": [{"type": "text", "text": system, "cache_control": {"type": "ephemeral"}}],
-            "messages": [{"role": "user", "content": user}],
-        }
         last = None
-        for attempt in range(4):
-            r = requests.post(f"{API}/messages", headers=self._headers(), json=body, timeout=180)
+        for attempt in range(5):
+            body = {
+                "model": model, "max_tokens": max_tokens if self.thinking_param else max_tokens * 3,
+                "system": [{"type": "text", "text": system, "cache_control": {"type": "ephemeral"}}],
+                "messages": [{"role": "user", "content": user}],
+            }
+            if self.thinking_param:
+                body["thinking"] = {"type": "disabled"}
+            r = requests.post(f"{API}/messages", headers=self._headers(), json=body, timeout=240)
             if r.status_code in (429, 500, 502, 503, 529):
                 last = f"HTTP {r.status_code}"
                 wait = float(r.headers.get("retry-after", 0) or 0) or 8 * (attempt + 1)
                 time.sleep(min(wait, 40))
                 continue
+            if r.status_code == 400 and self.thinking_param and "thinking" in r.text.lower():
+                self.thinking_param = False
+                self.note("api: thinking parameter refused, retrying without it")
+                continue
             if r.status_code >= 400:
                 raise RuntimeError(f"HTTP {r.status_code}: {r.text[:200]}")
             d = r.json()
             self._book(model, d.get("usage", {}), task)
+            if d.get("stop_reason") == "max_tokens":
+                with self.lock:
+                    self.truncated += 1
             return "".join(b.get("text", "") for b in d.get("content", []) if b.get("type") == "text")
         raise RuntimeError(f"gave up after retries ({last})")
+
+    def note(self, msg: str):
+        key = msg.split(":")[0] + ":" + msg.split(":")[1][:40] if msg.count(":") >= 1 else msg[:40]
+        with self.lock:
+            self.err_counts[key] = self.err_counts.get(key, 0) + 1
+            if len(self.errors) < 12:
+                self.errors.append(msg[:220])
 
 
 def parse_json(txt: str):
@@ -156,7 +191,30 @@ def parse_json(txt: str):
                 return json.loads(txt[i : b + 1])
             except json.JSONDecodeError:
                 continue
-    raise ValueError("no JSON in model answer: " + txt[:120])
+    objs = salvage_objects(txt)
+    if objs:
+        return objs
+    raise ValueError("no JSON in model answer (%d chars): %s" % (len(txt), txt[:80]))
+
+
+def salvage_objects(txt: str) -> list:
+    """Recover the complete objects of a truncated JSON array (the model ran out of tokens)."""
+    i = txt.find("[")
+    if i == -1:
+        return []
+    dec = json.JSONDecoder()
+    out, pos = [], i + 1
+    while True:
+        while pos < len(txt) and txt[pos] in " \n\r\t,":
+            pos += 1
+        if pos >= len(txt) or txt[pos] != "{":
+            break
+        try:
+            obj, pos = dec.raw_decode(txt, pos)
+        except json.JSONDecodeError:
+            break
+        out.append(obj)
+    return out
 
 
 # ---------------------------------------------------------------- prompts
@@ -183,7 +241,7 @@ You triage news items for analysts. For EACH input item return one object:
 Score rubric: 9-10 a strategic shift or major escalation; 7-8 a significant development for Türkiye or a tracked theatre; 4-6 routine but relevant;
 1-3 marginal; 0 off-topic (sport, lifestyle, markets noise, local crime with no political angle).
 Add 1 point when the item bears directly on Türkiye's interests. Use only the title and summary; never invent facts.
-Answer with a JSON array only, same order as the input, no commentary."""
+Answer with a compact JSON array only (no line breaks inside objects), same order as the input, no commentary."""
 
 BRIEF_SYSTEM = FILE_GUIDE + """
 
@@ -226,7 +284,7 @@ def enrich_items(items: dict, cl: Claude, cfg: dict, now: datetime, deadline: fl
              and (parse_iso(x["time"]) or now) > (news_cut if x["kind"] == "news" else tt_cut)]
     cands.sort(key=lambda x: (x.get("firstSeen", ""), x.get("score", 0)), reverse=True)
     cands = cands[: int(cfg.get("max_items_per_run", 300))]
-    size = int(cfg.get("batch_size", 25))
+    size = int(cfg.get("batch_size", 20))
     chunks = [cands[i : i + size] for i in range(0, len(cands), size)]
     done = 0
 
@@ -237,7 +295,7 @@ def enrich_items(items: dict, cl: Claude, cfg: dict, now: datetime, deadline: fl
                     "lang": x.get("lang", "en"), "files": x.get("files", [])} for x in chunk]
         for x in chunk:
             x["aiTries"] = x.get("aiTries", 0) + 1
-        ans = parse_json(cl.call("haiku", ITEM_SYSTEM, "Items:\n" + json.dumps(payload, ensure_ascii=False), 120 * len(chunk) + 200, "items"))
+        ans = parse_json(cl.call("haiku", ITEM_SYSTEM, "Items:\n" + json.dumps(payload, ensure_ascii=False), 220 * len(chunk) + 400, "items"))
         by_id = {x["id"]: x for x in chunk}
         n = 0
         for a in ans if isinstance(ans, list) else []:
@@ -265,7 +323,7 @@ def enrich_items(items: dict, cl: Claude, cfg: dict, now: datetime, deadline: fl
             except BudgetExceeded:
                 raise
             except Exception as ex:  # noqa: BLE001
-                cl.errors.append(f"items: {type(ex).__name__}: {str(ex)[:160]}")
+                cl.note(f"items: {type(ex).__name__}: {str(ex)[:160]}")
     return {"candidates": len(cands), "enriched": done}
 
 
@@ -311,7 +369,7 @@ def brief_thinktanks(items: dict, cl: Claude, cfg: dict, now: datetime, deadline
             if len(text) < 200:
                 return None
         user = f"Title: {x['title']}\nPublisher: {x['outlet']}\nDate: {x['time'][:10]}\n\nText:\n{text[:max_chars]}"
-        a = parse_json(cl.call("haiku", BRIEF_SYSTEM, user, 700, "brief"))
+        a = parse_json(cl.call("haiku", BRIEF_SYSTEM, user, 1400, "brief"))
         if not isinstance(a, dict) or not a.get("summary"):
             return None
         x["brief"] = {"summary": str(a["summary"])[:1400], "argument": str(a.get("argument", ""))[:300],
@@ -327,7 +385,7 @@ def brief_thinktanks(items: dict, cl: Claude, cfg: dict, now: datetime, deadline
             except BudgetExceeded:
                 raise
             except Exception as ex:  # noqa: BLE001
-                cl.errors.append(f"brief: {type(ex).__name__}: {str(ex)[:160]}")
+                cl.note(f"brief: {type(ex).__name__}: {str(ex)[:160]}")
                 continue
             if src:
                 stats["briefed"] += 1
@@ -361,10 +419,11 @@ def cluster_stories(items: dict, cl: Claude, cfg: dict, now: datetime, data: Pat
         ai = x.get("ai", {})
         text = ai.get("sum") or ai.get("title_en") or x["title"]
         lines.append(f"{x['id']} | {x['outlet']} | {','.join(x.get('files', []))} | {ai.get('score', '-')} | {text[:220]}")
-    ans = parse_json(cl.call("sonnet", STORY_SYSTEM, "\n".join(lines), int(cfg.get("cluster_max_tokens", 9000)), "stories"))
+    ans = parse_json(cl.call("sonnet", STORY_SYSTEM, "\n".join(lines), int(cfg.get("cluster_max_tokens", 16000)), "stories"))
     by_id = {x["id"]: x for x in pool}
     stories = []
-    for i, s in enumerate((ans or {}).get("stories", []) if isinstance(ans, dict) else []):
+    raw = ans.get("stories", []) if isinstance(ans, dict) else (ans if isinstance(ans, list) else [])
+    for i, s in enumerate(raw):
         ids = [k for k in s.get("ids", []) if k in by_id]
         if not ids:
             continue
@@ -415,15 +474,20 @@ def run(items: dict, data: Path, now: datetime, cfg: dict) -> dict:
             if x.get("ai") and x["kind"] == "news" and x["ai"].get("score", 10) < drop:
                 x["aiDrop"] = True
         rep["briefs"] = brief_thinktanks(items, cl, cfg, now, deadline)
-        rep["stories"] = cluster_stories(items, cl, cfg, now, data, force=bool(os.environ.get("AI_FORCE_STORIES")))
+        try:
+            rep["stories"] = cluster_stories(items, cl, cfg, now, data, force=bool(os.environ.get("AI_FORCE_STORIES")))
+        except BudgetExceeded:
+            raise
+        except Exception as ex:  # noqa: BLE001
+            rep["stories"] = {"error": f"{type(ex).__name__}: {str(ex)[:200]}"}
     except BudgetExceeded as ex:
         rep["stopped"] = str(ex)
     except Exception as ex:  # noqa: BLE001 - AI trouble must never break the feed
-        cl.errors.append(f"{type(ex).__name__}: {str(ex)[:200]}")
+        cl.note(f"run: {type(ex).__name__}: {str(ex)[:200]}")
     days = usage.get("days", {})
     usage["days"] = {d: days[d] for d in sorted(days)[-40:]}
     upath.write_text(json.dumps(usage, ensure_ascii=False, indent=1), encoding="utf-8")
     rep.update(calls=cl.calls, usdRun=round(cl.run_usd, 4), usdToday=usage.get("days", {}).get(now.strftime("%Y-%m-%d"), 0.0),
                usdMonth=usage.get("usd", 0.0), caps={"daily": cfg.get("daily_usd", 2.5), "monthly": cfg.get("monthly_usd", 45)},
-               errors=cl.errors[:12])
+               errors=cl.errors[:12], errorCounts=cl.err_counts, truncated=cl.truncated, thinkingParam=cl.thinking_param)
     return rep

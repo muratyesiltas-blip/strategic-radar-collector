@@ -452,12 +452,12 @@ ai:
   daily_usd: 2.5           # hard stop for the day
   time_budget_seconds: 420 # stop starting new AI work after this many seconds
   workers: 4
-  batch_size: 25           # items per Haiku triage call
+  batch_size: 20           # items per Haiku triage call
   max_items_per_run: 300
   drop_below: 2            # news items scored below this leave the feed
   max_briefs_per_run: 25   # think tank pieces summarised per run
   brief_max_chars: 24000
   cluster_hours_utc: [2]   # stories.json is rebuilt on the 02:17 UTC run (05:17 TRT, before tt and daily)
   cluster_max_items: 420
-  cluster_max_tokens: 9000
+  cluster_max_tokens: 16000
   models: {}               # empty = newest Haiku and Sonnet from the API; or set haiku: <id>, sonnet: <id>
