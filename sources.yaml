@@ -454,7 +454,7 @@ ai:
   workers: 4
   batch_size: 20           # items per Haiku triage call
   max_items_per_run: 300
-  drop_below: 2            # news items scored below this leave the feed
+  drop_below: 3            # news items scored below this leave the feed (2 = market tickers, routine notices)
   max_briefs_per_run: 25   # think tank pieces summarised per run
   brief_max_chars: 24000
   cluster_hours_utc: [2]   # stories.json is rebuilt on the 02:17 UTC run (05:17 TRT, before tt and daily)

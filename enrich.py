@@ -255,10 +255,10 @@ Answer with the JSON object only."""
 
 STORY_SYSTEM = FILE_GUIDE + """
 
-You receive the last 24 hours of credible-source news items, one per line: id | outlet | files | score | text.
+You receive the last 24 hours of credible-source news items, one per line: ref | outlet | files | score | text. A ref looks like n12.
 Group items that report the same event or the same developing story. Return a JSON object:
 {"stories": [{"headline": at most 14 words, "summary": 2-3 plain sentences on what happened and what is new, sourced only from the items,
-  "files": 1-3 file ids, "desk": one desk id, "importance": 1-5 (5 = strategic shift), "ids": [item ids in the story],
+  "files": 1-3 file ids, "desk": one desk id, "importance": 1-5 (5 = strategic shift), "ids": [the refs of the items in the story, exactly as given, e.g. "n12"],
   "turkey": one sentence on the stake for Türkiye, or ""}]}
 Rules: 25 to 45 stories, most important first; a single-item story is fine when the item matters (score 6+);
 drop trivia; never merge different events; never invent facts beyond the items. JSON only."""
@@ -272,7 +272,7 @@ def mock_answer(task: str, user: str) -> str:
                             "title_en": "", "actors": [], "event": "other", "place": ""} for x in arr])
     if task == "brief":
         return json.dumps({"summary": "Mock summary.", "argument": "Mock argument.", "recommendations": [], "turkey": "", "files": ["turkey"], "type": "analysis"})
-    ids = re.findall(r"^([0-9a-f]{16}) \|", user, flags=re.M)
+    ids = re.findall(r"^(n\d+) \|", user, flags=re.M)
     return json.dumps({"stories": [{"headline": "Mock story", "summary": "Mock.", "files": ["turkey"], "desk": "fp", "importance": 3, "ids": ids[:3], "turkey": ""}]})
 
 
@@ -404,7 +404,8 @@ def cluster_stories(items: dict, cl: Claude, cfg: dict, now: datetime, data: Pat
             old = {}
     last = parse_iso(old.get("generatedAt"))
     hours = cfg.get("cluster_hours_utc", [2])
-    due = force or last is None or (now - last > timedelta(hours=20) and now.hour in hours) or now - last > timedelta(hours=30)
+    thin = len(old.get("stories", [])) < 10 and last is not None and now - last > timedelta(minutes=50)  # self-heal a failed build
+    due = force or last is None or thin or (now - last > timedelta(hours=20) and now.hour in hours) or now - last > timedelta(hours=30)
     if not due:
         return {"skipped": "not due", "last": old.get("generatedAt")}
     cut = now - timedelta(hours=24)
@@ -415,16 +416,23 @@ def cluster_stories(items: dict, cl: Claude, cfg: dict, now: datetime, data: Pat
     if len(pool) < 10:
         return {"skipped": "too few items"}
     lines = []
-    for x in pool:
+    ref = {}
+    for n, x in enumerate(pool, 1):
         ai = x.get("ai", {})
         text = ai.get("sum") or ai.get("title_en") or x["title"]
-        lines.append(f"{x['id']} | {x['outlet']} | {','.join(x.get('files', []))} | {ai.get('score', '-')} | {text[:220]}")
+        ref[f"n{n}"] = x["id"]
+        lines.append(f"n{n} | {x['outlet']} | {','.join(x.get('files', []))} | {ai.get('score', '-')} | {text[:220]}")
     ans = parse_json(cl.call("sonnet", STORY_SYSTEM, "\n".join(lines), int(cfg.get("cluster_max_tokens", 16000)), "stories"))
     by_id = {x["id"]: x for x in pool}
     stories = []
     raw = ans.get("stories", []) if isinstance(ans, dict) else (ans if isinstance(ans, list) else [])
     for i, s in enumerate(raw):
-        ids = [k for k in s.get("ids", []) if k in by_id]
+        ids = []
+        for k in s.get("ids", []) or []:
+            k = str(k).strip()
+            k = ref.get(k) or ref.get("n" + k) or k
+            if k in by_id and k not in ids:
+                ids.append(k)
         if not ids:
             continue
         its = sorted((by_id[k] for k in ids), key=lambda x: x["time"])
@@ -443,7 +451,7 @@ def cluster_stories(items: dict, cl: Claude, cfg: dict, now: datetime, data: Pat
            "note": "Stories cluster the last 24 hours of collector items. Summaries come only from item titles and feed summaries; open the links before citing details.",
            "stories": stories}
     path.write_text(json.dumps(out, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
-    return {"stories": len(stories), "itemsIn": len(pool)}
+    return {"stories": len(stories), "rawStories": len(raw), "itemsIn": len(pool)}
 
 
 # ---------------------------------------------------------------- entry point
