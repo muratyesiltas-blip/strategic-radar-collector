@@ -40,6 +40,7 @@ jobs:
         run: python collect.py --data out --config .
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
 
       - name: Publish to the data branch
         run: |
