@@ -458,6 +458,19 @@ def cmd_sync(args) -> int:
             writes.append(doc_id)
             meta["ev"][doc_id] = {"count": doc.get("count"), "hash": info.get("hash")}
 
+        # 1b. warning-layer alerts (alerts.json -> kb/alerts)
+        try:
+            al = get(f"{base}/alerts.json")
+            doc = {"updatedAt": al.get("updatedAt", ""), "note": al.get("note", ""), "queue": len(al.get("queue") or []),
+                   "lastDigest": al.get("lastDigest", ""), "connected": bool(al.get("hello")),
+                   "alerts": [{k: v for k, v in a.items() if k != "itemIds"} for a in (al.get("alerts") or [])][-200:]}
+            cur = current.get("alerts")
+            if not cur or digest(cur.get("alerts", [])) != digest(doc["alerts"]) or cur.get("connected") != doc["connected"]:
+                (out / "alerts.json").write_text(json.dumps(doc, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
+                writes.append("alerts")
+        except Exception as ex:  # noqa: BLE001
+            print(f"WARN alerts.json unavailable: {ex}", file=sys.stderr)
+
     # 2. desk developments
     if args.days:
         found = []
@@ -504,7 +517,7 @@ def cmd_sync(args) -> int:
             writes.append(b)
             meta["dk"][b] = {"count": len(L)}
 
-    if writes or not current.get("meta"):
+    if [w for w in writes if w != "alerts"] or not current.get("meta"):
         meta["updatedAt"] = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
         meta["total"] = sum(v.get("count") or 0 for v in meta["ev"].values()) + sum(v.get("count") or 0 for v in meta["dk"].values())
         (out / "meta.json").write_text(json.dumps(meta, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")

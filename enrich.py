@@ -6,6 +6,7 @@ the collector publishes the plain feed as before.
 Layer 1a  every run   Haiku scores, tags and summarises new items (item["ai"])
 Layer 1b  once a day  Sonnet clusters the last 24 hours into stories (stories.json)
 Layer 2   every run   Haiku summarises think tank pieces from their full text (item["brief"])
+Layer 3   every run   Haiku turns fresh high-scoring items into FLASH/PRIORITY alerts and pushes them via ntfy (alerts.py)
 KB        every run   story events go to the knowledge base (kb.py); archived days without stories are clustered once (backfill)
 
 A spending guard (ai_usage.json) stops all calls once the daily or monthly
@@ -24,6 +25,7 @@ from pathlib import Path
 
 import requests
 
+import alerts
 import kb
 
 API = "https://api.anthropic.com/v1"
@@ -278,6 +280,10 @@ def mock_answer(task: str, user: str) -> str:
                             "title_en": "", "actors": [], "event": "other", "place": ""} for x in arr])
     if task == "brief":
         return json.dumps({"summary": "Mock summary.", "argument": "Mock argument.", "recommendations": [], "turkey": "", "files": ["turkey"], "type": "analysis"})
+    if task == "alerts":
+        refs = re.findall(r"^(r\d+) \|", user, flags=re.M)
+        return json.dumps({"alerts": [{"refs": refs[:2], "level": "flash", "headline": "Mock flash alert", "summary": "Mock. Something happened.",
+                                       "turkey": "Mock stake.", "files": ["turkey"], "repeat_of": ""}] if refs else []})
     ids = re.findall(r"^(n\d+) \|", user, flags=re.M)
     return json.dumps({"stories": [{"headline": f"Mock story {k}", "summary": "Mock. Fidan met Araghchi in Ankara.", "files": ["turkey"], "desk": "fp",
                                     "importance": 3, "ids": ids[k * 3:k * 3 + 3], "turkey": "", "actors": ["Turkish Foreign Minister Hakan Fidan", "Iran"],
@@ -579,6 +585,12 @@ def run(items: dict, data: Path, now: datetime, cfg: dict) -> dict:
         for x in items.values():
             if x.get("ai") and x["kind"] == "news" and x["ai"].get("score", 10) < drop:
                 x["aiDrop"] = True
+        try:
+            rep["alerts"] = alerts.run_alerts(items, cl, cfg, now, data)
+        except BudgetExceeded:
+            raise
+        except Exception as ex:  # noqa: BLE001
+            rep["alerts"] = {"error": f"{type(ex).__name__}: {str(ex)[:200]}"}
         rep["briefs"] = brief_thinktanks(items, cl, cfg, now, deadline)
         try:
             rep["stories"] = cluster_stories(items, cl, cfg, now, data, force=bool(os.environ.get("AI_FORCE_STORIES")))
