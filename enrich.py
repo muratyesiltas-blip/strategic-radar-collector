@@ -6,6 +6,7 @@ the collector publishes the plain feed as before.
 Layer 1a  every run   Haiku scores, tags and summarises new items (item["ai"])
 Layer 1b  once a day  Sonnet clusters the last 24 hours into stories (stories.json)
 Layer 2   every run   Haiku summarises think tank pieces from their full text (item["brief"])
+KB        every run   story events go to the knowledge base (kb.py); archived days without stories are clustered once (backfill)
 
 A spending guard (ai_usage.json) stops all calls once the daily or monthly
 estimate passes the caps in sources.yaml -> ai.
@@ -22,6 +23,8 @@ from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 import requests
+
+import kb
 
 API = "https://api.anthropic.com/v1"
 FILES = ["turkey", "syria", "iran", "israel", "gulf", "pkk", "mideast", "russia", "europe"]
@@ -259,7 +262,10 @@ You receive the last 24 hours of credible-source news items, one per line: ref |
 Group items that report the same event or the same developing story. Return a JSON object:
 {"stories": [{"headline": at most 14 words, "summary": 2-3 plain sentences on what happened and what is new, sourced only from the items,
   "files": 1-3 file ids, "desk": one desk id, "importance": 1-5 (5 = strategic shift), "ids": [the refs of the items in the story, exactly as given, e.g. "n12"],
-  "turkey": one sentence on the stake for Türkiye, or ""}]}
+  "turkey": one sentence on the stake for Türkiye, or "",
+  "actors": up to 6 main actors (states, leaders, ministers, armed groups, organisations) in their usual English names without titles, e.g. "Hakan Fidan", "Hezbollah", "Russia",
+  "place": the main location (city or region, country) or "",
+  "type": one of attack|clash|strike|deployment|talks|deal|statement|sanction|election|legal|protest|economic|energy|humanitarian|other}]}
 Rules: 25 to 45 stories, most important first; a single-item story is fine when the item matters (score 6+);
 drop trivia; never merge different events; never invent facts beyond the items. JSON only."""
 
@@ -273,7 +279,9 @@ def mock_answer(task: str, user: str) -> str:
     if task == "brief":
         return json.dumps({"summary": "Mock summary.", "argument": "Mock argument.", "recommendations": [], "turkey": "", "files": ["turkey"], "type": "analysis"})
     ids = re.findall(r"^(n\d+) \|", user, flags=re.M)
-    return json.dumps({"stories": [{"headline": "Mock story", "summary": "Mock.", "files": ["turkey"], "desk": "fp", "importance": 3, "ids": ids[:3], "turkey": ""}]})
+    return json.dumps({"stories": [{"headline": f"Mock story {k}", "summary": "Mock. Fidan met Araghchi in Ankara.", "files": ["turkey"], "desk": "fp",
+                                    "importance": 3, "ids": ids[k * 3:k * 3 + 3], "turkey": "", "actors": ["Turkish Foreign Minister Hakan Fidan", "Iran"],
+                                    "place": "Ankara, Türkiye", "type": "talks"} for k in range(max(1, min(12, len(ids) // 3)))]})
 
 
 # ---------------------------------------------------------------- layer 1a
@@ -394,6 +402,43 @@ def brief_thinktanks(items: dict, cl: Claude, cfg: dict, now: datetime, deadline
 
 
 # ---------------------------------------------------------------- layer 1b
+def _cluster(pool: list, cl: Claude, cfg: dict, id_day: str, text_of) -> tuple[list, int]:
+    """One Sonnet call that groups a pool of items into stories. Returns (stories, raw count)."""
+    lines = []
+    ref = {}
+    for n, x in enumerate(pool, 1):
+        ref[f"n{n}"] = x["id"]
+        lines.append(f"n{n} | {x['outlet']} | {','.join(x.get('files', []))} | {x.get('ai', {}).get('score', '-')} | {text_of(x)[:220]}")
+    ans = parse_json(cl.call("sonnet", STORY_SYSTEM, "\n".join(lines), int(cfg.get("cluster_max_tokens", 16000)), "stories"))
+    by_id = {x["id"]: x for x in pool}
+    stories = []
+    raw = ans.get("stories", []) if isinstance(ans, dict) else (ans if isinstance(ans, list) else [])
+    for i, s in enumerate(raw):
+        if not isinstance(s, dict):
+            continue
+        ids = []
+        for k in s.get("ids", []) or []:
+            k = str(k).strip()
+            k = ref.get(k) or ref.get("n" + k) or k
+            if k in by_id and k not in ids:
+                ids.append(k)
+        if not ids:
+            continue
+        its = sorted((by_id[k] for k in ids), key=lambda x: x["time"])
+        stories.append({
+            "id": f"S{id_day.replace('-', '')}-{len(stories) + 1:02d}", "headline": str(s.get("headline", ""))[:160],
+            "summary": str(s.get("summary", ""))[:900], "files": [f for f in s.get("files", []) if f in FILES][:3],
+            "desk": s.get("desk") if s.get("desk") in DESKS else "", "importance": max(1, min(5, int(s.get("importance", 3) or 3))),
+            "turkey": str(s.get("turkey", ""))[:300], "actors": [str(a)[:60] for a in (s.get("actors") or []) if a][:6],
+            "place": str(s.get("place", "") or "")[:60], "type": str(s.get("type", "") or "")[:20],
+            "itemIds": ids, "outlets": sorted({x["outlet"] for x in its}),
+            "firstSeen": its[0]["time"], "lastSeen": its[-1]["time"],
+            "links": [{"outlet": x["outlet"], "title": x["title"], "url": x["url"], "rel": x.get("rel", "")}
+                      for x in sorted(its, key=lambda x: "ABCDEF".find(x.get("rel", "F") or "F"))[:4]],
+        })
+    return stories, len(raw)
+
+
 def cluster_stories(items: dict, cl: Claude, cfg: dict, now: datetime, data: Path, force: bool = False) -> dict:
     path = data / "stories.json"
     old = {}
@@ -415,53 +460,106 @@ def cluster_stories(items: dict, cl: Claude, cfg: dict, now: datetime, data: Pat
     pool = pool[: int(cfg.get("cluster_max_items", 420))]
     if len(pool) < 10:
         return {"skipped": "too few items"}
-    lines = []
-    ref = {}
-    for n, x in enumerate(pool, 1):
-        ai = x.get("ai", {})
-        text = ai.get("sum") or ai.get("title_en") or x["title"]
-        ref[f"n{n}"] = x["id"]
-        lines.append(f"n{n} | {x['outlet']} | {','.join(x.get('files', []))} | {ai.get('score', '-')} | {text[:220]}")
-    ans = parse_json(cl.call("sonnet", STORY_SYSTEM, "\n".join(lines), int(cfg.get("cluster_max_tokens", 16000)), "stories"))
-    by_id = {x["id"]: x for x in pool}
-    stories = []
-    raw = ans.get("stories", []) if isinstance(ans, dict) else (ans if isinstance(ans, list) else [])
-    for i, s in enumerate(raw):
-        ids = []
-        for k in s.get("ids", []) or []:
-            k = str(k).strip()
-            k = ref.get(k) or ref.get("n" + k) or k
-            if k in by_id and k not in ids:
-                ids.append(k)
-        if not ids:
-            continue
-        its = sorted((by_id[k] for k in ids), key=lambda x: x["time"])
-        stories.append({
-            "id": f"S{now.strftime('%Y%m%d')}-{i + 1:02d}", "headline": str(s.get("headline", ""))[:160],
-            "summary": str(s.get("summary", ""))[:900], "files": [f for f in s.get("files", []) if f in FILES][:3],
-            "desk": s.get("desk") if s.get("desk") in DESKS else "", "importance": max(1, min(5, int(s.get("importance", 3) or 3))),
-            "turkey": str(s.get("turkey", ""))[:300], "itemIds": ids, "outlets": sorted({x["outlet"] for x in its}),
-            "firstSeen": its[0]["time"], "lastSeen": its[-1]["time"],
-            "links": [{"outlet": x["outlet"], "title": x["title"], "url": x["url"], "rel": x["rel"]}
-                      for x in sorted(its, key=lambda x: "ABCDEF".find(x.get("rel", "F")))[:4]],
-        })
-        for k in ids:
-            by_id[k]["story"] = stories[-1]["id"]
+    stories, raw = _cluster(pool, cl, cfg, now.strftime("%Y-%m-%d"),
+                            lambda x: x.get("ai", {}).get("sum") or x.get("ai", {}).get("title_en") or x["title"])
+    for st in stories:
+        for k in st["itemIds"]:
+            items[k]["story"] = st["id"]
     out = {"generatedAt": iso(now), "windowHours": 24, "model": cl.models["sonnet"], "itemsIn": len(pool),
            "note": "Stories cluster the last 24 hours of collector items. Summaries come only from item titles and feed summaries; open the links before citing details.",
            "stories": stories}
     path.write_text(json.dumps(out, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
-    return {"stories": len(stories), "rawStories": len(raw), "itemsIn": len(pool)}
+    return {"stories": len(stories), "rawStories": raw, "itemsIn": len(pool)}
+
+
+# ---------------------------------------------------------------- knowledge base
+def backfill_stories(kbs: dict, cl: Claude, cfg: dict, now: datetime, data: Path, deadline: float) -> dict:
+    """Cluster archived days that have no story build yet (one Sonnet call per day, oldest first)."""
+    done, skipped = [], []
+    limit = int(cfg.get("kb_backfill_per_run", 2))
+    first = str(cfg.get("kb_backfill_from", "2026-10-16"))
+    for p in sorted((data / "archive").glob("*.jsonl")):
+        day = p.stem
+        if len(done) >= limit or time.monotonic() > deadline - 150:
+            break
+        try:
+            d_next = (datetime.strptime(day, "%Y-%m-%d") + timedelta(days=1)).strftime("%Y-%m-%d")
+        except ValueError:
+            continue
+        if day < first or d_next >= now.strftime("%Y-%m-%d") or d_next in kbs["storyBuilds"] or day in kbs.get("backfilled", []):
+            continue
+        lo = (datetime.strptime(day, "%Y-%m-%d") - timedelta(days=1)).strftime("%Y-%m-%d")
+        pool = []
+        for line in p.read_text(encoding="utf-8").splitlines():
+            try:
+                x = json.loads(line)
+            except json.JSONDecodeError:
+                continue
+            if x.get("type") == "thinktank" or not x.get("files") or not x.get("id") or not x.get("time"):
+                continue
+            if not (lo <= x["time"][:10] <= day):  # feeds re-serve old items; keep the day's own news
+                continue
+            if x.get("ai", {}).get("score", 10) < int(cfg.get("drop_below", 2)):
+                continue
+            pool.append(x)
+        seen, uniq = set(), []
+        for x in sorted(pool, key=lambda x: (x.get("ai", {}).get("score", x.get("score", 0) / 3), x["time"]), reverse=True):
+            key = re.sub(r"\W+", " ", x["title"].lower()).strip()[:80]
+            if key in seen:
+                continue
+            seen.add(key)
+            uniq.append(x)
+        pool = uniq[: int(cfg.get("cluster_max_items", 420))]
+        if len(pool) < 10:
+            kbs.setdefault("backfilled", []).append(day)
+            skipped.append(day)
+            continue
+        stories, raw = _cluster(pool, cl, cfg, d_next,
+                                lambda x: x.get("ai", {}).get("sum") or x["title"] + (". " + x["summary"][:120] if x.get("summary") else ""))
+        if len(stories) >= 5:
+            kb.add_stories(kbs, stories, d_next, iso(now))
+            kbs.setdefault("backfilled", []).append(day)
+            done.append({"day": day, "as": d_next, "stories": len(stories)})
+        else:
+            skipped.append(day)
+    return {"done": done, "skipped": skipped}
+
+
+def update_kb(cl, cfg: dict, now: datetime, data: Path, deadline: float, allow_backfill: bool) -> dict:
+    kbs = kb.load_events(data)
+    rep = {}
+    path = data / "stories.json"
+    if path.exists():
+        try:
+            st = json.loads(path.read_text(encoding="utf-8"))
+            gen = st.get("generatedAt", "")
+            day = gen[:10]
+            if day and kbs["storyBuilds"].get(day) != gen and st.get("stories"):
+                rep["added"] = kb.add_stories(kbs, st["stories"], day, gen)
+        except Exception as ex:  # noqa: BLE001
+            rep["storiesError"] = f"{type(ex).__name__}: {str(ex)[:120]}"
+    if allow_backfill and cl is not None and cfg.get("kb_backfill", True):
+        try:
+            rep["backfill"] = backfill_stories(kbs, cl, cfg, now, data, deadline)
+        except BudgetExceeded as ex:
+            rep["backfill"] = {"stopped": str(ex)}
+        except Exception as ex:  # noqa: BLE001
+            rep["backfill"] = {"error": f"{type(ex).__name__}: {str(ex)[:160]}"}
+    rep.update(kb.write_outputs(kbs, data, now))
+    return rep
 
 
 # ---------------------------------------------------------------- entry point
 def run(items: dict, data: Path, now: datetime, cfg: dict) -> dict:
     key = os.environ.get("ANTHROPIC_API_KEY", "").strip()
     mock = bool(os.environ.get("AI_MOCK"))
-    if not cfg.get("enabled", True):
-        return {"enabled": False, "reason": "disabled in sources.yaml"}
-    if not key and not mock:
-        return {"enabled": False, "reason": "no ANTHROPIC_API_KEY secret"}
+    if not cfg.get("enabled", True) or (not key and not mock):
+        out = {"enabled": False, "reason": "disabled in sources.yaml" if not cfg.get("enabled", True) else "no ANTHROPIC_API_KEY secret"}
+        try:
+            out["kb"] = update_kb(None, cfg, now, data, time.monotonic() + 60, allow_backfill=False)
+        except Exception as ex:  # noqa: BLE001
+            out["kb"] = {"error": f"{type(ex).__name__}: {str(ex)[:200]}"}
+        return out
     upath = data / "ai_usage.json"
     usage = {}
     if upath.exists():
@@ -492,6 +590,10 @@ def run(items: dict, data: Path, now: datetime, cfg: dict) -> dict:
         rep["stopped"] = str(ex)
     except Exception as ex:  # noqa: BLE001 - AI trouble must never break the feed
         cl.note(f"run: {type(ex).__name__}: {str(ex)[:200]}")
+    try:
+        rep["kb"] = update_kb(cl, cfg, now, data, deadline, allow_backfill="stopped" not in rep)
+    except Exception as ex:  # noqa: BLE001
+        rep["kb"] = {"error": f"{type(ex).__name__}: {str(ex)[:200]}"}
     days = usage.get("days", {})
     usage["days"] = {d: days[d] for d in sorted(days)[-40:]}
     upath.write_text(json.dumps(usage, ensure_ascii=False, indent=1), encoding="utf-8")
