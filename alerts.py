@@ -40,6 +40,31 @@ major new fact, and set repeat_of. Expect zero alerts in most runs; never more t
 
 LEVEL_PRI = {"flash": 5, "priority": 4}
 
+_STOP = set("the a an of to in on at for and or by with from as is are was were be its it this that after over into amid new says say said will".split())
+
+
+def _toks(s: str) -> set:
+    return {w for w in re.findall(r"[a-z0-9]+", (s or "").lower()) if len(w) > 2 and w not in _STOP}
+
+
+def _sim(a: str, b: str) -> float:
+    A, B = _toks(a), _toks(b)
+    if not A or not B:
+        return 0.0
+    return len(A & B) / min(len(A), len(B))
+
+
+def _dup_of(rec: dict, recent: list) -> str:
+    """Second check after the model: same event as an alert of the last 48 h? (headline overlap, or shared items)."""
+    for a in recent:
+        if set(rec.get("itemIds") or []) & set(a.get("itemIds") or []):
+            return a["id"]
+        if _sim(rec["headline"], a.get("headline", "")) >= 0.5:
+            return a["id"]
+        if _sim(rec["headline"] + " " + rec["summary"], a.get("headline", "") + " " + a.get("summary", "")) >= 0.45:
+            return a["id"]
+    return ""
+
 
 def _load(path: Path) -> dict:
     if path.exists():
@@ -158,8 +183,14 @@ def run_alerts(items: dict, cl, cfg: dict, now: datetime, data: Path) -> dict:
                    "push": ""}
             for x in its:
                 x["alerted"] = rec["id"]
+            dup = _dup_of(rec, recent + new_alerts)
+            if dup or rec["repeatOf"]:
+                # same event as an earlier alert: keep it as an update, never push it again
+                rec["repeatOf"] = rec["repeatOf"] or dup
+                rec["push"] = "repeat"
+                rep["repeats"] = rep.get("repeats", 0) + 1
             new_alerts.append(rec)
-    rep["new"] = len(new_alerts)
+    rep["new"] = len([a for a in new_alerts if a["push"] != "repeat"])
 
     # push
     topic = bool(os.environ.get("NTFY_TOPIC", "").strip())
@@ -173,10 +204,11 @@ def run_alerts(items: dict, cl, cfg: dict, now: datetime, data: Path) -> dict:
         if ok:
             st["hello"] = iso(now)
     if _quiet(now, cfg):
-        for a in new_alerts:
+        fresh = [a for a in new_alerts if a["push"] != "repeat"]
+        for a in fresh:
             a["push"] = "queued"
             st["queue"].append(a["id"])
-        rep["queued"] = len(new_alerts)
+        rep["queued"] = len(fresh)
     else:
         by_id = {a["id"]: a for a in st["alerts"] + new_alerts}
         q = [by_id[i] for i in st.get("queue", []) if i in by_id]
@@ -191,7 +223,7 @@ def run_alerts(items: dict, cl, cfg: dict, now: datetime, data: Path) -> dict:
                 rep["pushed"] += 1
         elif q and not topic:
             st["queue"] = []
-        singles = sorted(new_alerts, key=lambda a: a["level"] != "flash")
+        singles = sorted([a for a in new_alerts if a["push"] != "repeat"], key=lambda a: a["level"] != "flash")
         cap_run, cap_day = int(cfg.get("alert_push_per_run", 3)), int(cfg.get("alert_push_per_day", 12))
         rest = []
         for a in singles:
