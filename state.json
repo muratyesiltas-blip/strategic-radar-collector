@@ -1,0 +1,632 @@
+{
+ "feeds": {
+  "bbc-world": {
+   "fails": 0,
+   "lastOk": "2026-10-31T14:45:19Z",
+   "working": "https://feeds.bbci.co.uk/news/world/rss.xml"
+  },
+  "bbc-me": {
+   "fails": 0,
+   "lastOk": "2026-10-31T14:45:19Z",
+   "working": "https://feeds.bbci.co.uk/news/world/middle_east/rss.xml"
+  },
+  "bbc-europe": {
+   "fails": 0,
+   "lastOk": "2026-10-31T14:45:19Z",
+   "working": "https://feeds.bbci.co.uk/news/world/europe/rss.xml"
+  },
+  "guardian-world": {
+   "fails": 0,
+   "lastOk": "2026-10-31T14:45:19Z",
+   "working": "https://www.theguardian.com/world/rss"
+  },
+  "aljazeera": {
+   "fails": 0,
+   "lastOk": "2026-10-31T14:45:19Z",
+   "working": "https://www.aljazeera.com/xml/rss/all.xml"
+  },
+  "almonitor": {
+   "fails": 0,
+   "lastOk": "2026-10-31T14:45:19Z",
+   "working": "https://www.al-monitor.com/rss"
+  },
+  "un-news": {
+   "fails": 0,
+   "lastOk": "2026-10-31T14:45:19Z",
+   "working": "https://news.un.org/feed/subscribe/en/news/all/rss.xml"
+  },
+  "defensenews": {
+   "fails": 0,
+   "lastOk": "2026-10-31T14:45:19Z",
+   "working": "https://www.defensenews.com/arc/outboundfeeds/rss/"
+  },
+  "breakingdefense": {
+   "fails": 0,
+   "lastOk": "2026-10-31T14:45:19Z",
+   "working": "https://breakingdefense.com/feed/"
+  },
+  "aa-en": {
+   "fails": 0,
+   "lastOk": "2026-10-31T14:45:19Z",
+   "working": "https://www.aa.com.tr/en/rss/default?cat=guncel"
+  },
+  "aa-tr": {
+   "fails": 0,
+   "lastOk": "2026-10-31T14:45:19Z",
+   "working": "https://www.aa.com.tr/tr/rss/default?cat=guncel"
+  },
+  "dailysabah": {
+   "fails": 0,
+   "working": "https://www.dailysabah.com/rss/politics",
+   "lastOk": "2026-10-31T14:45:19Z"
+  },
+  "hdn": {
+   "fails": 0,
+   "discovered": "https://www.hurriyetdailynews.com/rss",
+   "lastOk": "2026-10-31T14:45:19Z"
+  },
+  "turkiyetoday": {
+   "fails": 186
+  },
+  "turkishminute": {
+   "fails": 0,
+   "lastOk": "2026-10-31T14:45:19Z",
+   "working": "https://www.turkishminute.com/feed/"
+  },
+  "t24": {
+   "fails": 186
+  },
+  "bianet-en": {
+   "fails": 0,
+   "working": "https://bianet.org/rss/english",
+   "lastOk": "2026-10-31T14:45:19Z"
+  },
+  "medyascope": {
+   "fails": 0,
+   "lastOk": "2026-10-31T14:45:19Z",
+   "working": "https://medyascope.tv/feed/"
+  },
+  "trthaber": {
+   "fails": 0,
+   "working": "https://www.trthaber.com/manset_articles.rss",
+   "lastOk": "2026-10-31T14:45:19Z"
+  },
+  "enab-en": {
+   "fails": 186
+  },
+  "syriadirect": {
+   "fails": 0,
+   "lastOk": "2026-10-31T14:45:19Z",
+   "working": "https://syriadirect.org/feed/"
+  },
+  "npa-en": {
+   "fails": 0,
+   "lastOk": "2026-10-31T14:45:19Z",
+   "working": "https://npasyria.com/en/feed/"
+  },
+  "sana-en": {
+   "fails": 0,
+   "discovered": "https://sana.sy/en/feed/",
+   "lastOk": "2026-10-31T14:45:19Z"
+  },
+  "anf-en": {
+   "fails": 186
+  },
+  "rudaw-en": {
+   "fails": 186
+  },
+  "k24-en": {
+   "fails": 0,
+   "discovered": "https://www.kurdistan24.net/en/rss.xml",
+   "lastOk": "2026-10-31T14:45:19Z"
+  },
+  "hawar-en": {
+   "fails": 186
+  },
+  "iranintl": {
+   "fails": 0,
+   "discovered": "https://www.iranintl.com/en/feed",
+   "lastOk": "2026-10-31T14:45:19Z",
+   "working": "https://www.iranintl.com/en/feed"
+  },
+  "iranwire": {
+   "fails": 0,
+   "lastOk": "2026-10-31T14:45:19Z",
+   "working": "https://iranwire.com/en/feed/"
+  },
+  "tehrantimes": {
+   "fails": 0,
+   "lastOk": "2026-10-31T14:45:19Z",
+   "working": "https://www.tehrantimes.com/rss"
+  },
+  "amwaj": {
+   "fails": 0,
+   "discovered": "https://amwaj.media/feed/en/rss2.xml",
+   "lastOk": "2026-10-31T14:45:19Z",
+   "working": "https://amwaj.media/rss"
+  },
+  "irna-en": {
+   "fails": 0,
+   "discovered": "https://en.irna.ir/rss",
+   "lastOk": "2026-10-31T14:45:19Z"
+  },
+  "toi": {
+   "fails": 186
+  },
+  "jpost": {
+   "fails": 0,
+   "lastOk": "2026-10-31T14:45:19Z",
+   "working": "https://www.jpost.com/rss/rssfeedsfrontpage.aspx"
+  },
+  "haaretz": {
+   "fails": 0,
+   "working": "https://www.haaretz.com/srv/haaretz-latest-headlines",
+   "lastOk": "2026-10-31T14:45:19Z"
+  },
+  "ynet-en": {
+   "fails": 0,
+   "working": "https://www.ynetnews.com/Integration/StoryRss3082.xml",
+   "lastOk": "2026-10-31T14:45:19Z"
+  },
+  "arabnews": {
+   "fails": 186
+  },
+  "aawsat-en": {
+   "fails": 0,
+   "discovered": "https://english.aawsat.com/feed",
+   "lastOk": "2026-10-31T14:45:19Z",
+   "working": "https://english.aawsat.com/feed"
+  },
+  "thenational": {
+   "fails": 0,
+   "lastOk": "2026-10-31T14:45:19Z",
+   "working": "https://www.thenationalnews.com/arc/outboundfeeds/rss/?outputType=xml"
+  },
+  "gulfnews": {
+   "fails": 0,
+   "discovered": "https://gulfnews.com/stories.rss",
+   "lastOk": "2026-10-31T14:45:19Z",
+   "working": "https://gulfnews.com/feed"
+  },
+  "dohanews": {
+   "fails": 0,
+   "lastOk": "2026-10-31T14:45:19Z",
+   "working": "https://dohanews.co/feed/"
+  },
+  "kuwaittimes": {
+   "fails": 186
+  },
+  "qna-en": {
+   "fails": 186
+  },
+  "lorient": {
+   "fails": 186
+  },
+  "ahram": {
+   "fails": 186
+  },
+  "kyivindependent": {
+   "fails": 0,
+   "lastOk": "2026-10-31T14:45:19Z",
+   "working": "https://kyivindependent.com/news-archive/rss/"
+  },
+  "upravda-en": {
+   "fails": 0,
+   "lastOk": "2026-10-31T14:45:19Z",
+   "working": "https://www.pravda.com.ua/eng/rss/"
+  },
+  "ukrinform": {
+   "fails": 0,
+   "lastOk": "2026-10-31T14:45:19Z",
+   "working": "https://www.ukrinform.net/rss/block-lastnews"
+  },
+  "meduza-en": {
+   "fails": 0,
+   "lastOk": "2026-10-31T14:45:19Z",
+   "working": "https://meduza.io/rss/en/all"
+  },
+  "tass-en": {
+   "fails": 0,
+   "lastOk": "2026-10-31T14:45:19Z",
+   "working": "https://tass.com/rss/v2.xml"
+  },
+  "novayagazeta-eu": {
+   "fails": 0,
+   "discovered": "https://novayagazeta.eu/feed/rss",
+   "lastOk": "2026-10-31T14:45:19Z",
+   "working": "https://novayagazeta.eu/feed/rss"
+  },
+  "interfax-ua": {
+   "fails": 0,
+   "working": "https://en.interfax.com.ua/news/last.rss",
+   "lastOk": "2026-10-31T14:45:19Z"
+  },
+  "politico-eu": {
+   "fails": 0,
+   "lastOk": "2026-10-31T14:45:19Z",
+   "working": "https://www.politico.eu/feed/"
+  },
+  "euractiv": {
+   "fails": 0,
+   "working": "https://www.euractiv.com/feed/",
+   "lastOk": "2026-10-31T14:45:19Z"
+  },
+  "euobserver": {
+   "fails": 0,
+   "discovered": "https://euobserver.com/feed/",
+   "lastOk": "2026-10-31T14:45:19Z",
+   "working": "https://euobserver.com/rss"
+  },
+  "euronews": {
+   "fails": 0,
+   "lastOk": "2026-10-31T14:45:19Z",
+   "working": "https://www.euronews.com/rss?level=theme&name=news"
+  },
+  "kathimerini": {
+   "fails": 186
+  },
+  "cyprusmail": {
+   "fails": 0,
+   "lastOk": "2026-10-31T14:45:19Z",
+   "working": "https://cyprus-mail.com/feed/"
+  },
+  "nato": {
+   "fails": 186
+  },
+  "tt-csis": {
+   "fails": 0,
+   "discovered": "https://www.csis.org/rss.xml",
+   "lastOk": "2026-10-31T14:45:19Z",
+   "working": "https://www.csis.org/rss.xml"
+  },
+  "tt-iiss": {
+   "fails": 186
+  },
+  "tt-hudson": {
+   "fails": 0,
+   "discovered": "https://www.hudson.org/rss.xml",
+   "lastOk": "2026-10-31T14:45:19Z"
+  },
+  "tt-isw": {
+   "fails": 186
+  },
+  "tt-rand": {
+   "fails": 0,
+   "discovered": "https://www.rand.org/pubs.html.xml",
+   "lastOk": "2026-10-31T14:45:19Z",
+   "working": "https://www.rand.org/pubs.xml"
+  },
+  "tt-seta": {
+   "fails": 186
+  },
+  "tt-rusi": {
+   "fails": 0,
+   "discovered": "https://www.rusi.org/rss/upcoming-events.xml",
+   "lastOk": "2026-10-31T14:45:19Z",
+   "working": "https://www.rusi.org/rss/latest-commentary.xml"
+  },
+  "tt-swp": {
+   "fails": 0,
+   "discovered": "https://www.swp-berlin.org/en/rss.xml",
+   "lastOk": "2026-10-31T14:45:19Z"
+  },
+  "tt-cfr": {
+   "fails": 0,
+   "discovered": "https://www.cfr.org/feed",
+   "lastOk": "2026-10-31T14:45:19Z"
+  },
+  "tt-ecfr": {
+   "fails": 186,
+   "discovered": "https://ecfr.eu/feed/"
+  },
+  "tt-icg": {
+   "fails": 0,
+   "discovered": "https://www.crisisgroup.org/rss",
+   "lastOk": "2026-10-31T14:45:19Z"
+  },
+  "tt-inss": {
+   "fails": 0,
+   "lastOk": "2026-10-31T14:45:19Z",
+   "working": "https://www.inss.org.il/feed/"
+  },
+  "tt-carnegie": {
+   "fails": 186
+  },
+  "tt-brookings": {
+   "fails": 100,
+   "discovered": "https://www.brookings.edu/feed/",
+   "working": "https://www.brookings.edu/feed/",
+   "lastOk": "2026-10-23T06:54:21Z"
+  },
+  "tt-chatham": {
+   "fails": 0,
+   "working": "https://www.chathamhouse.org/path/whatsnew.xml",
+   "lastOk": "2026-10-31T14:45:19Z"
+  },
+  "tt-atlantic": {
+   "fails": 0,
+   "lastOk": "2026-10-31T14:45:19Z",
+   "working": "https://www.atlanticcouncil.org/feed/"
+  },
+  "tt-twi": {
+   "fails": 186
+  },
+  "tt-mei": {
+   "fails": 0,
+   "discovered": "https://mei.edu/feed/",
+   "lastOk": "2026-10-31T14:45:19Z",
+   "working": "https://www.mei.edu/feed"
+  },
+  "tt-orsam": {
+   "fails": 0,
+   "discovered": "https://orsam.org.tr/feed/",
+   "lastOk": "2026-10-31T14:45:19Z"
+  },
+  "tt-iram": {
+   "fails": 186
+  },
+  "tt-majalla": {
+   "fails": 0,
+   "discovered": "https://en.majalla.com/rss.xml",
+   "lastOk": "2026-10-31T14:45:19Z"
+  },
+  "tt-warontherocks": {
+   "fails": 0,
+   "lastOk": "2026-10-31T14:45:19Z",
+   "working": "https://warontherocks.com/feed/"
+  }
+ },
+ "runs": [
+  {
+   "at": "2026-10-27T12:56:06Z",
+   "new": 244,
+   "feedsOk": 59
+  },
+  {
+   "at": "2026-10-27T14:57:20Z",
+   "new": 169,
+   "feedsOk": 59
+  },
+  {
+   "at": "2026-10-27T16:56:12Z",
+   "new": 288,
+   "feedsOk": 58
+  },
+  {
+   "at": "2026-10-27T18:53:48Z",
+   "new": 150,
+   "feedsOk": 59
+  },
+  {
+   "at": "2026-10-27T20:46:26Z",
+   "new": 94,
+   "feedsOk": 59
+  },
+  {
+   "at": "2026-10-27T22:45:18Z",
+   "new": 203,
+   "feedsOk": 59
+  },
+  {
+   "at": "2026-10-28T01:09:07Z",
+   "new": 51,
+   "feedsOk": 59
+  },
+  {
+   "at": "2026-10-28T02:54:47Z",
+   "new": 87,
+   "feedsOk": 59
+  },
+  {
+   "at": "2026-10-28T04:54:55Z",
+   "new": 58,
+   "feedsOk": 59
+  },
+  {
+   "at": "2026-10-28T07:06:31Z",
+   "new": 99,
+   "feedsOk": 59
+  },
+  {
+   "at": "2026-10-28T08:59:19Z",
+   "new": 274,
+   "feedsOk": 59
+  },
+  {
+   "at": "2026-10-28T10:55:23Z",
+   "new": 186,
+   "feedsOk": 59
+  },
+  {
+   "at": "2026-10-28T13:05:57Z",
+   "new": 310,
+   "feedsOk": 59
+  },
+  {
+   "at": "2026-10-28T15:01:58Z",
+   "new": 171,
+   "feedsOk": 58
+  },
+  {
+   "at": "2026-10-28T16:59:25Z",
+   "new": 203,
+   "feedsOk": 59
+  },
+  {
+   "at": "2026-10-28T18:58:54Z",
+   "new": 146,
+   "feedsOk": 59
+  },
+  {
+   "at": "2026-10-28T20:52:26Z",
+   "new": 96,
+   "feedsOk": 58
+  },
+  {
+   "at": "2026-10-28T22:49:59Z",
+   "new": 34,
+   "feedsOk": 58
+  },
+  {
+   "at": "2026-10-29T01:07:03Z",
+   "new": 110,
+   "feedsOk": 59
+  },
+  {
+   "at": "2026-10-29T02:56:57Z",
+   "new": 168,
+   "feedsOk": 59
+  },
+  {
+   "at": "2026-10-29T04:55:59Z",
+   "new": 75,
+   "feedsOk": 59
+  },
+  {
+   "at": "2026-10-29T07:07:25Z",
+   "new": 100,
+   "feedsOk": 59
+  },
+  {
+   "at": "2026-10-29T09:01:43Z",
+   "new": 190,
+   "feedsOk": 59
+  },
+  {
+   "at": "2026-10-29T10:56:32Z",
+   "new": 158,
+   "feedsOk": 59
+  },
+  {
+   "at": "2026-10-29T13:07:36Z",
+   "new": 183,
+   "feedsOk": 59
+  },
+  {
+   "at": "2026-10-29T15:05:37Z",
+   "new": 235,
+   "feedsOk": 59
+  },
+  {
+   "at": "2026-10-29T17:01:52Z",
+   "new": 254,
+   "feedsOk": 59
+  },
+  {
+   "at": "2026-10-29T19:00:53Z",
+   "new": 149,
+   "feedsOk": 59
+  },
+  {
+   "at": "2026-10-29T20:54:13Z",
+   "new": 90,
+   "feedsOk": 59
+  },
+  {
+   "at": "2026-10-29T22:51:23Z",
+   "new": 59,
+   "feedsOk": 59
+  },
+  {
+   "at": "2026-10-30T01:09:55Z",
+   "new": 68,
+   "feedsOk": 59
+  },
+  {
+   "at": "2026-10-30T02:57:38Z",
+   "new": 48,
+   "feedsOk": 59
+  },
+  {
+   "at": "2026-10-30T04:57:03Z",
+   "new": 59,
+   "feedsOk": 59
+  },
+  {
+   "at": "2026-10-30T07:07:28Z",
+   "new": 161,
+   "feedsOk": 59
+  },
+  {
+   "at": "2026-10-30T09:01:43Z",
+   "new": 220,
+   "feedsOk": 58
+  },
+  {
+   "at": "2026-10-30T10:54:37Z",
+   "new": 152,
+   "feedsOk": 59
+  },
+  {
+   "at": "2026-10-30T13:05:20Z",
+   "new": 178,
+   "feedsOk": 57
+  },
+  {
+   "at": "2026-10-30T15:03:58Z",
+   "new": 174,
+   "feedsOk": 59
+  },
+  {
+   "at": "2026-10-30T16:55:40Z",
+   "new": 188,
+   "feedsOk": 59
+  },
+  {
+   "at": "2026-10-30T18:55:42Z",
+   "new": 97,
+   "feedsOk": 59
+  },
+  {
+   "at": "2026-10-30T20:51:18Z",
+   "new": 98,
+   "feedsOk": 59
+  },
+  {
+   "at": "2026-10-30T22:48:04Z",
+   "new": 118,
+   "feedsOk": 59
+  },
+  {
+   "at": "2026-10-31T01:07:45Z",
+   "new": 111,
+   "feedsOk": 59
+  },
+  {
+   "at": "2026-10-31T02:55:34Z",
+   "new": 38,
+   "feedsOk": 59
+  },
+  {
+   "at": "2026-10-31T04:53:37Z",
+   "new": 26,
+   "feedsOk": 59
+  },
+  {
+   "at": "2026-10-31T07:00:27Z",
+   "new": 71,
+   "feedsOk": 59
+  },
+  {
+   "at": "2026-10-31T08:52:41Z",
+   "new": 154,
+   "feedsOk": 59
+  },
+  {
+   "at": "2026-10-31T10:45:29Z",
+   "new": 110,
+   "feedsOk": 59
+  },
+  {
+   "at": "2026-10-31T12:57:28Z",
+   "new": 99,
+   "feedsOk": 59
+  },
+  {
+   "at": "2026-10-31T14:45:19Z",
+   "new": 162,
+   "feedsOk": 59
+  }
+ ],
+ "lastRun": "2026-10-31T14:45:19Z"
+}
