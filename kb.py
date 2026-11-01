@@ -12,6 +12,13 @@ Builds the event archive the dashboard's Knowledge tab reads.
     merges the analyst desk's file-day developments into dk-YYYY-MM-x buckets, compares every bucket with
     the copy already in the dashboard database and prints the documents that need writing.
 
+  Network signals (python kb.py network --kbdb <folder> ...):
+    reads the kb buckets (feed stories and desk developments), folds leaders and state organs into their states,
+    and prints the actor network's structural signals for a window: ties that rose or fell beyond what each
+    actor's own activity predicts, the groups that move together, the tone of each tie (cooperation or conflict,
+    from the collector's coded pairs in event["r"]) and Türkiye's position. The dashboard's Network view uses the
+    same method.
+
 Actor names are normalised with the alias table below; desk developments get actors by dictionary match.
 """
 from __future__ import annotations
@@ -528,6 +535,263 @@ def cmd_sync(args) -> int:
     return 0
 
 
+# ---------------------------------------------------------------- actor network (daily and weekly task side)
+NET_FOLD_SPEC = {
+    "United States": "Donald Trump|JD Vance|Marco Rubio|Pete Hegseth|Steve Witkoff|Tom Barrack|Jared Kushner",
+    "Israel": "Benjamin Netanyahu|Gadi Eisenkot|Itamar Ben-Gvir|Bezalel Smotrich|Eyal Zamir|Naftali Bennett|Israel Katz|Yair Lapid|Gideon Saar|Isaac Herzog|Yair Golan|IDF|Knesset|Shin Bet|Likud",
+    "Türkiye": "Recep Tayyip Erdoğan|Hakan Fidan|Numan Kurtulmuş|Devlet Bahçeli|Cevdet Yılmaz|İbrahim Kalın|Yaşar Güler|Özgür Özel|Ekrem İmamoğlu|Mehmet Şimşek|Ali Yerlikaya|Akın Gürlek|Mustafa Çiftçi|TBMM|MİT|Turkish Armed Forces|AK Parti|CHP|MHP|İYİ Parti|DEM Party",
+    "Russia": "Vladimir Putin|Sergei Lavrov|Dmitry Peskov", "Ukraine": "Volodymyr Zelensky|Andrii Sybiha",
+    "Iran": "Masoud Pezeshkian|Abbas Araghchi|Ali Khamenei|Ali Larijani|Mohsen Rezaei",
+    "Saudi Arabia": "Mohammed bin Salman|Faisal bin Farhan|Khalid bin Salman|Saudi-led coalition", "United Arab Emirates": "Mohamed bin Zayed",
+    "Egypt": "Abdel Fattah al-Sisi", "Jordan": "King Abdullah II", "Lebanon": "Joseph Aoun", "Syria": "Ahmed al-Sharaa|Asaad al-Shaibani",
+    "Pakistan": "Asim Munir", "Azerbaijan": "Ilham Aliyev", "Serbia": "Aleksandar Vučić", "Libya": "Abdul Hamid Dbeibah",
+    "Germany": "Friedrich Merz", "France": "Emmanuel Macron", "Italy": "Giorgia Meloni", "Greece": "Kyriakos Mitsotakis", "Cyprus": "Nikos Christodoulides",
+    "Finland": "Alexander Stubb", "Canada": "Mark Carney", "TRNC": "Tufan Erhürman", "Palestine": "Palestinians",
+    "PKK": "Abdullah Öcalan", "SDF": "Mazloum Abdi|YPG", "KRG": "Masoud Barzani|Masrour Barzani|Nechirvan Barzani|Bafel Talabani|KDP|PUK",
+    "Hezbollah": "Naim Qassem", "Houthis": "Abdul-Malik al-Houthi",
+    "United Nations": "António Guterres", "European Union": "Ursula von der Leyen|Kaja Kallas|António Costa", "NATO": "Mark Rutte", "IAEA": "Rafael Grossi",
+}
+NET_FOLD = {n: st for st, names in NET_FOLD_SPEC.items() for n in names.split("|")}
+
+
+def _net_actor(a: str, kinds: dict, mode: str):
+    if mode == "all":
+        return a
+    if a in NET_FOLD:
+        return NET_FOLD[a]
+    k = kinds.get(a, "other")
+    return None if k in ("person", "other") else a
+
+
+def _net_count(events: list, lo: str, hi: str, kinds: dict, mode: str) -> dict:
+    nodes, edges, total = {}, {}, 0
+    for e in events:
+        d = e.get("d", "")
+        if d < lo or d > hi:
+            continue
+        acts = []
+        for a in e.get("a") or []:
+            f = _net_actor(a, kinds, mode)
+            if f and f not in acts:
+                acts.append(f)
+        if not acts:
+            continue
+        total += 1
+        for a in acts:
+            nodes[a] = nodes.get(a, 0) + 1
+        for i in range(len(acts)):
+            for j in range(i + 1, len(acts)):
+                x, y = sorted((acts[i], acts[j]))
+                r = edges.setdefault((x, y), {"a": x, "b": y, "n": 0, "c": 0, "x": 0, "m": 0, "ev": []})
+                r["n"] += 1
+                r["ev"].append(e)
+        seen = set()
+        for pr in e.get("r") or []:
+            if not isinstance(pr, list) or len(pr) != 3:
+                continue
+            x, y = _net_actor(pr[0], kinds, mode), _net_actor(pr[1], kinds, mode)
+            if not x or not y or x == y:
+                continue
+            k = tuple(sorted((x, y)))
+            if k in seen or k not in edges:
+                continue
+            seen.add(k)
+            if pr[2] in ("c", "x", "m"):
+                edges[k][pr[2]] += 1
+    return {"nodes": nodes, "edges": edges, "total": total}
+
+
+def _net_comms(names: list, ties: list, counts: dict) -> dict:
+    nbr = {a: [] for a in names}
+    for t in ties:
+        if t["a"] in nbr and t["b"] in nbr:
+            w = max(0.1, t["score"])
+            nbr[t["a"]].append((t["b"], w))
+            nbr[t["b"]].append((t["a"], w))
+    lab = {a: a for a in names}
+    order = sorted(names, key=lambda a: (-counts.get(a, 0), a))
+    for _ in range(25):
+        ch = 0
+        for a in order:
+            tally = {}
+            for b, w in nbr[a]:
+                tally[lab[b]] = tally.get(lab[b], 0) + w
+            if not tally:
+                continue
+            best, bw = lab[a], tally.get(lab[a], 0)
+            for l, w in tally.items():
+                if w > bw + 1e-9 or (abs(w - bw) < 1e-9 and l < best):
+                    best, bw = l, w
+            if best != lab[a]:
+                lab[a] = best
+                ch += 1
+        if not ch:
+            break
+    groups = {}
+    for a in names:
+        groups.setdefault(lab[a], []).append(a)
+    out = [sorted(g, key=lambda a: -counts.get(a, 0)) for g in groups.values() if len(g) >= 3]
+    out.sort(key=lambda g: -sum(counts.get(a, 0) for a in g))
+    return {"groups": out[:9], "of": {a: i for i, g in enumerate(out[:9]) for a in g}}
+
+
+def _tone(t: dict) -> dict:
+    coded = t["c"] + t["x"] + t["m"]
+    if not coded:
+        return {"tone": "uncoded", "coop": 0, "conflict": 0, "mixed": 0}
+    sc = (t["c"] - t["x"]) / coded
+    return {"tone": "cooperation" if sc > 0.25 else "conflict" if sc < -0.25 else "mixed", "coop": t["c"], "conflict": t["x"], "mixed": t["m"]}
+
+
+def network_signals(events: list, kinds: dict, win: int = 7, end: str = "", mode: str = "states", top: int = 34) -> dict:
+    import math
+    last = end or max((e.get("d", "") for e in events), default="")
+    if not last:
+        return {"error": "no events"}
+    D = lambda d, n: (datetime.strptime(d, "%Y-%m-%d") + timedelta(days=n)).strftime("%Y-%m-%d")  # noqa: E731
+    hi, lo = last, D(last, -(win - 1))
+    phi, plo = D(lo, -1), D(lo, -win)
+    first = min(e.get("d", "9999") for e in events)
+    cur = _net_count(events, lo, hi, kinds, mode)
+    prev = _net_count(events, plo, phi, kinds, mode)
+    can = first <= plo and prev["total"] > 20
+    frame = _net_count(events, D(last, -max(29, win * 2 - 1)), last, kinds, mode)
+    names = [a for a, _ in sorted(frame["nodes"].items(), key=lambda x: -x[1])][:top]
+    keep = set(names)
+    T = max(1, cur["total"])
+    ties = []
+    for (a, b), e in cur["edges"].items():
+        if a not in keep or b not in keep:
+            continue
+        na, nb = cur["nodes"].get(a, 1), cur["nodes"].get(b, 1)
+        exp = na * nb / T
+        lift = e["n"] / exp
+        p = prev["edges"].get((a, b))
+        pn = p["n"] if p else 0
+        z = ex = 0.0
+        if can:
+            pna, pnb = prev["nodes"].get(a, 0), prev["nodes"].get(b, 0)
+            ex = (pn + 0.5) / max(1, math.sqrt((pna + 0.5) * (pnb + 0.5))) * math.sqrt(na * nb)
+            z = (e["n"] - ex) / math.sqrt(ex + 1)
+        st = ("new" if pn <= 1 else "rising") if can and e["n"] >= 4 and z >= 2.5 else "steady"
+        ties.append({"a": a, "b": b, "n": e["n"], "before": pn, "expected": round(ex, 1), "lift": round(lift, 2), "z": round(z, 2), "status": st,
+                     "score": e["n"] * math.log2(max(1, lift)), **_tone(e), "_ev": e["ev"]})
+    if can:
+        for (a, b), p in prev["edges"].items():
+            if a not in keep or b not in keep or p["n"] < 4:
+                continue
+            c = cur["edges"].get((a, b))
+            cn = c["n"] if c else 0
+            na, nb = cur["nodes"].get(a, 0), cur["nodes"].get(b, 0)
+            pna, pnb = prev["nodes"].get(a, 1), prev["nodes"].get(b, 1)
+            ex = (p["n"] + 0.5) / math.sqrt((pna + 0.5) * (pnb + 0.5)) * math.sqrt(max(na, 0.5) * max(nb, 0.5))
+            z = (cn - ex) / math.sqrt(ex + 1)
+            if z <= -2.2 and cn <= p["n"] * 0.6:
+                t = next((t for t in ties if t["a"] == a and t["b"] == b), None)
+                if t:
+                    t.update(status="fading", z=round(z, 2), expected=round(ex, 1))
+                else:
+                    ties.append({"a": a, "b": b, "n": 0, "before": p["n"], "expected": round(ex, 1), "lift": 0, "z": round(z, 2), "status": "fading",
+                                 "score": 0, **_tone(p), "_ev": p["ev"]})
+
+    def evref(L, k=3):
+        L = sorted(L, key=lambda e: (e.get("d", ""), -int(e.get("i", 3) or 3)), reverse=True)[:k]
+        return [{"id": e.get("id"), "date": e.get("d"), "headline": e.get("h", ""), "source": "desk" if e.get("desk") else "feed"} for e in L]
+
+    def out_tie(t):
+        o = {k: v for k, v in t.items() if not k.startswith("_") and k != "score"}
+        o["events"] = evref(t["_ev"])
+        return o
+
+    shown = [t for t in ties if t["status"] != "fading" and t["n"] >= 2 and t["lift"] > 1.15]
+    comm = _net_comms(names, shown, cur["nodes"])
+    pcomm = None
+    if can:
+        pties = []
+        for (a, b), e in prev["edges"].items():
+            if a in keep and b in keep and e["n"] >= 2:
+                lift = e["n"] / (prev["nodes"].get(a, 1) * prev["nodes"].get(b, 1) / max(1, prev["total"]))
+                if lift > 1.15:
+                    pties.append({"a": a, "b": b, "score": e["n"] * math.log2(max(1, lift))})
+        pcomm = _net_comms(names, pties, prev["nodes"])
+    moved = []
+    if pcomm:
+        for a in names:
+            g, pg = comm["of"].get(a), pcomm["of"].get(a)
+            if g is None or pg is None:
+                continue
+            now_g, then_g = set(comm["groups"][g]), set(pcomm["groups"][pg])
+            if len(now_g & then_g) <= 1 and cur["nodes"].get(a, 0) >= 5:
+                moved.append({"actor": a, "now_with": [x for x in comm["groups"][g] if x != a][:4], "before_with": [x for x in pcomm["groups"][pg] if x != a][:4]})
+    rising = sorted([t for t in ties if t["status"] in ("new", "rising")], key=lambda t: -t["z"])[:10]
+    fading = sorted([t for t in ties if t["status"] == "fading"], key=lambda t: t["z"])[:8]
+    tk = "Türkiye"
+    tties = sorted([t for t in ties if tk in (t["a"], t["b"]) and t["status"] != "fading" and t["n"] >= 2], key=lambda t: -t["score"])
+    gi = comm["of"].get(tk)
+    reach = sorted({comm["of"][t["b"] if t["a"] == tk else t["a"]] for t in tties[:15] if (t["b"] if t["a"] == tk else t["a"]) in comm["of"]})
+    tone_flips = []
+    if can:
+        for t in ties:
+            p = prev["edges"].get((t["a"], t["b"]))
+            if not p or t["status"] == "fading":
+                continue
+            pt = _tone(p)["tone"]
+            if pt in ("cooperation", "conflict") and t["tone"] in ("cooperation", "conflict") and pt != t["tone"] and t["coop"] + t["conflict"] >= 3:
+                tone_flips.append({"a": t["a"], "b": t["b"], "before": pt, "now": t["tone"], "n": t["n"], "events": evref(t["_ev"])})
+    coded = sum(1 for e in events if lo <= e.get("d", "") <= hi and e.get("r") is not None)
+    return {
+        "method": "Ties: two actors named in the same event. Rising or fading: the count departs from what the previous window's rate predicts, "
+                  "adjusted for each actor's own activity (z >= 2.5 or <= -2.2). Tone: share of coded cooperation (c) and conflict (x) pairs among the "
+                  "tie's events (feed stories only). Leaders and state organs are folded into their states. Co-occurrence is not a relation: "
+                  "read the events before using a tie as evidence.",
+        "window": {"from": lo, "to": hi, "days": win, "previousFrom": plo, "previousTo": phi, "comparable": can},
+        "events": {"window": cur["total"], "previous": prev["total"], "toneCoded": coded},
+        "rising": [out_tie(t) for t in rising],
+        "fading": [out_tie(t) for t in fading],
+        "toneFlips": tone_flips[:6],
+        "groups": [{"members": g, "name": " · ".join(g[:2])} for g in comm["groups"]],
+        "movedGroup": moved[:6],
+        "turkiye": {
+            "events": cur["nodes"].get(tk, 0), "eventsBefore": prev["nodes"].get(tk, 0),
+            "group": comm["groups"][gi] if gi is not None else [],
+            "groupsReached": len(reach), "groupsTotal": len(comm["groups"]),
+            "closest": [out_tie(t) for t in tties[:6]],
+            "conflictTies": [out_tie(t) for t in tties if t["tone"] == "conflict"][:4],
+        },
+        "distinctive": [out_tie(t) for t in sorted([t for t in ties if t["status"] == "steady" and t["n"] >= 3], key=lambda t: -t["score"])[:6]],
+    }
+
+
+def cmd_network(args) -> int:
+    kbdb = Path(args.kbdb)
+    events = []
+    for p in sorted(kbdb.rglob("*.json")):
+        if not re.match(r"^(ev|dk)-\d{4}-\d{2}-[a-f]$", p.stem):
+            continue
+        try:
+            d = _load_doc(p)
+        except Exception:  # noqa: BLE001
+            continue
+        for e in d.get("events") or []:
+            if p.stem.startswith("dk-"):
+                e = dict(e, desk=1)
+            events.append(e)
+    seen, uniq = set(), []
+    for e in events:
+        if e.get("id") in seen:
+            continue
+        seen.add(e.get("id"))
+        uniq.append(e)
+    res = network_signals(uniq, actor_kinds(), win=args.win, end=args.end, mode=args.mode)
+    txt = json.dumps(res, ensure_ascii=False, indent=1)
+    if args.out:
+        Path(args.out).write_text(txt, encoding="utf-8")
+        print(json.dumps({"out": args.out, "window": res.get("window"), "rising": len(res.get("rising", [])), "fading": len(res.get("fading", []))}))
+    else:
+        print(txt)
+    return 0
+
+
 def main(argv=None) -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     sub = ap.add_subparsers(dest="cmd")
@@ -536,11 +800,19 @@ def main(argv=None) -> int:
     s.add_argument("--kbdb", default="")
     s.add_argument("--days", default="")
     s.add_argument("--out", required=True)
+    n = sub.add_parser("network")
+    n.add_argument("--kbdb", required=True)
+    n.add_argument("--win", type=int, default=7)
+    n.add_argument("--end", default="")
+    n.add_argument("--mode", default="states", choices=["states", "all"])
+    n.add_argument("--out", default="")
     t = sub.add_parser("tag")
     t.add_argument("text")
     a = ap.parse_args(argv)
     if a.cmd == "sync":
         return cmd_sync(a)
+    if a.cmd == "network":
+        return cmd_network(a)
     if a.cmd == "tag":
         print(tag_actors(a.text))
         return 0

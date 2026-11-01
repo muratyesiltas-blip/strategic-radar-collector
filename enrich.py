@@ -8,6 +8,7 @@ Layer 1b  once a day  Sonnet clusters the last 24 hours into stories (stories.js
 Layer 2   every run   Haiku summarises think tank pieces from their full text (item["brief"])
 Layer 3   every run   Haiku turns fresh high-scoring items into FLASH/PRIORITY alerts and pushes them via ntfy (alerts.py)
 KB        every run   story events go to the knowledge base (kb.py); archived days without stories are clustered once (backfill)
+TONE      every run   Haiku marks each knowledge-base event's actor pairs as cooperation, conflict or mixed (event["r"])
 
 A spending guard (ai_usage.json) stops all calls once the daily or monthly
 estimate passes the caps in sources.yaml -> ai.
@@ -272,6 +273,18 @@ Rules: 25 to 45 stories, most important first; a single-item story is fine when 
 drop trivia; never merge different events; never invent facts beyond the items. JSON only."""
 
 
+TONE_SYSTEM = """You code relations between actors in news events for a network of who cooperates and who clashes with whom.
+Each input line is: ref | type | actors: A; B; C | text. For EACH line return {"ref": same ref, "r": [[actor, actor, code], ...]}.
+List only pairs of actors from that line's actor list that act toward each other in the event, using the names exactly as listed.
+Codes:
+ "c" cooperation: talks, meetings, agreements, alliances, support, aid, mediation between them, joint exercises, arms supply, endorsement, coordination
+ "x" conflict: attacks, strikes, clashes, threats, sanctions, seizures, expulsions, accusations, condemnation, legal action, hostile deployments against the other
+ "m" mixed: both at once, or tense talks under open threat
+Rules: a leader and his own state are not a pair. Two actors that are only mentioned together, or both react to a third party, are not a pair.
+A mediator pairs with each side as "c"; the two warring sides pair as "x". Return "r": [] when no pair qualifies. Use only the text; never guess.
+Answer with a compact JSON array only, one object per input line, in input order."""
+
+
 # ---------------------------------------------------------------- mock (offline tests)
 def mock_answer(task: str, user: str) -> str:
     if task == "items":
@@ -280,6 +293,12 @@ def mock_answer(task: str, user: str) -> str:
                             "title_en": "", "actors": [], "event": "other", "place": ""} for x in arr])
     if task == "brief":
         return json.dumps({"summary": "Mock summary.", "argument": "Mock argument.", "recommendations": [], "turkey": "", "files": ["turkey"], "type": "analysis"})
+    if task == "tone":
+        out = []
+        for m in re.finditer(r"^(e\d+) \| [^|]* \| actors: ([^|]*) \|", user, flags=re.M):
+            acts = [a.strip() for a in m.group(2).split(";") if a.strip()]
+            out.append({"ref": m.group(1), "r": [[acts[0], acts[1], "c" if len(out) % 2 else "x"]] if len(acts) >= 2 else []})
+        return json.dumps(out)
     if task == "alerts":
         refs = re.findall(r"^(r\d+) \|", user, flags=re.M)
         return json.dumps({"alerts": [{"refs": refs[:2], "level": "flash", "headline": "Mock flash alert", "summary": "Mock. Something happened.",
@@ -531,6 +550,62 @@ def backfill_stories(kbs: dict, cl: Claude, cfg: dict, now: datetime, data: Path
     return {"done": done, "skipped": skipped}
 
 
+def tone_events(kbs: dict, cl: Claude, cfg: dict, deadline: float) -> dict:
+    """Code the actor pairs of knowledge-base events (newest first) that have no "r" yet."""
+    todo = [e for e in kbs["events"].values() if "r" not in e]
+    single = [e for e in todo if len(e.get("a") or []) < 2]
+    for e in single:
+        e["r"] = []
+    todo = [e for e in todo if len(e.get("a") or []) >= 2]
+    todo.sort(key=lambda e: (e.get("d", ""), e.get("i", 3)), reverse=True)
+    todo = todo[: int(cfg.get("kb_tone_per_run", 260))]
+    size = int(cfg.get("kb_tone_batch", 20))
+    chunks = [todo[i : i + size] for i in range(0, len(todo), size)]
+    stats = {"candidates": len(todo), "coded": 0, "pairs": 0, "single": len(single)}
+
+    def work(chunk):
+        if time.monotonic() > deadline - 20:
+            return 0, 0
+        ref = {f"e{n}": e for n, e in enumerate(chunk, 1)}
+        lines = [f"{k} | {e.get('y') or '-'} | actors: {'; '.join(e['a'])} | {e.get('h', '')}. {str(e.get('s', ''))[:320]}" for k, e in ref.items()]
+        ans = parse_json(cl.call("haiku", TONE_SYSTEM, "\n".join(lines), 90 * len(chunk) + 300, "tone"))
+        n = pairs = 0
+        for a in ans if isinstance(ans, list) else []:
+            e = ref.get(str(a.get("ref", "")).strip()) if isinstance(a, dict) else None
+            if not e:
+                continue
+            names = {kb.norm_actor(x): x for x in e["a"]}
+            out, seen = [], set()
+            for r in a.get("r") or []:
+                if not isinstance(r, list) or len(r) != 3 or r[2] not in ("c", "x", "m"):
+                    continue
+                x, y = names.get(kb.norm_actor(str(r[0]))), names.get(kb.norm_actor(str(r[1])))
+                if not x or not y or x == y:
+                    continue
+                k = tuple(sorted((x, y)))
+                if k in seen:
+                    continue
+                seen.add(k)
+                out.append([k[0], k[1], r[2]])
+            e["r"] = out[:10]
+            n += 1
+            pairs += len(e["r"])
+        return n, pairs
+
+    with ThreadPoolExecutor(max_workers=int(cfg.get("workers", 4))) as pool:
+        for fut in [pool.submit(work, c) for c in chunks]:
+            try:
+                a, b = fut.result()
+                stats["coded"] += a
+                stats["pairs"] += b
+            except BudgetExceeded:
+                raise
+            except Exception as ex:  # noqa: BLE001
+                cl.note(f"tone: {type(ex).__name__}: {str(ex)[:160]}")
+    stats["left"] = sum(1 for e in kbs["events"].values() if "r" not in e)
+    return stats
+
+
 def update_kb(cl, cfg: dict, now: datetime, data: Path, deadline: float, allow_backfill: bool) -> dict:
     kbs = kb.load_events(data)
     rep = {}
@@ -551,6 +626,13 @@ def update_kb(cl, cfg: dict, now: datetime, data: Path, deadline: float, allow_b
             rep["backfill"] = {"stopped": str(ex)}
         except Exception as ex:  # noqa: BLE001
             rep["backfill"] = {"error": f"{type(ex).__name__}: {str(ex)[:160]}"}
+    if allow_backfill and cl is not None and cfg.get("kb_tone", True):
+        try:
+            rep["tone"] = tone_events(kbs, cl, cfg, deadline)
+        except BudgetExceeded as ex:
+            rep["tone"] = {"stopped": str(ex)}
+        except Exception as ex:  # noqa: BLE001
+            rep["tone"] = {"error": f"{type(ex).__name__}: {str(ex)[:160]}"}
     rep.update(kb.write_outputs(kbs, data, now))
     return rep
 
