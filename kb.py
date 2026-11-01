@@ -370,6 +370,31 @@ def add_stories(kbs: dict, stories: list, day: str, build_at: str) -> int:
     return len(stories)
 
 
+DOC_LIMIT = 236_000  # the dashboard database refuses documents over 256 KiB; keep a margin
+
+
+def fit_bucket(L: list) -> list:
+    """Shorten summaries (then Türkiye notes) until the bucket fits one database document."""
+    size = lambda X: len(json.dumps({"bucket": "", "kind": "collector", "count": len(X), "events": X}, ensure_ascii=False, separators=(",", ":")).encode("utf-8"))  # noqa: E731
+    if size(L) <= DOC_LIMIT:
+        return L
+    L = [{k: v for k, v in e.items() if k not in ("fs", "ls")} for e in L]  # feed timestamps: not shown anywhere
+    if size(L) <= DOC_LIMIT:
+        return L
+    L = [dict(e, l=(e.get("l") or [])[:2]) for e in L]
+    if size(L) <= DOC_LIMIT:
+        return L
+    for cap in (480, 400, 330, 260, 200, 150):
+        L = [dict(e, s=(e["s"][:cap].rsplit(" ", 1)[0] + "…") if len(e.get("s", "")) > cap else e.get("s", "")) for e in L]
+        if size(L) <= DOC_LIMIT:
+            return L
+    for cap in (160, 90):
+        L = [dict(e, t=e.get("t", "")[:cap]) for e in L]
+        if size(L) <= DOC_LIMIT:
+            return L
+    return L
+
+
 def write_outputs(kbs: dict, data: Path, now: datetime) -> dict:
     root = data / "kb"
     db = root / "db"
@@ -386,6 +411,7 @@ def write_outputs(kbs: dict, data: Path, now: datetime) -> dict:
     manifest = {"updatedAt": kbs["updatedAt"], "docs": {}}
     for b, L in sorted(buckets.items()):
         L.sort(key=lambda e: (e["d"], -e.get("i", 3), e["id"]))
+        L = fit_bucket(L)
         doc = {"bucket": b, "kind": "collector", "count": len(L), "events": L}
         (db / f"ev-{b}.json").write_text(json.dumps(doc, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
         manifest["docs"][f"ev-{b}"] = {"hash": digest(L), "count": len(L), "bytes": (db / f"ev-{b}.json").stat().st_size}
@@ -514,7 +540,7 @@ def cmd_sync(args) -> int:
             for e in desk_events(doc, fid, day):
                 evs[e["id"]] = e
         for b, evs in touched.items():
-            L = sorted(evs.values(), key=lambda e: (e["d"], FILES.index(e["f"][0]) if e["f"] and e["f"][0] in FILES else 99, e["id"]))
+            L = fit_bucket(sorted(evs.values(), key=lambda e: (e["d"], FILES.index(e["f"][0]) if e["f"] and e["f"][0] in FILES else 99, e["id"])))
             doc = {"bucket": b[3:], "kind": "desk", "count": len(L), "events": L}
             cur = current.get(b)
             if cur and digest(cur.get("events", [])) == digest(L):
@@ -529,7 +555,7 @@ def cmd_sync(args) -> int:
         meta["total"] = sum(v.get("count") or 0 for v in meta["ev"].values()) + sum(v.get("count") or 0 for v in meta["dk"].values())
         (out / "meta.json").write_text(json.dumps(meta, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
         writes.append("meta")
-    big = [w for w in writes if (out / f"{w}.json").stat().st_size > 700_000]
+    big = [w for w in writes if (out / f"{w}.json").stat().st_size > 260_000]
     print(json.dumps({"write": [{"collection": "kb", "doc_id": w, "file_path": str((out / f"{w}.json").resolve()),
                                  "bytes": (out / f"{w}.json").stat().st_size} for w in writes], "tooBig": big}, ensure_ascii=False, indent=1))
     return 0
