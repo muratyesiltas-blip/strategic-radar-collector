@@ -1,7 +1,9 @@
 name: collect
 
 # Runs the collector every two hours and publishes its output to the `data`
-# branch as a single commit (force-pushed), so the repository never grows.
+# branch. Each run commits on top of the previous data commit, so a push
+# carries only the files that changed. The first run after 00:00 UTC pushes a
+# fresh single commit instead, so the branch history never grows past a day.
 # Claude tasks read: https://raw.githubusercontent.com/<owner>/<repo>/data/latest.json
 
 on:
@@ -19,7 +21,7 @@ concurrency:
 jobs:
   collect:
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -33,14 +35,12 @@ jobs:
           mkdir -p out
           if git ls-remote --exit-code --heads origin data >/dev/null 2>&1; then
             git fetch -q --depth 1 origin data
+            git rev-parse FETCH_HEAD > "$RUNNER_TEMP/prev_data_sha"
             git archive FETCH_HEAD | tar -x -C out
           fi
 
       - name: Collect
-        run: python collect.py --data out --config .
-        env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-          NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
+        run: python collector/collect.py --data out
 
       - name: Publish to the data branch
         run: |
@@ -50,7 +50,26 @@ jobs:
           git config user.name "radar-collector"
           git config user.email "radar-collector@users.noreply.github.com"
           git add -A
-          git commit -q -m "data $(date -u +%Y-%m-%dT%H:%MZ)"
-          git push -q -f "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" data
+          TREE=$(git write-tree)
+          PARENT=""
+          if [ "$(date -u +%H)" != "00" ] && [ -s "$RUNNER_TEMP/prev_data_sha" ]; then
+            PREV=$(cat "$RUNNER_TEMP/prev_data_sha")
+            echo "$(cd .. && pwd)/.git/objects" > .git/objects/info/alternates
+            if [ -f ../.git/shallow ]; then cp ../.git/shallow .git/shallow; fi
+            if git cat-file -e "$PREV^{commit}" 2>/dev/null; then
+              PARENT="-p $PREV"
+              echo "Incremental push on top of ${PREV:0:12}"
+            fi
+          fi
+          [ -z "$PARENT" ] && echo "Full push (daily squash or first run)"
+          COMMIT=$(git commit-tree "$TREE" $PARENT -m "data $(date -u +%Y-%m-%dT%H:%MZ)")
+          git update-ref refs/heads/data "$COMMIT"
+          URL="https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          for i in 1 2 3; do
+            if git push -q -f "$URL" data; then exit 0; fi
+            echo "Push attempt $i failed, retrying"
+            sleep $((i * 20))
+          done
+          exit 1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
