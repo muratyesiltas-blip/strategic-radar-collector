@@ -28,7 +28,7 @@ import time
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
-from urllib.parse import parse_qsl, urlencode, urljoin, urlsplit, urlunsplit
+from urllib.parse import parse_qsl, quote_plus, urlencode, urljoin, urlsplit, urlunsplit
 
 import feedparser
 import requests
@@ -221,6 +221,35 @@ def discover(session, home: str, timeout: int) -> str | None:
     return None
 
 
+GNEWS = "https://news.google.com/rss/search?q={q}+when:2d&hl=en-US&gl=US&ceid=US:en"
+
+
+def gnews_url(feed: dict) -> str | None:
+    """Google News search feed for a source whose own feed cannot be fetched."""
+    if feed.get("gnews") is False:
+        return None
+    q = feed.get("gnews") if isinstance(feed.get("gnews"), str) else None
+    if not q:
+        home = feed.get("home") or feed.get("url") or ""
+        if not home:
+            return None
+        q = "site:" + site_of(home)
+    return GNEWS.format(q=quote_plus(q).replace("%3A", ":"))
+
+
+def tidy_gnews(entries: list[dict], feed: dict) -> list[dict]:
+    """Google News titles end with ' - Outlet'; its links redirect, so keep the outlet's domain apart."""
+    dom = site_of(feed.get("home") or feed.get("url") or "")
+    for e in entries:
+        t = e["title"]
+        if " - " in t:
+            t = t.rsplit(" - ", 1)[0].strip()
+        e["title"] = t
+        e["summary"] = ""
+        e["domain"] = dom
+    return entries
+
+
 def entries_from_feed(content: bytes, feed: dict, max_items: int) -> list[dict]:
     parsed = feedparser.parse(content)
     out = []
@@ -299,7 +328,7 @@ def main() -> int:
     def add(raw: dict, src: dict) -> bool:
         url = strip_tracking(raw["url"])
         key = canon_url(raw["url"])
-        dom = domain_of(url)
+        dom = raw.get("domain") or domain_of(url)
         if not raw.get("title") or is_blocked(dom) or clf.noise(raw["title"]):
             return False
         text = raw["title"] + " " + raw.get("summary", "")
@@ -341,7 +370,7 @@ def main() -> int:
             tls.s = requests.Session()
         return tls.s
 
-    def fetch_feed(feed: dict, st: dict, rec: dict) -> bytes:
+    def fetch_direct(feed: dict, st: dict, rec: dict) -> bytes:
         cands = [u for u in ([st.get("working")] + [feed.get("url")] + list(feed.get("alt", []))) if u]
         cands = list(dict.fromkeys(cands))
         url = cands[0] if cands else (st.get("discovered") or "")
@@ -377,6 +406,23 @@ def main() -> int:
             raise ValueError("discovered url is not a feed")
         return rr.content
 
+    def fetch_feed(feed: dict, st: dict, rec: dict) -> bytes:
+        try:
+            return fetch_direct(feed, st, rec)
+        except Exception as ex:  # noqa: BLE001 - fall back to Google News for this outlet
+            gu = None if fixtures else gnews_url(feed)
+            if not gu:
+                raise
+            try:
+                rr = http_get(sess(), gu, timeout)
+            except requests.RequestException:
+                raise ex
+            if not looks_like_feed(rr.content):
+                raise ex
+            rec["via"] = "gnews"
+            rec["directError"] = f"{type(ex).__name__}: {str(ex)[:120]}"
+            return rr.content
+
     jobs = []
     for feed in sources["feeds"]:
         st = state["feeds"].setdefault(feed["id"], {"fails": 0})
@@ -396,7 +442,9 @@ def main() -> int:
             if err:
                 raise err
             entries = entries_from_feed(content, feed, max_items)
-            src = dict(feed, via="rss")
+            if rec.get("via") == "gnews":
+                entries = tidy_gnews(entries, feed)
+            src = dict(feed, via=rec.get("via", "rss"))
             n_new = sum(1 for e in entries if add(e, src))
             rec.update(ok=True, items=len(entries), new=n_new)
             st["fails"] = 0
@@ -504,7 +552,7 @@ def main() -> int:
         "generatedAt": iso(NOW), "windowHours": NEWS_WINDOW_H,
         "counts": {f: len(per_file[f]) for f in FILES},
         "newThisRun": len([i for i in new_ids if items.get(i, {}).get("kind") == "news"]),
-        "note": "Credible-source items of the last 48 hours, grouped by Strategic Radar file, newest first. When present, ai = Claude Haiku triage (score 0-10, desk, one-sentence sum, title_en, actors, event, place) and story = the stories.json cluster id; items the model scored below 2 are left out. rel = Admiralty source-reliability letter; the analyst sets the credibility number. firstSeen = when the collector first saw the item (use it to pick items since the last sweep). Summaries come from the feeds; open the url before citing a detail that is not in the title or summary.",
+        "note": "Credible-source items of the last 48 hours, grouped by Strategic Radar file, newest first. When present, ai = Claude Haiku triage (score 0-10, desk, one-sentence sum, title_en, actors, event, place) and story = the stories.json cluster id; items the model scored below 2 are left out. rel = Admiralty source-reliability letter; the analyst sets the credibility number. firstSeen = when the collector first saw the item (use it to pick items since the last sweep). Summaries come from the feeds; open the url before citing a detail that is not in the title or summary. via = gnews marks an outlet read through Google News because its own feed was unreachable: the url is a Google redirect, so find and cite the outlet's own page for the headline (domain names the outlet).",
         "files": per_file,
     }
     dump_json(data / "latest.json", latest, compact=True)
