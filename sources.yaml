@@ -8,7 +8,9 @@
 # number), kind (news | thinktank).
 #
 # A feed that fails three runs in a row is retried with auto-discovery from
-# `home`. data/status.json shows the health of every feed after each run.
+# `home`. If that fails too, the collector reads a Google News search for the
+# outlet's site (gnews: a custom query, or false to switch it off).
+# data/status.json shows the health of every feed after each run.
 # Edit this file freely: the next run picks it up.
 
 defaults:
@@ -76,6 +78,19 @@ feeds:
   - {id: kathimerini, name: Kathimerini, url: '', home: 'https://www.ekathimerini.com', files: [europe, turkey], type: local, lang: en, rel: B, kind: news, alt: ['https://www.ekathimerini.com/rss', 'https://www.ekathimerini.com/news/rss']}
   - {id: cyprusmail, name: Cyprus Mail, url: 'https://cyprus-mail.com/feed/', home: 'https://cyprus-mail.com', files: [europe, turkey], type: local, lang: en, rel: B, kind: news}
   - {id: nato, name: NATO, url: 'https://www.nato.int/cps/rss/en/natohq/rssFeed.xsl/rssFeed.xml', home: 'https://www.nato.int', files: [europe], type: official, lang: en, rel: A, kind: news, alt: ['https://www.nato.int/en/rss', 'https://www.nato.int/cps/en/natohq/news.htm?type=rss']}
+  # Added 7 Nov 2026: Gulf official agencies and national European outlets. Feeds that GitHub's
+  # runners cannot open fall back to a Google News search for the outlet's site (via: gnews).
+  - {id: spa-en, name: Saudi Press Agency, url: '', home: 'https://www.spa.gov.sa/en', files: [gulf], type: official, lang: en, rel: B, kind: news}
+  - {id: wam-en, name: WAM, url: '', home: 'https://www.wam.ae/en', files: [gulf], type: official, lang: en, rel: B, kind: news}
+  - {id: kuna-en, name: KUNA, url: '', home: 'https://www.kuna.net.kw', files: [gulf], type: official, lang: en, rel: B, kind: news}
+  - {id: bna-en, name: Bahrain News Agency, url: '', home: 'https://www.bna.bh/en/', files: [gulf], type: official, lang: en, rel: B, kind: news}
+  - {id: ona-en, name: Oman News Agency, url: '', home: 'https://omannews.gov.om', files: [gulf], type: official, lang: en, rel: B, kind: news}
+  - {id: saudigazette, name: Saudi Gazette, url: 'https://saudigazette.com.sa/rss', home: 'https://saudigazette.com.sa', files: [gulf], type: local, lang: en, rel: B, kind: news}
+  - {id: dw-en, name: DW, url: 'https://rss.dw.com/rdf/rss-en-all', home: 'https://www.dw.com/en', files: [europe], type: local, lang: en, rel: B, kind: news}
+  - {id: france24-eu, name: France 24, url: 'https://www.france24.com/en/europe/rss', home: 'https://www.france24.com/en/europe/', files: [europe], type: local, lang: en, rel: B, kind: news}
+  - {id: lemonde-en, name: Le Monde, url: 'https://www.lemonde.fr/en/rss/une.xml', home: 'https://www.lemonde.fr/en/', files: [europe], type: local, lang: en, rel: B, kind: news}
+  - {id: spiegel-intl, name: Der Spiegel, url: 'https://www.spiegel.de/international/index.rss', home: 'https://www.spiegel.de/international/', files: [europe], type: local, lang: en, rel: B, kind: news}
+  - {id: ansa-en, name: ANSA, url: 'https://www.ansa.it/english/english_rss.xml', home: 'https://www.ansa.it/english/', files: [europe], type: local, lang: en, rel: B, kind: news}
   - {id: tt-csis, name: CSIS, url: '', home: 'https://www.csis.org/analysis', files: [], type: thinktank, lang: en, rel: B, kind: thinktank, alt: ['https://www.csis.org/analysis/feed', 'https://www.csis.org/rss.xml']}
   - {id: tt-iiss, name: IISS, url: '', home: 'https://www.iiss.org/online-analysis/', files: [], type: thinktank, lang: en, rel: B, kind: thinktank, alt: ['https://www.iiss.org/rss/', 'https://www.iiss.org/en/rss/']}
   - {id: tt-hudson, name: Hudson Institute, url: '', home: 'https://www.hudson.org/research', files: [], type: thinktank, lang: en, rel: B, kind: thinktank}
