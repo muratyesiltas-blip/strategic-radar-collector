@@ -1,14 +1,14 @@
 {
- "generatedAt": "2026-11-09T01:19:17Z",
+ "generatedAt": "2026-11-09T02:57:30Z",
  "feeds": [
   {
    "id": "bbc-world",
    "name": "BBC News",
    "url": "https://feeds.bbci.co.uk/news/world/rss.xml",
    "ok": true,
-   "items": 28,
-   "new": 1,
-   "lastOk": "2026-11-09T01:19:17Z"
+   "items": 27,
+   "new": 0,
+   "lastOk": "2026-11-09T02:57:30Z"
   },
   {
    "id": "bbc-me",
@@ -16,8 +16,8 @@
    "url": "https://feeds.bbci.co.uk/news/world/middle_east/rss.xml",
    "ok": true,
    "items": 24,
-   "new": 0,
-   "lastOk": "2026-11-09T01:19:17Z"
+   "new": 7,
+   "lastOk": "2026-11-09T02:57:30Z"
   },
   {
    "id": "bbc-europe",
@@ -26,7 +26,7 @@
    "ok": true,
    "items": 24,
    "new": 0,
-   "lastOk": "2026-11-09T01:19:17Z"
+   "lastOk": "2026-11-09T02:57:30Z"
   },
   {
    "id": "guardian-world",
@@ -35,7 +35,7 @@
    "ok": true,
    "items": 40,
    "new": 0,
-   "lastOk": "2026-11-09T01:19:17Z"
+   "lastOk": "2026-11-09T02:57:30Z"
   },
   {
    "id": "aljazeera",
@@ -44,7 +44,7 @@
    "ok": true,
    "items": 25,
    "new": 2,
-   "lastOk": "2026-11-09T01:19:17Z"
+   "lastOk": "2026-11-09T02:57:30Z"
   },
   {
    "id": "almonitor",
@@ -52,8 +52,8 @@
    "url": "https://www.al-monitor.com/rss",
    "ok": true,
    "items": 20,
-   "new": 0,
-   "lastOk": "2026-11-09T01:19:17Z"
+   "new": 3,
+   "lastOk": "2026-11-09T02:57:30Z"
   },
   {
    "id": "un-news",
@@ -62,7 +62,7 @@
    "ok": true,
    "items": 30,
    "new": 0,
-   "lastOk": "2026-11-09T01:19:17Z"
+   "lastOk": "2026-11-09T02:57:30Z"
   },
   {
    "id": "defensenews",
@@ -71,7 +71,7 @@
    "ok": true,
    "items": 10,
    "new": 0,
-   "lastOk": "2026-11-09T01:19:17Z"
+   "lastOk": "2026-11-09T02:57:30Z"
   },
   {
    "id": "breakingdefense",
@@ -80,7 +80,7 @@
    "ok": true,
    "items": 15,
    "new": 0,
-   "lastOk": "2026-11-09T01:19:17Z"
+   "lastOk": "2026-11-09T02:57:30Z"
   },
   {
    "id": "aa-en",
@@ -89,7 +89,7 @@
    "ok": true,
    "items": 30,
    "new": 2,
-   "lastOk": "2026-11-09T01:19:17Z"
+   "lastOk": "2026-11-09T02:57:30Z"
   },
   {
    "id": "aa-tr",
@@ -97,8 +97,8 @@
    "url": "https://www.aa.com.tr/tr/rss/default?cat=guncel",
    "ok": true,
    "items": 30,
-   "new": 3,
-   "lastOk": "2026-11-09T01:19:17Z"
+   "new": 0,
+   "lastOk": "2026-11-09T02:57:30Z"
   },
   {
    "id": "dailysabah",
@@ -106,8 +106,8 @@
    "url": "https://www.dailysabah.com/rssFeed/10",
    "ok": true,
    "items": 40,
-   "new": 3,
-   "lastOk": "2026-11-09T01:19:17Z"
+   "new": 6,
+   "lastOk": "2026-11-09T02:57:30Z"
   },
   {
    "id": "hdn",
@@ -117,7 +117,7 @@
    "items": 0,
    "new": 0,
    "discovered": true,
-   "lastOk": "2026-11-09T01:19:17Z"
+   "lastOk": "2026-11-09T02:57:30Z"
   },
   {
    "id": "turkiyetoday",
@@ -125,10 +125,10 @@
    "url": "https://www.turkiyetoday.com/feed/",
    "ok": true,
    "items": 40,
-   "new": 2,
+   "new": 1,
    "via": "gnews",
    "directError": "ValueError: no candidate url returned a feed (tried 3)",
-   "lastOk": "2026-11-09T01:19:17Z"
+   "lastOk": "2026-11-09T02:57:30Z"
   },
   {
    "id": "turkishminute",
@@ -137,7 +137,7 @@
    "ok": true,
    "items": 10,
    "new": 0,
-   "lastOk": "2026-11-09T01:19:17Z"
+   "lastOk": "2026-11-09T02:57:30Z"
   },
   {
    "id": "t24",
@@ -148,7 +148,7 @@
    "new": 0,
    "via": "gnews",
    "directError": "ValueError: no candidate url returned a feed (tried 3)",
-   "lastOk": "2026-11-09T01:19:17Z"
+   "lastOk": "2026-11-09T02:57:30Z"
   },
   {
    "id": "bianet-en",
@@ -156,8 +156,8 @@
    "url": "https://bianet.org/rss/english",
    "ok": true,
    "items": 40,
-   "new": 1,
-   "lastOk": "2026-11-09T01:19:17Z"
+   "new": 9,
+   "lastOk": "2026-11-09T02:57:30Z"
   },
   {
    "id": "medyascope",
@@ -166,7 +166,7 @@
    "ok": true,
    "items": 12,
    "new": 0,
-   "lastOk": "2026-11-09T01:19:17Z"
+   "lastOk": "2026-11-09T02:57:30Z"
   },
   {
    "id": "trthaber",
@@ -175,7 +175,7 @@
    "ok": true,
    "items": 40,
    "new": 0,
-   "lastOk": "2026-11-09T01:19:17Z"
+   "lastOk": "2026-11-09T02:57:30Z"
   },
   {
    "id": "enab-en",
@@ -183,10 +183,10 @@
    "url": "https://english.enabbaladi.net/feed/",
    "ok": true,
    "items": 10,
-   "new": 2,
+   "new": 0,
    "via": "gnews",
    "directError": "ValueError: no candidate url returned a feed (tried 1)",
-   "lastOk": "2026-11-09T01:19:17Z"
+   "lastOk": "2026-11-09T02:57:30Z"
   },
   {
    "id": "syriadirect",
@@ -194,8 +194,8 @@
    "url": "https://syriadirect.org/feed/",
    "ok": true,
    "items": 10,
-   "new": 0,
-   "lastOk": "2026-11-09T01:19:17Z"
+   "new": 2,
+   "lastOk": "2026-11-09T02:57:30Z"
   },
   {
    "id": "npa-en",
@@ -204,7 +204,7 @@
    "ok": true,
    "items": 10,
    "new": 0,
-   "lastOk": "2026-11-09T01:19:17Z"
+   "lastOk": "2026-11-09T02:57:30Z"
   },
   {
    "id": "sana-en",
@@ -214,18 +214,16 @@
    "items": 10,
    "new": 0,
    "discovered": true,
-   "lastOk": "2026-11-09T01:19:17Z"
+   "lastOk": "2026-11-09T02:57:30Z"
   },
   {
    "id": "anf-en",
    "name": "ANF News",
    "url": "https://anfenglish.com/feed.rss",
    "ok": true,
-   "items": 0,
-   "new": 0,
-   "via": "gnews",
-   "directError": "ValueError: no candidate url returned a feed (tried 1)",
-   "lastOk": "2026-11-09T01:19:17Z"
+   "items": 20,
+   "new": 20,
+   "lastOk": "2026-11-09T02:57:30Z"
   },
   {
    "id": "rudaw-en",
@@ -233,10 +231,10 @@
    "url": "https://www.rudaw.net/rss/english",
    "ok": true,
    "items": 28,
-   "new": 4,
+   "new": 0,
    "via": "gnews",
    "directError": "ValueError: no candidate url returned a feed (tried 2)",
-   "lastOk": "2026-11-09T01:19:17Z"
+   "lastOk": "2026-11-09T02:57:30Z"
   },
   {
    "id": "k24-en",
@@ -246,18 +244,18 @@
    "items": 40,
    "new": 0,
    "discovered": true,
-   "lastOk": "2026-11-09T01:19:17Z"
+   "lastOk": "2026-11-09T02:57:30Z"
   },
   {
    "id": "hawar-en",
    "name": "Hawar News (ANHA)",
    "url": "https://hawarnews.com/en/rss",
    "ok": true,
-   "items": 35,
-   "new": 2,
+   "items": 34,
+   "new": 11,
    "via": "gnews",
    "directError": "ValueError: no candidate url returned a feed (tried 2)",
-   "lastOk": "2026-11-09T01:19:17Z"
+   "lastOk": "2026-11-09T02:57:30Z"
   },
   {
    "id": "iranintl",
@@ -266,7 +264,7 @@
    "ok": true,
    "items": 40,
    "new": 1,
-   "lastOk": "2026-11-09T01:19:17Z"
+   "lastOk": "2026-11-09T02:57:30Z"
   },
   {
    "id": "iranwire",
@@ -274,8 +272,8 @@
    "url": "https://iranwire.com/en/feed/",
    "ok": true,
    "items": 40,
-   "new": 6,
-   "lastOk": "2026-11-09T01:19:17Z"
+   "new": 12,
+   "lastOk": "2026-11-09T02:57:30Z"
   },
   {
    "id": "tehrantimes",
@@ -284,7 +282,7 @@
    "ok": true,
    "items": 30,
    "new": 0,
-   "lastOk": "2026-11-09T01:19:17Z"
+   "lastOk": "2026-11-09T02:57:30Z"
   },
   {
    "id": "amwaj",
@@ -292,8 +290,8 @@
    "url": "https://amwaj.media/rss",
    "ok": true,
    "items": 40,
-   "new": 0,
-   "lastOk": "2026-11-09T01:19:17Z"
+   "new": 19,
+   "lastOk": "2026-11-09T02:57:30Z"
   },
   {
    "id": "irna-en",
@@ -303,7 +301,7 @@
    "items": 30,
    "new": 0,
    "discovered": true,
-   "lastOk": "2026-11-09T01:19:17Z"
+   "lastOk": "2026-11-09T02:57:30Z"
   },
   {
    "id": "toi",
@@ -311,10 +309,10 @@
    "url": "https://www.timesofisrael.com/feed/",
    "ok": true,
    "items": 40,
-   "new": 4,
+   "new": 2,
    "via": "gnews",
    "directError": "ValueError: no candidate url returned a feed (tried 1)",
-   "lastOk": "2026-11-09T01:19:17Z"
+   "lastOk": "2026-11-09T02:57:30Z"
   },
   {
    "id": "jpost",
@@ -322,8 +320,8 @@
    "url": "https://www.jpost.com/rss/rssfeedsfrontpage.aspx",
    "ok": true,
    "items": 26,
-   "new": 8,
-   "lastOk": "2026-11-09T01:19:17Z"
+   "new": 2,
+   "lastOk": "2026-11-09T02:57:30Z"
   },
   {
    "id": "haaretz",
@@ -331,8 +329,8 @@
    "url": "https://www.haaretz.com/srv/haaretz-latest-headlines",
    "ok": true,
    "items": 40,
-   "new": 7,
-   "lastOk": "2026-11-09T01:19:17Z"
+   "new": 1,
+   "lastOk": "2026-11-09T02:57:30Z"
   },
   {
    "id": "ynet-en",
@@ -341,7 +339,7 @@
    "ok": true,
    "items": 30,
    "new": 0,
-   "lastOk": "2026-11-09T01:19:17Z"
+   "lastOk": "2026-11-09T02:57:30Z"
   },
   {
    "id": "arabnews",
@@ -349,10 +347,10 @@
    "url": "https://www.arabnews.com/cat/1/rss.xml",
    "ok": true,
    "items": 40,
-   "new": 1,
+   "new": 2,
    "via": "gnews",
    "directError": "ValueError: no candidate url returned a feed (tried 1)",
-   "lastOk": "2026-11-09T01:19:17Z"
+   "lastOk": "2026-11-09T02:57:30Z"
   },
   {
    "id": "aawsat-en",
@@ -361,7 +359,7 @@
    "ok": true,
    "items": 40,
    "new": 0,
-   "lastOk": "2026-11-09T01:19:17Z"
+   "lastOk": "2026-11-09T02:57:30Z"
   },
   {
    "id": "thenational",
@@ -369,17 +367,17 @@
    "url": "https://www.thenationalnews.com/arc/outboundfeeds/rss/?outputType=xml",
    "ok": true,
    "items": 40,
-   "new": 0,
-   "lastOk": "2026-11-09T01:19:17Z"
+   "new": 3,
+   "lastOk": "2026-11-09T02:57:30Z"
   },
   {
    "id": "gulfnews",
    "name": "Gulf News",
    "url": "https://gulfnews.com/feed",
    "ok": true,
-   "items": 11,
+   "items": 20,
    "new": 2,
-   "lastOk": "2026-11-09T01:19:17Z"
+   "lastOk": "2026-11-09T02:57:30Z"
   },
   {
    "id": "dohanews",
@@ -388,18 +386,18 @@
    "ok": true,
    "items": 9,
    "new": 0,
-   "lastOk": "2026-11-09T01:19:17Z"
+   "lastOk": "2026-11-09T02:57:30Z"
   },
   {
    "id": "kuwaittimes",
    "name": "Kuwait Times",
    "url": "https://kuwaittimes.com/feed/",
    "ok": true,
-   "items": 28,
+   "items": 27,
    "new": 0,
    "via": "gnews",
    "directError": "ValueError: no candidate url returned a feed (tried 3)",
-   "lastOk": "2026-11-09T01:19:17Z"
+   "lastOk": "2026-11-09T02:57:30Z"
   },
   {
    "id": "qna-en",
@@ -410,7 +408,7 @@
    "new": 0,
    "via": "gnews",
    "directError": "ValueError: no candidate url returned a feed (tried 2)",
-   "lastOk": "2026-11-09T01:19:17Z"
+   "lastOk": "2026-11-09T02:57:30Z"
   },
   {
    "id": "lorient",
@@ -421,18 +419,18 @@
    "new": 0,
    "via": "gnews",
    "directError": "ValueError: no candidate url returned a feed (tried 2)",
-   "lastOk": "2026-11-09T01:19:17Z"
+   "lastOk": "2026-11-09T02:57:30Z"
   },
   {
    "id": "ahram",
    "name": "Ahram Online",
    "url": "https://english.ahram.org.eg/rss.ashx",
    "ok": true,
-   "items": 35,
+   "items": 38,
    "new": 2,
    "via": "gnews",
    "directError": "ValueError: no candidate url returned a feed (tried 2)",
-   "lastOk": "2026-11-09T01:19:17Z"
+   "lastOk": "2026-11-09T02:57:30Z"
   },
   {
    "id": "kyivindependent",
@@ -440,8 +438,8 @@
    "url": "https://kyivindependent.com/news-archive/rss/",
    "ok": true,
    "items": 15,
-   "new": 1,
-   "lastOk": "2026-11-09T01:19:17Z"
+   "new": 0,
+   "lastOk": "2026-11-09T02:57:30Z"
   },
   {
    "id": "upravda-en",
@@ -450,7 +448,7 @@
    "ok": true,
    "items": 20,
    "new": 0,
-   "lastOk": "2026-11-09T01:19:17Z"
+   "lastOk": "2026-11-09T02:57:30Z"
   },
   {
    "id": "ukrinform",
@@ -458,8 +456,8 @@
    "url": "https://www.ukrinform.net/rss/block-lastnews",
    "ok": true,
    "items": 30,
-   "new": 3,
-   "lastOk": "2026-11-09T01:19:17Z"
+   "new": 1,
+   "lastOk": "2026-11-09T02:57:30Z"
   },
   {
    "id": "meduza-en",
@@ -468,7 +466,7 @@
    "ok": true,
    "items": 30,
    "new": 0,
-   "lastOk": "2026-11-09T01:19:17Z"
+   "lastOk": "2026-11-09T02:57:30Z"
   },
   {
    "id": "tass-en",
@@ -476,8 +474,8 @@
    "url": "https://tass.com/rss/v2.xml",
    "ok": true,
    "items": 40,
-   "new": 5,
-   "lastOk": "2026-11-09T01:19:17Z"
+   "new": 2,
+   "lastOk": "2026-11-09T02:57:30Z"
   },
   {
    "id": "novayagazeta-eu",
@@ -486,7 +484,7 @@
    "ok": true,
    "items": 40,
    "new": 0,
-   "lastOk": "2026-11-09T01:19:17Z"
+   "lastOk": "2026-11-09T02:57:30Z"
   },
   {
    "id": "interfax-ua",
@@ -495,7 +493,7 @@
    "ok": true,
    "items": 25,
    "new": 0,
-   "lastOk": "2026-11-09T01:19:17Z"
+   "lastOk": "2026-11-09T02:57:30Z"
   },
   {
    "id": "politico-eu",
@@ -504,7 +502,7 @@
    "ok": true,
    "items": 10,
    "new": 0,
-   "lastOk": "2026-11-09T01:19:17Z"
+   "lastOk": "2026-11-09T02:57:30Z"
   },
   {
    "id": "euractiv",
@@ -512,8 +510,8 @@
    "url": "https://www.euractiv.com/feed/",
    "ok": true,
    "items": 40,
-   "new": 1,
-   "lastOk": "2026-11-09T01:19:17Z"
+   "new": 0,
+   "lastOk": "2026-11-09T02:57:30Z"
   },
   {
    "id": "euobserver",
@@ -522,7 +520,7 @@
    "ok": true,
    "items": 20,
    "new": 0,
-   "lastOk": "2026-11-09T01:19:17Z"
+   "lastOk": "2026-11-09T02:57:30Z"
   },
   {
    "id": "euronews",
@@ -531,7 +529,7 @@
    "ok": true,
    "items": 40,
    "new": 0,
-   "lastOk": "2026-11-09T01:19:17Z"
+   "lastOk": "2026-11-09T02:57:30Z"
   },
   {
    "id": "kathimerini",
@@ -539,10 +537,10 @@
    "url": "https://www.ekathimerini.com/rss",
    "ok": true,
    "items": 40,
-   "new": 2,
+   "new": 0,
    "via": "gnews",
    "directError": "ValueError: no candidate url returned a feed (tried 2)",
-   "lastOk": "2026-11-09T01:19:17Z"
+   "lastOk": "2026-11-09T02:57:30Z"
   },
   {
    "id": "cyprusmail",
@@ -550,8 +548,8 @@
    "url": "https://cyprus-mail.com/feed/",
    "ok": true,
    "items": 20,
-   "new": 0,
-   "lastOk": "2026-11-09T01:19:17Z"
+   "new": 1,
+   "lastOk": "2026-11-09T02:57:30Z"
   },
   {
    "id": "nato",
@@ -559,10 +557,10 @@
    "url": "https://www.nato.int/cps/rss/en/natohq/rssFeed.xsl/rssFeed.xml",
    "ok": true,
    "items": 15,
-   "new": 2,
+   "new": 0,
    "via": "gnews",
    "directError": "ValueError: no candidate url returned a feed (tried 3)",
-   "lastOk": "2026-11-09T01:19:17Z"
+   "lastOk": "2026-11-09T02:57:30Z"
   },
   {
    "id": "spa-en",
@@ -570,10 +568,10 @@
    "url": "",
    "ok": true,
    "items": 40,
-   "new": 1,
+   "new": 2,
    "via": "gnews",
    "directError": "ValueError: no feed url and auto-discovery found none",
-   "lastOk": "2026-11-09T01:19:17Z"
+   "lastOk": "2026-11-09T02:57:30Z"
   },
   {
    "id": "wam-en",
@@ -584,7 +582,7 @@
    "new": 0,
    "via": "gnews",
    "directError": "ValueError: no feed url and auto-discovery found none",
-   "lastOk": "2026-11-09T01:19:17Z"
+   "lastOk": "2026-11-09T02:57:30Z"
   },
   {
    "id": "kuna-en",
@@ -595,7 +593,7 @@
    "new": 0,
    "via": "gnews",
    "directError": "ValueError: no feed url and auto-discovery found none",
-   "lastOk": "2026-11-09T01:19:17Z"
+   "lastOk": "2026-11-09T02:57:30Z"
   },
   {
    "id": "bna-en",
@@ -606,7 +604,7 @@
    "new": 0,
    "via": "gnews",
    "directError": "ValueError: no feed url and auto-discovery found none",
-   "lastOk": "2026-11-09T01:19:17Z"
+   "lastOk": "2026-11-09T02:57:30Z"
   },
   {
    "id": "ona-en",
@@ -614,10 +612,10 @@
    "url": "",
    "ok": true,
    "items": 40,
-   "new": 3,
+   "new": 2,
    "via": "gnews",
    "directError": "ValueError: no feed url and auto-discovery found none",
-   "lastOk": "2026-11-09T01:19:17Z"
+   "lastOk": "2026-11-09T02:57:30Z"
   },
   {
    "id": "saudigazette",
@@ -628,7 +626,7 @@
    "new": 0,
    "via": "gnews",
    "directError": "ValueError: no candidate url returned a feed (tried 1)",
-   "lastOk": "2026-11-09T01:19:17Z"
+   "lastOk": "2026-11-09T02:57:30Z"
   },
   {
    "id": "dw-en",
@@ -636,8 +634,8 @@
    "url": "https://rss.dw.com/rdf/rss-en-all",
    "ok": true,
    "items": 40,
-   "new": 0,
-   "lastOk": "2026-11-09T01:19:17Z"
+   "new": 1,
+   "lastOk": "2026-11-09T02:57:30Z"
   },
   {
    "id": "france24-eu",
@@ -646,16 +644,16 @@
    "ok": true,
    "items": 30,
    "new": 0,
-   "lastOk": "2026-11-09T01:19:17Z"
+   "lastOk": "2026-11-09T02:57:30Z"
   },
   {
    "id": "lemonde-en",
    "name": "Le Monde",
    "url": "https://www.lemonde.fr/en/rss/une.xml",
    "ok": true,
-   "items": 14,
+   "items": 13,
    "new": 0,
-   "lastOk": "2026-11-09T01:19:17Z"
+   "lastOk": "2026-11-09T02:57:30Z"
   },
   {
    "id": "spiegel-intl",
@@ -663,8 +661,8 @@
    "url": "https://www.spiegel.de/international/index.rss",
    "ok": true,
    "items": 20,
-   "new": 0,
-   "lastOk": "2026-11-09T01:19:17Z"
+   "new": 9,
+   "lastOk": "2026-11-09T02:57:30Z"
   },
   {
    "id": "ansa-en",
@@ -673,7 +671,7 @@
    "ok": true,
    "items": 40,
    "new": 0,
-   "lastOk": "2026-11-09T01:19:17Z"
+   "lastOk": "2026-11-09T02:57:30Z"
   },
   {
    "id": "tt-csis",
@@ -682,18 +680,18 @@
    "ok": true,
    "items": 10,
    "new": 0,
-   "lastOk": "2026-11-09T01:19:17Z"
+   "lastOk": "2026-11-09T02:57:30Z"
   },
   {
    "id": "tt-iiss",
    "name": "IISS",
    "url": "https://www.iiss.org/rss/",
    "ok": true,
-   "items": 1,
+   "items": 0,
    "new": 0,
    "via": "gnews",
    "directError": "ValueError: no candidate url returned a feed (tried 2)",
-   "lastOk": "2026-11-09T01:19:17Z"
+   "lastOk": "2026-11-09T02:57:30Z"
   },
   {
    "id": "tt-hudson",
@@ -703,18 +701,18 @@
    "items": 10,
    "new": 0,
    "discovered": true,
-   "lastOk": "2026-11-09T01:19:17Z"
+   "lastOk": "2026-11-09T02:57:30Z"
   },
   {
    "id": "tt-isw",
    "name": "ISW / CTP",
    "url": "https://understandingwar.org/feed/",
    "ok": true,
-   "items": 10,
+   "items": 7,
    "new": 1,
    "via": "gnews",
    "directError": "ValueError: no candidate url returned a feed (tried 2)",
-   "lastOk": "2026-11-09T01:19:17Z"
+   "lastOk": "2026-11-09T02:57:30Z"
   },
   {
    "id": "tt-rand",
@@ -723,18 +721,18 @@
    "ok": true,
    "items": 0,
    "new": 0,
-   "lastOk": "2026-11-09T01:19:17Z"
+   "lastOk": "2026-11-09T02:57:30Z"
   },
   {
    "id": "tt-seta",
    "name": "SETA",
    "url": "https://www.setav.org/en/feed/",
    "ok": true,
-   "items": 0,
-   "new": 0,
+   "items": 1,
+   "new": 1,
    "via": "gnews",
    "directError": "ValueError: no candidate url returned a feed (tried 3)",
-   "lastOk": "2026-11-09T01:19:17Z"
+   "lastOk": "2026-11-09T02:57:30Z"
   },
   {
    "id": "tt-rusi",
@@ -742,8 +740,8 @@
    "url": "https://www.rusi.org/rss/latest-commentary.xml",
    "ok": true,
    "items": 20,
-   "new": 1,
-   "lastOk": "2026-11-09T01:19:17Z"
+   "new": 4,
+   "lastOk": "2026-11-09T02:57:30Z"
   },
   {
    "id": "tt-swp",
@@ -751,9 +749,9 @@
    "url": "https://www.swp-berlin.org/en/rss.xml",
    "ok": true,
    "items": 40,
-   "new": 0,
+   "new": 23,
    "discovered": true,
-   "lastOk": "2026-11-09T01:19:17Z"
+   "lastOk": "2026-11-09T02:57:30Z"
   },
   {
    "id": "tt-cfr",
@@ -761,9 +759,9 @@
    "url": "https://www.cfr.org/feed",
    "ok": true,
    "items": 24,
-   "new": 2,
+   "new": 6,
    "discovered": true,
-   "lastOk": "2026-11-09T01:19:17Z"
+   "lastOk": "2026-11-09T02:57:30Z"
   },
   {
    "id": "tt-ecfr",
@@ -775,7 +773,7 @@
    "discovered": true,
    "via": "gnews",
    "directError": "ValueError: no candidate url returned a feed (tried 1)",
-   "lastOk": "2026-11-09T01:19:17Z"
+   "lastOk": "2026-11-09T02:57:30Z"
   },
   {
    "id": "tt-icg",
@@ -785,7 +783,7 @@
    "items": 10,
    "new": 0,
    "discovered": true,
-   "lastOk": "2026-11-09T01:19:17Z"
+   "lastOk": "2026-11-09T02:57:30Z"
   },
   {
    "id": "tt-inss",
@@ -794,7 +792,7 @@
    "ok": true,
    "items": 1,
    "new": 0,
-   "lastOk": "2026-11-09T01:19:17Z"
+   "lastOk": "2026-11-09T02:57:30Z"
   },
   {
    "id": "tt-carnegie",
@@ -802,22 +800,22 @@
    "url": "https://carnegieendowment.org/rss/feeds/publications",
    "ok": true,
    "items": 1,
-   "new": 1,
+   "new": 0,
    "via": "gnews",
    "directError": "ValueError: no candidate url returned a feed (tried 2)",
-   "lastOk": "2026-11-09T01:19:17Z"
+   "lastOk": "2026-11-09T02:57:30Z"
   },
   {
    "id": "tt-brookings",
    "name": "Brookings",
    "url": "https://www.brookings.edu/feed/",
    "ok": true,
-   "items": 40,
-   "new": 7,
+   "items": 33,
+   "new": 25,
    "discovered": true,
    "via": "gnews",
    "directError": "ValueError: no candidate url returned a feed (tried 1)",
-   "lastOk": "2026-11-09T01:19:17Z"
+   "lastOk": "2026-11-09T02:57:30Z"
   },
   {
    "id": "tt-chatham",
@@ -825,8 +823,8 @@
    "url": "https://www.chathamhouse.org/path/whatsnew.xml",
    "ok": true,
    "items": 40,
-   "new": 1,
-   "lastOk": "2026-11-09T01:19:17Z"
+   "new": 13,
+   "lastOk": "2026-11-09T02:57:30Z"
   },
   {
    "id": "tt-atlantic",
@@ -834,8 +832,8 @@
    "url": "https://www.atlanticcouncil.org/feed/",
    "ok": true,
    "items": 40,
-   "new": 4,
-   "lastOk": "2026-11-09T01:19:17Z"
+   "new": 16,
+   "lastOk": "2026-11-09T02:57:30Z"
   },
   {
    "id": "tt-twi",
@@ -846,7 +844,7 @@
    "new": 0,
    "via": "gnews",
    "directError": "ValueError: no candidate url returned a feed (tried 2)",
-   "lastOk": "2026-11-09T01:19:17Z"
+   "lastOk": "2026-11-09T02:57:30Z"
   },
   {
    "id": "tt-mei",
@@ -855,17 +853,16 @@
    "ok": true,
    "items": 1,
    "new": 0,
-   "lastOk": "2026-11-09T01:19:17Z"
+   "lastOk": "2026-11-09T02:57:30Z"
   },
   {
    "id": "tt-orsam",
    "name": "ORSAM",
-   "url": "https://orsam.org.tr/feed/",
+   "url": "https://orsam.org.tr/en/rss",
    "ok": true,
    "items": 0,
    "new": 0,
-   "discovered": true,
-   "lastOk": "2026-11-09T01:19:17Z"
+   "lastOk": "2026-11-09T02:57:30Z"
   },
   {
    "id": "tt-iram",
@@ -876,7 +873,7 @@
    "new": 0,
    "via": "gnews",
    "directError": "ValueError: no candidate url returned a feed (tried 2)",
-   "lastOk": "2026-11-09T01:19:17Z"
+   "lastOk": "2026-11-09T02:57:30Z"
   },
   {
    "id": "tt-majalla",
@@ -886,7 +883,7 @@
    "items": 10,
    "new": 0,
    "discovered": true,
-   "lastOk": "2026-11-09T01:19:17Z"
+   "lastOk": "2026-11-09T02:57:30Z"
   },
   {
    "id": "tt-warontherocks",
@@ -894,19 +891,18 @@
    "url": "https://warontherocks.com/feed/",
    "ok": true,
    "items": 40,
-   "new": 0,
-   "lastOk": "2026-11-09T01:19:17Z"
+   "new": 16,
+   "lastOk": "2026-11-09T02:57:30Z"
   }
  ],
  "gdelt": [
   {
    "file": "turkey",
    "query": "(Turkey OR Türkiye OR Erdogan OR Ankara OR \"Hakan Fidan\" OR Turkish) sourcelang:english",
-   "ok": false,
-   "items": 0,
+   "ok": true,
+   "items": 18,
    "kept": 0,
-   "new": 0,
-   "error": "HTTPError: 429 Client Error: Too Many Requests for url: https://api.gdeltproject.org/api/v2/doc/doc?query=%28Turkey+OR+T%C3%BCrkiye+OR+Erdogan+OR+Ankara+OR+%22Hakan+Fidan%"
+   "new": 0
   },
   {
    "file": "syria",
@@ -920,19 +916,19 @@
   {
    "file": "iran",
    "query": "(Iran OR Tehran OR Khamenei OR Pezeshkian OR Araghchi OR IRGC OR Hormuz) sourcelang:english",
-   "ok": false,
-   "items": 0,
-   "kept": 0,
-   "new": 0,
-   "error": "HTTPError: 429 Client Error: Too Many Requests for url: https://api.gdeltproject.org/api/v2/doc/doc?query=%28Iran+OR+Tehran+OR+Khamenei+OR+Pezeshkian+OR+Araghchi+OR+IRGC+O"
+   "ok": true,
+   "items": 92,
+   "kept": 1,
+   "new": 1
   },
   {
    "file": "israel",
    "query": "(Israel OR Netanyahu OR IDF OR Knesset OR \"Tel Aviv\") sourcelang:english",
-   "ok": true,
-   "items": 25,
-   "kept": 2,
-   "new": 0
+   "ok": false,
+   "items": 0,
+   "kept": 0,
+   "new": 0,
+   "error": "HTTPError: 429 Client Error: Too Many Requests for url: https://api.gdeltproject.org/api/v2/doc/doc?query=%28Israel+OR+Netanyahu+OR+IDF+OR+Knesset+OR+%22Tel+Aviv%22%29+sou"
   },
   {
    "file": "gulf",
@@ -989,7 +985,7 @@
    "error": "skipped: GDELT time budget used up"
   }
  ],
- "rssSeconds": 125.6,
+ "rssSeconds": 115.3,
  "ai": {
   "enabled": true,
   "mock": false,
@@ -998,43 +994,45 @@
    "sonnet": "claude-sonnet-5-5"
   },
   "items": {
-   "candidates": 57,
-   "enriched": 57
+   "candidates": 51,
+   "enriched": 51
   },
   "alerts": {
-   "candidates": 7,
-   "new": 2,
+   "candidates": 6,
+   "new": 0,
    "pushed": 0,
-   "queued": 2,
+   "queued": 0,
    "repeats": 1,
    "ntfy": true,
-   "alerts7d": 170,
+   "alerts7d": 171,
    "queue": 2
   },
   "briefs": {
-   "candidates": 3,
+   "candidates": 4,
    "briefed": 0,
    "fulltext": 0
   },
   "stories": {
-   "skipped": "not due",
-   "last": "2026-11-08T02:58:45Z"
+   "stories": 44,
+   "rawStories": 44,
+   "itemsIn": 420
   },
   "kb": {
+   "added": 44,
    "backfill": {
     "done": [],
     "skipped": []
    },
    "tone": {
-    "candidates": 0,
-    "coded": 0,
-    "pairs": 0,
-    "single": 0,
+    "candidates": 43,
+    "coded": 43,
+    "pairs": 53,
+    "single": 1,
     "left": 0
    },
-   "events": 1059,
+   "events": 1103,
    "buckets": 5,
-   "storyDays": 23,
+   "storyDays": 24,
    "backfilled": [
     "2026-10-16",
     "2026-10-17",
@@ -1047,33 +1045,37 @@
     "2026-10-24"
    ]
   },
-  "calls": 4,
-  "usdRun": 0.0053,
-  "usdToday": 0.0054,
-  "usdMonth": 2.7551,
+  "calls": 8,
+  "usdRun": 0.2265,
+  "usdToday": 0.2319,
+  "usdMonth": 2.9816,
   "caps": {
    "daily": 2.5,
    "monthly": 45
   },
-  "errors": [],
-  "errorCounts": {},
+  "errors": [
+   "api: thinking parameter refused, retrying without it"
+  ],
+  "errorCounts": {
+   "api: thinking parameter refused, retrying wi": 1
+  },
   "truncated": 0,
-  "thinkingParam": true
+  "thinkingParam": false
  },
  "summary": {
   "feedsOk": 92,
   "feedsTotal": 92,
-  "gdeltOk": 1,
+  "gdeltOk": 2,
   "gdeltTotal": 10,
-  "newItems": 88,
-  "newsItems48h": 1402,
-  "thinktankItems": 141,
+  "newItems": 233,
+  "newsItems48h": 1421,
+  "thinktankItems": 143,
   "failing": [],
-  "seconds": 453.7,
+  "seconds": 551.9,
   "ai": {
    "enabled": true,
-   "usdRun": 0.0053,
-   "usdMonth": 2.7551
+   "usdRun": 0.2265,
+   "usdMonth": 2.9816
   }
  }
 }
