@@ -45,6 +45,10 @@ jobs:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
 
+      - name: Signals (thermal anomalies and official releases)
+        run: python signals.py --data out
+        continue-on-error: true
+
       - name: Publish to the data branch
         run: |
           cd out
