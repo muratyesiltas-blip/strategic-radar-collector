@@ -57,9 +57,18 @@ DEFENSE_RSS = "https://www.defense.gov/DesktopModules/ArticleCS/RSS.ashx?Content
 KEYWORDS = re.compile(r"\b(iran|irgc|houthi|yemen|red sea|hormuz|centcom|iraq|syria|t(u|ü)rk|ankara|black sea|israel|gaza|"
                       r"lebanon|hezbollah|ukrain|russia|crimea|nato|gulf|bahrain|kuwait|qatar|saudi|emirat|oman)\w*", re.I)
 
+# For a country's own news agency its country name says nothing; look for security and foreign-policy words instead
+AGENCY_EN = re.compile(r"\b(iran|israel|gaza|palestin|lebanon|syria|iraq|yemen|houthi|red sea|hormuz|t(u|ü)rk|ankara|security|defen[cs]e|"
+                       r"military|armed forces|missile|drone|attack|strike|navy|naval|foreign minister|minister of foreign|"
+                       r"strategic dialogue|joint statement|ceasefire|sanction|united states|russia|ukrain|nato|gcc)\w*", re.I)
+AGENCY_AR = re.compile(r"(إيران|الإيراني|إسرائيل|الإسرائيلي|غزة|فلسطين|لبنان|سوريا|العراق|اليمن|الحوثي|البحر الأحمر|هرمز|تركيا|التركي|"
+                       r"أمن|الأمن|عسكري|العسكري|القوات المسلحة|صاروخ|مسيّرة|مسيرة|هجوم|البحرية|وزير الخارجية|الخارجية|وقف إطلاق النار|عقوبات|"
+                       r"الولايات المتحدة|روسيا|أوكرانيا|الناتو|مجلس التعاون)")
+
 PERSIST_DAYS = 7      # memory window for burning cells
 PERSIST_MIN = 3       # a cell seen on at least this many of the window's days counts as persistent
 HIGH_FRP = 50.0       # MW; a single new point this hot is worth a look on its own
+WARMUP_DAYS = 3       # no alerts until the persistent-cell memory has this many days
 
 
 def now_utc() -> dt.datetime:
@@ -147,12 +156,16 @@ def thermal(points: list[dict], state: dict, today: str) -> dict:
 
 
 def thermal_alerts(boxes: dict, state: dict) -> list[dict]:
-    """New hot points or clusters not reported in an earlier run today."""
+    """New strong heat sources (FRP of at least HIGH_FRP in a cell that does not burn most days).
+    Silent for the first WARMUP_DAYS days, while the memory of persistent cells fills."""
     seen = state.setdefault("alerted", {})
+    first = state.setdefault("firstRun", now_utc().date().isoformat())
+    if (now_utc().date() - dt.date.fromisoformat(first)).days < WARMUP_DAYS:
+        return []
     alerts = []
     for key, v in boxes.items():
         for p in v["top"]:
-            if p["frp"] < HIGH_FRP and v["newCells"] < 4:
+            if p["frp"] < HIGH_FRP:
                 continue
             sig = hashlib.sha1(f'{key}{p["cell"]}{p["time"][:10]}'.encode()).hexdigest()[:12]
             if sig in seen:
@@ -203,7 +216,7 @@ def defense_rss(state: dict, status: dict) -> list[dict]:
 OFFICIAL = [
     {"key": "mfa_tr", "source": "Türkiye Ministry of Foreign Affairs", "domain": "mfa.gov.tr", "files": ["turkey"],
      "kind": "rss", "url": "https://www.mfa.gov.tr/rss.en.mfa", "all": True},
-    {"key": "qna", "source": "Qatar News Agency", "domain": "qna.org.qa", "files": ["gulf"], "kind": "links",
+    {"key": "qna", "agency": True, "source": "Qatar News Agency", "domain": "qna.org.qa", "files": ["gulf"], "kind": "links",
      "url": "https://www.qna.org.qa/en", "pattern": r'<a[^>]+href="(https://qna\.org\.qa/en/News-Area/News/\d{4}-\d{2}/\d{2}/[^"]+)"[^>]*>\s*([^<]{15,200})</a>'},
     {"key": "ona", "source": "Oman News Agency", "domain": "omannews.gov.om", "files": ["gulf"], "kind": "links", "lang": "ar",
      "url": "https://omannews.gov.om/", "base": "https://omannews.gov.om/", "insecure": True,
@@ -211,7 +224,7 @@ OFFICIAL = [
     {"key": "ofac", "source": "US Treasury OFAC", "domain": "ofac.treasury.gov", "files": ["iran", "russia", "gulf"], "kind": "links", "all": True,
      "url": "https://ofac.treasury.gov/recent-actions", "base": "https://ofac.treasury.gov",
      "pattern": r'<a[^>]+href="(/recent-actions/\d{8}[^"]*)"[^>]*>\s*([^<]{8,200})</a>'},
-    {"key": "spa", "source": "Saudi Press Agency", "domain": "spa.gov.sa", "files": ["gulf"], "kind": "nextdata",
+    {"key": "spa", "agency": True, "source": "Saudi Press Agency", "domain": "spa.gov.sa", "files": ["gulf"], "kind": "nextdata",
      "url": "https://www.spa.gov.sa/en", "base": "https://www.spa.gov.sa/en/"},
 ]
 
@@ -267,9 +280,14 @@ def official_pages(state: dict, status: dict) -> list[dict]:
                 root = ET.fromstring(h.encode("utf-8"))
                 for it in root.iter("item"):
                     rows.append(((it.findtext("link") or "").strip(), (it.findtext("title") or "").strip(), it.findtext("pubDate") or ""))
-            except ET.ParseError as e:
-                status[src["key"]] = f"error: rss {str(e)[:80]}"
-                continue
+            except ET.ParseError:
+                # some ministry feeds are not well-formed XML; read the items with a pattern instead
+                for blk in re.findall(r"<item>(.*?)</item>", h, re.S | re.I):
+                    lk = re.search(r"<link>\s*(?:<!\[CDATA\[)?(.*?)(?:\]\]>)?\s*</link>", blk, re.S | re.I)
+                    tt = re.search(r"<title>\s*(?:<!\[CDATA\[)?(.*?)(?:\]\]>)?\s*</title>", blk, re.S | re.I)
+                    pd = re.search(r"<pubDate>(.*?)</pubDate>", blk, re.S | re.I)
+                    if lk and tt:
+                        rows.append((lk.group(1).strip(), re.sub(r"<[^>]+>", "", tt.group(1)).strip(), pd.group(1).strip() if pd else ""))
         elif src["kind"] == "links":
             for u, ttl in re.findall(src["pattern"], h):
                 u = u if u.startswith("http") else src.get("base", "") + u
@@ -283,7 +301,14 @@ def official_pages(state: dict, status: dict) -> list[dict]:
             dedup.add(link)
             import html as _h
             title = _h.unescape(title)
-            relevant = src.get("all") or bool(KEYWORDS.search(title)) or src.get("lang") == "ar"
+            if src.get("all"):
+                relevant = True
+            elif src.get("lang") == "ar":
+                relevant = bool(AGENCY_AR.search(title))
+            elif src.get("agency"):
+                relevant = bool(AGENCY_EN.search(title))
+            else:
+                relevant = bool(KEYWORDS.search(title))
             uid = hashlib.sha1(link.encode()).hexdigest()[:12]
             items.append({"id": f"O-{uid}", "kind": "official", "source": src["source"], "domain": src["domain"], "rel": "A",
                           "files": src["files"], "lang": src.get("lang", "en"), "title": title, "url": link, "published": pub,
@@ -312,6 +337,8 @@ def main() -> int:
     for name, url in FIRMS.items():
         points += read_firms(name, url, status)
     boxes = thermal(points, state, today) if points else {}
+    if "firstRun" not in state:
+        state["recentAlerts"] = []   # drop alerts raised before the warm-up rule existed
     alerts = thermal_alerts(boxes, state) if boxes else []
     # keep the last 48 hours of alerts in the picture, so a task that reads later still sees them
     recent = [x for x in state.get("recentAlerts", []) if x.get("seenAt", "") >= (t - dt.timedelta(hours=48)).isoformat(timespec="seconds")]
