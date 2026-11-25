@@ -1,0 +1,47 @@
+name: probe
+
+# One-off reachability test for candidate OSINT signal sources. Run by hand; prints HTTP status, size and a sample.
+on:
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Probe sources
+        run: |
+          probe() {
+            code=$(curl -sS -L -m 25 -A "Mozilla/5.0 (StrategicRadar collector)" -o /tmp/body -w "%{http_code} %{size_download} %{content_type}" "$2" 2>/tmp/err || echo "ERR $(head -c 120 /tmp/err)")
+            echo "::group::$1  ->  $code"
+            echo "$2"
+            head -c 600 /tmp/body | tr '\n' ' ' ; echo
+            echo "::endgroup::"
+            echo "$1|$code" >> /tmp/summary
+          }
+          probe nga_warn_json   "https://msi.nga.mil/api/publications/broadcast-warn?output=json&status=active"
+          probe nga_navarea9    "https://msi.nga.mil/api/publications/broadcast-warn?output=json&status=active&navArea=9"
+          probe ukmto_incidents "https://www.ukmto.org/recent-incidents"
+          probe ukmto_api       "https://www.ukmto.org/api/incidents"
+          probe jmic            "https://www.ukmto.org/partner-products/jmic-products"
+          probe firms_noauth    "https://firms.modaps.eosdis.nasa.gov/api/area/csv/DEMO_KEY/VIIRS_SNPP_NRT/50,24,60,30/1"
+          probe firms_kml       "https://firms.modaps.eosdis.nasa.gov/data/active_fire/suomi-npp-viirs-c2/csv/SUOMI_VIIRS_C2_Global_24h.csv"
+          probe centcom_rss     "https://www.centcom.mil/DesktopModules/ArticleCS/RSS.ashx?ContentType=1&Site=808&max=10"
+          probe centcom_page    "https://www.centcom.mil/MEDIA/PRESS-RELEASES/"
+          probe dod_rss         "https://www.defense.gov/DesktopModules/ArticleCS/RSS.ashx?ContentType=9&Site=945&max=10"
+          probe idf_press       "https://www.idf.il/en/mini-sites/idf-press-releases-israel-at-war/"
+          probe msb_news        "https://www.msb.gov.tr/SlaytHaber"
+          probe mfa_tr          "https://www.mfa.gov.tr/sub.en.mfa?05571df7-0e04-4c5f-aa26-8b8eb2f8e7f6"
+          probe ru_mod          "https://eng.mil.ru/en/news_page/country.htm"
+          probe ua_gs           "https://www.zsu.gov.ua/en"
+          probe navcen          "https://www.navcen.uscg.gov/maritime-advisories"
+          probe marad_msci      "https://www.maritime.dot.gov/msci-advisories"
+          probe spa             "https://www.spa.gov.sa/en"
+          probe wam             "https://www.wam.ae/en"
+          probe kuna            "https://www.kuna.net.kw/Default.aspx?language=en"
+          probe ofac_recent     "https://ofac.treasury.gov/recent-actions"
+          probe state_rss       "https://www.state.gov/rss-feed/press-releases/feed/"
+          echo; echo "SUMMARY"; cat /tmp/summary
