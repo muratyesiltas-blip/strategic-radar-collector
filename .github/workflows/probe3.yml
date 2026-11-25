@@ -1,0 +1,60 @@
+name: probe3
+
+# Third pass: find where the official sites keep their news lists (embedded JSON or an API).
+on:
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Inspect official sites
+        shell: bash
+        run: |
+          set +e
+          python3 - <<'PY'
+          import re, json, urllib.request, ssl
+          UA = {"User-Agent": "Mozilla/5.0 (StrategicRadar collector)", "Accept-Language": "en"}
+          ctx = ssl.create_default_context()
+          def get(url, insecure=False):
+              try:
+                  c = ssl._create_unverified_context() if insecure else ctx
+                  r = urllib.request.urlopen(urllib.request.Request(url, headers=UA), timeout=25, context=c)
+                  return r.status, r.read().decode("utf-8", "ignore")
+              except Exception as e:
+                  return "ERR", str(e)[:200]
+          def show(name, url, insecure=False):
+              st, h = get(url, insecure)
+              print(f"\n===== {name} {st} {len(h)} {url}")
+              if st == "ERR": print(h); return
+              nd = re.search(r'<script id="__NEXT_DATA__"[^>]*>(.*?)</script>', h, re.S)
+              if nd:
+                  s = nd.group(1); print("NEXT_DATA", len(s))
+                  for k in ["title", "headline", "slug", "url", "publishDate", "date"]:
+                      print(k, re.findall(r'"%s"\s*:\s*"([^"]{5,140})"' % k, s)[:4])
+              print("api/json urls:", sorted(set(re.findall(r'https?://[^"\'\s<>]*(?:api|json|rss|feed)[^"\'\s<>]*', h, re.I)))[:12])
+              print("rel paths:", sorted(set(re.findall(r'["\'](/[^"\'\s<>]*(?:api|rss|feed)[^"\'\s<>]*)', h, re.I)))[:12])
+              links = re.findall(r'<a[^>]+href="([^"#]+)"[^>]*>\s*([^<]{25,160})</a>', h)
+              print("links:", [(u[:110], t.strip()[:90]) for u, t in links[:10]])
+          show("spa", "https://www.spa.gov.sa/en")
+          show("spa_news", "https://www.spa.gov.sa/en/news")
+          show("wam", "https://www.wam.ae/en")
+          show("wam_api", "https://www.wam.ae/api/app/views/GetViewByUrl?url=/en&language=en")
+          show("kuna", "https://www.kuna.net.kw/Default.aspx?language=en")
+          show("qna", "https://www.qna.org.qa/en")
+          show("ona", "https://omannews.gov.om/", insecure=True)
+          show("bna", "https://www.bna.bh/en/", insecure=True)
+          show("idf", "https://www.idf.il/en/mini-sites/idf-press-releases-israel-at-war/")
+          show("mfa_tr", "https://www.mfa.gov.tr/sub.en.mfa?05571df7-0e04-4c5f-aa26-8b8eb2f8e7f6")
+          show("mfa_tr_rss", "https://www.mfa.gov.tr/rss.en.mfa")
+          show("ofac", "https://ofac.treasury.gov/recent-actions")
+          show("iran_mfa", "https://en.mfa.ir/portal/newsagency")
+          show("msb2", "https://www.msb.gov.tr/Basin-Odasi")
+          show("tccb", "https://www.tccb.gov.tr/en/news/")
+          show("ukmto_jmic", "https://www.ukmto.org/partner-products/jmic-products")
+          show("maritime_ukmto_api", "https://www.ukmto.org/api/ukmto/incidents")
+          PY
