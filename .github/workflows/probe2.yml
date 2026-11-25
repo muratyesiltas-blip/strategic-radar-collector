@@ -1,0 +1,46 @@
+name: probe2
+
+# Second reachability pass: look inside the sources that answered, and retry the ones that may only have been down.
+on:
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Look inside
+        run: |
+          UA="Mozilla/5.0 (StrategicRadar collector)"
+          get() { curl -sS -L -m 25 -A "$UA" -o "/tmp/$1" -w "$1 -> %{http_code} %{size_download}\n" "$2" || echo "$1 -> ERR"; }
+          get ukmto.html "https://www.ukmto.org/recent-incidents"
+          python3 - <<'PY'
+          import re, json
+          h = open('/tmp/ukmto.html', encoding='utf-8', errors='ignore').read()
+          m = re.search(r'<script id="__NEXT_DATA__"[^>]*>(.*?)</script>', h, re.S)
+          print("UKMTO next_data:", bool(m))
+          if m:
+              d = json.loads(m.group(1)); s = json.dumps(d)[:1500]; print(s)
+          print("UKMTO api hints:", sorted(set(re.findall(r'https?://[^"\']+(?:api|incident)[^"\']*', h)))[:15])
+          PY
+          get centcom.xml "https://www.centcom.mil/DesktopModules/ArticleCS/RSS.ashx?ContentType=1&Site=808&max=10"; head -c 700 /tmp/centcom.xml; echo
+          get centcom2.xml "https://www.centcom.mil/DesktopModules/ArticleCS/RSS.ashx?max=10&ContentType=1&Site=808&isdashboardselected=0"; head -c 400 /tmp/centcom2.xml; echo
+          get dod.xml "https://www.defense.gov/DesktopModules/ArticleCS/RSS.ashx?ContentType=9&Site=945&max=10"; grep -o '<title>[^<]*' /tmp/dod.xml | head -5
+          for f in "modis-c6.1/csv/MODIS_C6_1_Global_24h.csv" "noaa-20-viirs-c2/csv/J1_VIIRS_C2_Global_24h.csv" "suomi-npp-viirs-c2/csv/SUOMI_VIIRS_C2_Global_24h.csv" "suomi-npp-viirs-c2/csv/SUOMI_VIIRS_C2_Global_48h.csv"; do get firms.csv "https://firms.modaps.eosdis.nasa.gov/data/active_fire/$f"; wc -l < /tmp/firms.csv; sed -n 2p /tmp/firms.csv; done
+          get nga.json "https://msi.nga.mil/api/publications/broadcast-warn?output=json&status=active"; head -c 300 /tmp/nga.json; echo
+          get spa.html "https://www.spa.gov.sa/en"; grep -o 'href="/en/[^"]*' /tmp/spa.html | head -8; grep -io 'rss[^"]*' /tmp/spa.html | head -3
+          get wam.html "https://www.wam.ae/en"; grep -o 'href="[^"]*article[^"]*' /tmp/wam.html | head -8; grep -io '[^"]*rss[^"]*' /tmp/wam.html | head -3
+          get kuna.html "https://www.kuna.net.kw/Default.aspx?language=en"; grep -o 'href="[^"]*ArticleDetails[^"]*' /tmp/kuna.html | head -5
+          get kunarss.xml "https://www.kuna.net.kw/rss/rss.aspx?language=en"; head -c 300 /tmp/kunarss.xml; echo
+          get bna.html "https://www.bna.bh/en/"; grep -o 'href="[^"]*news[^"]*' /tmp/bna.html | head -5
+          get ona.html "https://omannews.gov.om/"; head -c 200 /tmp/ona.html; echo
+          get qna.html "https://www.qna.org.qa/en"; head -c 200 /tmp/qna.html; echo
+          get idf.html "https://www.idf.il/en/mini-sites/idf-press-releases-israel-at-war/"; grep -o 'href="/en/mini-sites/[^"]*' /tmp/idf.html | head -6
+          get mfa.html "https://www.mfa.gov.tr/sub.en.mfa?05571df7-0e04-4c5f-aa26-8b8eb2f8e7f6"; grep -o 'href="[^"]*\.en\.mfa"[^>]*>[^<]*' /tmp/mfa.html | head -6
+          get ofac.html "https://ofac.treasury.gov/recent-actions"; grep -o 'href="/recent-actions/[0-9][^"]*"[^>]*>[^<]*' /tmp/ofac.html | head -5
+          get ofacrss.xml "https://ofac.treasury.gov/system/files/126/ofac.xml"; head -c 300 /tmp/ofacrss.xml; echo
+          get msb2.html "https://www.msb.gov.tr/Basin-Odasi"; head -c 120 /tmp/msb2.html; echo
+          get iranmofa.html "https://en.mfa.ir/portal/newsagency"; head -c 120 /tmp/iranmofa.html; echo
