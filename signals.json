@@ -1,0 +1,1968 @@
+{
+ "generatedAt": "2026-11-26T00:27:05+00:00",
+ "version": 1,
+ "note": "Machine-collected signals. Thermal anomalies are heat sources seen from orbit, not confirmed strikes; persistent cells (seen on at least 3 of the last 7 days) are dropped as flares or industry.",
+ "thermal": {
+  "hormuz": {
+   "label": "Strait of Hormuz and approaches",
+   "files": [
+    "iran",
+    "gulf"
+   ],
+   "points": 41,
+   "persistentDropped": 0,
+   "newPoints": 41,
+   "newCells": 11,
+   "frpNew": 144.6,
+   "top": [
+    {
+     "lat": 24.50196,
+     "lon": 56.60997,
+     "frp": 14.37,
+     "sensor": "viirs_n20",
+     "time": "2026-11-24 10:19Z",
+     "cell": "24.5,56.6",
+     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@56.60997,24.50196,11z"
+    },
+    {
+     "lat": 24.50618,
+     "lon": 56.60719,
+     "frp": 10.15,
+     "sensor": "viirs_n20",
+     "time": "2026-11-24 10:19Z",
+     "cell": "24.5,56.6",
+     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@56.60719,24.50618,11z"
+    },
+    {
+     "lat": 24.50661,
+     "lon": 56.61282,
+     "frp": 8.98,
+     "sensor": "viirs_n20",
+     "time": "2026-11-24 10:19Z",
+     "cell": "24.5,56.6",
+     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@56.61282,24.50661,11z"
+    },
+    {
+     "lat": 26.2897,
+     "lon": 56.14073,
+     "frp": 8.89,
+     "sensor": "viirs_n20",
+     "time": "2026-11-25 10:02Z",
+     "cell": "26.3,56.1",
+     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@56.14073,26.2897,11z"
+    },
+    {
+     "lat": 24.50358,
+     "lon": 56.6065,
+     "frp": 8.09,
+     "sensor": "viirs_n20",
+     "time": "2026-11-25 10:02Z",
+     "cell": "24.5,56.6",
+     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@56.6065,24.50358,11z"
+    },
+    {
+     "lat": 24.50191,
+     "lon": 56.6081,
+     "frp": 7.82,
+     "sensor": "modis",
+     "time": "2026-11-25 16:37Z",
+     "cell": "24.5,56.6",
+     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@56.6081,24.50191,11z"
+    },
+    {
+     "lat": 27.1622,
+     "lon": 56.10147,
+     "frp": 7.11,
+     "sensor": "modis",
+     "time": "2026-11-25 16:37Z",
+     "cell": "27.2,56.1",
+     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@56.10147,27.1622,11z"
+    },
+    {
+     "lat": 27.15771,
+     "lon": 56.10157,
+     "frp": 6.76,
+     "sensor": "viirs_n20",
+     "time": "2026-11-25 10:02Z",
+     "cell": "27.2,56.1",
+     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@56.10157,27.15771,11z"
+    }
+   ]
+  },
+  "gulf_north": {
+   "label": "Kuwait, Bahrain, Qatar and the Saudi east coast",
+   "files": [
+    "gulf",
+    "iran"
+   ],
+   "points": 406,
+   "persistentDropped": 0,
+   "newPoints": 406,
+   "newCells": 108,
+   "frpNew": 3796.7,
+   "top": [
+    {
+     "lat": 30.41216,
+     "lon": 50.75806,
+     "frp": 102.03,
+     "sensor": "modis",
+     "time": "2026-11-24 17:36Z",
+     "cell": "30.4,50.8",
+     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@50.75806,30.41216,11z"
+    },
+    {
+     "lat": 30.3583,
+     "lon": 47.3363,
+     "frp": 98.94,
+     "sensor": "modis",
+     "time": "2026-11-25 16:37Z",
+     "cell": "30.4,47.3",
+     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@47.3363,30.3583,11z"
+    },
+    {
+     "lat": 30.41426,
+     "lon": 50.75305,
+     "frp": 91.7,
+     "sensor": "modis",
+     "time": "2026-11-24 17:36Z",
+     "cell": "30.4,50.8",
+     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@50.75305,30.41426,11z"
+    },
+    {
+     "lat": 30.35608,
+     "lon": 47.3386,
+     "frp": 88.0,
+     "sensor": "modis",
+     "time": "2026-11-24 17:36Z",
+     "cell": "30.4,47.3",
+     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@47.3386,30.35608,11z"
+    },
+    {
+     "lat": 30.35596,
+     "lon": 47.33998,
+     "frp": 83.44,
+     "sensor": "viirs_n20",
+     "time": "2026-11-24 10:21Z",
+     "cell": "30.4,47.3",
+     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@47.33998,30.35596,11z"
+    },
+    {
+     "lat": 28.99717,
+     "lon": 48.01207,
+     "frp": 78.22,
+     "sensor": "modis",
+     "time": "2026-11-25 00:28Z",
+     "cell": "29.0,48.0",
+     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@48.01207,28.99717,11z"
+    },
+    {
+     "lat": 30.3672,
+     "lon": 47.3401,
+     "frp": 77.44,
+     "sensor": "modis",
+     "time": "2026-11-25 00:26Z",
+     "cell": "30.4,47.3",
+     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@47.3401,30.3672,11z"
+    },
+    {
+     "lat": 28.9973,
+     "lon": 48.00692,
+     "frp": 65.22,
+     "sensor": "modis",
+     "time": "2026-11-25 00:28Z",
+     "cell": "29.0,48.0",
+     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@48.00692,28.9973,11z"
+    }
+   ]
+  },
+  "iran_south": {
+   "label": "Iran's Gulf coast and Khuzestan",
+   "files": [
+    "iran"
+   ],
+   "points": 342,
+   "persistentDropped": 0,
+   "newPoints": 342,
+   "newCells": 72,
+   "frpNew": 5010.8,
+   "top": [
+    {
+     "lat": 30.75474,
+     "lon": 48.27705,
+     "frp": 218.78,
+     "sensor": "modis",
+     "time": "2026-11-25 16:39Z",
+     "cell": "30.8,48.3",
+     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@48.27705,30.75474,11z"
+    },
+    {
+     "lat": 30.75464,
+     "lon": 48.28265,
+     "frp": 153.1,
+     "sensor": "modis",
+     "time": "2026-11-25 16:39Z",
+     "cell": "30.8,48.3",
+     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@48.28265,30.75464,11z"
+    },
+    {
+     "lat": 31.00019,
+     "lon": 48.13786,
+     "frp": 130.11,
+     "sensor": "modis",
+     "time": "2026-11-24 17:36Z",
+     "cell": "31.0,48.1",
+     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@48.13786,31.00019,11z"
+    },
+    {
+     "lat": 31.27131,
+     "lon": 48.11993,
+     "frp": 115.73,
+     "sensor": "modis",
+     "time": "2026-11-24 17:36Z",
+     "cell": "31.3,48.1",
+     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@48.11993,31.27131,11z"
+    },
+    {
+     "lat": 30.75402,
+     "lon": 48.2738,
+     "frp": 112.04,
+     "sensor": "modis",
+     "time": "2026-11-24 17:36Z",
+     "cell": "30.8,48.3",
+     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@48.2738,30.75402,11z"
+    },
+    {
+     "lat": 31.27164,
+     "lon": 48.11659,
+     "frp": 111.33,
+     "sensor": "modis",
+     "time": "2026-11-25 16:39Z",
+     "cell": "31.3,48.1",
+     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@48.11659,31.27164,11z"
+    },
+    {
+     "lat": 31.0017,
+     "lon": 48.1321,
+     "frp": 102.5,
+     "sensor": "modis",
+     "time": "2026-11-24 17:36Z",
+     "cell": "31.0,48.1",
+     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@48.1321,31.0017,11z"
+    },
+    {
+     "lat": 31.01144,
+     "lon": 48.14012,
+     "frp": 100.27,
+     "sensor": "modis",
+     "time": "2026-11-25 00:26Z",
+     "cell": "31.0,48.1",
+     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@48.14012,31.01144,11z"
+    }
+   ]
+  },
+  "red_sea_yemen": {
+   "label": "Hodeidah, the Yemeni Red Sea coast and Bab al-Mandeb",
+   "files": [
+    "mideast",
+    "gulf"
+   ],
+   "points": 6,
+   "persistentDropped": 0,
+   "newPoints": 6,
+   "newCells": 3,
+   "frpNew": 16.5,
+   "top": [
+    {
+     "lat": 15.5352,
+     "lon": 45.9212,
+     "frp": 10.58,
+     "sensor": "modis",
+     "time": "2026-11-25 05:44Z",
+     "cell": "15.5,45.9",
+     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@45.9212,15.5352,11z"
+    },
+    {
+     "lat": 16.94026,
+     "lon": 42.63035,
+     "frp": 1.52,
+     "sensor": "viirs_n20",
+     "time": "2026-11-24 22:50Z",
+     "cell": "16.9,42.6",
+     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@42.63035,16.94026,11z"
+    },
+    {
+     "lat": 16.9397,
+     "lon": 42.63394,
+     "frp": 1.41,
+     "sensor": "viirs_n20",
+     "time": "2026-11-24 22:50Z",
+     "cell": "16.9,42.6",
+     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@42.63394,16.9397,11z"
+    },
+    {
+     "lat": 15.58269,
+     "lon": 45.8014,
+     "frp": 1.21,
+     "sensor": "viirs_n20",
+     "time": "2026-11-24 22:50Z",
+     "cell": "15.6,45.8",
+     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@45.8014,15.58269,11z"
+    },
+    {
+     "lat": 15.57915,
+     "lon": 45.80075,
+     "frp": 0.97,
+     "sensor": "viirs_n20",
+     "time": "2026-11-24 22:50Z",
+     "cell": "15.6,45.8",
+     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@45.80075,15.57915,11z"
+    },
+    {
+     "lat": 15.57798,
+     "lon": 45.80153,
+     "frp": 0.79,
+     "sensor": "viirs_n20",
+     "time": "2026-11-24 10:17Z",
+     "cell": "15.6,45.8",
+     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@45.80153,15.57798,11z"
+    }
+   ]
+  },
+  "iraq_kurdistan": {
+   "label": "Qandil, Duhok and the Iraq-Türkiye border belt",
+   "files": [
+    "pkk",
+    "mideast"
+   ],
+   "points": 36,
+   "persistentDropped": 0,
+   "newPoints": 36,
+   "newCells": 25,
+   "frpNew": 204.3,
+   "top": [
+    {
+     "lat": 36.43653,
+     "lon": 43.91105,
+     "frp": 33.98,
+     "sensor": "modis",
+     "time": "2026-11-24 12:27Z",
+     "cell": "36.4,43.9",
+     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@43.91105,36.43653,11z"
+    },
+    {
+     "lat": 36.02489,
+     "lon": 43.96202,
+     "frp": 28.44,
+     "sensor": "modis",
+     "time": "2026-11-24 12:27Z",
+     "cell": "36.0,44.0",
+     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@43.96202,36.02489,11z"
+    },
+    {
+     "lat": 36.43821,
+     "lon": 43.9219,
+     "frp": 11.11,
+     "sensor": "modis",
+     "time": "2026-11-24 12:27Z",
+     "cell": "36.4,43.9",
+     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@43.9219,36.43821,11z"
+    },
+    {
+     "lat": 36.04499,
+     "lon": 43.78193,
+     "frp": 9.67,
+     "sensor": "modis",
+     "time": "2026-11-24 12:27Z",
+     "cell": "36.0,43.8",
+     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@43.78193,36.04499,11z"
+    },
+    {
+     "lat": 36.40054,
+     "lon": 43.79575,
+     "frp": 7.02,
+     "sensor": "modis",
+     "time": "2026-11-24 12:27Z",
+     "cell": "36.4,43.8",
+     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@43.79575,36.40054,11z"
+    },
+    {
+     "lat": 36.08644,
+     "lon": 43.87337,
+     "frp": 6.22,
+     "sensor": "modis",
+     "time": "2026-11-24 12:27Z",
+     "cell": "36.1,43.9",
+     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@43.87337,36.08644,11z"
+    },
+    {
+     "lat": 36.77164,
+     "lon": 43.32229,
+     "frp": 6.2,
+     "sensor": "modis",
+     "time": "2026-11-24 12:27Z",
+     "cell": "36.8,43.3",
+     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@43.32229,36.77164,11z"
+    },
+    {
+     "lat": 36.04554,
+     "lon": 43.70249,
+     "frp": 6.1,
+     "sensor": "viirs_n20",
+     "time": "2026-11-24 10:23Z",
+     "cell": "36.0,43.7",
+     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@43.70249,36.04554,11z"
+    }
+   ]
+  },
+  "syria_ne": {
+   "label": "Northeast Syria",
+   "files": [
+    "syria",
+    "pkk"
+   ],
+   "points": 113,
+   "persistentDropped": 0,
+   "newPoints": 113,
+   "newCells": 54,
+   "frpNew": 775.8,
+   "top": [
+    {
+     "lat": 36.9353,
+     "lon": 40.1608,
+     "frp": 36.26,
+     "sensor": "modis",
+     "time": "2026-11-24 12:27Z",
+     "cell": "36.9,40.2",
+     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@40.1608,36.9353,11z"
+    },
+    {
+     "lat": 36.94521,
+     "lon": 40.15793,
+     "frp": 34.29,
+     "sensor": "modis",
+     "time": "2026-11-24 12:27Z",
+     "cell": "36.9,40.2",
+     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@40.15793,36.94521,11z"
+    },
+    {
+     "lat": 36.92091,
+     "lon": 40.19555,
+     "frp": 33.45,
+     "sensor": "modis",
+     "time": "2026-11-24 12:27Z",
+     "cell": "36.9,40.2",
+     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@40.19555,36.92091,11z"
+    },
+    {
+     "lat": 36.98053,
+     "lon": 39.08282,
+     "frp": 33.18,
+     "sensor": "modis",
+     "time": "2026-11-25 13:05Z",
+     "cell": "37.0,39.1",
+     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@39.08282,36.98053,11z"
+    },
+    {
+     "lat": 37.01015,
+     "lon": 40.26754,
+     "frp": 31.65,
+     "sensor": "modis",
+     "time": "2026-11-25 13:05Z",
+     "cell": "37.0,40.3",
+     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@40.26754,37.01015,11z"
+    },
+    {
+     "lat": 36.98741,
+     "lon": 40.15417,
+     "frp": 31.39,
+     "sensor": "modis",
+     "time": "2026-11-25 13:05Z",
+     "cell": "37.0,40.2",
+     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@40.15417,36.98741,11z"
+    },
+    {
+     "lat": 36.92733,
+     "lon": 40.25454,
+     "frp": 23.18,
+     "sensor": "modis",
+     "time": "2026-11-25 13:05Z",
+     "cell": "36.9,40.3",
+     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@40.25454,36.92733,11z"
+    },
+    {
+     "lat": 36.93029,
+     "lon": 40.26862,
+     "frp": 21.38,
+     "sensor": "viirs_n20",
+     "time": "2026-11-25 10:06Z",
+     "cell": "36.9,40.3",
+     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@40.26862,36.93029,11z"
+    }
+   ]
+  },
+  "levant": {
+   "label": "Gaza, Israel, Lebanon and southwest Syria",
+   "files": [
+    "israel",
+    "mideast",
+    "syria"
+   ],
+   "points": 12,
+   "persistentDropped": 0,
+   "newPoints": 12,
+   "newCells": 10,
+   "frpNew": 200.0,
+   "top": [
+    {
+     "lat": 31.87388,
+     "lon": 35.55682,
+     "frp": 122.46,
+     "sensor": "modis",
+     "time": "2026-11-25 18:17Z",
+     "cell": "31.9,35.6",
+     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@35.55682,31.87388,11z"
+    },
+    {
+     "lat": 31.87215,
+     "lon": 35.53646,
+     "frp": 45.57,
+     "sensor": "modis",
+     "time": "2026-11-25 18:17Z",
+     "cell": "31.9,35.5",
+     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@35.53646,31.87215,11z"
+    },
+    {
+     "lat": 32.95446,
+     "lon": 35.39238,
+     "frp": 14.34,
+     "sensor": "modis",
+     "time": "2026-11-24 17:36Z",
+     "cell": "33.0,35.4",
+     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@35.39238,32.95446,11z"
+    },
+    {
+     "lat": 33.11436,
+     "lon": 35.82711,
+     "frp": 4.39,
+     "sensor": "viirs_n20",
+     "time": "2026-11-24 10:23Z",
+     "cell": "33.1,35.8",
+     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@35.82711,33.11436,11z"
+    },
+    {
+     "lat": 32.80465,
+     "lon": 35.48205,
+     "frp": 2.51,
+     "sensor": "viirs_n20",
+     "time": "2026-11-24 10:23Z",
+     "cell": "32.8,35.5",
+     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@35.48205,32.80465,11z"
+    },
+    {
+     "lat": 34.71435,
+     "lon": 36.6362,
+     "frp": 2.44,
+     "sensor": "viirs_n20",
+     "time": "2026-11-24 10:23Z",
+     "cell": "34.7,36.6",
+     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@36.6362,34.71435,11z"
+    },
+    {
+     "lat": 33.72301,
+     "lon": 35.81889,
+     "frp": 1.91,
+     "sensor": "viirs_n20",
+     "time": "2026-11-25 10:06Z",
+     "cell": "33.7,35.8",
+     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@35.81889,33.72301,11z"
+    },
+    {
+     "lat": 32.95895,
+     "lon": 35.39665,
+     "frp": 1.8,
+     "sensor": "viirs_n20",
+     "time": "2026-11-25 00:26Z",
+     "cell": "33.0,35.4",
+     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@35.39665,32.95895,11z"
+    }
+   ]
+  },
+  "black_sea_crimea": {
+   "label": "Crimea, Novorossiysk and the Kerch Strait",
+   "files": [
+    "russia"
+   ],
+   "points": 3,
+   "persistentDropped": 0,
+   "newPoints": 3,
+   "newCells": 2,
+   "frpNew": 3.6,
+   "top": [
+    {
+     "lat": 44.7369,
+     "lon": 37.80835,
+     "frp": 1.62,
+     "sensor": "viirs_n20",
+     "time": "2026-11-25 00:24Z",
+     "cell": "44.7,37.8",
+     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@37.80835,44.7369,11z"
+    },
+    {
+     "lat": 44.7369,
+     "lon": 37.80964,
+     "frp": 1.29,
+     "sensor": "viirs_n20",
+     "time": "2026-11-25 00:24Z",
+     "cell": "44.7,37.8",
+     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@37.80964,44.7369,11z"
+    },
+    {
+     "lat": 44.83844,
+     "lon": 37.67511,
+     "frp": 0.7,
+     "sensor": "viirs_n20",
+     "time": "2026-11-25 00:24Z",
+     "cell": "44.8,37.7",
+     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@37.67511,44.83844,11z"
+    }
+   ]
+  },
+  "ukraine_east": {
+   "label": "The front line in eastern and southern Ukraine",
+   "files": [
+    "russia"
+   ],
+   "points": 6,
+   "persistentDropped": 0,
+   "newPoints": 6,
+   "newCells": 3,
+   "frpNew": 14.0,
+   "top": [
+    {
+     "lat": 47.84013,
+     "lon": 39.85255,
+     "frp": 3.69,
+     "sensor": "viirs_n20",
+     "time": "2026-11-25 00:22Z",
+     "cell": "47.8,39.9",
+     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@39.85255,47.84013,11z"
+    },
+    {
+     "lat": 47.84187,
+     "lon": 39.84789,
+     "frp": 2.47,
+     "sensor": "viirs_n20",
+     "time": "2026-11-24 22:41Z",
+     "cell": "47.8,39.8",
+     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@39.84789,47.84187,11z"
+    },
+    {
+     "lat": 47.84165,
+     "lon": 39.8523,
+     "frp": 2.47,
+     "sensor": "viirs_n20",
+     "time": "2026-11-24 22:41Z",
+     "cell": "47.8,39.9",
+     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@39.8523,47.84165,11z"
+    },
+    {
+     "lat": 47.83652,
+     "lon": 39.85183,
+     "frp": 2.47,
+     "sensor": "viirs_n20",
+     "time": "2026-11-24 22:41Z",
+     "cell": "47.8,39.9",
+     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@39.85183,47.83652,11z"
+    },
+    {
+     "lat": 47.84117,
+     "lon": 39.85051,
+     "frp": 2.33,
+     "sensor": "viirs_n20",
+     "time": "2026-11-25 00:22Z",
+     "cell": "47.8,39.9",
+     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@39.85051,47.84117,11z"
+    },
+    {
+     "lat": 47.08848,
+     "lon": 38.14427,
+     "frp": 0.56,
+     "sensor": "viirs_n20",
+     "time": "2026-11-25 00:22Z",
+     "cell": "47.1,38.1",
+     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@38.14427,47.08848,11z"
+    }
+   ]
+  }
+ },
+ "alerts": [],
+ "newAlerts": 0,
+ "official": [
+  {
+   "id": "O-f89d99f7988f",
+   "kind": "official",
+   "source": "US Department of War",
+   "domain": "defense.gov",
+   "rel": "A",
+   "title": "Secretary of War General Officer Announcements for November 20, 2026",
+   "url": "https://www.war.gov/News/Releases/Release/Article/4659055/secretary-of-war-general-officer-announcements-for-november-20-2026/",
+   "published": "Fri, 20 Nov 2026 14:39:00 GMT",
+   "summary": "Secretary of War Pete Hegseth announced the president made general officer nominations.",
+   "relevant": false,
+   "new": false
+  },
+  {
+   "id": "O-abd818e3817f",
+   "kind": "official",
+   "source": "US Department of War",
+   "domain": "defense.gov",
+   "rel": "A",
+   "title": "Department of War Publishes Eighth Release of Unidentified Anomalous Phenomena Files on WAR.GOV/UFO",
+   "url": "https://www.war.gov/News/Releases/Release/Article/4655441/department-of-war-publishes-eighth-release-of-unidentified-anomalous-phenomena/",
+   "published": "Fri, 20 Nov 2026 13:00:08 GMT",
+   "summary": "The War Department published the eighth release of declassified and historical Unidentified Anomalous Phenomena files as part of the Presidential Unsealing and Reporting System for UAP Encounters.",
+   "relevant": false,
+   "new": false
+  },
+  {
+   "id": "O-a7a4b7c17d56",
+   "kind": "official",
+   "source": "US Department of War",
+   "domain": "defense.gov",
+   "rel": "A",
+   "title": "Department of War Advances Orchestration for Unmanned Vehicle Fleets",
+   "url": "https://www.war.gov/News/Releases/Release/Article/4655108/department-of-war-advances-orchestration-for-unmanned-vehicle-fleets/",
+   "published": "Thu, 19 Nov 2026 21:30:00 GMT",
+   "summary": "The War Department advanced its Autonomous Vehicle Orchestrator, the software development program designed to enable a single operator to command a mixed fleet of unmanned vehicles across multiple domains.",
+   "relevant": false,
+   "new": false
+  },
+  {
+   "id": "O-ff643c590e0e",
+   "kind": "official",
+   "source": "US Department of War",
+   "domain": "defense.gov",
+   "rel": "A",
+   "title": "Readout of Secretary of War Pete Hegseth's Meeting With Ecuadorian President Daniel Noboa",
+   "url": "https://www.war.gov/News/Releases/Release/Article/4653714/readout-of-secretary-of-war-pete-hegseths-meeting-with-ecuadorian-president-dan/",
+   "published": "Thu, 19 Nov 2026 18:56:00 GMT",
+   "summary": "Secretary of War Pete Hegseth met with Ecuadorian President Daniel Noboa in Quito in their third bilateral engagement, reaffirming the United States' steadfast support for Ecuador's fight against violent narco-terrorist networks.",
+   "relevant": false,
+   "new": false
+  },
+  {
+   "id": "O-e9c861d1427b",
+   "kind": "official",
+   "source": "US Department of War",
+   "domain": "defense.gov",
+   "rel": "A",
+   "title": "Readout of Secretary of War Pete Hegseth's Meeting With Venezuela's President Delcy Rodriguez",
+   "url": "https://www.war.gov/News/Releases/Release/Article/4652907/readout-of-secretary-of-war-pete-hegseths-meeting-with-venezuelas-president-del/",
+   "published": "Wed, 18 Nov 2026 22:29:00 GMT",
+   "summary": "Secretary of War Pete Hegseth met with Venezuelan President Delcy Rodriguez at the Miraflores Palace in Caracas, where he reiterated his support of President Trump's three-phase plan for the country.",
+   "relevant": false,
+   "new": false
+  },
+  {
+   "id": "O-201361127c76",
+   "kind": "official",
+   "source": "US Department of War",
+   "domain": "defense.gov",
+   "rel": "A",
+   "title": "Readout of Secretary of War Pete Hegseth's Meeting With Colombia's Minister of National Defense Jorge Mora",
+   "url": "https://www.war.gov/News/Releases/Release/Article/4653417/readout-of-secretary-of-war-pete-hegseths-meeting-with-colombias-minister-of-na/",
+   "published": "Wed, 18 Nov 2026 15:46:00 GMT",
+   "summary": "Secretary of War Pete Hegseth met with his Colombian counterpart, Minister of National Defense Jorge Mora, and the Colombian Minister of Foreign Affairs Omar Bula Escobar in Bogotá, Colombia.",
+   "relevant": false,
+   "new": false
+  },
+  {
+   "id": "O-52dd153df3e0",
+   "kind": "official",
+   "source": "US Department of War",
+   "domain": "defense.gov",
+   "rel": "A",
+   "title": "Secretary of War General Officer Announcements for November 18, 2026",
+   "url": "https://www.war.gov/News/Releases/Release/Article/4653294/secretary-of-war-general-officer-announcements-for-november-18-2026/",
+   "published": "Wed, 18 Nov 2026 14:53:00 GMT",
+   "summary": "Secretary of War Pete Hegseth announced general officer nominations made by the president.",
+   "relevant": false,
+   "new": false
+  },
+  {
+   "id": "O-74bd0813ba6d",
+   "kind": "official",
+   "source": "US Department of War",
+   "domain": "defense.gov",
+   "rel": "A",
+   "title": "Secretary of War Flag Officer Announcement for November 18, 2026",
+   "url": "https://www.war.gov/News/Releases/Release/Article/4653285/secretary-of-war-flag-officer-announcement-for-november-18-2026/",
+   "published": "Wed, 18 Nov 2026 14:48:00 GMT",
+   "summary": "Secretary of War Pete Hegseth announced a flag officer nomination made by the president.",
+   "relevant": false,
+   "new": false
+  },
+  {
+   "id": "O-8afe5050ad24",
+   "kind": "official",
+   "source": "US Department of War",
+   "domain": "defense.gov",
+   "rel": "A",
+   "title": "Launch Of Nationwide Assessment To Dismantle Barriers To Additive Manufacturing In Defense Production",
+   "url": "https://www.war.gov/News/Releases/Release/Article/4649497/launch-of-nationwide-assessment-to-dismantle-barriers-to-additive-manufacturing/",
+   "published": "Mon, 16 Nov 2026 22:10:12 GMT",
+   "summary": "The War Department, in partnership with the Commerce Department's Bureau of Industry and Security, announced a national assessment to identify and dismantle the qualification cost and timeline barriers hindering the scaling of additive manufacturing across the defense industrial base.",
+   "relevant": false,
+   "new": false
+  },
+  {
+   "id": "O-ee2fd0ca3759",
+   "kind": "official",
+   "source": "US Department of War",
+   "domain": "defense.gov",
+   "rel": "A",
+   "title": "New DoW Audit Progress Marks Breakthrough Toward a Department-Wide Clean Opinion",
+   "url": "https://www.war.gov/News/Releases/Release/Article/4649444/new-dow-audit-progress-marks-breakthrough-toward-a-department-wide-clean-opinion/",
+   "published": "Mon, 16 Nov 2026 21:42:00 GMT",
+   "summary": "The War Department released the fiscal 2026 Agency Financial Report, reflecting a new centralized approach in financial management.",
+   "relevant": false,
+   "new": false
+  },
+  {
+   "id": "O-0259dce6e87b",
+   "kind": "official",
+   "source": "US Department of War",
+   "domain": "defense.gov",
+   "rel": "A",
+   "title": "Secretary of War General Officer Announcements for Nov. 16, 2026",
+   "url": "https://www.war.gov/News/Releases/Release/Article/4649206/secretary-of-war-general-officer-announcements-for-nov-16-2026/",
+   "published": "Mon, 16 Nov 2026 19:36:54 GMT",
+   "summary": "Secretary of War Pete Hegseth announced general officer nominations made by the president.",
+   "relevant": false,
+   "new": false
+  },
+  {
+   "id": "O-fa2e33981990",
+   "kind": "official",
+   "source": "US Department of War",
+   "domain": "defense.gov",
+   "rel": "A",
+   "title": "The Department Announces New Director of DoWEA",
+   "url": "https://www.war.gov/News/Releases/Release/Article/4649112/the-department-announces-new-director-of-dowea/",
+   "published": "Mon, 16 Nov 2026 18:31:00 GMT",
+   "summary": "Secretary of War Pete Hegseth selected Matthew Kirby as the next director of the Department of War Education Agency.",
+   "relevant": false,
+   "new": false
+  },
+  {
+   "id": "O-c0fd900a3072",
+   "kind": "official",
+   "source": "US Department of War",
+   "domain": "defense.gov",
+   "rel": "A",
+   "title": "Department of War Invites Seven Industry Teams to Participate in Phase II Directed Energy Shoot-Off at Dugway Proving Ground",
+   "url": "https://www.war.gov/News/Releases/Release/Article/4648762/department-of-war-invites-seven-industry-teams-to-participate-in-phase-ii-direc/",
+   "published": "Mon, 16 Nov 2026 15:00:22 GMT",
+   "summary": "Seven industry partners received invitations to participate in Phase II of the War Department's Directed Energy Counter-Unmanned Aerial Systems technology evaluation.",
+   "relevant": false,
+   "new": false
+  },
+  {
+   "id": "O-075d4bc1a076",
+   "kind": "official",
+   "source": "US Department of War",
+   "domain": "defense.gov",
+   "rel": "A",
+   "title": "Department of War Redesignates CDAO as Super Intelligence Office",
+   "url": "https://www.war.gov/News/Releases/Release/Article/4647618/department-of-war-redesignates-cdao-as-super-intelligence-office/",
+   "published": "Fri, 13 Nov 2026 14:00:27 GMT",
+   "summary": "The War Department announced the official redesignation of the Chief Digital and Artificial Intelligence Office as the Department of War Super Intelligence Office.",
+   "relevant": false,
+   "new": false
+  },
+  {
+   "id": "O-822828971081",
+   "kind": "official",
+   "source": "US Department of War",
+   "domain": "defense.gov",
+   "rel": "A",
+   "title": "Secretary of War Pete Hegseth Elevates Special Operations Leadership to Revitalize the Legacy of the Office of Strategic Services",
+   "url": "https://www.war.gov/News/Releases/Release/Article/4643910/secretary-of-war-pete-hegseth-elevates-special-operations-leadership-to-revital/",
+   "published": "Thu, 12 Nov 2026 19:00:33 GMT",
+   "summary": "Marking a historic shift in the civilian oversight of our nation's elite forces, Secretary of War Pete Hegseth issued a memorandum to elevate the assistant secretary of war for special operations and low-intensity conflict to equal footing with the military department secretaries.",
+   "relevant": false,
+   "new": false
+  },
+  {
+   "id": "O-069d73eb5b25",
+   "kind": "official",
+   "source": "US Department of War",
+   "domain": "defense.gov",
+   "rel": "A",
+   "title": "Department of War Expands Community-Based Childcare Fee Assistance",
+   "url": "https://www.war.gov/News/Releases/Release/Article/4646990/department-of-war-expands-community-based-childcare-fee-assistance/",
+   "published": "Thu, 12 Nov 2026 17:42:00 GMT",
+   "summary": "The War Department remains focused on building and maintaining a ready, lethal fighting force prepared to dominate the battlefield and achieve peace through strength.",
+   "relevant": false,
+   "new": false
+  },
+  {
+   "id": "O-aab2442838c4",
+   "kind": "official",
+   "source": "US Department of War",
+   "domain": "defense.gov",
+   "rel": "A",
+   "title": "Readout of Secretary of War Pete Hegseth's Meeting With Poland's Deputy Prime Minister and Minister of National Defense Władysław Kosiniak-Kamysz",
+   "url": "https://www.war.gov/News/Releases/Release/Article/4646284/readout-of-secretary-of-war-pete-hegseths-meeting-with-polands-deputy-prime-min/",
+   "published": "Tue, 10 Nov 2026 19:50:00 GMT",
+   "summary": "Secretary of War Pete Hegseth met with Poland's Deputy Prime Minister and Minister of National Defense Władysław Kosiniak-Kamysz at the Pentagon.",
+   "relevant": false,
+   "new": false
+  },
+  {
+   "id": "O-437d5e00ce84",
+   "kind": "official",
+   "source": "US Department of War",
+   "domain": "defense.gov",
+   "rel": "A",
+   "title": "The Department of War's Office of Strategic Capital Signs $150 Million Conditional Loan Commitment With Rocket Lab",
+   "url": "https://www.war.gov/News/Releases/Release/Article/4644766/the-department-of-wars-office-of-strategic-capital-signs-150-million-conditiona/",
+   "published": "Mon, 09 Nov 2026 21:15:12 GMT",
+   "summary": "The War Department's Office of Strategic Capital announced a $150 million conditional loan commitment with Rocket Lab USA Inc. to support Rocket Lab's efforts to increase the flight rate of its reusable Neutron rocket beyond first launch to meet growing commercial and national security demand for access to space.",
+   "relevant": false,
+   "new": false
+  },
+  {
+   "id": "O-a29b0923abdc",
+   "kind": "official",
+   "source": "US Department of War",
+   "domain": "defense.gov",
+   "rel": "A",
+   "title": "Secretary of War Pete Hegseth Orders Sweeping Overhaul of Military Education to Refocus on Combat Lethality",
+   "url": "https://www.war.gov/News/Releases/Release/Article/4644710/secretary-of-war-pete-hegseth-orders-sweeping-overhaul-of-military-education-to/",
+   "published": "Mon, 09 Nov 2026 16:43:30 GMT",
+   "summary": "In a major move to restore a culture of accountability and warfighting excellence, Secretary of War Pete Hegseth directed the comprehensive overhaul of the Department's Professional Military Education system.",
+   "relevant": false,
+   "new": false
+  },
+  {
+   "id": "O-15977cb2393d",
+   "kind": "official",
+   "source": "US Department of War",
+   "domain": "defense.gov",
+   "rel": "A",
+   "title": "Trump Administration Deepens Interagency Collaboration to Protect the Nation's Skies From Unmanned Threats",
+   "url": "https://www.war.gov/News/Releases/Release/Article/4644512/trump-administration-deepens-interagency-collaboration-to-protect-the-nations-s/",
+   "published": "Mon, 09 Nov 2026 14:35:09 GMT",
+   "summary": "The War Department, Department of Transportation, Department of Homeland Security, Department of Energy and Department of Justice announced an expanded interagency effort to further coordinate counter-unmanned aircraft systems operations.",
+   "relevant": false,
+   "new": false
+  },
+  {
+   "id": "O-fd19b10e4c06",
+   "kind": "official",
+   "source": "Qatar News Agency",
+   "domain": "qna.org.qa",
+   "rel": "A",
+   "files": [
+    "gulf"
+   ],
+   "lang": "en",
+   "title": "Poland Vows to Create No-Fly Zone Along Border With Ukraine",
+   "url": "https://qna.org.qa/en/News-Area/News/2026-11/26/poland-vows-to-create-no-fly-zone-along-border-with-ukraine",
+   "published": "",
+   "relevant": true,
+   "new": true
+  },
+  {
+   "id": "O-0ce4b806543e",
+   "kind": "official",
+   "source": "Qatar News Agency",
+   "domain": "qna.org.qa",
+   "rel": "A",
+   "files": [
+    "gulf"
+   ],
+   "lang": "en",
+   "title": "UNESCO Creative Cities Conference Opens in Morocco",
+   "url": "https://qna.org.qa/en/News-Area/News/2026-11/26/unesco-creative-cities-conference-opens-in-morocco",
+   "published": "",
+   "relevant": false,
+   "new": true
+  },
+  {
+   "id": "O-c9ac5d3ce41d",
+   "kind": "official",
+   "source": "Qatar News Agency",
+   "domain": "qna.org.qa",
+   "rel": "A",
+   "files": [
+    "gulf"
+   ],
+   "lang": "en",
+   "title": "Russia, Pakistan Sign Protocol on Trade, Economic Cooperation",
+   "url": "https://qna.org.qa/en/News-Area/News/2026-11/26/russia-pakistan-sign-protocol-on-trade-economic-cooperation",
+   "published": "",
+   "relevant": true,
+   "new": true
+  },
+  {
+   "id": "O-cd1256d163c1",
+   "kind": "official",
+   "source": "Qatar News Agency",
+   "domain": "qna.org.qa",
+   "rel": "A",
+   "files": [
+    "gulf"
+   ],
+   "lang": "en",
+   "title": "Iraq's Four Presidencies Back National Dialogue to Resolve Baghdad-Erbil Crisis",
+   "url": "https://qna.org.qa/en/News-Area/News/2026-11/26/iraqs-four-presidencies-back-national-dialogue-to-resolve-baghdad-erbil-crisis",
+   "published": "",
+   "relevant": true,
+   "new": true
+  },
+  {
+   "id": "O-809c9a8092c9",
+   "kind": "official",
+   "source": "Qatar News Agency",
+   "domain": "qna.org.qa",
+   "rel": "A",
+   "files": [
+    "gulf"
+   ],
+   "lang": "en",
+   "title": "Morocco Launches USD 2.19 Billion Roadmap to Bolster Defense Industries",
+   "url": "https://qna.org.qa/en/News-Area/News/2026-11/26/morocco-launches-usd-219-billion-roadmap-to-bolster-defense-industries",
+   "published": "",
+   "relevant": true,
+   "new": true
+  },
+  {
+   "id": "O-d4a8d01e6254",
+   "kind": "official",
+   "source": "Qatar News Agency",
+   "domain": "qna.org.qa",
+   "rel": "A",
+   "files": [
+    "gulf"
+   ],
+   "lang": "en",
+   "title": "Qatar, US Stress Importance of Advancing Economic Partnership",
+   "url": "https://qna.org.qa/en/News-Area/News/2026-11/25/qatar-us-stress-importance-of-advancing-economic-partnership",
+   "published": "",
+   "relevant": false,
+   "new": true
+  },
+  {
+   "id": "O-1f993ba67df8",
+   "kind": "official",
+   "source": "Qatar News Agency",
+   "domain": "qna.org.qa",
+   "rel": "A",
+   "files": [
+    "gulf"
+   ],
+   "lang": "en",
+   "title": "Daman Participates in 25th GCC Civil Retirement, Social Insurance Authorities' Heads Meeting",
+   "url": "https://qna.org.qa/en/News-Area/News/2026-11/25/daman-participates-in-25th-gcc-civil-retirement-social-insurance-authorities-heads-meeting",
+   "published": "",
+   "relevant": true,
+   "new": false
+  },
+  {
+   "id": "O-7064efc5a305",
+   "kind": "official",
+   "source": "Qatar News Agency",
+   "domain": "qna.org.qa",
+   "rel": "A",
+   "files": [
+    "gulf"
+   ],
+   "lang": "en",
+   "title": "Minister of State for International Cooperation Chairs meeting of Qatar-Canada Working Group on Development, Humanitarian Cooperation",
+   "url": "https://qna.org.qa/en/News-Area/News/2026-11/25/minister-of-state-for-international-cooperation-chairs-meeting-of-qatar-canada-working-group-on-development-humanitarian-cooperation",
+   "published": "",
+   "relevant": false,
+   "new": true
+  },
+  {
+   "id": "O-9c558b74bdab",
+   "kind": "official",
+   "source": "Qatar News Agency",
+   "domain": "qna.org.qa",
+   "rel": "A",
+   "files": [
+    "gulf"
+   ],
+   "lang": "en",
+   "title": "MSDF Takes Part in \"Doha Skeek\" Project",
+   "url": "https://qna.org.qa/en/News-Area/News/2026-11/25/msdf-takes-part-in-doha-skeek-project",
+   "published": "",
+   "relevant": false,
+   "new": true
+  },
+  {
+   "id": "O-afd920261c2f",
+   "kind": "official",
+   "source": "Qatar News Agency",
+   "domain": "qna.org.qa",
+   "rel": "A",
+   "files": [
+    "gulf"
+   ],
+   "lang": "en",
+   "title": "QatarEnergy, JBIC Sign MoU to Advance Strategic Energy Partnership",
+   "url": "https://qna.org.qa/en/News-Area/News/2026-11/25/qatarenergy-jbic-sign-mou-to-advance-strategic-energy-partnership",
+   "published": "",
+   "relevant": false,
+   "new": true
+  },
+  {
+   "id": "O-87481bbb5bc1",
+   "kind": "official",
+   "source": "Qatar News Agency",
+   "domain": "qna.org.qa",
+   "rel": "A",
+   "files": [
+    "gulf"
+   ],
+   "lang": "en",
+   "title": "Undersecretary of Ministry of Interior Meets Director-General of Turkish Security",
+   "url": "https://qna.org.qa/en/News-Area/News/2026-11/25/undersecretary-of-ministry-of-interior-meets-director-general-of-turkish-security",
+   "published": "",
+   "relevant": true,
+   "new": true
+  },
+  {
+   "id": "O-a1fe7590eb72",
+   "kind": "official",
+   "source": "Qatar News Agency",
+   "domain": "qna.org.qa",
+   "rel": "A",
+   "files": [
+    "gulf"
+   ],
+   "lang": "en",
+   "title": "Amiri Guard Holds Graduation Ceremony for Several Training Courses",
+   "url": "https://qna.org.qa/en/News-Area/News/2026-11/25/amiri-guard-holds-graduation-ceremony-for-several-training-courses",
+   "published": "",
+   "relevant": false,
+   "new": true
+  },
+  {
+   "id": "O-83d2d03ef6ae",
+   "kind": "official",
+   "source": "Qatar News Agency",
+   "domain": "qna.org.qa",
+   "rel": "A",
+   "files": [
+    "gulf"
+   ],
+   "lang": "en",
+   "title": "WHOOP Opens Doha Headquarters and First International Performance Lab in Msheireb Downtown Doha",
+   "url": "https://qna.org.qa/en/News-Area/News/2026-11/25/whoop-opens-doha-headquarters-and-first-international-performance-lab-in-msheireb-downtown-doha",
+   "published": "",
+   "relevant": false,
+   "new": true
+  },
+  {
+   "id": "O-9246542084ee",
+   "kind": "official",
+   "source": "Qatar News Agency",
+   "domain": "qna.org.qa",
+   "rel": "A",
+   "files": [
+    "gulf"
+   ],
+   "lang": "en",
+   "title": "Qatar's Ali Al Obaidly Advances to Round of 16 of World Snooker Championship",
+   "url": "https://qna.org.qa/en/News-Area/News/2026-11/25/qatars-ali-al-obaidly-advances-to-round-of-16-of-world-snooker-championship",
+   "published": "",
+   "relevant": false,
+   "new": true
+  },
+  {
+   "id": "O-7341cf2ae04f",
+   "kind": "official",
+   "source": "Qatar News Agency",
+   "domain": "qna.org.qa",
+   "rel": "A",
+   "files": [
+    "gulf"
+   ],
+   "lang": "en",
+   "title": "HH the Amir's Bowling Cup 2026 Kicks Off Monday",
+   "url": "https://qna.org.qa/en/News-Area/News/2026-11/22/hh-the-amirs-bowling-cup-2026-kicks-off-monday",
+   "published": "",
+   "relevant": false,
+   "new": false
+  },
+  {
+   "id": "O-119b7a0ac472",
+   "kind": "official",
+   "source": "Qatar News Agency",
+   "domain": "qna.org.qa",
+   "rel": "A",
+   "files": [
+    "gulf"
+   ],
+   "lang": "en",
+   "title": "“Beyond the Dunes” Qatar’s First Wildlife Documentary Sneak Peek Screened at Doha Film Festival",
+   "url": "https://qna.org.qa/en/News-Area/News/2026-11/24/beyond-the-dunes-qatars-first-wildlife-documentary-sneak-peek-screened-at-doha-film-festival",
+   "published": "",
+   "relevant": false,
+   "new": false
+  },
+  {
+   "id": "O-e1f1353bbbc4",
+   "kind": "official",
+   "source": "Oman News Agency",
+   "domain": "omannews.gov.om",
+   "rel": "A",
+   "files": [
+    "gulf"
+   ],
+   "lang": "ar",
+   "title": "وفاة 30 شخصا وإصابة 16 آخرين في حريق بمدينة الجيزة المصرية",
+   "url": "https://omannews.gov.om/topics/ar/88/show/477311/ona",
+   "published": "",
+   "relevant": false,
+   "new": true
+  },
+  {
+   "id": "O-67e5aa93d88d",
+   "kind": "official",
+   "source": "Oman News Agency",
+   "domain": "omannews.gov.om",
+   "rel": "A",
+   "files": [
+    "gulf"
+   ],
+   "lang": "ar",
+   "title": "مصرع 9 عمال مناجم بسبب مياه الفيضانات في إندونيسيا",
+   "url": "https://omannews.gov.om/topics/ar/88/show/477310/ona",
+   "published": "",
+   "relevant": false,
+   "new": true
+  },
+  {
+   "id": "O-0ca28ae7776e",
+   "kind": "official",
+   "source": "Oman News Agency",
+   "domain": "omannews.gov.om",
+   "rel": "A",
+   "files": [
+    "gulf"
+   ],
+   "lang": "ar",
+   "title": "مصر تتأهل لدور الـ32 في كأس العالم للناشئين بفوزها على بنما",
+   "url": "https://omannews.gov.om/topics/ar/8/show/477309/ona",
+   "published": "",
+   "relevant": false,
+   "new": true
+  },
+  {
+   "id": "O-fc1380907117",
+   "kind": "official",
+   "source": "Oman News Agency",
+   "domain": "omannews.gov.om",
+   "rel": "A",
+   "files": [
+    "gulf"
+   ],
+   "lang": "ar",
+   "title": "سفارة سلطنة عُمان في سويسرا تقيم حفل استقبال بمناسبة اليوم الوطني المجيد",
+   "url": "https://omannews.gov.om/topics/ar/3/show/477308/ona",
+   "published": "",
+   "relevant": false,
+   "new": true
+  },
+  {
+   "id": "O-e8251bdd8786",
+   "kind": "official",
+   "source": "Oman News Agency",
+   "domain": "omannews.gov.om",
+   "rel": "A",
+   "files": [
+    "gulf"
+   ],
+   "lang": "ar",
+   "title": "سفارة سلطنة عُمان في فرنسا تحتفل باليوم الوطني المجيد",
+   "url": "https://omannews.gov.om/topics/ar/3/show/477307/ona",
+   "published": "",
+   "relevant": false,
+   "new": true
+  },
+  {
+   "id": "O-4952c001b219",
+   "kind": "official",
+   "source": "Oman News Agency",
+   "domain": "omannews.gov.om",
+   "rel": "A",
+   "files": [
+    "gulf"
+   ],
+   "lang": "ar",
+   "title": "سفارة سلطنة عُمان لدى الجزائر تقيم حفل استقبال",
+   "url": "https://omannews.gov.om/topics/ar/3/show/477285/ona",
+   "published": "",
+   "relevant": false,
+   "new": true
+  },
+  {
+   "id": "O-70650252e9cd",
+   "kind": "official",
+   "source": "Oman News Agency",
+   "domain": "omannews.gov.om",
+   "rel": "A",
+   "files": [
+    "gulf"
+   ],
+   "lang": "ar",
+   "title": "سفارة سلطنة عُمان لدى روسيا الاتحادية تحتفل باليوم الوطني المجيد",
+   "url": "https://omannews.gov.om/topics/ar/3/show/477286/ona",
+   "published": "",
+   "relevant": true,
+   "new": true
+  },
+  {
+   "id": "O-d9845030cd36",
+   "kind": "official",
+   "source": "Oman News Agency",
+   "domain": "omannews.gov.om",
+   "rel": "A",
+   "files": [
+    "gulf"
+   ],
+   "lang": "ar",
+   "title": "مندوبية سلطنة عُمان الدائمة لدى الأمم المتحدة في جنيف تحتفل باليوم الوطني المجيد",
+   "url": "https://omannews.gov.om/topics/ar/3/show/477287/ona",
+   "published": "",
+   "relevant": false,
+   "new": false
+  },
+  {
+   "id": "O-2cac20617784",
+   "kind": "official",
+   "source": "Oman News Agency",
+   "domain": "omannews.gov.om",
+   "rel": "A",
+   "files": [
+    "gulf"
+   ],
+   "lang": "ar",
+   "title": "سفارة سلطنة عُمان في مانيلا تحتفل باليوم الوطني المجيد",
+   "url": "https://omannews.gov.om/topics/ar/3/show/477288/ona",
+   "published": "",
+   "relevant": false,
+   "new": false
+  },
+  {
+   "id": "O-0b568c9b6d8a",
+   "kind": "official",
+   "source": "Oman News Agency",
+   "domain": "omannews.gov.om",
+   "rel": "A",
+   "files": [
+    "gulf"
+   ],
+   "lang": "ar",
+   "title": "مُنتخبنا الوطني للفتيات للتنس يحصد ذهبية البطولة الخليجية بالكويت",
+   "url": "https://omannews.gov.om/topics/ar/8/show/477289/ona",
+   "published": "",
+   "relevant": false,
+   "new": true
+  },
+  {
+   "id": "O-daee04c3240f",
+   "kind": "official",
+   "source": "Oman News Agency",
+   "domain": "omannews.gov.om",
+   "rel": "A",
+   "files": [
+    "gulf"
+   ],
+   "lang": "ar",
+   "title": "سفارة سلطنة عُمان بالجمهورية الإيطالية تحتفل باليوم الوطني المجيد",
+   "url": "https://omannews.gov.om/topics/ar/3/show/477290/ona",
+   "published": "",
+   "relevant": false,
+   "new": false
+  },
+  {
+   "id": "O-1c0f5b68327c",
+   "kind": "official",
+   "source": "Oman News Agency",
+   "domain": "omannews.gov.om",
+   "rel": "A",
+   "files": [
+    "gulf"
+   ],
+   "lang": "ar",
+   "title": "سفارة سلطنة عُمان في مصر تحتفل باليوم الوطني المجيد",
+   "url": "https://omannews.gov.om/topics/ar/3/show/477306/ona",
+   "published": "",
+   "relevant": false,
+   "new": true
+  },
+  {
+   "id": "O-7eaf5f4cfd4d",
+   "kind": "official",
+   "source": "Oman News Agency",
+   "domain": "omannews.gov.om",
+   "rel": "A",
+   "files": [
+    "gulf"
+   ],
+   "lang": "ar",
+   "title": "سفارة سلطنة عُمان لدى ماليزيا تحتفل باليوم الوطني المجيد",
+   "url": "https://omannews.gov.om/topics/ar/3/show/477304/ona",
+   "published": "",
+   "relevant": false,
+   "new": true
+  },
+  {
+   "id": "O-f76e21f61b9f",
+   "kind": "official",
+   "source": "Oman News Agency",
+   "domain": "omannews.gov.om",
+   "rel": "A",
+   "files": [
+    "gulf"
+   ],
+   "lang": "ar",
+   "title": "سلطنة عُمان تشارك في اجتماع المجلس التنفيذي للأرابوساي بتونس",
+   "url": "https://omannews.gov.om/topics/ar/3/show/477299/ona",
+   "published": "",
+   "relevant": false,
+   "new": false
+  },
+  {
+   "id": "O-bc17ec86bd52",
+   "kind": "official",
+   "source": "Oman News Agency",
+   "domain": "omannews.gov.om",
+   "rel": "A",
+   "files": [
+    "gulf"
+   ],
+   "lang": "ar",
+   "title": "قنصلية سلطنة عُمان في باكستان تحتفل باليوم الوطني المجيد",
+   "url": "https://omannews.gov.om/topics/ar/3/show/477298/ona",
+   "published": "",
+   "relevant": false,
+   "new": false
+  },
+  {
+   "id": "O-3fd269ac4bd5",
+   "kind": "official",
+   "source": "Oman News Agency",
+   "domain": "omannews.gov.om",
+   "rel": "A",
+   "files": [
+    "gulf"
+   ],
+   "lang": "ar",
+   "title": "سفارة سلطنة عُمان في قطر تُقيم حفل استقبال بمناسبة اليوم الوطني",
+   "url": "https://omannews.gov.om/topics/ar/3/show/477297/ona",
+   "published": "",
+   "relevant": false,
+   "new": false
+  },
+  {
+   "id": "O-2eb4b49bc504",
+   "kind": "official",
+   "source": "Oman News Agency",
+   "domain": "omannews.gov.om",
+   "rel": "A",
+   "files": [
+    "gulf"
+   ],
+   "lang": "ar",
+   "title": "سفارة سلطنة عُمان في بروناي دار السلام تحتفي باليوم الوطني المجيد",
+   "url": "https://omannews.gov.om/topics/ar/3/show/477293/ona",
+   "published": "",
+   "relevant": false,
+   "new": false
+  },
+  {
+   "id": "O-f156417555a5",
+   "kind": "official",
+   "source": "Oman News Agency",
+   "domain": "omannews.gov.om",
+   "rel": "A",
+   "files": [
+    "gulf"
+   ],
+   "lang": "ar",
+   "title": "فتح باب التظلّم من نتائج انتخابات غرفة تجارة وصناعة عُمان لمدة سبعة أيام",
+   "url": "https://omannews.gov.om/topics/ar/3/show/477292/ona",
+   "published": "",
+   "relevant": false,
+   "new": false
+  },
+  {
+   "id": "O-e4e271e58a48",
+   "kind": "official",
+   "source": "Oman News Agency",
+   "domain": "omannews.gov.om",
+   "rel": "A",
+   "files": [
+    "gulf"
+   ],
+   "lang": "ar",
+   "title": "10 فنانين عُمانيين يوثقون تجربتهم التشكيلية بمعرض «مرافئ2» بالمملكة المتحدة",
+   "url": "https://omannews.gov.om/topics/ar/6/show/477262/ona",
+   "published": "",
+   "relevant": false,
+   "new": false
+  },
+  {
+   "id": "O-145e2709ac4b",
+   "kind": "official",
+   "source": "Oman News Agency",
+   "domain": "omannews.gov.om",
+   "rel": "A",
+   "files": [
+    "gulf"
+   ],
+   "lang": "ar",
+   "title": "ما تراه \"فاطمة الزعابي\" في الكتابة للطفل مسؤوليّة إنسانيّة، ونجاح الكاتب يكمن في قدرته على نسج حكاية تثير التساؤل والخيال",
+   "url": "https://omannews.gov.om/topics/ar/6/show/477196/ona",
+   "published": "",
+   "relevant": false,
+   "new": false
+  },
+  {
+   "id": "O-8736e321c46d",
+   "kind": "official",
+   "source": "Oman News Agency",
+   "domain": "omannews.gov.om",
+   "rel": "A",
+   "files": [
+    "gulf"
+   ],
+   "lang": "ar",
+   "title": "\"متحف بيرا\" بإسطنبول يستعيد ذاكرة تركيا عبر أرشيف الصور الصحفية",
+   "url": "https://omannews.gov.om/topics/ar/6/show/477195/ona",
+   "published": "",
+   "relevant": true,
+   "new": false
+  },
+  {
+   "id": "O-0745e6e7718f",
+   "kind": "official",
+   "source": "Oman News Agency",
+   "domain": "omannews.gov.om",
+   "rel": "A",
+   "files": [
+    "gulf"
+   ],
+   "lang": "ar",
+   "title": "قويدر ميموني: شخصياتي الروائيّة متمرّدة حتّى على إرادتي",
+   "url": "https://omannews.gov.om/topics/ar/6/show/477193/ona",
+   "published": "",
+   "relevant": false,
+   "new": false
+  },
+  {
+   "id": "O-0a7de121cb56",
+   "kind": "official",
+   "source": "Oman News Agency",
+   "domain": "omannews.gov.om",
+   "rel": "A",
+   "files": [
+    "gulf"
+   ],
+   "lang": "ar",
+   "title": "متحف عُمان عبر الزمان ينظم فعاليات احتفالية بمناسبة اليوم الوطني المجيد",
+   "url": "https://omannews.gov.om/topics/ar/119/show/477303/ona",
+   "published": "",
+   "relevant": false,
+   "new": true
+  },
+  {
+   "id": "O-108d5817729b",
+   "kind": "official",
+   "source": "Oman News Agency",
+   "domain": "omannews.gov.om",
+   "rel": "A",
+   "files": [
+    "gulf"
+   ],
+   "lang": "ar",
+   "title": "انطلاق فعاليات اليوم الوطني بموسم \"شتاء البريمي\"",
+   "url": "https://omannews.gov.om/topics/ar/118/show/477282/ona",
+   "published": "",
+   "relevant": false,
+   "new": false
+  },
+  {
+   "id": "O-7b9b6a22f82a",
+   "kind": "official",
+   "source": "Oman News Agency",
+   "domain": "omannews.gov.om",
+   "rel": "A",
+   "files": [
+    "gulf"
+   ],
+   "lang": "ar",
+   "title": "الافتتاحُ الرّسمي لمشروع \"تلفريك مطرح\" بمُحافظة مسقط",
+   "url": "https://omannews.gov.om/topics/ar/115/show/477280/ona",
+   "published": "",
+   "relevant": false,
+   "new": false
+  },
+  {
+   "id": "O-d7a50acdf770",
+   "kind": "official",
+   "source": "US Treasury OFAC",
+   "domain": "ofac.treasury.gov",
+   "rel": "A",
+   "files": [
+    "iran",
+    "russia",
+    "gulf"
+   ],
+   "lang": "en",
+   "title": "Iran-related Designations",
+   "url": "https://ofac.treasury.gov/recent-actions/20261123",
+   "published": "",
+   "relevant": true,
+   "new": false
+  },
+  {
+   "id": "O-83da8b1e677c",
+   "kind": "official",
+   "source": "US Treasury OFAC",
+   "domain": "ofac.treasury.gov",
+   "rel": "A",
+   "files": [
+    "iran",
+    "russia",
+    "gulf"
+   ],
+   "lang": "en",
+   "title": "Iran Designations; Issuance of Cuba Frequently Asked Questions",
+   "url": "https://ofac.treasury.gov/recent-actions/20261120",
+   "published": "",
+   "relevant": true,
+   "new": false
+  },
+  {
+   "id": "O-8d2aeb1b05b5",
+   "kind": "official",
+   "source": "US Treasury OFAC",
+   "domain": "ofac.treasury.gov",
+   "rel": "A",
+   "files": [
+    "iran",
+    "russia",
+    "gulf"
+   ],
+   "lang": "en",
+   "title": "Counter Narcotics Designations; Cyber-related Designations; Issuance of Illicit Drugs General License; Issuance of Amended Russia-related General License and Frequently Asked Questions",
+   "url": "https://ofac.treasury.gov/recent-actions/20261119",
+   "published": "",
+   "relevant": true,
+   "new": false
+  },
+  {
+   "id": "O-573021dea052",
+   "kind": "official",
+   "source": "US Treasury OFAC",
+   "domain": "ofac.treasury.gov",
+   "rel": "A",
+   "files": [
+    "iran",
+    "russia",
+    "gulf"
+   ],
+   "lang": "en",
+   "title": "Counter Terrorism Designations",
+   "url": "https://ofac.treasury.gov/recent-actions/20261118",
+   "published": "",
+   "relevant": true,
+   "new": false
+  },
+  {
+   "id": "O-23762a54ba9f",
+   "kind": "official",
+   "source": "US Treasury OFAC",
+   "domain": "ofac.treasury.gov",
+   "rel": "A",
+   "files": [
+    "iran",
+    "russia",
+    "gulf"
+   ],
+   "lang": "en",
+   "title": "Counter Narcotics and Counter Terrorism Designations",
+   "url": "https://ofac.treasury.gov/recent-actions/20261113",
+   "published": "",
+   "relevant": true,
+   "new": false
+  },
+  {
+   "id": "O-c342d789a2ef",
+   "kind": "official",
+   "source": "US Treasury OFAC",
+   "domain": "ofac.treasury.gov",
+   "rel": "A",
+   "files": [
+    "iran",
+    "russia",
+    "gulf"
+   ],
+   "lang": "en",
+   "title": "Iran Designation Update",
+   "url": "https://ofac.treasury.gov/recent-actions/20261109",
+   "published": "",
+   "relevant": true,
+   "new": false
+  },
+  {
+   "id": "O-1b544887330b",
+   "kind": "official",
+   "source": "US Treasury OFAC",
+   "domain": "ofac.treasury.gov",
+   "rel": "A",
+   "files": [
+    "iran",
+    "russia",
+    "gulf"
+   ],
+   "lang": "en",
+   "title": "Iran-related Designations",
+   "url": "https://ofac.treasury.gov/recent-actions/20261106",
+   "published": "",
+   "relevant": true,
+   "new": false
+  },
+  {
+   "id": "O-28fc85f47ba7",
+   "kind": "official",
+   "source": "US Treasury OFAC",
+   "domain": "ofac.treasury.gov",
+   "rel": "A",
+   "files": [
+    "iran",
+    "russia",
+    "gulf"
+   ],
+   "lang": "en",
+   "title": "Cyber-related and Transnational Criminal Organizations Designations; Cuba Designations; Publication of Cuba-related Determination",
+   "url": "https://ofac.treasury.gov/recent-actions/20261105",
+   "published": "",
+   "relevant": true,
+   "new": false
+  },
+  {
+   "id": "O-b42260b9a2b1",
+   "kind": "official",
+   "source": "US Treasury OFAC",
+   "domain": "ofac.treasury.gov",
+   "rel": "A",
+   "files": [
+    "iran",
+    "russia",
+    "gulf"
+   ],
+   "lang": "en",
+   "title": "Iran-related Designations; Updates to Certain Iran-related Listings; Publication of Iran-related OFAC Alert; Issuance of Amended Venezuela-related General License and Frequently Asked Question",
+   "url": "https://ofac.treasury.gov/recent-actions/20261104",
+   "published": "",
+   "relevant": true,
+   "new": false
+  },
+  {
+   "id": "O-7e2c45933325",
+   "kind": "official",
+   "source": "US Treasury OFAC",
+   "domain": "ofac.treasury.gov",
+   "rel": "A",
+   "files": [
+    "iran",
+    "russia",
+    "gulf"
+   ],
+   "lang": "en",
+   "title": "Issuance of Amended Iran-related General License",
+   "url": "https://ofac.treasury.gov/recent-actions/20261029",
+   "published": "",
+   "relevant": true,
+   "new": false
+  },
+  {
+   "id": "O-5712d4e9d4fc",
+   "kind": "official",
+   "source": "Saudi Press Agency",
+   "domain": "spa.gov.sa",
+   "rel": "A",
+   "files": [
+    "gulf"
+   ],
+   "lang": "en",
+   "title": "Vibrant Sunsets Adorn Turaif’s Skies as Winter Approaches",
+   "url": "https://www.spa.gov.sa/en/N2736465",
+   "published": "",
+   "relevant": false,
+   "new": true
+  },
+  {
+   "id": "O-a911d18a683b",
+   "kind": "official",
+   "source": "Saudi Press Agency",
+   "domain": "spa.gov.sa",
+   "rel": "A",
+   "files": [
+    "gulf"
+   ],
+   "lang": "en",
+   "title": "30 Sculptures by Spanish Artist Shape Jeddah's Visual Identity",
+   "url": "https://www.spa.gov.sa/en/N2735550",
+   "published": "",
+   "relevant": false,
+   "new": false
+  },
+  {
+   "id": "O-d23578a868dd",
+   "kind": "official",
+   "source": "Saudi Press Agency",
+   "domain": "spa.gov.sa",
+   "rel": "A",
+   "files": [
+    "gulf"
+   ],
+   "lang": "en",
+   "title": "Transforming Lives Over Three Decades of Medical Excellence at Saudi Conjoined Twins Programme",
+   "url": "https://www.spa.gov.sa/en/N2735490",
+   "published": "",
+   "relevant": false,
+   "new": false
+  },
+  {
+   "id": "O-aee10ffd2131",
+   "kind": "official",
+   "source": "Saudi Press Agency",
+   "domain": "spa.gov.sa",
+   "rel": "A",
+   "files": [
+    "gulf"
+   ],
+   "lang": "en",
+   "title": "Finance Minister: Saudi Arabia’s 2027 Budget Prioritizes Essential Services and Economic Growth",
+   "url": "https://www.spa.gov.sa/en/N2735399",
+   "published": "",
+   "relevant": false,
+   "new": false
+  },
+  {
+   "id": "O-87f1b0f06e82",
+   "kind": "official",
+   "source": "Saudi Press Agency",
+   "domain": "spa.gov.sa",
+   "rel": "A",
+   "files": [
+    "gulf"
+   ],
+   "lang": "en",
+   "title": "Madinah Mountains Reflect Natural Beauty, Rich Islamic History",
+   "url": "https://www.spa.gov.sa/en/N2735321",
+   "published": "",
+   "relevant": false,
+   "new": false
+  },
+  {
+   "id": "O-d3c6e299d3b8",
+   "kind": "official",
+   "source": "Saudi Press Agency",
+   "domain": "spa.gov.sa",
+   "rel": "A",
+   "files": [
+    "gulf"
+   ],
+   "lang": "en",
+   "title": "HRH the Crown Prince: 2027 State Budget Maximizes Saudi Vision 2030 Impact, Turns Achievements into Sustainable Economic Strength",
+   "url": "https://www.spa.gov.sa/en/N2735148",
+   "published": "",
+   "relevant": false,
+   "new": false
+  },
+  {
+   "id": "O-2aeabccdcc12",
+   "kind": "official",
+   "source": "Saudi Press Agency",
+   "domain": "spa.gov.sa",
+   "rel": "A",
+   "files": [
+    "gulf"
+   ],
+   "lang": "en",
+   "title": "Chaired by HRH the Crown Prince, the Cabinet Approves the State's General Budget for Fiscal Year 2027",
+   "url": "https://www.spa.gov.sa/en/N2735111",
+   "published": "",
+   "relevant": false,
+   "new": false
+  },
+  {
+   "id": "O-0d5a6e5e30db",
+   "kind": "official",
+   "source": "Saudi Press Agency",
+   "domain": "spa.gov.sa",
+   "rel": "A",
+   "files": [
+    "gulf"
+   ],
+   "lang": "en",
+   "title": "RCU Registers Harrat Al Rass Al Abyad Nature Reserve in World Database on Protected Areas",
+   "url": "https://www.spa.gov.sa/en/N2734862",
+   "published": "",
+   "relevant": false,
+   "new": false
+  },
+  {
+   "id": "O-b7a17d881428",
+   "kind": "official",
+   "source": "Saudi Press Agency",
+   "domain": "spa.gov.sa",
+   "rel": "A",
+   "files": [
+    "gulf"
+   ],
+   "lang": "en",
+   "title": "Sadd Samallaqi: Historic Landmark in Taif Mountains Tells Story of Water Management",
+   "url": "https://www.spa.gov.sa/en/N2734503",
+   "published": "",
+   "relevant": false,
+   "new": false
+  },
+  {
+   "id": "O-bde7541c886c",
+   "kind": "official",
+   "source": "Saudi Press Agency",
+   "domain": "spa.gov.sa",
+   "rel": "A",
+   "files": [
+    "gulf"
+   ],
+   "lang": "en",
+   "title": "Red Sea Museum Showcases Jeddah's Black Coral Prayer-Bead Making Heritage",
+   "url": "https://www.spa.gov.sa/en/N2734347",
+   "published": "",
+   "relevant": true,
+   "new": false
+  }
+ ],
+ "status": {
+  "viirs_n20": "ok: 767 points in watch boxes",
+  "modis": "ok: 198 points in watch boxes",
+  "defense_rss": "ok: 20 items, 0 relevant",
+  "mfa_tr": "ok but no items parsed",
+  "qna": "ok: 16 items",
+  "ona": "ok: 25 items",
+  "ofac": "ok: 10 items",
+  "spa": "ok: 10 items"
+ }
+}
