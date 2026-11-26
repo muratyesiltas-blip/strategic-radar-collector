@@ -219,9 +219,9 @@ def defense_rss(state: dict, status: dict) -> list[dict]:
 # Official sources whose lists can be read without a browser. kind: rss | links | nextdata
 OFFICIAL = [
     {"key": "mfa_tr", "source": "Türkiye Ministry of Foreign Affairs", "domain": "mfa.gov.tr", "files": ["turkey"],
-     "kind": "rss", "url": "https://www.mfa.gov.tr/rss.en.mfa", "all": True, "base": "https://www.mfa.gov.tr/",
+     "kind": "rss", "url": "https://www.mfa.gov.tr/en.rss.mfa?ad9093da-8e71-4678-a1b6-05f297baadc4", "all": True, "base": "https://www.mfa.gov.tr/",
      "fallback": "https://www.mfa.gov.tr/default.en.mfa",
-     "fallbackPattern": r'<a[^>]+href="((?:https://www\.mfa\.gov\.tr/|/)?[\w\-]+\.en\.mfa)"[^>]*>\s*([^<]{25,250})</a>'},
+     "fallbackPattern": r'<a[^>]+href="((?:https://www\.mfa\.gov\.tr/|/)?[\w\-]+\.en\.mfa)"[^>]*>\s*(No:\s*\d+[^<]{10,250})</a>'},
     {"key": "qna", "agency": True, "source": "Qatar News Agency", "domain": "qna.org.qa", "files": ["gulf"], "kind": "links",
      "url": "https://www.qna.org.qa/en", "pattern": r'<a[^>]+href="(https://qna\.org\.qa/en/News-Area/News/\d{4}-\d{2}/\d{2}/[^"]+)"[^>]*>\s*([^<]{15,200})</a>'},
     {"key": "ona", "source": "Oman News Agency", "domain": "omannews.gov.om", "files": ["gulf"], "kind": "links", "lang": "ar",
