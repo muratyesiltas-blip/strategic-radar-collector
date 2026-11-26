@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-26T00:27:05+00:00",
+ "generatedAt": "2026-11-26T07:26:07+00:00",
  "version": 1,
  "note": "Machine-collected signals. Thermal anomalies are heat sources seen from orbit, not confirmed strikes; persistent cells (seen on at least 3 of the last 7 days) are dropped as flares or industry.",
  "thermal": {
@@ -9,38 +9,20 @@
     "iran",
     "gulf"
    ],
-   "points": 41,
+   "points": 28,
    "persistentDropped": 0,
-   "newPoints": 41,
-   "newCells": 11,
-   "frpNew": 144.6,
+   "newPoints": 28,
+   "newCells": 12,
+   "frpNew": 94.0,
    "top": [
     {
-     "lat": 24.50196,
-     "lon": 56.60997,
-     "frp": 14.37,
-     "sensor": "viirs_n20",
-     "time": "2026-11-24 10:19Z",
+     "lat": 24.50176,
+     "lon": 56.60393,
+     "frp": 17.22,
+     "sensor": "modis",
+     "time": "2026-11-26 04:42Z",
      "cell": "24.5,56.6",
-     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@56.60997,24.50196,11z"
-    },
-    {
-     "lat": 24.50618,
-     "lon": 56.60719,
-     "frp": 10.15,
-     "sensor": "viirs_n20",
-     "time": "2026-11-24 10:19Z",
-     "cell": "24.5,56.6",
-     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@56.60719,24.50618,11z"
-    },
-    {
-     "lat": 24.50661,
-     "lon": 56.61282,
-     "frp": 8.98,
-     "sensor": "viirs_n20",
-     "time": "2026-11-24 10:19Z",
-     "cell": "24.5,56.6",
-     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@56.61282,24.50661,11z"
+     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@56.60393,24.50176,11z"
     },
     {
      "lat": 26.2897,
@@ -86,6 +68,24 @@
      "time": "2026-11-25 10:02Z",
      "cell": "27.2,56.1",
      "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@56.10157,27.15771,11z"
+    },
+    {
+     "lat": 27.16016,
+     "lon": 56.09945,
+     "frp": 5.55,
+     "sensor": "viirs_n20",
+     "time": "2026-11-25 22:29Z",
+     "cell": "27.2,56.1",
+     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@56.09945,27.16016,11z"
+    },
+    {
+     "lat": 24.50896,
+     "lon": 56.60812,
+     "frp": 2.78,
+     "sensor": "viirs_n20",
+     "time": "2026-11-25 22:31Z",
+     "cell": "24.5,56.6",
+     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@56.60812,24.50896,11z"
     }
    ]
   },
@@ -95,21 +95,12 @@
     "gulf",
     "iran"
    ],
-   "points": 406,
+   "points": 368,
    "persistentDropped": 0,
-   "newPoints": 406,
-   "newCells": 108,
-   "frpNew": 3796.7,
+   "newPoints": 368,
+   "newCells": 124,
+   "frpNew": 2491.5,
    "top": [
-    {
-     "lat": 30.41216,
-     "lon": 50.75806,
-     "frp": 102.03,
-     "sensor": "modis",
-     "time": "2026-11-24 17:36Z",
-     "cell": "30.4,50.8",
-     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@50.75806,30.41216,11z"
-    },
     {
      "lat": 30.3583,
      "lon": 47.3363,
@@ -118,33 +109,6 @@
      "time": "2026-11-25 16:37Z",
      "cell": "30.4,47.3",
      "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@47.3363,30.3583,11z"
-    },
-    {
-     "lat": 30.41426,
-     "lon": 50.75305,
-     "frp": 91.7,
-     "sensor": "modis",
-     "time": "2026-11-24 17:36Z",
-     "cell": "30.4,50.8",
-     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@50.75305,30.41426,11z"
-    },
-    {
-     "lat": 30.35608,
-     "lon": 47.3386,
-     "frp": 88.0,
-     "sensor": "modis",
-     "time": "2026-11-24 17:36Z",
-     "cell": "30.4,47.3",
-     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@47.3386,30.35608,11z"
-    },
-    {
-     "lat": 30.35596,
-     "lon": 47.33998,
-     "frp": 83.44,
-     "sensor": "viirs_n20",
-     "time": "2026-11-24 10:21Z",
-     "cell": "30.4,47.3",
-     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@47.33998,30.35596,11z"
     },
     {
      "lat": 28.99717,
@@ -165,6 +129,15 @@
      "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@47.3401,30.3672,11z"
     },
     {
+     "lat": 29.00671,
+     "lon": 47.74745,
+     "frp": 67.78,
+     "sensor": "modis",
+     "time": "2026-11-26 01:04Z",
+     "cell": "29.0,47.7",
+     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@47.74745,29.00671,11z"
+    },
+    {
      "lat": 28.9973,
      "lon": 48.00692,
      "frp": 65.22,
@@ -172,6 +145,33 @@
      "time": "2026-11-25 00:28Z",
      "cell": "29.0,48.0",
      "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@48.00692,28.9973,11z"
+    },
+    {
+     "lat": 27.71949,
+     "lon": 52.18274,
+     "frp": 53.72,
+     "sensor": "modis",
+     "time": "2026-11-26 01:04Z",
+     "cell": "27.7,52.2",
+     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@52.18274,27.71949,11z"
+    },
+    {
+     "lat": 30.35981,
+     "lon": 47.33442,
+     "frp": 53.68,
+     "sensor": "modis",
+     "time": "2026-11-25 00:26Z",
+     "cell": "30.4,47.3",
+     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@47.33442,30.35981,11z"
+    },
+    {
+     "lat": 25.47928,
+     "lon": 50.17984,
+     "frp": 52.26,
+     "sensor": "modis",
+     "time": "2026-11-25 16:37Z",
+     "cell": "25.5,50.2",
+     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@50.17984,25.47928,11z"
     }
    ]
   },
@@ -180,11 +180,11 @@
    "files": [
     "iran"
    ],
-   "points": 342,
+   "points": 253,
    "persistentDropped": 0,
-   "newPoints": 342,
-   "newCells": 72,
-   "frpNew": 5010.8,
+   "newPoints": 253,
+   "newCells": 65,
+   "frpNew": 3018.4,
    "top": [
     {
      "lat": 30.75474,
@@ -205,33 +205,6 @@
      "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@48.28265,30.75464,11z"
     },
     {
-     "lat": 31.00019,
-     "lon": 48.13786,
-     "frp": 130.11,
-     "sensor": "modis",
-     "time": "2026-11-24 17:36Z",
-     "cell": "31.0,48.1",
-     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@48.13786,31.00019,11z"
-    },
-    {
-     "lat": 31.27131,
-     "lon": 48.11993,
-     "frp": 115.73,
-     "sensor": "modis",
-     "time": "2026-11-24 17:36Z",
-     "cell": "31.3,48.1",
-     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@48.11993,31.27131,11z"
-    },
-    {
-     "lat": 30.75402,
-     "lon": 48.2738,
-     "frp": 112.04,
-     "sensor": "modis",
-     "time": "2026-11-24 17:36Z",
-     "cell": "30.8,48.3",
-     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@48.2738,30.75402,11z"
-    },
-    {
      "lat": 31.27164,
      "lon": 48.11659,
      "frp": 111.33,
@@ -241,15 +214,6 @@
      "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@48.11659,31.27164,11z"
     },
     {
-     "lat": 31.0017,
-     "lon": 48.1321,
-     "frp": 102.5,
-     "sensor": "modis",
-     "time": "2026-11-24 17:36Z",
-     "cell": "31.0,48.1",
-     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@48.1321,31.0017,11z"
-    },
-    {
      "lat": 31.01144,
      "lon": 48.14012,
      "frp": 100.27,
@@ -257,6 +221,42 @@
      "time": "2026-11-25 00:26Z",
      "cell": "31.0,48.1",
      "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@48.14012,31.01144,11z"
+    },
+    {
+     "lat": 31.00962,
+     "lon": 48.14512,
+     "frp": 96.24,
+     "sensor": "modis",
+     "time": "2026-11-25 00:26Z",
+     "cell": "31.0,48.1",
+     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@48.14512,31.00962,11z"
+    },
+    {
+     "lat": 31.27418,
+     "lon": 48.11317,
+     "frp": 81.23,
+     "sensor": "modis",
+     "time": "2026-11-25 00:26Z",
+     "cell": "31.3,48.1",
+     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@48.11317,31.27418,11z"
+    },
+    {
+     "lat": 31.0066,
+     "lon": 48.13123,
+     "frp": 78.05,
+     "sensor": "modis",
+     "time": "2026-11-25 16:39Z",
+     "cell": "31.0,48.1",
+     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@48.13123,31.0066,11z"
+    },
+    {
+     "lat": 31.27181,
+     "lon": 48.11079,
+     "frp": 68.02,
+     "sensor": "modis",
+     "time": "2026-11-25 16:39Z",
+     "cell": "31.3,48.1",
+     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@48.11079,31.27181,11z"
     }
    ]
   },
@@ -266,11 +266,11 @@
     "mideast",
     "gulf"
    ],
-   "points": 6,
+   "points": 7,
    "persistentDropped": 0,
-   "newPoints": 6,
-   "newCells": 3,
-   "frpNew": 16.5,
+   "newPoints": 7,
+   "newCells": 4,
+   "frpNew": 16.1,
    "top": [
     {
      "lat": 15.5352,
@@ -282,49 +282,58 @@
      "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@45.9212,15.5352,11z"
     },
     {
-     "lat": 16.94026,
-     "lon": 42.63035,
-     "frp": 1.52,
+     "lat": 16.93889,
+     "lon": 42.63081,
+     "frp": 1.6,
      "sensor": "viirs_n20",
-     "time": "2026-11-24 22:50Z",
+     "time": "2026-11-25 22:31Z",
      "cell": "16.9,42.6",
-     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@42.63035,16.94026,11z"
+     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@42.63081,16.93889,11z"
     },
     {
-     "lat": 16.9397,
-     "lon": 42.63394,
-     "frp": 1.41,
+     "lat": 15.58064,
+     "lon": 45.80108,
+     "frp": 0.94,
      "sensor": "viirs_n20",
-     "time": "2026-11-24 22:50Z",
-     "cell": "16.9,42.6",
-     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@42.63394,16.9397,11z"
-    },
-    {
-     "lat": 15.58269,
-     "lon": 45.8014,
-     "frp": 1.21,
-     "sensor": "viirs_n20",
-     "time": "2026-11-24 22:50Z",
+     "time": "2026-11-25 22:31Z",
      "cell": "15.6,45.8",
-     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@45.8014,15.58269,11z"
+     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@45.80108,15.58064,11z"
     },
     {
-     "lat": 15.57915,
-     "lon": 45.80075,
-     "frp": 0.97,
+     "lat": 15.57726,
+     "lon": 45.80054,
+     "frp": 0.94,
      "sensor": "viirs_n20",
-     "time": "2026-11-24 22:50Z",
+     "time": "2026-11-25 22:31Z",
      "cell": "15.6,45.8",
-     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@45.80075,15.57915,11z"
+     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@45.80054,15.57726,11z"
     },
     {
-     "lat": 15.57798,
-     "lon": 45.80153,
-     "frp": 0.79,
+     "lat": 15.5767,
+     "lon": 45.80429,
+     "frp": 0.94,
      "sensor": "viirs_n20",
-     "time": "2026-11-24 10:17Z",
+     "time": "2026-11-25 22:31Z",
      "cell": "15.6,45.8",
-     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@45.80153,15.57798,11z"
+     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@45.80429,15.5767,11z"
+    },
+    {
+     "lat": 13.36668,
+     "lon": 45.31388,
+     "frp": 0.88,
+     "sensor": "viirs_n20",
+     "time": "2026-11-25 22:31Z",
+     "cell": "13.4,45.3",
+     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@45.31388,13.36668,11z"
+    },
+    {
+     "lat": 15.55412,
+     "lon": 45.76992,
+     "frp": 0.26,
+     "sensor": "viirs_n20",
+     "time": "2026-11-25 22:31Z",
+     "cell": "15.6,45.8",
+     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@45.76992,15.55412,11z"
     }
    ]
   },
@@ -334,83 +343,83 @@
     "pkk",
     "mideast"
    ],
-   "points": 36,
+   "points": 48,
    "persistentDropped": 0,
-   "newPoints": 36,
-   "newCells": 25,
-   "frpNew": 204.3,
+   "newPoints": 48,
+   "newCells": 14,
+   "frpNew": 122.3,
    "top": [
     {
-     "lat": 36.43653,
-     "lon": 43.91105,
-     "frp": 33.98,
-     "sensor": "modis",
-     "time": "2026-11-24 12:27Z",
-     "cell": "36.4,43.9",
-     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@43.91105,36.43653,11z"
-    },
-    {
-     "lat": 36.02489,
-     "lon": 43.96202,
-     "frp": 28.44,
-     "sensor": "modis",
-     "time": "2026-11-24 12:27Z",
-     "cell": "36.0,44.0",
-     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@43.96202,36.02489,11z"
-    },
-    {
-     "lat": 36.43821,
-     "lon": 43.9219,
-     "frp": 11.11,
-     "sensor": "modis",
-     "time": "2026-11-24 12:27Z",
-     "cell": "36.4,43.9",
-     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@43.9219,36.43821,11z"
-    },
-    {
-     "lat": 36.04499,
-     "lon": 43.78193,
-     "frp": 9.67,
-     "sensor": "modis",
-     "time": "2026-11-24 12:27Z",
-     "cell": "36.0,43.8",
-     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@43.78193,36.04499,11z"
-    },
-    {
-     "lat": 36.40054,
-     "lon": 43.79575,
-     "frp": 7.02,
-     "sensor": "modis",
-     "time": "2026-11-24 12:27Z",
-     "cell": "36.4,43.8",
-     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@43.79575,36.40054,11z"
-    },
-    {
-     "lat": 36.08644,
-     "lon": 43.87337,
-     "frp": 6.22,
-     "sensor": "modis",
-     "time": "2026-11-24 12:27Z",
-     "cell": "36.1,43.9",
-     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@43.87337,36.08644,11z"
-    },
-    {
-     "lat": 36.77164,
-     "lon": 43.32229,
-     "frp": 6.2,
-     "sensor": "modis",
-     "time": "2026-11-24 12:27Z",
-     "cell": "36.8,43.3",
-     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@43.32229,36.77164,11z"
-    },
-    {
-     "lat": 36.04554,
-     "lon": 43.70249,
-     "frp": 6.1,
+     "lat": 36.77963,
+     "lon": 43.3204,
+     "frp": 6.62,
      "sensor": "viirs_n20",
-     "time": "2026-11-24 10:23Z",
-     "cell": "36.0,43.7",
-     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@43.70249,36.04554,11z"
+     "time": "2026-11-26 00:05Z",
+     "cell": "36.8,43.3",
+     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@43.3204,36.77963,11z"
+    },
+    {
+     "lat": 36.77779,
+     "lon": 43.32656,
+     "frp": 6.62,
+     "sensor": "viirs_n20",
+     "time": "2026-11-26 00:05Z",
+     "cell": "36.8,43.3",
+     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@43.32656,36.77779,11z"
+    },
+    {
+     "lat": 36.77514,
+     "lon": 43.32215,
+     "frp": 5.99,
+     "sensor": "viirs_n20",
+     "time": "2026-11-25 22:26Z",
+     "cell": "36.8,43.3",
+     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@43.32215,36.77514,11z"
+    },
+    {
+     "lat": 36.11618,
+     "lon": 43.27295,
+     "frp": 4.51,
+     "sensor": "viirs_n20",
+     "time": "2026-11-25 10:06Z",
+     "cell": "36.1,43.3",
+     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@43.27295,36.11618,11z"
+    },
+    {
+     "lat": 36.06839,
+     "lon": 43.70221,
+     "frp": 4.39,
+     "sensor": "viirs_n20",
+     "time": "2026-11-25 10:06Z",
+     "cell": "36.1,43.7",
+     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@43.70221,36.06839,11z"
+    },
+    {
+     "lat": 36.03836,
+     "lon": 43.75063,
+     "frp": 3.91,
+     "sensor": "viirs_n20",
+     "time": "2026-11-25 10:06Z",
+     "cell": "36.0,43.8",
+     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@43.75063,36.03836,11z"
+    },
+    {
+     "lat": 36.89324,
+     "lon": 43.42859,
+     "frp": 3.9,
+     "sensor": "viirs_n20",
+     "time": "2026-11-25 22:26Z",
+     "cell": "36.9,43.4",
+     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@43.42859,36.89324,11z"
+    },
+    {
+     "lat": 36.86945,
+     "lon": 43.48344,
+     "frp": 3.77,
+     "sensor": "viirs_n20",
+     "time": "2026-11-25 22:26Z",
+     "cell": "36.9,43.5",
+     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@43.48344,36.86945,11z"
     }
    ]
   },
@@ -420,39 +429,12 @@
     "syria",
     "pkk"
    ],
-   "points": 113,
+   "points": 77,
    "persistentDropped": 0,
-   "newPoints": 113,
-   "newCells": 54,
-   "frpNew": 775.8,
+   "newPoints": 77,
+   "newCells": 37,
+   "frpNew": 480.0,
    "top": [
-    {
-     "lat": 36.9353,
-     "lon": 40.1608,
-     "frp": 36.26,
-     "sensor": "modis",
-     "time": "2026-11-24 12:27Z",
-     "cell": "36.9,40.2",
-     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@40.1608,36.9353,11z"
-    },
-    {
-     "lat": 36.94521,
-     "lon": 40.15793,
-     "frp": 34.29,
-     "sensor": "modis",
-     "time": "2026-11-24 12:27Z",
-     "cell": "36.9,40.2",
-     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@40.15793,36.94521,11z"
-    },
-    {
-     "lat": 36.92091,
-     "lon": 40.19555,
-     "frp": 33.45,
-     "sensor": "modis",
-     "time": "2026-11-24 12:27Z",
-     "cell": "36.9,40.2",
-     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@40.19555,36.92091,11z"
-    },
     {
      "lat": 36.98053,
      "lon": 39.08282,
@@ -497,6 +479,33 @@
      "time": "2026-11-25 10:06Z",
      "cell": "36.9,40.3",
      "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@40.26862,36.93029,11z"
+    },
+    {
+     "lat": 36.93396,
+     "lon": 40.26754,
+     "frp": 21.38,
+     "sensor": "viirs_n20",
+     "time": "2026-11-25 10:06Z",
+     "cell": "36.9,40.3",
+     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@40.26754,36.93396,11z"
+    },
+    {
+     "lat": 35.84507,
+     "lon": 38.05022,
+     "frp": 21.32,
+     "sensor": "modis",
+     "time": "2026-11-25 13:03Z",
+     "cell": "35.8,38.1",
+     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@38.05022,35.84507,11z"
+    },
+    {
+     "lat": 37.03848,
+     "lon": 40.19915,
+     "frp": 16.89,
+     "sensor": "viirs_n20",
+     "time": "2026-11-25 10:06Z",
+     "cell": "37.0,40.2",
+     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@40.19915,37.03848,11z"
     }
    ]
   },
@@ -507,11 +516,11 @@
     "mideast",
     "syria"
    ],
-   "points": 12,
+   "points": 14,
    "persistentDropped": 0,
-   "newPoints": 12,
-   "newCells": 10,
-   "frpNew": 200.0,
+   "newPoints": 14,
+   "newCells": 11,
+   "frpNew": 181.9,
    "top": [
     {
      "lat": 31.87388,
@@ -532,42 +541,6 @@
      "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@35.53646,31.87215,11z"
     },
     {
-     "lat": 32.95446,
-     "lon": 35.39238,
-     "frp": 14.34,
-     "sensor": "modis",
-     "time": "2026-11-24 17:36Z",
-     "cell": "33.0,35.4",
-     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@35.39238,32.95446,11z"
-    },
-    {
-     "lat": 33.11436,
-     "lon": 35.82711,
-     "frp": 4.39,
-     "sensor": "viirs_n20",
-     "time": "2026-11-24 10:23Z",
-     "cell": "33.1,35.8",
-     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@35.82711,33.11436,11z"
-    },
-    {
-     "lat": 32.80465,
-     "lon": 35.48205,
-     "frp": 2.51,
-     "sensor": "viirs_n20",
-     "time": "2026-11-24 10:23Z",
-     "cell": "32.8,35.5",
-     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@35.48205,32.80465,11z"
-    },
-    {
-     "lat": 34.71435,
-     "lon": 36.6362,
-     "frp": 2.44,
-     "sensor": "viirs_n20",
-     "time": "2026-11-24 10:23Z",
-     "cell": "34.7,36.6",
-     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@36.6362,34.71435,11z"
-    },
-    {
      "lat": 33.72301,
      "lon": 35.81889,
      "frp": 1.91,
@@ -584,6 +557,42 @@
      "time": "2026-11-25 00:26Z",
      "cell": "33.0,35.4",
      "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@35.39665,32.95895,11z"
+    },
+    {
+     "lat": 31.9192,
+     "lon": 34.89466,
+     "frp": 1.56,
+     "sensor": "viirs_n20",
+     "time": "2026-11-26 00:07Z",
+     "cell": "31.9,34.9",
+     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@34.89466,31.9192,11z"
+    },
+    {
+     "lat": 32.88987,
+     "lon": 35.09168,
+     "frp": 1.54,
+     "sensor": "viirs_n20",
+     "time": "2026-11-26 00:07Z",
+     "cell": "32.9,35.1",
+     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@35.09168,32.88987,11z"
+    },
+    {
+     "lat": 31.1858,
+     "lon": 36.07256,
+     "frp": 1.11,
+     "sensor": "viirs_n20",
+     "time": "2026-11-25 00:28Z",
+     "cell": "31.2,36.1",
+     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@36.07256,31.1858,11z"
+    },
+    {
+     "lat": 31.18461,
+     "lon": 36.07225,
+     "frp": 1.07,
+     "sensor": "viirs_n20",
+     "time": "2026-11-26 00:07Z",
+     "cell": "31.2,36.1",
+     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@36.07225,31.18461,11z"
     }
    ]
   },
@@ -632,11 +641,11 @@
    "files": [
     "russia"
    ],
-   "points": 6,
+   "points": 3,
    "persistentDropped": 0,
-   "newPoints": 6,
-   "newCells": 3,
-   "frpNew": 14.0,
+   "newPoints": 3,
+   "newCells": 2,
+   "frpNew": 6.6,
    "top": [
     {
      "lat": 47.84013,
@@ -646,33 +655,6 @@
      "time": "2026-11-25 00:22Z",
      "cell": "47.8,39.9",
      "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@39.85255,47.84013,11z"
-    },
-    {
-     "lat": 47.84187,
-     "lon": 39.84789,
-     "frp": 2.47,
-     "sensor": "viirs_n20",
-     "time": "2026-11-24 22:41Z",
-     "cell": "47.8,39.8",
-     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@39.84789,47.84187,11z"
-    },
-    {
-     "lat": 47.84165,
-     "lon": 39.8523,
-     "frp": 2.47,
-     "sensor": "viirs_n20",
-     "time": "2026-11-24 22:41Z",
-     "cell": "47.8,39.9",
-     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@39.8523,47.84165,11z"
-    },
-    {
-     "lat": 47.83652,
-     "lon": 39.85183,
-     "frp": 2.47,
-     "sensor": "viirs_n20",
-     "time": "2026-11-24 22:41Z",
-     "cell": "47.8,39.9",
-     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@39.85183,47.83652,11z"
     },
     {
      "lat": 47.84117,
@@ -959,6 +941,310 @@
    "new": false
   },
   {
+   "id": "O-0c7a9ea70813",
+   "kind": "official",
+   "source": "Türkiye Ministry of Foreign Affairs",
+   "domain": "mfa.gov.tr",
+   "rel": "A",
+   "files": [
+    "turkey"
+   ],
+   "lang": "en",
+   "title": "Deputy Ministers",
+   "url": "https://www.mfa.gov.tr/deputy-ministers.en.mfa",
+   "published": "",
+   "relevant": true,
+   "new": true
+  },
+  {
+   "id": "O-89a8adb8718f",
+   "kind": "official",
+   "source": "Türkiye Ministry of Foreign Affairs",
+   "domain": "mfa.gov.tr",
+   "rel": "A",
+   "files": [
+    "turkey"
+   ],
+   "lang": "en",
+   "title": "Foreign Policy",
+   "url": "https://www.mfa.gov.tr/synopsis-of-the-turkish-foreign-policy.en.mfa",
+   "published": "",
+   "relevant": true,
+   "new": true
+  },
+  {
+   "id": "O-d919a2b73e27",
+   "kind": "official",
+   "source": "Türkiye Ministry of Foreign Affairs",
+   "domain": "mfa.gov.tr",
+   "rel": "A",
+   "files": [
+    "turkey"
+   ],
+   "lang": "en",
+   "title": "Consular Info",
+   "url": "https://www.mfa.gov.tr/consular-info.en.mfa",
+   "published": "",
+   "relevant": true,
+   "new": true
+  },
+  {
+   "id": "O-331d6eb0bd47",
+   "kind": "official",
+   "source": "Türkiye Ministry of Foreign Affairs",
+   "domain": "mfa.gov.tr",
+   "rel": "A",
+   "files": [
+    "turkey"
+   ],
+   "lang": "en",
+   "title": "Press & Information",
+   "url": "https://www.mfa.gov.tr/press-information.en.mfa",
+   "published": "",
+   "relevant": true,
+   "new": true
+  },
+  {
+   "id": "O-4108a9374a24",
+   "kind": "official",
+   "source": "Türkiye Ministry of Foreign Affairs",
+   "domain": "mfa.gov.tr",
+   "rel": "A",
+   "files": [
+    "turkey"
+   ],
+   "lang": "en",
+   "title": "List of Former Ministers of Foreign Affairs",
+   "url": "https://www.mfa.gov.tr/list-of-former-ministers-of-foreign-affairs.en.mfa",
+   "published": "",
+   "relevant": true,
+   "new": true
+  },
+  {
+   "id": "O-c35dfd008c34",
+   "kind": "official",
+   "source": "Türkiye Ministry of Foreign Affairs",
+   "domain": "mfa.gov.tr",
+   "rel": "A",
+   "files": [
+    "turkey"
+   ],
+   "lang": "en",
+   "title": "Board of Internal Auditition",
+   "url": "https://www.mfa.gov.tr/internal-auditition.en.mfa",
+   "published": "",
+   "relevant": true,
+   "new": true
+  },
+  {
+   "id": "O-be044274bd7e",
+   "kind": "official",
+   "source": "Türkiye Ministry of Foreign Affairs",
+   "domain": "mfa.gov.tr",
+   "rel": "A",
+   "files": [
+    "turkey"
+   ],
+   "lang": "en",
+   "title": "Assassinated Turkish Diplomats/Officials",
+   "url": "https://www.mfa.gov.tr/sehit-edilen-diplomatlarimiz-ve-vatandaslarimiz_en.en.mfa",
+   "published": "",
+   "relevant": true,
+   "new": true
+  },
+  {
+   "id": "O-4df5c3c346bf",
+   "kind": "official",
+   "source": "Türkiye Ministry of Foreign Affairs",
+   "domain": "mfa.gov.tr",
+   "rel": "A",
+   "files": [
+    "turkey"
+   ],
+   "lang": "en",
+   "title": "Our Role and Vision During the Coronavirus Pandemic",
+   "url": "https://www.mfa.gov.tr/koronavirus-salginindaki-rol-ve-vizyonumuz-20-04-2022.en.mfa",
+   "published": "",
+   "relevant": true,
+   "new": true
+  },
+  {
+   "id": "O-a94eb5849a67",
+   "kind": "official",
+   "source": "Türkiye Ministry of Foreign Affairs",
+   "domain": "mfa.gov.tr",
+   "rel": "A",
+   "files": [
+    "turkey"
+   ],
+   "lang": "en",
+   "title": "Frequently Asked Questions",
+   "url": "https://www.mfa.gov.tr/questions.en.mfa",
+   "published": "",
+   "relevant": true,
+   "new": true
+  },
+  {
+   "id": "O-20d197e023b8",
+   "kind": "official",
+   "source": "Türkiye Ministry of Foreign Affairs",
+   "domain": "mfa.gov.tr",
+   "rel": "A",
+   "files": [
+    "turkey"
+   ],
+   "lang": "en",
+   "title": "The Turkish Flag and The Turkish National Anthem (Independence March)",
+   "url": "https://www.mfa.gov.tr/the-turkish-flag-and-the-turkish-national-anthem.en.mfa",
+   "published": "",
+   "relevant": true,
+   "new": true
+  },
+  {
+   "id": "O-bacd80ee7752",
+   "kind": "official",
+   "source": "Türkiye Ministry of Foreign Affairs",
+   "domain": "mfa.gov.tr",
+   "rel": "A",
+   "files": [
+    "turkey"
+   ],
+   "lang": "en",
+   "title": "Holiday Enlightenment Project",
+   "url": "https://www.mfa.gov.tr/tatil-aydinlatma-projesi.en.mfa",
+   "published": "",
+   "relevant": true,
+   "new": true
+  },
+  {
+   "id": "O-1710405f2e97",
+   "kind": "official",
+   "source": "Türkiye Ministry of Foreign Affairs",
+   "domain": "mfa.gov.tr",
+   "rel": "A",
+   "files": [
+    "turkey"
+   ],
+   "lang": "en",
+   "title": "Diplomatic Missions in Türkiye",
+   "url": "https://www.mfa.gov.tr/diplomatic-missions-in-turkey.en.mfa",
+   "published": "",
+   "relevant": true,
+   "new": true
+  },
+  {
+   "id": "O-e743ef757e95",
+   "kind": "official",
+   "source": "Türkiye Ministry of Foreign Affairs",
+   "domain": "mfa.gov.tr",
+   "rel": "A",
+   "files": [
+    "turkey"
+   ],
+   "lang": "en",
+   "title": "Frequently Asked Questions",
+   "url": "https://www.mfa.gov.tr/frequently-asked-questions.en.mfa",
+   "published": "",
+   "relevant": true,
+   "new": true
+  },
+  {
+   "id": "O-b9d433b2936c",
+   "kind": "official",
+   "source": "Türkiye Ministry of Foreign Affairs",
+   "domain": "mfa.gov.tr",
+   "rel": "A",
+   "files": [
+    "turkey"
+   ],
+   "lang": "en",
+   "title": "Chronogical List of Turkish Governments",
+   "url": "https://www.mfa.gov.tr/chronogical-list-of-turkish-governments.en.mfa",
+   "published": "",
+   "relevant": true,
+   "new": true
+  },
+  {
+   "id": "O-621e239a4e74",
+   "kind": "official",
+   "source": "Türkiye Ministry of Foreign Affairs",
+   "domain": "mfa.gov.tr",
+   "rel": "A",
+   "files": [
+    "turkey"
+   ],
+   "lang": "en",
+   "title": "Constitution of the Republic of Türkiye",
+   "url": "https://www.mfa.gov.tr/constitution-of-the-republic-of-turkey.en.mfa",
+   "published": "",
+   "relevant": true,
+   "new": true
+  },
+  {
+   "id": "O-4e4b77a5eb32",
+   "kind": "official",
+   "source": "Türkiye Ministry of Foreign Affairs",
+   "domain": "mfa.gov.tr",
+   "rel": "A",
+   "files": [
+    "turkey"
+   ],
+   "lang": "en",
+   "title": "Terminology for Foreign Affairs",
+   "url": "https://www.mfa.gov.tr/terminology-for-foreign-affairs.en.mfa",
+   "published": "",
+   "relevant": true,
+   "new": true
+  },
+  {
+   "id": "O-084d97ee182b",
+   "kind": "official",
+   "source": "Qatar News Agency",
+   "domain": "qna.org.qa",
+   "rel": "A",
+   "files": [
+    "gulf"
+   ],
+   "lang": "en",
+   "title": "Dollar Steady After Falling to One-Week Low",
+   "url": "https://qna.org.qa/en/News-Area/News/2026-11/26/dollar-steady-after-falling-to-one-week-low",
+   "published": "",
+   "relevant": false,
+   "new": true
+  },
+  {
+   "id": "O-95cccce60a81",
+   "kind": "official",
+   "source": "Qatar News Agency",
+   "domain": "qna.org.qa",
+   "rel": "A",
+   "files": [
+    "gulf"
+   ],
+   "lang": "en",
+   "title": "Gold Steadies After Plunging to More Than One-Year Low",
+   "url": "https://qna.org.qa/en/News-Area/News/2026-11/26/gold-steadies-after-plunging-to-more-than-one-year-low",
+   "published": "",
+   "relevant": false,
+   "new": true
+  },
+  {
+   "id": "O-40989a5de0ec",
+   "kind": "official",
+   "source": "Qatar News Agency",
+   "domain": "qna.org.qa",
+   "rel": "A",
+   "files": [
+    "gulf"
+   ],
+   "lang": "en",
+   "title": "Oil Prices Rise on Supply Concerns",
+   "url": "https://qna.org.qa/en/News-Area/News/2026-11/26/oil-prices-rise-on-supply-concerns",
+   "published": "",
+   "relevant": false,
+   "new": true
+  },
+  {
    "id": "O-fd19b10e4c06",
    "kind": "official",
    "source": "Qatar News Agency",
@@ -972,7 +1258,7 @@
    "url": "https://qna.org.qa/en/News-Area/News/2026-11/26/poland-vows-to-create-no-fly-zone-along-border-with-ukraine",
    "published": "",
    "relevant": true,
-   "new": true
+   "new": false
   },
   {
    "id": "O-0ce4b806543e",
@@ -988,55 +1274,7 @@
    "url": "https://qna.org.qa/en/News-Area/News/2026-11/26/unesco-creative-cities-conference-opens-in-morocco",
    "published": "",
    "relevant": false,
-   "new": true
-  },
-  {
-   "id": "O-c9ac5d3ce41d",
-   "kind": "official",
-   "source": "Qatar News Agency",
-   "domain": "qna.org.qa",
-   "rel": "A",
-   "files": [
-    "gulf"
-   ],
-   "lang": "en",
-   "title": "Russia, Pakistan Sign Protocol on Trade, Economic Cooperation",
-   "url": "https://qna.org.qa/en/News-Area/News/2026-11/26/russia-pakistan-sign-protocol-on-trade-economic-cooperation",
-   "published": "",
-   "relevant": true,
-   "new": true
-  },
-  {
-   "id": "O-cd1256d163c1",
-   "kind": "official",
-   "source": "Qatar News Agency",
-   "domain": "qna.org.qa",
-   "rel": "A",
-   "files": [
-    "gulf"
-   ],
-   "lang": "en",
-   "title": "Iraq's Four Presidencies Back National Dialogue to Resolve Baghdad-Erbil Crisis",
-   "url": "https://qna.org.qa/en/News-Area/News/2026-11/26/iraqs-four-presidencies-back-national-dialogue-to-resolve-baghdad-erbil-crisis",
-   "published": "",
-   "relevant": true,
-   "new": true
-  },
-  {
-   "id": "O-809c9a8092c9",
-   "kind": "official",
-   "source": "Qatar News Agency",
-   "domain": "qna.org.qa",
-   "rel": "A",
-   "files": [
-    "gulf"
-   ],
-   "lang": "en",
-   "title": "Morocco Launches USD 2.19 Billion Roadmap to Bolster Defense Industries",
-   "url": "https://qna.org.qa/en/News-Area/News/2026-11/26/morocco-launches-usd-219-billion-roadmap-to-bolster-defense-industries",
-   "published": "",
-   "relevant": true,
-   "new": true
+   "new": false
   },
   {
    "id": "O-d4a8d01e6254",
@@ -1052,7 +1290,7 @@
    "url": "https://qna.org.qa/en/News-Area/News/2026-11/25/qatar-us-stress-importance-of-advancing-economic-partnership",
    "published": "",
    "relevant": false,
-   "new": true
+   "new": false
   },
   {
    "id": "O-1f993ba67df8",
@@ -1067,7 +1305,7 @@
    "title": "Daman Participates in 25th GCC Civil Retirement, Social Insurance Authorities' Heads Meeting",
    "url": "https://qna.org.qa/en/News-Area/News/2026-11/25/daman-participates-in-25th-gcc-civil-retirement-social-insurance-authorities-heads-meeting",
    "published": "",
-   "relevant": true,
+   "relevant": false,
    "new": false
   },
   {
@@ -1084,7 +1322,7 @@
    "url": "https://qna.org.qa/en/News-Area/News/2026-11/25/minister-of-state-for-international-cooperation-chairs-meeting-of-qatar-canada-working-group-on-development-humanitarian-cooperation",
    "published": "",
    "relevant": false,
-   "new": true
+   "new": false
   },
   {
    "id": "O-9c558b74bdab",
@@ -1100,7 +1338,7 @@
    "url": "https://qna.org.qa/en/News-Area/News/2026-11/25/msdf-takes-part-in-doha-skeek-project",
    "published": "",
    "relevant": false,
-   "new": true
+   "new": false
   },
   {
    "id": "O-afd920261c2f",
@@ -1116,7 +1354,7 @@
    "url": "https://qna.org.qa/en/News-Area/News/2026-11/25/qatarenergy-jbic-sign-mou-to-advance-strategic-energy-partnership",
    "published": "",
    "relevant": false,
-   "new": true
+   "new": false
   },
   {
    "id": "O-87481bbb5bc1",
@@ -1132,7 +1370,7 @@
    "url": "https://qna.org.qa/en/News-Area/News/2026-11/25/undersecretary-of-ministry-of-interior-meets-director-general-of-turkish-security",
    "published": "",
    "relevant": true,
-   "new": true
+   "new": false
   },
   {
    "id": "O-a1fe7590eb72",
@@ -1148,7 +1386,7 @@
    "url": "https://qna.org.qa/en/News-Area/News/2026-11/25/amiri-guard-holds-graduation-ceremony-for-several-training-courses",
    "published": "",
    "relevant": false,
-   "new": true
+   "new": false
   },
   {
    "id": "O-83d2d03ef6ae",
@@ -1164,7 +1402,7 @@
    "url": "https://qna.org.qa/en/News-Area/News/2026-11/25/whoop-opens-doha-headquarters-and-first-international-performance-lab-in-msheireb-downtown-doha",
    "published": "",
    "relevant": false,
-   "new": true
+   "new": false
   },
   {
    "id": "O-9246542084ee",
@@ -1180,7 +1418,7 @@
    "url": "https://qna.org.qa/en/News-Area/News/2026-11/25/qatars-ali-al-obaidly-advances-to-round-of-16-of-world-snooker-championship",
    "published": "",
    "relevant": false,
-   "new": true
+   "new": false
   },
   {
    "id": "O-7341cf2ae04f",
@@ -1215,6 +1453,38 @@
    "new": false
   },
   {
+   "id": "O-21908e858f9e",
+   "kind": "official",
+   "source": "Oman News Agency",
+   "domain": "omannews.gov.om",
+   "rel": "A",
+   "files": [
+    "gulf"
+   ],
+   "lang": "ar",
+   "title": "ارتفاع حصيلة ضحايا فيضان منجم في إندونيسيا إلى 13 وفقدان العشرات",
+   "url": "https://omannews.gov.om/topics/ar/88/show/477313/ona",
+   "published": "",
+   "relevant": false,
+   "new": true
+  },
+  {
+   "id": "O-4db1e26d0f10",
+   "kind": "official",
+   "source": "Oman News Agency",
+   "domain": "omannews.gov.om",
+   "rel": "A",
+   "files": [
+    "gulf"
+   ],
+   "lang": "ar",
+   "title": "استقرار سعر الذهب بعد هبوطه لأدنى مستوى في أكثر من عام",
+   "url": "https://omannews.gov.om/topics/ar/7/show/477312/ona",
+   "published": "",
+   "relevant": false,
+   "new": true
+  },
+  {
    "id": "O-e1f1353bbbc4",
    "kind": "official",
    "source": "Oman News Agency",
@@ -1228,7 +1498,7 @@
    "url": "https://omannews.gov.om/topics/ar/88/show/477311/ona",
    "published": "",
    "relevant": false,
-   "new": true
+   "new": false
   },
   {
    "id": "O-67e5aa93d88d",
@@ -1244,7 +1514,7 @@
    "url": "https://omannews.gov.om/topics/ar/88/show/477310/ona",
    "published": "",
    "relevant": false,
-   "new": true
+   "new": false
   },
   {
    "id": "O-0ca28ae7776e",
@@ -1258,102 +1528,6 @@
    "lang": "ar",
    "title": "مصر تتأهل لدور الـ32 في كأس العالم للناشئين بفوزها على بنما",
    "url": "https://omannews.gov.om/topics/ar/8/show/477309/ona",
-   "published": "",
-   "relevant": false,
-   "new": true
-  },
-  {
-   "id": "O-fc1380907117",
-   "kind": "official",
-   "source": "Oman News Agency",
-   "domain": "omannews.gov.om",
-   "rel": "A",
-   "files": [
-    "gulf"
-   ],
-   "lang": "ar",
-   "title": "سفارة سلطنة عُمان في سويسرا تقيم حفل استقبال بمناسبة اليوم الوطني المجيد",
-   "url": "https://omannews.gov.om/topics/ar/3/show/477308/ona",
-   "published": "",
-   "relevant": false,
-   "new": true
-  },
-  {
-   "id": "O-e8251bdd8786",
-   "kind": "official",
-   "source": "Oman News Agency",
-   "domain": "omannews.gov.om",
-   "rel": "A",
-   "files": [
-    "gulf"
-   ],
-   "lang": "ar",
-   "title": "سفارة سلطنة عُمان في فرنسا تحتفل باليوم الوطني المجيد",
-   "url": "https://omannews.gov.om/topics/ar/3/show/477307/ona",
-   "published": "",
-   "relevant": false,
-   "new": true
-  },
-  {
-   "id": "O-4952c001b219",
-   "kind": "official",
-   "source": "Oman News Agency",
-   "domain": "omannews.gov.om",
-   "rel": "A",
-   "files": [
-    "gulf"
-   ],
-   "lang": "ar",
-   "title": "سفارة سلطنة عُمان لدى الجزائر تقيم حفل استقبال",
-   "url": "https://omannews.gov.om/topics/ar/3/show/477285/ona",
-   "published": "",
-   "relevant": false,
-   "new": true
-  },
-  {
-   "id": "O-70650252e9cd",
-   "kind": "official",
-   "source": "Oman News Agency",
-   "domain": "omannews.gov.om",
-   "rel": "A",
-   "files": [
-    "gulf"
-   ],
-   "lang": "ar",
-   "title": "سفارة سلطنة عُمان لدى روسيا الاتحادية تحتفل باليوم الوطني المجيد",
-   "url": "https://omannews.gov.om/topics/ar/3/show/477286/ona",
-   "published": "",
-   "relevant": true,
-   "new": true
-  },
-  {
-   "id": "O-d9845030cd36",
-   "kind": "official",
-   "source": "Oman News Agency",
-   "domain": "omannews.gov.om",
-   "rel": "A",
-   "files": [
-    "gulf"
-   ],
-   "lang": "ar",
-   "title": "مندوبية سلطنة عُمان الدائمة لدى الأمم المتحدة في جنيف تحتفل باليوم الوطني المجيد",
-   "url": "https://omannews.gov.om/topics/ar/3/show/477287/ona",
-   "published": "",
-   "relevant": false,
-   "new": false
-  },
-  {
-   "id": "O-2cac20617784",
-   "kind": "official",
-   "source": "Oman News Agency",
-   "domain": "omannews.gov.om",
-   "rel": "A",
-   "files": [
-    "gulf"
-   ],
-   "lang": "ar",
-   "title": "سفارة سلطنة عُمان في مانيلا تحتفل باليوم الوطني المجيد",
-   "url": "https://omannews.gov.om/topics/ar/3/show/477288/ona",
    "published": "",
    "relevant": false,
    "new": false
@@ -1372,7 +1546,7 @@
    "url": "https://omannews.gov.om/topics/ar/8/show/477289/ona",
    "published": "",
    "relevant": false,
-   "new": true
+   "new": false
   },
   {
    "id": "O-daee04c3240f",
@@ -1391,6 +1565,70 @@
    "new": false
   },
   {
+   "id": "O-1015c276d50e",
+   "kind": "official",
+   "source": "Oman News Agency",
+   "domain": "omannews.gov.om",
+   "rel": "A",
+   "files": [
+    "gulf"
+   ],
+   "lang": "ar",
+   "title": "سعر نفط عُمان يرتفع دولارًا أمريكيًّا و39 سنتًا",
+   "url": "https://omannews.gov.om/topics/ar/7/show/477291/ona",
+   "published": "",
+   "relevant": false,
+   "new": true
+  },
+  {
+   "id": "O-f156417555a5",
+   "kind": "official",
+   "source": "Oman News Agency",
+   "domain": "omannews.gov.om",
+   "rel": "A",
+   "files": [
+    "gulf"
+   ],
+   "lang": "ar",
+   "title": "فتح باب التظلّم من نتائج انتخابات غرفة تجارة وصناعة عُمان لمدة سبعة أيام",
+   "url": "https://omannews.gov.om/topics/ar/3/show/477292/ona",
+   "published": "",
+   "relevant": false,
+   "new": false
+  },
+  {
+   "id": "O-2eb4b49bc504",
+   "kind": "official",
+   "source": "Oman News Agency",
+   "domain": "omannews.gov.om",
+   "rel": "A",
+   "files": [
+    "gulf"
+   ],
+   "lang": "ar",
+   "title": "سفارة سلطنة عُمان في بروناي دار السلام تحتفي باليوم الوطني المجيد",
+   "url": "https://omannews.gov.om/topics/ar/3/show/477293/ona",
+   "published": "",
+   "relevant": false,
+   "new": false
+  },
+  {
+   "id": "O-2979582c0060",
+   "kind": "official",
+   "source": "Oman News Agency",
+   "domain": "omannews.gov.om",
+   "rel": "A",
+   "files": [
+    "gulf"
+   ],
+   "lang": "ar",
+   "title": "مُنتخبنا لكرة القدم الشاطئية يبلغ نصف نهائي كأس آسيا 2026",
+   "url": "https://omannews.gov.om/topics/ar/8/show/477294/ona",
+   "published": "",
+   "relevant": false,
+   "new": true
+  },
+  {
    "id": "O-1c0f5b68327c",
    "kind": "official",
    "source": "Oman News Agency",
@@ -1404,7 +1642,7 @@
    "url": "https://omannews.gov.om/topics/ar/3/show/477306/ona",
    "published": "",
    "relevant": false,
-   "new": true
+   "new": false
   },
   {
    "id": "O-7eaf5f4cfd4d",
@@ -1420,7 +1658,7 @@
    "url": "https://omannews.gov.om/topics/ar/3/show/477304/ona",
    "published": "",
    "relevant": false,
-   "new": true
+   "new": false
   },
   {
    "id": "O-f76e21f61b9f",
@@ -1471,38 +1709,6 @@
    "new": false
   },
   {
-   "id": "O-2eb4b49bc504",
-   "kind": "official",
-   "source": "Oman News Agency",
-   "domain": "omannews.gov.om",
-   "rel": "A",
-   "files": [
-    "gulf"
-   ],
-   "lang": "ar",
-   "title": "سفارة سلطنة عُمان في بروناي دار السلام تحتفي باليوم الوطني المجيد",
-   "url": "https://omannews.gov.om/topics/ar/3/show/477293/ona",
-   "published": "",
-   "relevant": false,
-   "new": false
-  },
-  {
-   "id": "O-f156417555a5",
-   "kind": "official",
-   "source": "Oman News Agency",
-   "domain": "omannews.gov.om",
-   "rel": "A",
-   "files": [
-    "gulf"
-   ],
-   "lang": "ar",
-   "title": "فتح باب التظلّم من نتائج انتخابات غرفة تجارة وصناعة عُمان لمدة سبعة أيام",
-   "url": "https://omannews.gov.om/topics/ar/3/show/477292/ona",
-   "published": "",
-   "relevant": false,
-   "new": false
-  },
-  {
    "id": "O-e4e271e58a48",
    "kind": "official",
    "source": "Oman News Agency",
@@ -1547,7 +1753,7 @@
    "title": "\"متحف بيرا\" بإسطنبول يستعيد ذاكرة تركيا عبر أرشيف الصور الصحفية",
    "url": "https://omannews.gov.om/topics/ar/6/show/477195/ona",
    "published": "",
-   "relevant": true,
+   "relevant": false,
    "new": false
   },
   {
@@ -1580,7 +1786,7 @@
    "url": "https://omannews.gov.om/topics/ar/119/show/477303/ona",
    "published": "",
    "relevant": false,
-   "new": true
+   "new": false
   },
   {
    "id": "O-108d5817729b",
@@ -1610,6 +1816,38 @@
    "lang": "ar",
    "title": "الافتتاحُ الرّسمي لمشروع \"تلفريك مطرح\" بمُحافظة مسقط",
    "url": "https://omannews.gov.om/topics/ar/115/show/477280/ona",
+   "published": "",
+   "relevant": false,
+   "new": false
+  },
+  {
+   "id": "O-e3284b567eed",
+   "kind": "official",
+   "source": "Oman News Agency",
+   "domain": "omannews.gov.om",
+   "rel": "A",
+   "files": [
+    "gulf"
+   ],
+   "lang": "ar",
+   "title": "انطلاقُ مُلتقى \"من الدّار\" بالرّستاق بمشاركة 60 أسرة منتجة",
+   "url": "https://omannews.gov.om/topics/ar/121/show/477275/ona",
+   "published": "",
+   "relevant": false,
+   "new": false
+  },
+  {
+   "id": "O-1030108b601a",
+   "kind": "official",
+   "source": "Oman News Agency",
+   "domain": "omannews.gov.om",
+   "rel": "A",
+   "files": [
+    "gulf"
+   ],
+   "lang": "ar",
+   "title": "انطلاق منافسات البطولة / 12 / للرماية بالأسلحة التقليدية بالمضيبي",
+   "url": "https://omannews.gov.om/topics/ar/126/show/477271/ona",
    "published": "",
    "relevant": false,
    "new": false
@@ -1795,6 +2033,22 @@
    "new": false
   },
   {
+   "id": "O-79e5f0df11f4",
+   "kind": "official",
+   "source": "Saudi Press Agency",
+   "domain": "spa.gov.sa",
+   "rel": "A",
+   "files": [
+    "gulf"
+   ],
+   "lang": "en",
+   "title": "Sidr Trees, Seasonal Plants Adorn Wilderness East of Historic Linah",
+   "url": "https://www.spa.gov.sa/en/N2736688",
+   "published": "",
+   "relevant": false,
+   "new": true
+  },
+  {
    "id": "O-5712d4e9d4fc",
    "kind": "official",
    "source": "Saudi Press Agency",
@@ -1808,7 +2062,7 @@
    "url": "https://www.spa.gov.sa/en/N2736465",
    "published": "",
    "relevant": false,
-   "new": true
+   "new": false
   },
   {
    "id": "O-a911d18a683b",
@@ -1923,7 +2177,7 @@
    "new": false
   },
   {
-   "id": "O-b7a17d881428",
+   "id": "O-6395b203ef64",
    "kind": "official",
    "source": "Saudi Press Agency",
    "domain": "spa.gov.sa",
@@ -1932,34 +2186,18 @@
     "gulf"
    ],
    "lang": "en",
-   "title": "Sadd Samallaqi: Historic Landmark in Taif Mountains Tells Story of Water Management",
-   "url": "https://www.spa.gov.sa/en/N2734503",
+   "title": "Greater Flamingo Flocks Gather Along Al-Lith Coast",
+   "url": "https://www.spa.gov.sa/en/N2733936",
    "published": "",
    "relevant": false,
-   "new": false
-  },
-  {
-   "id": "O-bde7541c886c",
-   "kind": "official",
-   "source": "Saudi Press Agency",
-   "domain": "spa.gov.sa",
-   "rel": "A",
-   "files": [
-    "gulf"
-   ],
-   "lang": "en",
-   "title": "Red Sea Museum Showcases Jeddah's Black Coral Prayer-Bead Making Heritage",
-   "url": "https://www.spa.gov.sa/en/N2734347",
-   "published": "",
-   "relevant": true,
-   "new": false
+   "new": true
   }
  ],
  "status": {
-  "viirs_n20": "ok: 767 points in watch boxes",
-  "modis": "ok: 198 points in watch boxes",
+  "viirs_n20": "ok: 668 points in watch boxes",
+  "modis": "ok: 133 points in watch boxes",
   "defense_rss": "ok: 20 items, 0 relevant",
-  "mfa_tr": "ok but no items parsed",
+  "mfa_tr": "ok: 16 items",
   "qna": "ok: 16 items",
   "ona": "ok: 25 items",
   "ofac": "ok: 10 items",
