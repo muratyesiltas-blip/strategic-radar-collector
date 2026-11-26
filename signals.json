@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-26T07:41:14+00:00",
+ "generatedAt": "2026-11-26T10:59:40+00:00",
  "version": 1,
  "note": "Machine-collected signals. Thermal anomalies are heat sources seen from orbit, not confirmed strikes; persistent cells (seen on at least 3 of the last 7 days) are dropped as flares or industry.",
  "thermal": {
@@ -95,12 +95,30 @@
     "gulf",
     "iran"
    ],
-   "points": 368,
+   "points": 374,
    "persistentDropped": 0,
-   "newPoints": 368,
+   "newPoints": 374,
    "newCells": 124,
-   "frpNew": 2491.5,
+   "frpNew": 2836.4,
    "top": [
+    {
+     "lat": 30.35706,
+     "lon": 47.34299,
+     "frp": 129.52,
+     "sensor": "modis",
+     "time": "2026-11-26 06:18Z",
+     "cell": "30.4,47.3",
+     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@47.34299,30.35706,11z"
+    },
+    {
+     "lat": 30.35772,
+     "lon": 47.34845,
+     "frp": 116.98,
+     "sensor": "modis",
+     "time": "2026-11-26 06:18Z",
+     "cell": "30.4,47.3",
+     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@47.34845,30.35772,11z"
+    },
     {
      "lat": 30.3583,
      "lon": 47.3363,
@@ -154,24 +172,6 @@
      "time": "2026-11-26 01:04Z",
      "cell": "27.7,52.2",
      "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@52.18274,27.71949,11z"
-    },
-    {
-     "lat": 30.35981,
-     "lon": 47.33442,
-     "frp": 53.68,
-     "sensor": "modis",
-     "time": "2026-11-25 00:26Z",
-     "cell": "30.4,47.3",
-     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@47.33442,30.35981,11z"
-    },
-    {
-     "lat": 25.47928,
-     "lon": 50.17984,
-     "frp": 52.26,
-     "sensor": "modis",
-     "time": "2026-11-25 16:37Z",
-     "cell": "25.5,50.2",
-     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@50.17984,25.47928,11z"
     }
    ]
   },
@@ -180,11 +180,11 @@
    "files": [
     "iran"
    ],
-   "points": 253,
+   "points": 262,
    "persistentDropped": 0,
-   "newPoints": 253,
+   "newPoints": 262,
    "newCells": 65,
-   "frpNew": 3018.4,
+   "frpNew": 3741.1,
    "top": [
     {
      "lat": 30.75474,
@@ -205,6 +205,15 @@
      "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@48.28265,30.75464,11z"
     },
     {
+     "lat": 30.7412,
+     "lon": 48.29743,
+     "frp": 144.88,
+     "sensor": "modis",
+     "time": "2026-11-26 06:18Z",
+     "cell": "30.7,48.3",
+     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@48.29743,30.7412,11z"
+    },
+    {
      "lat": 31.27164,
      "lon": 48.11659,
      "frp": 111.33,
@@ -212,6 +221,24 @@
      "time": "2026-11-25 16:39Z",
      "cell": "31.3,48.1",
      "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@48.11659,31.27164,11z"
+    },
+    {
+     "lat": 30.75204,
+     "lon": 48.30589,
+     "frp": 107.88,
+     "sensor": "modis",
+     "time": "2026-11-26 06:18Z",
+     "cell": "30.8,48.3",
+     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@48.30589,30.75204,11z"
+    },
+    {
+     "lat": 30.75994,
+     "lon": 48.27103,
+     "frp": 106.78,
+     "sensor": "modis",
+     "time": "2026-11-26 06:18Z",
+     "cell": "30.8,48.3",
+     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@48.27103,30.75994,11z"
     },
     {
      "lat": 31.01144,
@@ -230,33 +257,6 @@
      "time": "2026-11-25 00:26Z",
      "cell": "31.0,48.1",
      "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@48.14512,31.00962,11z"
-    },
-    {
-     "lat": 31.27418,
-     "lon": 48.11317,
-     "frp": 81.23,
-     "sensor": "modis",
-     "time": "2026-11-25 00:26Z",
-     "cell": "31.3,48.1",
-     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@48.11317,31.27418,11z"
-    },
-    {
-     "lat": 31.0066,
-     "lon": 48.13123,
-     "frp": 78.05,
-     "sensor": "modis",
-     "time": "2026-11-25 16:39Z",
-     "cell": "31.0,48.1",
-     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@48.13123,31.0066,11z"
-    },
-    {
-     "lat": 31.27181,
-     "lon": 48.11079,
-     "frp": 68.02,
-     "sensor": "modis",
-     "time": "2026-11-25 16:39Z",
-     "cell": "31.3,48.1",
-     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@48.11079,31.27181,11z"
     }
    ]
   },
@@ -941,6 +941,22 @@
    "new": false
   },
   {
+   "id": "O-725ca5214240",
+   "kind": "official",
+   "source": "Türkiye Ministry of Foreign Affairs",
+   "domain": "mfa.gov.tr",
+   "rel": "A",
+   "files": [
+    "turkey"
+   ],
+   "lang": "en",
+   "title": "No: 229, 26 November 2026, Regarding the Fuel Tanker Fire in Egypt",
+   "url": "http://www.mfa.gov.tr/no_-229_-misir-da-meydana-gelen-tanker-yangini-hk.en.mfa",
+   "published": "Thu, 26 Nov 2026 09:39:33 GMT",
+   "relevant": true,
+   "new": true
+  },
+  {
    "id": "O-339f50fe29d1",
    "kind": "official",
    "source": "Türkiye Ministry of Foreign Affairs",
@@ -954,7 +970,7 @@
    "url": "http://www.mfa.gov.tr/no_-228_-husilerin-suudi-arabistan-i-hedef-alan-saldirisi-hk.en.mfa",
    "published": "Wed, 25 Nov 2026 18:28:56 GMT",
    "relevant": true,
-   "new": true
+   "new": false
   },
   {
    "id": "O-b7bc1e6b6a8f",
@@ -970,7 +986,7 @@
    "url": "http://www.mfa.gov.tr/no_-227_-eski-tbmm-baskanimiz--basbakan-yardimcimiz-ve-disisleri-bakanimiz-sayin-hikmet-cetin-in-vefati-hk.en.mfa",
    "published": "Wed, 25 Nov 2026 09:28:47 GMT",
    "relevant": true,
-   "new": true
+   "new": false
   },
   {
    "id": "O-a2b7c04f4e71",
@@ -986,7 +1002,7 @@
    "url": "http://www.mfa.gov.tr/no_-226_-ulkemizin-uluslararasi-sivil-havacilik-teskilati-(icao)-konsey-uyeligine-secilmesi-hk.en.mfa",
    "published": "Tue, 24 Nov 2026 14:28:44 GMT",
    "relevant": true,
-   "new": true
+   "new": false
   },
   {
    "id": "O-64de81adb4f6",
@@ -1002,7 +1018,7 @@
    "url": "http://www.mfa.gov.tr/no_-225_-uluslararasi-adalet-divani-nin-gambiya-nin-myanmar-aleyhine-actigi-davada-verdigi-karar-hk.en.mfa",
    "published": "Tue, 24 Nov 2026 14:27:00 GMT",
    "relevant": true,
-   "new": true
+   "new": false
   },
   {
    "id": "O-b029c90ccfe1",
@@ -1018,7 +1034,7 @@
    "url": "http://www.mfa.gov.tr/joint-statement-19-november-2026.en.mfa",
    "published": "Thu, 19 Nov 2026 19:17:52 GMT",
    "relevant": true,
-   "new": true
+   "new": false
   },
   {
    "id": "O-60e69231b426",
@@ -1034,7 +1050,7 @@
    "url": "http://www.mfa.gov.tr/no_-224_-ulkemizin-uluslararasi-telekomunikasyon-birligi-konsey-uyeligine-yeniden-secilmesi-hk.en.mfa",
    "published": "Tue, 24 Nov 2026 14:25:04 GMT",
    "relevant": true,
-   "new": true
+   "new": false
   },
   {
    "id": "O-6b311657bc10",
@@ -1050,7 +1066,7 @@
    "url": "http://www.mfa.gov.tr/no_-223_-suriye-heyetinin-ulkemizi-ziyareti-hk.en.mfa",
    "published": "Tue, 24 Nov 2026 14:22:55 GMT",
    "relevant": true,
-   "new": true
+   "new": false
   },
   {
    "id": "O-758b9c0cadbb",
@@ -1066,7 +1082,7 @@
    "url": "http://www.mfa.gov.tr/no_-222_-sayin-bakanimizin-avrupa-birligi-dis-iliskiler-konseyi-kapsaminda-duzenlenecek-bolgelerarasi-guvenlik-ve-baglantisallik-konulu-ikinci-bakanlar-toplantisi-na-katilimi-hk.en.mfa",
    "published": "Sun, 15 Nov 2026 14:08:59 GMT",
    "relevant": true,
-   "new": true
+   "new": false
   },
   {
    "id": "O-46f3928304a3",
@@ -1082,7 +1098,7 @@
    "url": "http://www.mfa.gov.tr/condemn-in-the-strongest-terms-the-israeli-airstrike-on-the-nasser-medical-complex-in-khan-younis.en.mfa",
    "published": "Sat, 14 Nov 2026 12:42:27 GMT",
    "relevant": true,
-   "new": true
+   "new": false
   },
   {
    "id": "O-af230a290218",
@@ -1098,7 +1114,7 @@
    "url": "http://www.mfa.gov.tr/no_-221_-ahiska-turklerinin-anavatanlari-ahiska-dan-surgune-gonderilmelerinin-82-yil-donumu-hk.en.mfa",
    "published": "Mon, 16 Nov 2026 07:59:34 GMT",
    "relevant": true,
-   "new": true
+   "new": false
   },
   {
    "id": "O-2d10d5ce4bbb",
@@ -1114,7 +1130,7 @@
    "url": "http://www.mfa.gov.tr/turkiye-cumhuriyeti-ile-katar-devleti-arasinda-yuksek-stratejik-komite-on-ikinci-toplantisi-ortak-bildirisi--13-kasim-2026.en.mfa",
    "published": "Fri, 13 Nov 2026 18:05:39 GMT",
    "relevant": true,
-   "new": true
+   "new": false
   },
   {
    "id": "O-2fe687f754d6",
@@ -1130,7 +1146,7 @@
    "url": "http://www.mfa.gov.tr/no_-220_-birlesik-arap-emirlikleri-nde-meydana-gelen-trafik-kazasi-hk.en.mfa",
    "published": "Mon, 16 Nov 2026 07:57:48 GMT",
    "relevant": true,
-   "new": true
+   "new": false
   },
   {
    "id": "O-35debf217850",
@@ -1146,7 +1162,7 @@
    "url": "http://www.mfa.gov.tr/no_-219_-israil-in-gazze-de-bir-hastaneye-yonelik-saldirisi-hk.en.mfa",
    "published": "Tue, 24 Nov 2026 09:01:43 GMT",
    "relevant": true,
-   "new": true
+   "new": false
   },
   {
    "id": "O-575ffbbfb85a",
@@ -1162,7 +1178,7 @@
    "url": "http://www.mfa.gov.tr/no_-218_-israil-disisleri-bakanliginin-sayin-cumhurbaskanimizi-hedef-alan-aciklamasi-hk.en.mfa",
    "published": "Tue, 24 Nov 2026 08:59:25 GMT",
    "relevant": true,
-   "new": true
+   "new": false
   },
   {
    "id": "O-a5c11972ab60",
@@ -1178,7 +1194,7 @@
    "url": "http://www.mfa.gov.tr/no_-217_-bulgaristan-da-meydana-gelen-trafik-kazalari-hk.en.mfa",
    "published": "Tue, 24 Nov 2026 08:47:46 GMT",
    "relevant": true,
-   "new": true
+   "new": false
   },
   {
    "id": "O-afb35019ca3f",
@@ -1194,7 +1210,7 @@
    "url": "http://www.mfa.gov.tr/sc_-16_-disisleri-bakanligi-sozcusu-oncu-keceli-nin-kibris-adasi-nda-liderlerin-bm-genel-sekreteri-nin-sahsi-temsilcisi-yle-uclu-gorusmesi-hk-sc.en.mfa",
    "published": "Tue, 24 Nov 2026 08:46:47 GMT",
    "relevant": true,
-   "new": true
+   "new": false
   },
   {
    "id": "O-b0fc72bf874b",
@@ -1210,7 +1226,7 @@
    "url": "http://www.mfa.gov.tr/no_-216_-misir-da-meydana-gelen-tren-kazasi-hk.en.mfa",
    "published": "Mon, 23 Nov 2026 14:16:30 GMT",
    "relevant": true,
-   "new": true
+   "new": false
   },
   {
    "id": "O-f04990b31c03",
@@ -1226,7 +1242,7 @@
    "url": "http://www.mfa.gov.tr/no_-215_-polonya-da-gerceklestirilen-teror-saldirisi-hk.en.mfa",
    "published": "Mon, 23 Nov 2026 14:14:28 GMT",
    "relevant": true,
-   "new": true
+   "new": false
   },
   {
    "id": "O-ca126a9a08ba",
@@ -1242,7 +1258,7 @@
    "url": "http://www.mfa.gov.tr/no_-214_-fransiz-bayrakli-bir-geminin-dogu-akdeniz-deki-kita-sahanligimizda-izinsiz-deniz-bilimsel-arastirma-faaliyeti-yurutme-girisimi-hk.en.mfa",
    "published": "Mon, 23 Nov 2026 14:12:46 GMT",
    "relevant": true,
-   "new": true
+   "new": false
   },
   {
    "id": "O-e61b53fa27bf",
@@ -1258,7 +1274,7 @@
    "url": "http://www.mfa.gov.tr/no_-213_-sayin-bakanimizin-kuzey-kibris-turk-cumhuriyeti-ni-ziyareti-hk.en.mfa",
    "published": "Mon, 23 Nov 2026 14:09:01 GMT",
    "relevant": true,
-   "new": true
+   "new": false
   },
   {
    "id": "O-a780a6ecd682",
@@ -1274,7 +1290,7 @@
    "url": "http://www.mfa.gov.tr/no_-212_-avrupa-komisyonu-2026-turkiye-raporu-hk.en.mfa",
    "published": "Mon, 23 Nov 2026 14:11:00 GMT",
    "relevant": true,
-   "new": true
+   "new": false
   },
   {
    "id": "O-6ced144773eb",
@@ -1290,7 +1306,7 @@
    "url": "http://www.mfa.gov.tr/no_-211_-sayin-bakanimizin-g20-disisleri-bakanlari-toplantisi-na-katilimi-hk.en.mfa",
    "published": "Thu, 05 Nov 2026 14:25:13 GMT",
    "relevant": true,
-   "new": true
+   "new": false
   },
   {
    "id": "O-5b920a8e0202",
@@ -1306,7 +1322,7 @@
    "url": "http://www.mfa.gov.tr/no_-210_-turk-devletleri-teskilati-disisleri-bakanlari-konseyi-toplantisi-hk.en.mfa",
    "published": "Thu, 05 Nov 2026 14:24:10 GMT",
    "relevant": true,
-   "new": true
+   "new": false
   },
   {
    "id": "O-52e06a5a14c3",
@@ -1322,26 +1338,58 @@
    "url": "http://www.mfa.gov.tr/no_-209_-ispanya-da-meydana-gelen-tren-kazasi-hk.en.mfa",
    "published": "Thu, 05 Nov 2026 14:23:10 GMT",
    "relevant": true,
+   "new": false
+  },
+  {
+   "id": "O-d734efef9729",
+   "kind": "official",
+   "source": "Qatar News Agency",
+   "domain": "qna.org.qa",
+   "rel": "A",
+   "files": [
+    "gulf"
+   ],
+   "lang": "en",
+   "title": "Qatar Chamber Participates in Arab-Hellenic Economic Forum in Athens",
+   "url": "https://qna.org.qa/en/News-Area/News/2026-11/26/qatar-chamber-participates-in-arab-hellenic-economic-forum-in-athens",
+   "published": "",
+   "relevant": false,
    "new": true
   },
   {
-   "id": "O-086172e469f2",
+   "id": "O-9d84a1bfcdd1",
    "kind": "official",
-   "source": "Türkiye Ministry of Foreign Affairs",
-   "domain": "mfa.gov.tr",
+   "source": "Qatar News Agency",
+   "domain": "qna.org.qa",
    "rel": "A",
    "files": [
-    "turkey"
+    "gulf"
    ],
    "lang": "en",
-   "title": "No: 208, 27 October 2026, Regarding Certain Claims Asserted About Türkiye’s Policy on the Aegean and the Eastern Mediterranean",
-   "url": "http://www.mfa.gov.tr/no_-208_-ege-ve-dogu-akdeniz-politikamizla-ilgili-gundeme-getirilen-bazi-iddialar-hk.en.mfa",
-   "published": "Thu, 05 Nov 2026 14:22:12 GMT",
+   "title": "HH the Amir Arrives in Cairo",
+   "url": "https://qna.org.qa/en/News-Area/News/2026-11/26/hh-the-amir-arrives-in-cairo",
+   "published": "",
+   "relevant": false,
+   "new": true
+  },
+  {
+   "id": "O-4503f095836f",
+   "kind": "official",
+   "source": "Qatar News Agency",
+   "domain": "qna.org.qa",
+   "rel": "A",
+   "files": [
+    "gulf"
+   ],
+   "lang": "en",
+   "title": "Israeli Occupation Forces Arrest 17 Palestinians in Various Areas of West Bank",
+   "url": "https://qna.org.qa/en/News-Area/News/2026-11/26/israeli-occupation-forces-arrest-17-palestinians-in-various-areas-of-west-bank",
+   "published": "",
    "relevant": true,
    "new": true
   },
   {
-   "id": "O-084d97ee182b",
+   "id": "O-5b1af729154d",
    "kind": "official",
    "source": "Qatar News Agency",
    "domain": "qna.org.qa",
@@ -1350,14 +1398,14 @@
     "gulf"
    ],
    "lang": "en",
-   "title": "Dollar Steady After Falling to One-Week Low",
-   "url": "https://qna.org.qa/en/News-Area/News/2026-11/26/dollar-steady-after-falling-to-one-week-low",
+   "title": "Death Toll from Mine Flooding in Indonesia Rises to 13",
+   "url": "https://qna.org.qa/en/News-Area/News/2026-11/26/death-toll-from-mine-flooding-in-indonesia-rises-to-13",
    "published": "",
    "relevant": false,
-   "new": false
+   "new": true
   },
   {
-   "id": "O-95cccce60a81",
+   "id": "O-9d8fcd2f1630",
    "kind": "official",
    "source": "Qatar News Agency",
    "domain": "qna.org.qa",
@@ -1366,59 +1414,11 @@
     "gulf"
    ],
    "lang": "en",
-   "title": "Gold Steadies After Plunging to More Than One-Year Low",
-   "url": "https://qna.org.qa/en/News-Area/News/2026-11/26/gold-steadies-after-plunging-to-more-than-one-year-low",
+   "title": "Qatar Assumes Responsibility for Air Traffic Management Over International Waters Within Doha FIR",
+   "url": "https://qna.org.qa/en/News-Area/News/2026-11/26/qatar-assumes-responsibility-for-air-traffic-management-over-international-waters-within-doha-fir",
    "published": "",
    "relevant": false,
-   "new": false
-  },
-  {
-   "id": "O-40989a5de0ec",
-   "kind": "official",
-   "source": "Qatar News Agency",
-   "domain": "qna.org.qa",
-   "rel": "A",
-   "files": [
-    "gulf"
-   ],
-   "lang": "en",
-   "title": "Oil Prices Rise on Supply Concerns",
-   "url": "https://qna.org.qa/en/News-Area/News/2026-11/26/oil-prices-rise-on-supply-concerns",
-   "published": "",
-   "relevant": false,
-   "new": false
-  },
-  {
-   "id": "O-fd19b10e4c06",
-   "kind": "official",
-   "source": "Qatar News Agency",
-   "domain": "qna.org.qa",
-   "rel": "A",
-   "files": [
-    "gulf"
-   ],
-   "lang": "en",
-   "title": "Poland Vows to Create No-Fly Zone Along Border With Ukraine",
-   "url": "https://qna.org.qa/en/News-Area/News/2026-11/26/poland-vows-to-create-no-fly-zone-along-border-with-ukraine",
-   "published": "",
-   "relevant": true,
-   "new": false
-  },
-  {
-   "id": "O-0ce4b806543e",
-   "kind": "official",
-   "source": "Qatar News Agency",
-   "domain": "qna.org.qa",
-   "rel": "A",
-   "files": [
-    "gulf"
-   ],
-   "lang": "en",
-   "title": "UNESCO Creative Cities Conference Opens in Morocco",
-   "url": "https://qna.org.qa/en/News-Area/News/2026-11/26/unesco-creative-cities-conference-opens-in-morocco",
-   "published": "",
-   "relevant": false,
-   "new": false
+   "new": true
   },
   {
    "id": "O-d4a8d01e6254",
@@ -1469,22 +1469,6 @@
    "new": false
   },
   {
-   "id": "O-9c558b74bdab",
-   "kind": "official",
-   "source": "Qatar News Agency",
-   "domain": "qna.org.qa",
-   "rel": "A",
-   "files": [
-    "gulf"
-   ],
-   "lang": "en",
-   "title": "MSDF Takes Part in \"Doha Skeek\" Project",
-   "url": "https://qna.org.qa/en/News-Area/News/2026-11/25/msdf-takes-part-in-doha-skeek-project",
-   "published": "",
-   "relevant": false,
-   "new": false
-  },
-  {
    "id": "O-afd920261c2f",
    "kind": "official",
    "source": "Qatar News Agency",
@@ -1499,6 +1483,22 @@
    "published": "",
    "relevant": false,
    "new": false
+  },
+  {
+   "id": "O-39f718ffb607",
+   "kind": "official",
+   "source": "Qatar News Agency",
+   "domain": "qna.org.qa",
+   "rel": "A",
+   "files": [
+    "gulf"
+   ],
+   "lang": "en",
+   "title": "QCB Expands \"HIMYAN\" Card Acceptance to Oman",
+   "url": "https://qna.org.qa/en/News-Area/News/2026-11/26/qcb-expands-himyan-card-acceptance-to-oman",
+   "published": "",
+   "relevant": false,
+   "new": true
   },
   {
    "id": "O-87481bbb5bc1",
@@ -1597,7 +1597,7 @@
    "new": false
   },
   {
-   "id": "O-21908e858f9e",
+   "id": "O-26053f9382ac",
    "kind": "official",
    "source": "Oman News Agency",
    "domain": "omannews.gov.om",
@@ -1606,14 +1606,126 @@
     "gulf"
    ],
    "lang": "ar",
-   "title": "ارتفاع حصيلة ضحايا فيضان منجم في إندونيسيا إلى 13 وفقدان العشرات",
-   "url": "https://omannews.gov.om/topics/ar/88/show/477313/ona",
+   "title": "إيطاليا تبلغ نصف نهائي كأس ديفيس للتنس",
+   "url": "https://omannews.gov.om/topics/ar/8/show/477321/ona",
+   "published": "",
+   "relevant": false,
+   "new": true
+  },
+  {
+   "id": "O-8972fdd0d5e5",
+   "kind": "official",
+   "source": "Oman News Agency",
+   "domain": "omannews.gov.om",
+   "rel": "A",
+   "files": [
+    "gulf"
+   ],
+   "lang": "ar",
+   "title": "أمريكا تجيز لشركة «سبايس إكس» إطلاق ما يصل إلى مليون قمر اصطناعي",
+   "url": "https://omannews.gov.om/topics/ar/86/show/477320/ona",
+   "published": "",
+   "relevant": false,
+   "new": true
+  },
+  {
+   "id": "O-40fcbbc4e555",
+   "kind": "official",
+   "source": "Oman News Agency",
+   "domain": "omannews.gov.om",
+   "rel": "A",
+   "files": [
+    "gulf"
+   ],
+   "lang": "ar",
+   "title": "ألمانيا تطلق برنامجًا للذكاء الاصطناعي ينافس «بالانتير» الأمريكية",
+   "url": "https://omannews.gov.om/topics/ar/86/show/477319/ona",
+   "published": "",
+   "relevant": false,
+   "new": true
+  },
+  {
+   "id": "O-201e84558f76",
+   "kind": "official",
+   "source": "Oman News Agency",
+   "domain": "omannews.gov.om",
+   "rel": "A",
+   "files": [
+    "gulf"
+   ],
+   "lang": "ar",
+   "title": "سعر نفط عُمان يرتفع 3 دولارات أمريكية و82 سنتًا",
+   "url": "https://omannews.gov.om/topics/ar/7/show/477318/ona",
+   "published": "",
+   "relevant": false,
+   "new": true
+  },
+  {
+   "id": "O-64391ba013ad",
+   "kind": "official",
+   "source": "Oman News Agency",
+   "domain": "omannews.gov.om",
+   "rel": "A",
+   "files": [
+    "gulf"
+   ],
+   "lang": "ar",
+   "title": "القوات الروسية تشن ضربة واسعة النطاق على منشآت أوكرانية",
+   "url": "https://omannews.gov.om/topics/ar/5/show/477317/ona",
+   "published": "",
+   "relevant": false,
+   "new": true
+  },
+  {
+   "id": "O-77f89dc8f0d3",
+   "kind": "official",
+   "source": "Oman News Agency",
+   "domain": "omannews.gov.om",
+   "rel": "A",
+   "files": [
+    "gulf"
+   ],
+   "lang": "ar",
+   "title": "النفط يتراجع 1% رغم التوترات الجيوسياسية",
+   "url": "https://omannews.gov.om/topics/ar/7/show/477295/ona",
+   "published": "",
+   "relevant": false,
+   "new": true
+  },
+  {
+   "id": "O-6e8ce286bda1",
+   "kind": "official",
+   "source": "Oman News Agency",
+   "domain": "omannews.gov.om",
+   "rel": "A",
+   "files": [
+    "gulf"
+   ],
+   "lang": "ar",
+   "title": "المنتخب الوطني البارالمبي لرافعات القوى يشارك في بطولة العالم بالبحرين",
+   "url": "https://omannews.gov.om/topics/ar/8/show/477296/ona",
+   "published": "",
+   "relevant": false,
+   "new": true
+  },
+  {
+   "id": "O-3fd269ac4bd5",
+   "kind": "official",
+   "source": "Oman News Agency",
+   "domain": "omannews.gov.om",
+   "rel": "A",
+   "files": [
+    "gulf"
+   ],
+   "lang": "ar",
+   "title": "سفارة سلطنة عُمان في قطر تُقيم حفل استقبال بمناسبة اليوم الوطني",
+   "url": "https://omannews.gov.om/topics/ar/3/show/477297/ona",
    "published": "",
    "relevant": false,
    "new": false
   },
   {
-   "id": "O-4db1e26d0f10",
+   "id": "O-bc17ec86bd52",
    "kind": "official",
    "source": "Oman News Agency",
    "domain": "omannews.gov.om",
@@ -1622,14 +1734,14 @@
     "gulf"
    ],
    "lang": "ar",
-   "title": "استقرار سعر الذهب بعد هبوطه لأدنى مستوى في أكثر من عام",
-   "url": "https://omannews.gov.om/topics/ar/7/show/477312/ona",
+   "title": "قنصلية سلطنة عُمان في باكستان تحتفل باليوم الوطني المجيد",
+   "url": "https://omannews.gov.om/topics/ar/3/show/477298/ona",
    "published": "",
    "relevant": false,
    "new": false
   },
   {
-   "id": "O-e1f1353bbbc4",
+   "id": "O-f76e21f61b9f",
    "kind": "official",
    "source": "Oman News Agency",
    "domain": "omannews.gov.om",
@@ -1638,14 +1750,14 @@
     "gulf"
    ],
    "lang": "ar",
-   "title": "وفاة 30 شخصا وإصابة 16 آخرين في حريق بمدينة الجيزة المصرية",
-   "url": "https://omannews.gov.om/topics/ar/88/show/477311/ona",
+   "title": "سلطنة عُمان تشارك في اجتماع المجلس التنفيذي للأرابوساي بتونس",
+   "url": "https://omannews.gov.om/topics/ar/3/show/477299/ona",
    "published": "",
    "relevant": false,
    "new": false
   },
   {
-   "id": "O-67e5aa93d88d",
+   "id": "O-61ab3843729a",
    "kind": "official",
    "source": "Oman News Agency",
    "domain": "omannews.gov.om",
@@ -1654,122 +1766,10 @@
     "gulf"
    ],
    "lang": "ar",
-   "title": "مصرع 9 عمال مناجم بسبب مياه الفيضانات في إندونيسيا",
-   "url": "https://omannews.gov.om/topics/ar/88/show/477310/ona",
+   "title": "وزير الخارجية يلتقي مستشار الأمن الوطني بجمهورية كوريا",
+   "url": "https://omannews.gov.om/topics/ar/5/show/477300/ona",
    "published": "",
-   "relevant": false,
-   "new": false
-  },
-  {
-   "id": "O-0ca28ae7776e",
-   "kind": "official",
-   "source": "Oman News Agency",
-   "domain": "omannews.gov.om",
-   "rel": "A",
-   "files": [
-    "gulf"
-   ],
-   "lang": "ar",
-   "title": "مصر تتأهل لدور الـ32 في كأس العالم للناشئين بفوزها على بنما",
-   "url": "https://omannews.gov.om/topics/ar/8/show/477309/ona",
-   "published": "",
-   "relevant": false,
-   "new": false
-  },
-  {
-   "id": "O-0b568c9b6d8a",
-   "kind": "official",
-   "source": "Oman News Agency",
-   "domain": "omannews.gov.om",
-   "rel": "A",
-   "files": [
-    "gulf"
-   ],
-   "lang": "ar",
-   "title": "مُنتخبنا الوطني للفتيات للتنس يحصد ذهبية البطولة الخليجية بالكويت",
-   "url": "https://omannews.gov.om/topics/ar/8/show/477289/ona",
-   "published": "",
-   "relevant": false,
-   "new": false
-  },
-  {
-   "id": "O-daee04c3240f",
-   "kind": "official",
-   "source": "Oman News Agency",
-   "domain": "omannews.gov.om",
-   "rel": "A",
-   "files": [
-    "gulf"
-   ],
-   "lang": "ar",
-   "title": "سفارة سلطنة عُمان بالجمهورية الإيطالية تحتفل باليوم الوطني المجيد",
-   "url": "https://omannews.gov.om/topics/ar/3/show/477290/ona",
-   "published": "",
-   "relevant": false,
-   "new": false
-  },
-  {
-   "id": "O-1015c276d50e",
-   "kind": "official",
-   "source": "Oman News Agency",
-   "domain": "omannews.gov.om",
-   "rel": "A",
-   "files": [
-    "gulf"
-   ],
-   "lang": "ar",
-   "title": "سعر نفط عُمان يرتفع دولارًا أمريكيًّا و39 سنتًا",
-   "url": "https://omannews.gov.om/topics/ar/7/show/477291/ona",
-   "published": "",
-   "relevant": false,
-   "new": false
-  },
-  {
-   "id": "O-f156417555a5",
-   "kind": "official",
-   "source": "Oman News Agency",
-   "domain": "omannews.gov.om",
-   "rel": "A",
-   "files": [
-    "gulf"
-   ],
-   "lang": "ar",
-   "title": "فتح باب التظلّم من نتائج انتخابات غرفة تجارة وصناعة عُمان لمدة سبعة أيام",
-   "url": "https://omannews.gov.om/topics/ar/3/show/477292/ona",
-   "published": "",
-   "relevant": false,
-   "new": false
-  },
-  {
-   "id": "O-2eb4b49bc504",
-   "kind": "official",
-   "source": "Oman News Agency",
-   "domain": "omannews.gov.om",
-   "rel": "A",
-   "files": [
-    "gulf"
-   ],
-   "lang": "ar",
-   "title": "سفارة سلطنة عُمان في بروناي دار السلام تحتفي باليوم الوطني المجيد",
-   "url": "https://omannews.gov.om/topics/ar/3/show/477293/ona",
-   "published": "",
-   "relevant": false,
-   "new": false
-  },
-  {
-   "id": "O-2979582c0060",
-   "kind": "official",
-   "source": "Oman News Agency",
-   "domain": "omannews.gov.om",
-   "rel": "A",
-   "files": [
-    "gulf"
-   ],
-   "lang": "ar",
-   "title": "مُنتخبنا لكرة القدم الشاطئية يبلغ نصف نهائي كأس آسيا 2026",
-   "url": "https://omannews.gov.om/topics/ar/8/show/477294/ona",
-   "published": "",
-   "relevant": false,
+   "relevant": true,
    "new": false
   },
   {
@@ -1805,7 +1805,7 @@
    "new": false
   },
   {
-   "id": "O-f76e21f61b9f",
+   "id": "O-2eb4b49bc504",
    "kind": "official",
    "source": "Oman News Agency",
    "domain": "omannews.gov.om",
@@ -1814,14 +1814,14 @@
     "gulf"
    ],
    "lang": "ar",
-   "title": "سلطنة عُمان تشارك في اجتماع المجلس التنفيذي للأرابوساي بتونس",
-   "url": "https://omannews.gov.om/topics/ar/3/show/477299/ona",
+   "title": "سفارة سلطنة عُمان في بروناي دار السلام تحتفي باليوم الوطني المجيد",
+   "url": "https://omannews.gov.om/topics/ar/3/show/477293/ona",
    "published": "",
    "relevant": false,
    "new": false
   },
   {
-   "id": "O-bc17ec86bd52",
+   "id": "O-f156417555a5",
    "kind": "official",
    "source": "Oman News Agency",
    "domain": "omannews.gov.om",
@@ -1830,24 +1830,8 @@
     "gulf"
    ],
    "lang": "ar",
-   "title": "قنصلية سلطنة عُمان في باكستان تحتفل باليوم الوطني المجيد",
-   "url": "https://omannews.gov.om/topics/ar/3/show/477298/ona",
-   "published": "",
-   "relevant": false,
-   "new": false
-  },
-  {
-   "id": "O-3fd269ac4bd5",
-   "kind": "official",
-   "source": "Oman News Agency",
-   "domain": "omannews.gov.om",
-   "rel": "A",
-   "files": [
-    "gulf"
-   ],
-   "lang": "ar",
-   "title": "سفارة سلطنة عُمان في قطر تُقيم حفل استقبال بمناسبة اليوم الوطني",
-   "url": "https://omannews.gov.om/topics/ar/3/show/477297/ona",
+   "title": "فتح باب التظلّم من نتائج انتخابات غرفة تجارة وصناعة عُمان لمدة سبعة أيام",
+   "url": "https://omannews.gov.om/topics/ar/3/show/477292/ona",
    "published": "",
    "relevant": false,
    "new": false
@@ -1995,6 +1979,22 @@
    "published": "",
    "relevant": false,
    "new": false
+  },
+  {
+   "id": "O-d3e94669a268",
+   "kind": "official",
+   "source": "Oman News Agency",
+   "domain": "omannews.gov.om",
+   "rel": "A",
+   "files": [
+    "gulf"
+   ],
+   "lang": "ar",
+   "title": "سلطنة عُمان تعرب عن تعازيها لمصر في ضحايا حريق الجيزة",
+   "url": "https://omannews.gov.om/topics/ar/5/show/477314/ona",
+   "published": "",
+   "relevant": false,
+   "new": true
   },
   {
    "id": "O-d7a50acdf770",
@@ -2339,7 +2339,7 @@
  ],
  "status": {
   "viirs_n20": "ok: 668 points in watch boxes",
-  "modis": "ok: 133 points in watch boxes",
+  "modis": "ok: 148 points in watch boxes",
   "defense_rss": "ok: 20 items, 0 relevant",
   "mfa_tr": "ok: 25 items",
   "qna": "ok: 16 items",
