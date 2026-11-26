@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-26T07:26:07+00:00",
+ "generatedAt": "2026-11-26T07:41:14+00:00",
  "version": 1,
  "note": "Machine-collected signals. Thermal anomalies are heat sources seen from orbit, not confirmed strikes; persistent cells (seen on at least 3 of the last 7 days) are dropped as flares or industry.",
  "thermal": {
@@ -941,7 +941,7 @@
    "new": false
   },
   {
-   "id": "O-0c7a9ea70813",
+   "id": "O-339f50fe29d1",
    "kind": "official",
    "source": "Türkiye Ministry of Foreign Affairs",
    "domain": "mfa.gov.tr",
@@ -950,14 +950,14 @@
     "turkey"
    ],
    "lang": "en",
-   "title": "Deputy Ministers",
-   "url": "https://www.mfa.gov.tr/deputy-ministers.en.mfa",
-   "published": "",
+   "title": "No: 228, 25 November 2026, Regarding the Houthi Attack Targeting Saudi Arabia",
+   "url": "http://www.mfa.gov.tr/no_-228_-husilerin-suudi-arabistan-i-hedef-alan-saldirisi-hk.en.mfa",
+   "published": "Wed, 25 Nov 2026 18:28:56 GMT",
    "relevant": true,
    "new": true
   },
   {
-   "id": "O-89a8adb8718f",
+   "id": "O-b7bc1e6b6a8f",
    "kind": "official",
    "source": "Türkiye Ministry of Foreign Affairs",
    "domain": "mfa.gov.tr",
@@ -966,14 +966,14 @@
     "turkey"
    ],
    "lang": "en",
-   "title": "Foreign Policy",
-   "url": "https://www.mfa.gov.tr/synopsis-of-the-turkish-foreign-policy.en.mfa",
-   "published": "",
+   "title": "No: 227, 24 November 2026, Regarding the Passing Away of H.E. Hikmet Çetin, Former Speaker of the Grand National Assembly of Türkiye, Former Deputy Prime Minister, and Former Minister of Foreign Affairs of the Republic of Türkiye",
+   "url": "http://www.mfa.gov.tr/no_-227_-eski-tbmm-baskanimiz--basbakan-yardimcimiz-ve-disisleri-bakanimiz-sayin-hikmet-cetin-in-vefati-hk.en.mfa",
+   "published": "Wed, 25 Nov 2026 09:28:47 GMT",
    "relevant": true,
    "new": true
   },
   {
-   "id": "O-d919a2b73e27",
+   "id": "O-a2b7c04f4e71",
    "kind": "official",
    "source": "Türkiye Ministry of Foreign Affairs",
    "domain": "mfa.gov.tr",
@@ -982,14 +982,14 @@
     "turkey"
    ],
    "lang": "en",
-   "title": "Consular Info",
-   "url": "https://www.mfa.gov.tr/consular-info.en.mfa",
-   "published": "",
+   "title": "No: 226, 20 November 2026, Regarding Türkiye’s Election to the International Civil Aviation Organization (ICAO) Council",
+   "url": "http://www.mfa.gov.tr/no_-226_-ulkemizin-uluslararasi-sivil-havacilik-teskilati-(icao)-konsey-uyeligine-secilmesi-hk.en.mfa",
+   "published": "Tue, 24 Nov 2026 14:28:44 GMT",
    "relevant": true,
    "new": true
   },
   {
-   "id": "O-331d6eb0bd47",
+   "id": "O-64de81adb4f6",
    "kind": "official",
    "source": "Türkiye Ministry of Foreign Affairs",
    "domain": "mfa.gov.tr",
@@ -998,14 +998,14 @@
     "turkey"
    ],
    "lang": "en",
-   "title": "Press & Information",
-   "url": "https://www.mfa.gov.tr/press-information.en.mfa",
-   "published": "",
+   "title": "No: 225, 19 November 2026, Regarding the Judgment of the International Court of Justice in The Gambia v. Myanmar Case",
+   "url": "http://www.mfa.gov.tr/no_-225_-uluslararasi-adalet-divani-nin-gambiya-nin-myanmar-aleyhine-actigi-davada-verdigi-karar-hk.en.mfa",
+   "published": "Tue, 24 Nov 2026 14:27:00 GMT",
    "relevant": true,
    "new": true
   },
   {
-   "id": "O-4108a9374a24",
+   "id": "O-b029c90ccfe1",
    "kind": "official",
    "source": "Türkiye Ministry of Foreign Affairs",
    "domain": "mfa.gov.tr",
@@ -1014,14 +1014,14 @@
     "turkey"
    ],
    "lang": "en",
-   "title": "List of Former Ministers of Foreign Affairs",
-   "url": "https://www.mfa.gov.tr/list-of-former-ministers-of-foreign-affairs.en.mfa",
-   "published": "",
+   "title": "Joint Statement by the Foreign Ministers of Türkiye, Algeria, Egypt, Indonesia, Jordan, Kuwait, Libya, Maldives, Niger, Oman, Pakistan, Palestine, Qatar, Saudi Arabia, Somalia, UAE, 19 November 2026",
+   "url": "http://www.mfa.gov.tr/joint-statement-19-november-2026.en.mfa",
+   "published": "Thu, 19 Nov 2026 19:17:52 GMT",
    "relevant": true,
    "new": true
   },
   {
-   "id": "O-c35dfd008c34",
+   "id": "O-60e69231b426",
    "kind": "official",
    "source": "Türkiye Ministry of Foreign Affairs",
    "domain": "mfa.gov.tr",
@@ -1030,14 +1030,14 @@
     "turkey"
    ],
    "lang": "en",
-   "title": "Board of Internal Auditition",
-   "url": "https://www.mfa.gov.tr/internal-auditition.en.mfa",
-   "published": "",
+   "title": "No: 224, 16 November 2026, Regarding Türkiye’s Reelection to the International Telecommunication Union Council",
+   "url": "http://www.mfa.gov.tr/no_-224_-ulkemizin-uluslararasi-telekomunikasyon-birligi-konsey-uyeligine-yeniden-secilmesi-hk.en.mfa",
+   "published": "Tue, 24 Nov 2026 14:25:04 GMT",
    "relevant": true,
    "new": true
   },
   {
-   "id": "O-be044274bd7e",
+   "id": "O-6b311657bc10",
    "kind": "official",
    "source": "Türkiye Ministry of Foreign Affairs",
    "domain": "mfa.gov.tr",
@@ -1046,14 +1046,14 @@
     "turkey"
    ],
    "lang": "en",
-   "title": "Assassinated Turkish Diplomats/Officials",
-   "url": "https://www.mfa.gov.tr/sehit-edilen-diplomatlarimiz-ve-vatandaslarimiz_en.en.mfa",
-   "published": "",
+   "title": "No: 223, 16 November 2026, Regarding the Visit of a Syrian Delegation to Türkiye",
+   "url": "http://www.mfa.gov.tr/no_-223_-suriye-heyetinin-ulkemizi-ziyareti-hk.en.mfa",
+   "published": "Tue, 24 Nov 2026 14:22:55 GMT",
    "relevant": true,
    "new": true
   },
   {
-   "id": "O-4df5c3c346bf",
+   "id": "O-758b9c0cadbb",
    "kind": "official",
    "source": "Türkiye Ministry of Foreign Affairs",
    "domain": "mfa.gov.tr",
@@ -1062,14 +1062,14 @@
     "turkey"
    ],
    "lang": "en",
-   "title": "Our Role and Vision During the Coronavirus Pandemic",
-   "url": "https://www.mfa.gov.tr/koronavirus-salginindaki-rol-ve-vizyonumuz-20-04-2022.en.mfa",
-   "published": "",
+   "title": "No: 222, 15 November 2026, Regarding the Participation of H.E. Hakan Fidan, Minister of Foreign Affairs of the Republic of Türkiye, in the Second Ministerial Meeting on Cross-Regional Security and Connectivity to be Held on the Margins of the European Union Foreign Affairs Council",
+   "url": "http://www.mfa.gov.tr/no_-222_-sayin-bakanimizin-avrupa-birligi-dis-iliskiler-konseyi-kapsaminda-duzenlenecek-bolgelerarasi-guvenlik-ve-baglantisallik-konulu-ikinci-bakanlar-toplantisi-na-katilimi-hk.en.mfa",
+   "published": "Sun, 15 Nov 2026 14:08:59 GMT",
    "relevant": true,
    "new": true
   },
   {
-   "id": "O-a94eb5849a67",
+   "id": "O-46f3928304a3",
    "kind": "official",
    "source": "Türkiye Ministry of Foreign Affairs",
    "domain": "mfa.gov.tr",
@@ -1078,14 +1078,14 @@
     "turkey"
    ],
    "lang": "en",
-   "title": "Frequently Asked Questions",
-   "url": "https://www.mfa.gov.tr/questions.en.mfa",
-   "published": "",
+   "title": "Joint Statement by the Foreign Ministers of Türkiye, Algeria, Djibouti, Egypt, Indonesia, Jordan, Kuwait, Lebanon, Libya, Mauritania, Oman, Pakistan, Palestine, Qatar, Saudi Arabia, Somalia, Sudan and the United Arab Emirates regarding the Israeli airstrike on the Nasser Medical Complex in Khan Younis, 14 November 2026",
+   "url": "http://www.mfa.gov.tr/condemn-in-the-strongest-terms-the-israeli-airstrike-on-the-nasser-medical-complex-in-khan-younis.en.mfa",
+   "published": "Sat, 14 Nov 2026 12:42:27 GMT",
    "relevant": true,
    "new": true
   },
   {
-   "id": "O-20d197e023b8",
+   "id": "O-af230a290218",
    "kind": "official",
    "source": "Türkiye Ministry of Foreign Affairs",
    "domain": "mfa.gov.tr",
@@ -1094,14 +1094,14 @@
     "turkey"
    ],
    "lang": "en",
-   "title": "The Turkish Flag and The Turkish National Anthem (Independence March)",
-   "url": "https://www.mfa.gov.tr/the-turkish-flag-and-the-turkish-national-anthem.en.mfa",
-   "published": "",
+   "title": "No: 221, 14 November 2026, Regarding the 82nd Anniversary of the Deportation of Ahıska Turks from Their Homeland",
+   "url": "http://www.mfa.gov.tr/no_-221_-ahiska-turklerinin-anavatanlari-ahiska-dan-surgune-gonderilmelerinin-82-yil-donumu-hk.en.mfa",
+   "published": "Mon, 16 Nov 2026 07:59:34 GMT",
    "relevant": true,
    "new": true
   },
   {
-   "id": "O-bacd80ee7752",
+   "id": "O-2d10d5ce4bbb",
    "kind": "official",
    "source": "Türkiye Ministry of Foreign Affairs",
    "domain": "mfa.gov.tr",
@@ -1110,14 +1110,14 @@
     "turkey"
    ],
    "lang": "en",
-   "title": "Holiday Enlightenment Project",
-   "url": "https://www.mfa.gov.tr/tatil-aydinlatma-projesi.en.mfa",
-   "published": "",
+   "title": "Joint Communiqué of the Twelfth Session of the Supreme Strategic Committee Between the Republic of Türkiye and the State of Qatar, 13 November 2026",
+   "url": "http://www.mfa.gov.tr/turkiye-cumhuriyeti-ile-katar-devleti-arasinda-yuksek-stratejik-komite-on-ikinci-toplantisi-ortak-bildirisi--13-kasim-2026.en.mfa",
+   "published": "Fri, 13 Nov 2026 18:05:39 GMT",
    "relevant": true,
    "new": true
   },
   {
-   "id": "O-1710405f2e97",
+   "id": "O-2fe687f754d6",
    "kind": "official",
    "source": "Türkiye Ministry of Foreign Affairs",
    "domain": "mfa.gov.tr",
@@ -1126,14 +1126,14 @@
     "turkey"
    ],
    "lang": "en",
-   "title": "Diplomatic Missions in Türkiye",
-   "url": "https://www.mfa.gov.tr/diplomatic-missions-in-turkey.en.mfa",
-   "published": "",
+   "title": "No: 220, 13 November 2026, Regarding the Traffic Accident in the United Arab Emirates",
+   "url": "http://www.mfa.gov.tr/no_-220_-birlesik-arap-emirlikleri-nde-meydana-gelen-trafik-kazasi-hk.en.mfa",
+   "published": "Mon, 16 Nov 2026 07:57:48 GMT",
    "relevant": true,
    "new": true
   },
   {
-   "id": "O-e743ef757e95",
+   "id": "O-35debf217850",
    "kind": "official",
    "source": "Türkiye Ministry of Foreign Affairs",
    "domain": "mfa.gov.tr",
@@ -1142,14 +1142,14 @@
     "turkey"
    ],
    "lang": "en",
-   "title": "Frequently Asked Questions",
-   "url": "https://www.mfa.gov.tr/frequently-asked-questions.en.mfa",
-   "published": "",
+   "title": "No: 219, 13 November 2026, Regarding Israel’s Attack on a Hospital in Gaza",
+   "url": "http://www.mfa.gov.tr/no_-219_-israil-in-gazze-de-bir-hastaneye-yonelik-saldirisi-hk.en.mfa",
+   "published": "Tue, 24 Nov 2026 09:01:43 GMT",
    "relevant": true,
    "new": true
   },
   {
-   "id": "O-b9d433b2936c",
+   "id": "O-575ffbbfb85a",
    "kind": "official",
    "source": "Türkiye Ministry of Foreign Affairs",
    "domain": "mfa.gov.tr",
@@ -1158,14 +1158,14 @@
     "turkey"
    ],
    "lang": "en",
-   "title": "Chronogical List of Turkish Governments",
-   "url": "https://www.mfa.gov.tr/chronogical-list-of-turkish-governments.en.mfa",
-   "published": "",
+   "title": "No: 218, 11 November 2026, Regarding the Statement by the Ministry of Foreign Affairs of Israel Targeting President Erdoğan",
+   "url": "http://www.mfa.gov.tr/no_-218_-israil-disisleri-bakanliginin-sayin-cumhurbaskanimizi-hedef-alan-aciklamasi-hk.en.mfa",
+   "published": "Tue, 24 Nov 2026 08:59:25 GMT",
    "relevant": true,
    "new": true
   },
   {
-   "id": "O-621e239a4e74",
+   "id": "O-a5c11972ab60",
    "kind": "official",
    "source": "Türkiye Ministry of Foreign Affairs",
    "domain": "mfa.gov.tr",
@@ -1174,14 +1174,14 @@
     "turkey"
    ],
    "lang": "en",
-   "title": "Constitution of the Republic of Türkiye",
-   "url": "https://www.mfa.gov.tr/constitution-of-the-republic-of-turkey.en.mfa",
-   "published": "",
+   "title": "No: 217, 11 November 2026, Regarding the Traffic Accidents in Bulgaria",
+   "url": "http://www.mfa.gov.tr/no_-217_-bulgaristan-da-meydana-gelen-trafik-kazalari-hk.en.mfa",
+   "published": "Tue, 24 Nov 2026 08:47:46 GMT",
    "relevant": true,
    "new": true
   },
   {
-   "id": "O-4e4b77a5eb32",
+   "id": "O-afb35019ca3f",
    "kind": "official",
    "source": "Türkiye Ministry of Foreign Affairs",
    "domain": "mfa.gov.tr",
@@ -1190,9 +1190,153 @@
     "turkey"
    ],
    "lang": "en",
-   "title": "Terminology for Foreign Affairs",
-   "url": "https://www.mfa.gov.tr/terminology-for-foreign-affairs.en.mfa",
-   "published": "",
+   "title": "QA-16, 10 November 2026, Statement of the Spokesperson of the Ministry of Foreign Affairs, Öncü Keçeli, in Response to a Question Regarding the Trilateral Meeting Held on the Island of Cyprus between the Leaders and the UN Secretary-General’s Personal Envoy",
+   "url": "http://www.mfa.gov.tr/sc_-16_-disisleri-bakanligi-sozcusu-oncu-keceli-nin-kibris-adasi-nda-liderlerin-bm-genel-sekreteri-nin-sahsi-temsilcisi-yle-uclu-gorusmesi-hk-sc.en.mfa",
+   "published": "Tue, 24 Nov 2026 08:46:47 GMT",
+   "relevant": true,
+   "new": true
+  },
+  {
+   "id": "O-b0fc72bf874b",
+   "kind": "official",
+   "source": "Türkiye Ministry of Foreign Affairs",
+   "domain": "mfa.gov.tr",
+   "rel": "A",
+   "files": [
+    "turkey"
+   ],
+   "lang": "en",
+   "title": "No: 216, 9 November 2026, Regarding the Train Accident in Egypt",
+   "url": "http://www.mfa.gov.tr/no_-216_-misir-da-meydana-gelen-tren-kazasi-hk.en.mfa",
+   "published": "Mon, 23 Nov 2026 14:16:30 GMT",
+   "relevant": true,
+   "new": true
+  },
+  {
+   "id": "O-f04990b31c03",
+   "kind": "official",
+   "source": "Türkiye Ministry of Foreign Affairs",
+   "domain": "mfa.gov.tr",
+   "rel": "A",
+   "files": [
+    "turkey"
+   ],
+   "lang": "en",
+   "title": "No: 215, 8 November 2026, Regarding the Terrorist Attack in Poland",
+   "url": "http://www.mfa.gov.tr/no_-215_-polonya-da-gerceklestirilen-teror-saldirisi-hk.en.mfa",
+   "published": "Mon, 23 Nov 2026 14:14:28 GMT",
+   "relevant": true,
+   "new": true
+  },
+  {
+   "id": "O-ca126a9a08ba",
+   "kind": "official",
+   "source": "Türkiye Ministry of Foreign Affairs",
+   "domain": "mfa.gov.tr",
+   "rel": "A",
+   "files": [
+    "turkey"
+   ],
+   "lang": "en",
+   "title": "No: 214, 6 November 2026, Regarding the Attempt by a French-Flagged Vessel to Conduct an Unauthorized Marine Scientific Research Activity on the Turkish Continental Shelf in the Eastern Mediterranean",
+   "url": "http://www.mfa.gov.tr/no_-214_-fransiz-bayrakli-bir-geminin-dogu-akdeniz-deki-kita-sahanligimizda-izinsiz-deniz-bilimsel-arastirma-faaliyeti-yurutme-girisimi-hk.en.mfa",
+   "published": "Mon, 23 Nov 2026 14:12:46 GMT",
+   "relevant": true,
+   "new": true
+  },
+  {
+   "id": "O-e61b53fa27bf",
+   "kind": "official",
+   "source": "Türkiye Ministry of Foreign Affairs",
+   "domain": "mfa.gov.tr",
+   "rel": "A",
+   "files": [
+    "turkey"
+   ],
+   "lang": "en",
+   "title": "No: 213, 5 November 2026, Regarding the Visit of H.E. Hakan Fidan, Minister of Foreign Affairs of the Republic of Türkiye, to the Turkish Republic of Northern Cyprus",
+   "url": "http://www.mfa.gov.tr/no_-213_-sayin-bakanimizin-kuzey-kibris-turk-cumhuriyeti-ni-ziyareti-hk.en.mfa",
+   "published": "Mon, 23 Nov 2026 14:09:01 GMT",
+   "relevant": true,
+   "new": true
+  },
+  {
+   "id": "O-a780a6ecd682",
+   "kind": "official",
+   "source": "Türkiye Ministry of Foreign Affairs",
+   "domain": "mfa.gov.tr",
+   "rel": "A",
+   "files": [
+    "turkey"
+   ],
+   "lang": "en",
+   "title": "No: 212, 4 November 2026, Regarding the European Commission’s 2026 Report on Türkiye",
+   "url": "http://www.mfa.gov.tr/no_-212_-avrupa-komisyonu-2026-turkiye-raporu-hk.en.mfa",
+   "published": "Mon, 23 Nov 2026 14:11:00 GMT",
+   "relevant": true,
+   "new": true
+  },
+  {
+   "id": "O-6ced144773eb",
+   "kind": "official",
+   "source": "Türkiye Ministry of Foreign Affairs",
+   "domain": "mfa.gov.tr",
+   "rel": "A",
+   "files": [
+    "turkey"
+   ],
+   "lang": "en",
+   "title": "No: 211, 29 October 2026, Regarding the Participation of H.E. Hakan Fidan, Minister of Foreign Affairs of the Republic of Türkiye, in the G20 Foreign Ministers’ Meeting",
+   "url": "http://www.mfa.gov.tr/no_-211_-sayin-bakanimizin-g20-disisleri-bakanlari-toplantisi-na-katilimi-hk.en.mfa",
+   "published": "Thu, 05 Nov 2026 14:25:13 GMT",
+   "relevant": true,
+   "new": true
+  },
+  {
+   "id": "O-5b920a8e0202",
+   "kind": "official",
+   "source": "Türkiye Ministry of Foreign Affairs",
+   "domain": "mfa.gov.tr",
+   "rel": "A",
+   "files": [
+    "turkey"
+   ],
+   "lang": "en",
+   "title": "No: 210, 28 October 2026, Regarding the Meeting of the Council of Foreign Ministers of the Organization of Turkic States",
+   "url": "http://www.mfa.gov.tr/no_-210_-turk-devletleri-teskilati-disisleri-bakanlari-konseyi-toplantisi-hk.en.mfa",
+   "published": "Thu, 05 Nov 2026 14:24:10 GMT",
+   "relevant": true,
+   "new": true
+  },
+  {
+   "id": "O-52e06a5a14c3",
+   "kind": "official",
+   "source": "Türkiye Ministry of Foreign Affairs",
+   "domain": "mfa.gov.tr",
+   "rel": "A",
+   "files": [
+    "turkey"
+   ],
+   "lang": "en",
+   "title": "No: 209, 28 October 2026, Regarding the Train Crash in Spain",
+   "url": "http://www.mfa.gov.tr/no_-209_-ispanya-da-meydana-gelen-tren-kazasi-hk.en.mfa",
+   "published": "Thu, 05 Nov 2026 14:23:10 GMT",
+   "relevant": true,
+   "new": true
+  },
+  {
+   "id": "O-086172e469f2",
+   "kind": "official",
+   "source": "Türkiye Ministry of Foreign Affairs",
+   "domain": "mfa.gov.tr",
+   "rel": "A",
+   "files": [
+    "turkey"
+   ],
+   "lang": "en",
+   "title": "No: 208, 27 October 2026, Regarding Certain Claims Asserted About Türkiye’s Policy on the Aegean and the Eastern Mediterranean",
+   "url": "http://www.mfa.gov.tr/no_-208_-ege-ve-dogu-akdeniz-politikamizla-ilgili-gundeme-getirilen-bazi-iddialar-hk.en.mfa",
+   "published": "Thu, 05 Nov 2026 14:22:12 GMT",
    "relevant": true,
    "new": true
   },
@@ -1210,7 +1354,7 @@
    "url": "https://qna.org.qa/en/News-Area/News/2026-11/26/dollar-steady-after-falling-to-one-week-low",
    "published": "",
    "relevant": false,
-   "new": true
+   "new": false
   },
   {
    "id": "O-95cccce60a81",
@@ -1226,7 +1370,7 @@
    "url": "https://qna.org.qa/en/News-Area/News/2026-11/26/gold-steadies-after-plunging-to-more-than-one-year-low",
    "published": "",
    "relevant": false,
-   "new": true
+   "new": false
   },
   {
    "id": "O-40989a5de0ec",
@@ -1242,7 +1386,7 @@
    "url": "https://qna.org.qa/en/News-Area/News/2026-11/26/oil-prices-rise-on-supply-concerns",
    "published": "",
    "relevant": false,
-   "new": true
+   "new": false
   },
   {
    "id": "O-fd19b10e4c06",
@@ -1466,7 +1610,7 @@
    "url": "https://omannews.gov.om/topics/ar/88/show/477313/ona",
    "published": "",
    "relevant": false,
-   "new": true
+   "new": false
   },
   {
    "id": "O-4db1e26d0f10",
@@ -1482,7 +1626,7 @@
    "url": "https://omannews.gov.om/topics/ar/7/show/477312/ona",
    "published": "",
    "relevant": false,
-   "new": true
+   "new": false
   },
   {
    "id": "O-e1f1353bbbc4",
@@ -1578,7 +1722,7 @@
    "url": "https://omannews.gov.om/topics/ar/7/show/477291/ona",
    "published": "",
    "relevant": false,
-   "new": true
+   "new": false
   },
   {
    "id": "O-f156417555a5",
@@ -1626,7 +1770,7 @@
    "url": "https://omannews.gov.om/topics/ar/8/show/477294/ona",
    "published": "",
    "relevant": false,
-   "new": true
+   "new": false
   },
   {
    "id": "O-1c0f5b68327c",
@@ -2046,7 +2190,7 @@
    "url": "https://www.spa.gov.sa/en/N2736688",
    "published": "",
    "relevant": false,
-   "new": true
+   "new": false
   },
   {
    "id": "O-5712d4e9d4fc",
@@ -2190,14 +2334,14 @@
    "url": "https://www.spa.gov.sa/en/N2733936",
    "published": "",
    "relevant": false,
-   "new": true
+   "new": false
   }
  ],
  "status": {
   "viirs_n20": "ok: 668 points in watch boxes",
   "modis": "ok: 133 points in watch boxes",
   "defense_rss": "ok: 20 items, 0 relevant",
-  "mfa_tr": "ok: 16 items",
+  "mfa_tr": "ok: 25 items",
   "qna": "ok: 16 items",
   "ona": "ok: 25 items",
   "ofac": "ok: 10 items",
