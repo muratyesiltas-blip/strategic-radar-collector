@@ -64,6 +64,10 @@ AGENCY_EN = re.compile(r"\b(iran|israel|gaza|palestin|lebanon|syria|iraq|yemen|h
 AGENCY_AR = re.compile(r"(إيران|الإيراني|إسرائيل|الإسرائيلي|غزة|فلسطين|لبنان|سوريا|العراق|اليمن|الحوثي|البحر الأحمر|هرمز|تركيا|التركي|"
                        r"أمن|الأمن|عسكري|العسكري|القوات المسلحة|صاروخ|مسيّرة|مسيرة|هجوم|البحرية|وزير الخارجية|الخارجية|وقف إطلاق النار|عقوبات|"
                        r"الولايات المتحدة|روسيا|أوكرانيا|الناتو|مجلس التعاون)")
+# Agency stories that name a place but carry no security content (museums, festivals, national-day parties, pensions)
+AGENCY_SKIP = re.compile(r"(museum|heritage|festival|exhibition|tourism|tourist|cultur|\bart\b|handicraft|cuisine|\bseason|\bsport|football|"
+                         r"marathon|weather|\brain(fall)?\b|retirement|social insurance|pension|national day|celebrat|anniversary of|"
+                         r"متحف|تراث|مهرجان|معرض|سياح|ثقاف|الحرف اليدوية|طقس|أمطار|تقاعد|التأمينات|اليوم الوطني|تحتفل|يحتفل|احتفال)", re.I)
 
 PERSIST_DAYS = 7      # memory window for burning cells
 PERSIST_MIN = 3       # a cell seen on at least this many of the window's days counts as persistent
@@ -215,7 +219,9 @@ def defense_rss(state: dict, status: dict) -> list[dict]:
 # Official sources whose lists can be read without a browser. kind: rss | links | nextdata
 OFFICIAL = [
     {"key": "mfa_tr", "source": "Türkiye Ministry of Foreign Affairs", "domain": "mfa.gov.tr", "files": ["turkey"],
-     "kind": "rss", "url": "https://www.mfa.gov.tr/rss.en.mfa", "all": True},
+     "kind": "rss", "url": "https://www.mfa.gov.tr/rss.en.mfa", "all": True, "base": "https://www.mfa.gov.tr/",
+     "fallback": "https://www.mfa.gov.tr/default.en.mfa",
+     "fallbackPattern": r'<a[^>]+href="((?:https://www\.mfa\.gov\.tr/|/)?[\w\-]+\.en\.mfa)"[^>]*>\s*([^<]{25,250})</a>'},
     {"key": "qna", "agency": True, "source": "Qatar News Agency", "domain": "qna.org.qa", "files": ["gulf"], "kind": "links",
      "url": "https://www.qna.org.qa/en", "pattern": r'<a[^>]+href="(https://qna\.org\.qa/en/News-Area/News/\d{4}-\d{2}/\d{2}/[^"]+)"[^>]*>\s*([^<]{15,200})</a>'},
     {"key": "ona", "source": "Oman News Agency", "domain": "omannews.gov.om", "files": ["gulf"], "kind": "links", "lang": "ar",
@@ -288,6 +294,26 @@ def official_pages(state: dict, status: dict) -> list[dict]:
                     pd = re.search(r"<pubDate>(.*?)</pubDate>", blk, re.S | re.I)
                     if lk and tt:
                         rows.append((lk.group(1).strip(), re.sub(r"<[^>]+>", "", tt.group(1)).strip(), pd.group(1).strip() if pd else ""))
+            if not rows:
+                # Atom feeds use <entry> and <link href="...">
+                for blk in re.findall(r"<entry[\s>](.*?)</entry>", h, re.S | re.I):
+                    lk = re.search(r'<link[^>]+href="([^"]+)"', blk, re.I)
+                    tt = re.search(r"<title[^>]*>\s*(?:<!\[CDATA\[)?(.*?)(?:\]\]>)?\s*</title>", blk, re.S | re.I)
+                    pd = re.search(r"<(?:updated|published)>(.*?)</", blk, re.S | re.I)
+                    if lk and tt:
+                        rows.append((lk.group(1).strip(), re.sub(r"<[^>]+>", "", tt.group(1)).strip(), pd.group(1).strip() if pd else ""))
+            if not rows and src.get("fallback"):
+                # the feed came back empty or as an HTML page: read the ministry's own list page instead
+                diag = re.sub(r"\s+", " ", h[:160])
+                try:
+                    h2 = _get_text(src["fallback"])
+                    for u, ttl in re.findall(src["fallbackPattern"], h2):
+                        u = u if u.startswith("http") else src.get("base", "") + u.lstrip("/")
+                        rows.append((u, re.sub(r"\s+", " ", ttl).strip(), ""))
+                except Exception as e:  # noqa: BLE001
+                    diag += f" | fallback error: {str(e)[:80]}"
+                if not rows:
+                    status[src["key"] + "_diag"] = f"feed {len(h)} chars, starts: {diag}"
         elif src["kind"] == "links":
             for u, ttl in re.findall(src["pattern"], h):
                 u = u if u.startswith("http") else src.get("base", "") + u
@@ -303,6 +329,8 @@ def official_pages(state: dict, status: dict) -> list[dict]:
             title = _h.unescape(title)
             if src.get("all"):
                 relevant = True
+            elif (src.get("agency") or src.get("lang") == "ar") and AGENCY_SKIP.search(title):
+                relevant = False
             elif src.get("lang") == "ar":
                 relevant = bool(AGENCY_AR.search(title))
             elif src.get("agency"):
