@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-27T14:03:01+00:00",
+ "generatedAt": "2026-11-27T22:48:31+00:00",
  "version": 1,
  "note": "Machine-collected signals. Thermal anomalies are heat sources seen from orbit, not confirmed strikes; persistent cells (seen on at least 3 of the last 7 days) are dropped as flares or industry.",
  "thermal": {
@@ -9,8 +9,8 @@
     "iran",
     "gulf"
    ],
-   "points": 49,
-   "persistentDropped": 29,
+   "points": 50,
+   "persistentDropped": 30,
    "newPoints": 20,
    "newCells": 13,
    "frpNew": 35.9,
@@ -95,8 +95,8 @@
     "gulf",
     "iran"
    ],
-   "points": 435,
-   "persistentDropped": 376,
+   "points": 438,
+   "persistentDropped": 379,
    "newPoints": 59,
    "newCells": 27,
    "frpNew": 312.8,
@@ -180,11 +180,11 @@
    "files": [
     "iran"
    ],
-   "points": 363,
-   "persistentDropped": 312,
-   "newPoints": 51,
-   "newCells": 38,
-   "frpNew": 398.1,
+   "points": 377,
+   "persistentDropped": 324,
+   "newPoints": 53,
+   "newCells": 40,
+   "frpNew": 517.7,
    "top": [
     {
      "lat": 31.00321,
@@ -196,6 +196,15 @@
      "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@48.15302,31.00321,11z"
     },
     {
+     "lat": 30.86392,
+     "lon": 48.21222,
+     "frp": 78.67,
+     "sensor": "modis",
+     "time": "2026-11-27 12:40Z",
+     "cell": "30.9,48.2",
+     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@48.21222,30.86392,11z"
+    },
+    {
      "lat": 30.96621,
      "lon": 48.50255,
      "frp": 46.38,
@@ -203,6 +212,24 @@
      "time": "2026-11-26 12:01Z",
      "cell": "31.0,48.5",
      "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@48.50255,30.96621,11z"
+    },
+    {
+     "lat": 30.86576,
+     "lon": 48.22978,
+     "frp": 23.08,
+     "sensor": "modis",
+     "time": "2026-11-27 12:40Z",
+     "cell": "30.9,48.2",
+     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@48.22978,30.86576,11z"
+    },
+    {
+     "lat": 30.90085,
+     "lon": 48.02601,
+     "frp": 16.26,
+     "sensor": "modis",
+     "time": "2026-11-27 12:40Z",
+     "cell": "30.9,48.0",
+     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@48.02601,30.90085,11z"
     },
     {
      "lat": 31.08913,
@@ -223,40 +250,13 @@
      "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@48.41892,31.09026,11z"
     },
     {
-     "lat": 31.1979,
-     "lon": 48.59079,
-     "frp": 11.24,
+     "lat": 31.15396,
+     "lon": 48.04746,
+     "frp": 11.85,
      "sensor": "modis",
-     "time": "2026-11-26 12:04Z",
-     "cell": "31.2,48.6",
-     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@48.59079,31.1979,11z"
-    },
-    {
-     "lat": 31.35311,
-     "lon": 48.80852,
-     "frp": 9.4,
-     "sensor": "modis",
-     "time": "2026-11-26 12:04Z",
-     "cell": "31.4,48.8",
-     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@48.80852,31.35311,11z"
-    },
-    {
-     "lat": 31.44591,
-     "lon": 53.78107,
-     "frp": 9.24,
-     "sensor": "viirs_n20",
-     "time": "2026-11-27 09:26Z",
-     "cell": "31.4,53.8",
-     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@53.78107,31.44591,11z"
-    },
-    {
-     "lat": 30.96399,
-     "lon": 48.48996,
-     "frp": 9.02,
-     "sensor": "modis",
-     "time": "2026-11-26 12:01Z",
-     "cell": "31.0,48.5",
-     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@48.48996,30.96399,11z"
+     "time": "2026-11-27 12:40Z",
+     "cell": "31.2,48.0",
+     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@48.04746,31.15396,11z"
     }
    ]
   },
@@ -316,11 +316,11 @@
     "pkk",
     "mideast"
    ],
-   "points": 57,
-   "persistentDropped": 32,
-   "newPoints": 25,
-   "newCells": 13,
-   "frpNew": 77.6,
+   "points": 69,
+   "persistentDropped": 34,
+   "newPoints": 35,
+   "newCells": 17,
+   "frpNew": 139.3,
    "top": [
     {
      "lat": 36.3745,
@@ -332,6 +332,60 @@
      "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@43.59039,36.3745,11z"
     },
     {
+     "lat": 35.83735,
+     "lon": 44.29801,
+     "frp": 11.24,
+     "sensor": "modis",
+     "time": "2026-11-27 12:42Z",
+     "cell": "35.8,44.3",
+     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@44.29801,35.83735,11z"
+    },
+    {
+     "lat": 35.92755,
+     "lon": 43.69534,
+     "frp": 9.77,
+     "sensor": "modis",
+     "time": "2026-11-27 12:42Z",
+     "cell": "35.9,43.7",
+     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@43.69534,35.92755,11z"
+    },
+    {
+     "lat": 35.93547,
+     "lon": 43.70974,
+     "frp": 6.9,
+     "sensor": "viirs_n20",
+     "time": "2026-11-27 11:08Z",
+     "cell": "35.9,43.7",
+     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@43.70974,35.93547,11z"
+    },
+    {
+     "lat": 35.8972,
+     "lon": 44.29176,
+     "frp": 6.56,
+     "sensor": "viirs_n20",
+     "time": "2026-11-27 11:08Z",
+     "cell": "35.9,44.3",
+     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@44.29176,35.8972,11z"
+    },
+    {
+     "lat": 36.68624,
+     "lon": 43.41938,
+     "frp": 6.11,
+     "sensor": "viirs_n20",
+     "time": "2026-11-27 11:08Z",
+     "cell": "36.7,43.4",
+     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@43.41938,36.68624,11z"
+    },
+    {
+     "lat": 35.8966,
+     "lon": 44.28962,
+     "frp": 5.77,
+     "sensor": "viirs_n20",
+     "time": "2026-11-27 11:08Z",
+     "cell": "35.9,44.3",
+     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@44.28962,35.8966,11z"
+    },
+    {
      "lat": 37.01495,
      "lon": 42.5883,
      "frp": 5.17,
@@ -339,60 +393,6 @@
      "time": "2026-11-26 09:47Z",
      "cell": "37.0,42.6",
      "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@42.5883,37.01495,11z"
-    },
-    {
-     "lat": 36.73375,
-     "lon": 43.77995,
-     "frp": 5.07,
-     "sensor": "viirs_n20",
-     "time": "2026-11-26 09:45Z",
-     "cell": "36.7,43.8",
-     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@43.77995,36.73375,11z"
-    },
-    {
-     "lat": 36.68436,
-     "lon": 43.40865,
-     "frp": 4.2,
-     "sensor": "viirs_n20",
-     "time": "2026-11-27 09:28Z",
-     "cell": "36.7,43.4",
-     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@43.40865,36.68436,11z"
-    },
-    {
-     "lat": 35.85996,
-     "lon": 43.98977,
-     "frp": 4.1,
-     "sensor": "viirs_n20",
-     "time": "2026-11-27 09:28Z",
-     "cell": "35.9,44.0",
-     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@43.98977,35.85996,11z"
-    },
-    {
-     "lat": 36.86687,
-     "lon": 43.4905,
-     "frp": 3.84,
-     "sensor": "viirs_n20",
-     "time": "2026-11-27 09:28Z",
-     "cell": "36.9,43.5",
-     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@43.4905,36.86687,11z"
-    },
-    {
-     "lat": 36.66228,
-     "lon": 43.57528,
-     "frp": 3.61,
-     "sensor": "viirs_n20",
-     "time": "2026-11-26 09:45Z",
-     "cell": "36.7,43.6",
-     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@43.57528,36.66228,11z"
-    },
-    {
-     "lat": 36.01756,
-     "lon": 43.14047,
-     "frp": 3.41,
-     "sensor": "viirs_n20",
-     "time": "2026-11-26 09:45Z",
-     "cell": "36.0,43.1",
-     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@43.14047,36.01756,11z"
     }
    ]
   },
@@ -402,11 +402,11 @@
     "syria",
     "pkk"
    ],
-   "points": 207,
-   "persistentDropped": 104,
-   "newPoints": 103,
-   "newCells": 35,
-   "frpNew": 974.1,
+   "points": 300,
+   "persistentDropped": 138,
+   "newPoints": 162,
+   "newCells": 40,
+   "frpNew": 1358.0,
    "top": [
     {
      "lat": 36.85512,
@@ -463,22 +463,22 @@
      "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@40.52599,37.04543,11z"
     },
     {
-     "lat": 37.16601,
-     "lon": 41.69675,
-     "frp": 23.36,
-     "sensor": "viirs_n20",
-     "time": "2026-11-26 11:27Z",
-     "cell": "37.2,41.7",
-     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@41.69675,37.16601,11z"
+     "lat": 36.96355,
+     "lon": 40.25345,
+     "frp": 24.58,
+     "sensor": "modis",
+     "time": "2026-11-27 12:42Z",
+     "cell": "37.0,40.3",
+     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@40.25345,36.96355,11z"
     },
     {
-     "lat": 37.16597,
-     "lon": 41.68776,
-     "frp": 23.36,
-     "sensor": "viirs_n20",
-     "time": "2026-11-26 11:27Z",
-     "cell": "37.2,41.7",
-     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@41.68776,37.16597,11z"
+     "lat": 37.06364,
+     "lon": 40.04785,
+     "frp": 23.7,
+     "sensor": "modis",
+     "time": "2026-11-27 12:42Z",
+     "cell": "37.1,40.0",
+     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@40.04785,37.06364,11z"
     }
    ]
   },
@@ -489,12 +489,30 @@
     "mideast",
     "syria"
    ],
-   "points": 14,
+   "points": 16,
    "persistentDropped": 5,
-   "newPoints": 9,
+   "newPoints": 11,
    "newCells": 4,
-   "frpNew": 10.6,
+   "frpNew": 16.9,
    "top": [
+    {
+     "lat": 32.88895,
+     "lon": 35.09375,
+     "frp": 3.34,
+     "sensor": "viirs_n20",
+     "time": "2026-11-27 11:08Z",
+     "cell": "32.9,35.1",
+     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@35.09375,32.88895,11z"
+    },
+    {
+     "lat": 32.88864,
+     "lon": 35.09131,
+     "frp": 2.92,
+     "sensor": "viirs_n20",
+     "time": "2026-11-27 11:08Z",
+     "cell": "32.9,35.1",
+     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@35.09131,32.88864,11z"
+    },
     {
      "lat": 32.88967,
      "lon": 35.09035,
@@ -548,24 +566,6 @@
      "time": "2026-11-26 00:07Z",
      "cell": "32.8,35.1",
      "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@35.14833,32.80903,11z"
-    },
-    {
-     "lat": 32.81022,
-     "lon": 35.14745,
-     "frp": 0.75,
-     "sensor": "viirs_n20",
-     "time": "2026-11-26 00:07Z",
-     "cell": "32.8,35.1",
-     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@35.14745,32.81022,11z"
-    },
-    {
-     "lat": 31.91934,
-     "lon": 34.89391,
-     "frp": 0.71,
-     "sensor": "viirs_n20",
-     "time": "2026-11-26 23:50Z",
-     "cell": "31.9,34.9",
-     "map": "https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@34.89391,31.91934,11z"
     }
    ]
   },
@@ -893,6 +893,38 @@
    "summary": "The War Department, Department of Transportation, Department of Homeland Security, Department of Energy and Department of Justice announced an expanded interagency effort to further coordinate counter-unmanned aircraft systems operations.",
    "relevant": false,
    "new": false
+  },
+  {
+   "id": "O-8ff83e0899db",
+   "kind": "official",
+   "source": "Türkiye Ministry of Foreign Affairs",
+   "domain": "mfa.gov.tr",
+   "rel": "A",
+   "files": [
+    "turkey"
+   ],
+   "lang": "en",
+   "title": "Second Meeting of the Strategic Political and Defence Committee (S-PDC) of the Makkah Alliance for Defence, Joint Statement, Islamabad, 27 November 2026",
+   "url": "http://www.mfa.gov.tr/second-meeting-of-the-strategic-political-and-defence-committee-s-pdc-of-the-makkah-alliance-for-defence-islamabad--27-november-2026.en.mfa",
+   "published": "Fri, 27 Nov 2026 18:37:34 GMT",
+   "relevant": true,
+   "new": true
+  },
+  {
+   "id": "O-65e62e5933f8",
+   "kind": "official",
+   "source": "Türkiye Ministry of Foreign Affairs",
+   "domain": "mfa.gov.tr",
+   "rel": "A",
+   "files": [
+    "turkey"
+   ],
+   "lang": "en",
+   "title": "No: 231, 27 November 2026,  Regarding the Second Meeting of the Strategic Political and Defence Committee Established Under the Makkah Agreement for Joint Defence",
+   "url": "http://www.mfa.gov.tr/no_-231_-ortak-savunma-icin-mekke-anlasmasi-kapsaminda-tesis-edilen-stratejik-siyasi-ve-savunma-komitesi-nin-ikinci-toplantisi-hk.en.mfa",
+   "published": "Fri, 27 Nov 2026 14:14:53 GMT",
+   "relevant": true,
+   "new": true
   },
   {
    "id": "O-f5c909c14581",
@@ -1263,39 +1295,7 @@
    "new": false
   },
   {
-   "id": "O-6ced144773eb",
-   "kind": "official",
-   "source": "Türkiye Ministry of Foreign Affairs",
-   "domain": "mfa.gov.tr",
-   "rel": "A",
-   "files": [
-    "turkey"
-   ],
-   "lang": "en",
-   "title": "No: 211, 29 October 2026, Regarding the Participation of H.E. Hakan Fidan, Minister of Foreign Affairs of the Republic of Türkiye, in the G20 Foreign Ministers’ Meeting",
-   "url": "http://www.mfa.gov.tr/no_-211_-sayin-bakanimizin-g20-disisleri-bakanlari-toplantisi-na-katilimi-hk.en.mfa",
-   "published": "Thu, 05 Nov 2026 14:25:13 GMT",
-   "relevant": true,
-   "new": false
-  },
-  {
-   "id": "O-5b920a8e0202",
-   "kind": "official",
-   "source": "Türkiye Ministry of Foreign Affairs",
-   "domain": "mfa.gov.tr",
-   "rel": "A",
-   "files": [
-    "turkey"
-   ],
-   "lang": "en",
-   "title": "No: 210, 28 October 2026, Regarding the Meeting of the Council of Foreign Ministers of the Organization of Turkic States",
-   "url": "http://www.mfa.gov.tr/no_-210_-turk-devletleri-teskilati-disisleri-bakanlari-konseyi-toplantisi-hk.en.mfa",
-   "published": "Thu, 05 Nov 2026 14:24:10 GMT",
-   "relevant": true,
-   "new": false
-  },
-  {
-   "id": "O-f3ebd89a2d9c",
+   "id": "O-1a8a42f01b00",
    "kind": "official",
    "source": "Qatar News Agency",
    "domain": "qna.org.qa",
@@ -1304,14 +1304,14 @@
     "gulf"
    ],
    "lang": "en",
-   "title": "French GDP Contracts in Q3 of 2026",
-   "url": "https://qna.org.qa/en/News-Area/News/2026-11/27/french-gdp-contracts-in-q3-of-2026",
+   "title": "Doha Film Festival 2026 Concludes, Honours Bold Storytelling",
+   "url": "https://qna.org.qa/en/News-Area/News/2026-11/28/doha-film-festival-2026-concludes-honours-bold-storytelling",
    "published": "",
    "relevant": false,
    "new": true
   },
   {
-   "id": "O-9839a5666b40",
+   "id": "O-487609602dff",
    "kind": "official",
    "source": "Qatar News Agency",
    "domain": "qna.org.qa",
@@ -1320,30 +1320,14 @@
     "gulf"
    ],
    "lang": "en",
-   "title": "Speaker of Iceland's Parliament Meets Qatari Ambassador",
-   "url": "https://qna.org.qa/en/News-Area/News/2026-11/27/speaker-of-icelands-parliament-meets-qatari-ambassador",
-   "published": "",
-   "relevant": false,
-   "new": true
-  },
-  {
-   "id": "O-47ec6dba9b07",
-   "kind": "official",
-   "source": "Qatar News Agency",
-   "domain": "qna.org.qa",
-   "rel": "A",
-   "files": [
-    "gulf"
-   ],
-   "lang": "en",
-   "title": "Qatar Strongly Condemns Houthi Attack on Oil Refinery in Saudi Arabia's Jazan",
-   "url": "https://qna.org.qa/en/News-Area/News/2026-11/27/qatar-strongly-condemns-houthi-attack-on-oil-refinery-in-saudi-arabias-jazan",
+   "title": "Arab League Condemns Houthi Attacks on Saudi Arabia",
+   "url": "https://qna.org.qa/en/News-Area/News/2026-11/28/arab-league-condemns-houthi-attacks-on-saudi-arabia",
    "published": "",
    "relevant": true,
    "new": true
   },
   {
-   "id": "O-81ee9aa88559",
+   "id": "O-c75d7fadf3b3",
    "kind": "official",
    "source": "Qatar News Agency",
    "domain": "qna.org.qa",
@@ -1352,14 +1336,14 @@
     "gulf"
    ],
    "lang": "en",
-   "title": "UN Warns of Worsening Hunger in 16 Hotspots Globally",
-   "url": "https://qna.org.qa/en/News-Area/News/2026-11/27/un-warns-of-worsening-hunger-in-16-hotspots-globally",
+   "title": "Al Attiyah Clinches Sixth Abu Dhabi Desert Challenge Title",
+   "url": "https://qna.org.qa/en/News-Area/News/2026-11/27/al-attiyah-clinches-sixth-abu-dhabi-desert-challenge-title",
    "published": "",
    "relevant": false,
    "new": true
   },
   {
-   "id": "O-2deab89ca0c0",
+   "id": "O-ea78d568e3ec",
    "kind": "official",
    "source": "Qatar News Agency",
    "domain": "qna.org.qa",
@@ -1368,8 +1352,24 @@
     "gulf"
    ],
    "lang": "en",
-   "title": "Iraqi-Turkish Oil Pipeline Resumes Operations after 12-Year Suspension",
-   "url": "https://qna.org.qa/en/News-Area/News/2026-11/27/iraqi-turkish-oil-pipeline-resumes-operations-after-12-year-suspension",
+   "title": "HH the Amir Sends Condolences to President and Prime Minister of Italy",
+   "url": "https://qna.org.qa/en/News-Area/News/2026-11/27/hh-the-amir-sends-condolences-to-president-and-prime-minister-of-italy",
+   "published": "",
+   "relevant": false,
+   "new": true
+  },
+  {
+   "id": "O-7a69bcb7771c",
+   "kind": "official",
+   "source": "Qatar News Agency",
+   "domain": "qna.org.qa",
+   "rel": "A",
+   "files": [
+    "gulf"
+   ],
+   "lang": "en",
+   "title": "Qatar, Canada Sign Agreement on Promotion, Protection of Investment",
+   "url": "https://qna.org.qa/en/News-Area/News/2026-11/27/qatar-canada-sign-agreement-on-promotion-protection-of-investment",
    "published": "",
    "relevant": false,
    "new": true
@@ -1420,7 +1420,7 @@
    "url": "https://qna.org.qa/en/News-Area/News/2026-11/26/third-regular-session-of-arab-cybersecurity-ministers-council-concludes-in-doha",
    "published": "",
    "relevant": false,
-   "new": true
+   "new": false
   },
   {
    "id": "O-e4883cfc656c",
@@ -1551,7 +1551,7 @@
    "new": false
   },
   {
-   "id": "O-6ee18491c8eb",
+   "id": "O-bd8e5cee8b90",
    "kind": "official",
    "source": "Oman News Agency",
    "domain": "omannews.gov.om",
@@ -1560,14 +1560,14 @@
     "gulf"
    ],
    "lang": "ar",
-   "title": "سلطنة عُمان تختتم مشاركتها في أعمال مؤتمر المندوبين المفوضين للاتحاد الدولي للاتصالات",
-   "url": "https://omannews.gov.om/topics/ar/7/show/477347/ona",
+   "title": "وفاة شخص وفقدان 3 بعد غرق سفينة شحن قبالة سواحل كوبا",
+   "url": "https://omannews.gov.om/topics/ar/88/show/477352/ona",
    "published": "",
    "relevant": false,
    "new": true
   },
   {
-   "id": "O-6b7d5ec4b4d7",
+   "id": "O-fa8b3c84aa0c",
    "kind": "official",
    "source": "Oman News Agency",
    "domain": "omannews.gov.om",
@@ -1576,14 +1576,14 @@
     "gulf"
    ],
    "lang": "ar",
-   "title": "جلالةُ السُّلطان يبعث رسالةً خطيّةً إلى رئيس الوزراء الباكستاني",
-   "url": "https://omannews.gov.om/topics/ar/5/show/477346/ona",
+   "title": "العثور على أدلة على أعمق ثوران بركاني انفجاري في خندق ماريانا",
+   "url": "https://omannews.gov.om/topics/ar/88/show/477351/ona",
    "published": "",
    "relevant": false,
    "new": true
   },
   {
-   "id": "O-d49a289a360e",
+   "id": "O-7c33871a9945",
    "kind": "official",
    "source": "Oman News Agency",
    "domain": "omannews.gov.om",
@@ -1592,14 +1592,14 @@
     "gulf"
    ],
    "lang": "ar",
-   "title": "لاتسيو يواجه تورينو غدًا في الدوري الإيطالي للحفاظ على الصدارة",
-   "url": "https://omannews.gov.om/topics/ar/8/show/477345/ona",
+   "title": "سفير سلطنة عُمان لدى أندورا يقدّم نسخة من أوراق اعتماده",
+   "url": "https://omannews.gov.om/topics/ar/3/show/477350/ona",
    "published": "",
    "relevant": false,
    "new": true
   },
   {
-   "id": "O-3023bdb98164",
+   "id": "O-216b192252a8",
    "kind": "official",
    "source": "Oman News Agency",
    "domain": "omannews.gov.om",
@@ -1608,14 +1608,78 @@
     "gulf"
    ],
    "lang": "ar",
-   "title": "الاحتلال الإسرائيلي يعتقل عددًا من الفلسطينيين بالضفة الغربية",
-   "url": "https://omannews.gov.om/topics/ar/5/show/477344/ona",
+   "title": "سفارة سلطنة عُمان في باكستان تحتفل باليوم الوطني المجيد",
+   "url": "https://omannews.gov.om/topics/ar/3/show/477349/ona",
+   "published": "",
+   "relevant": false,
+   "new": true
+  },
+  {
+   "id": "O-15abf8c03627",
+   "kind": "official",
+   "source": "Oman News Agency",
+   "domain": "omannews.gov.om",
+   "rel": "A",
+   "files": [
+    "gulf"
+   ],
+   "lang": "ar",
+   "title": "تنظيم مهرجان للفروسية بولاية بهلاء احتفاءً باليوم الوطني المجيد",
+   "url": "https://omannews.gov.om/topics/ar/8/show/477348/ona",
+   "published": "",
+   "relevant": false,
+   "new": true
+  },
+  {
+   "id": "O-37bd22068b7b",
+   "kind": "official",
+   "source": "Oman News Agency",
+   "domain": "omannews.gov.om",
+   "rel": "A",
+   "files": [
+    "gulf"
+   ],
+   "lang": "ar",
+   "title": "الأسهم اليابانية ترتفع في التداولات الصباحية",
+   "url": "https://omannews.gov.om/topics/ar/7/show/477332/ona",
+   "published": "",
+   "relevant": false,
+   "new": false
+  },
+  {
+   "id": "O-f8afc9277237",
+   "kind": "official",
+   "source": "Oman News Agency",
+   "domain": "omannews.gov.om",
+   "rel": "A",
+   "files": [
+    "gulf"
+   ],
+   "lang": "ar",
+   "title": "سلطنة عُمان تُدين الاعتداءات على دولة الكويت الشقيقة",
+   "url": "https://omannews.gov.om/topics/ar/3/show/477333/ona",
+   "published": "",
+   "relevant": false,
+   "new": false
+  },
+  {
+   "id": "O-532619ee2791",
+   "kind": "official",
+   "source": "Oman News Agency",
+   "domain": "omannews.gov.om",
+   "rel": "A",
+   "files": [
+    "gulf"
+   ],
+   "lang": "ar",
+   "title": "وزير الخارجية يبحث مع عدد من المسؤولين اليابانيين تعزيز مجالات التعاون.",
+   "url": "https://omannews.gov.om/topics/ar/5/show/477334/ona",
    "published": "",
    "relevant": true,
-   "new": true
+   "new": false
   },
   {
-   "id": "O-2dea19262482",
+   "id": "O-8d11a100f75d",
    "kind": "official",
    "source": "Oman News Agency",
    "domain": "omannews.gov.om",
@@ -1624,8 +1688,40 @@
     "gulf"
    ],
    "lang": "ar",
-   "title": "الذهب يصعد بنحو 3 بالمائة مع توقف ارتفاع الدولار",
-   "url": "https://omannews.gov.om/topics/ar/7/show/477343/ona",
+   "title": "غدًا نهائي كأس ليبرتادوريس بين بالميراس البرازيلي وإستوديانتس الأرجنتيني",
+   "url": "https://omannews.gov.om/topics/ar/8/show/477335/ona",
+   "published": "",
+   "relevant": false,
+   "new": false
+  },
+  {
+   "id": "O-c77cb4032579",
+   "kind": "official",
+   "source": "Oman News Agency",
+   "domain": "omannews.gov.om",
+   "rel": "A",
+   "files": [
+    "gulf"
+   ],
+   "lang": "ar",
+   "title": "وكالة الطاقة الذرية تبحث مع روسيا وأوكرانيا وقف إطلاق نار حول محطة زابوريجيا",
+   "url": "https://omannews.gov.om/topics/ar/5/show/477336/ona",
+   "published": "",
+   "relevant": true,
+   "new": false
+  },
+  {
+   "id": "O-22dacebd8d20",
+   "kind": "official",
+   "source": "Oman News Agency",
+   "domain": "omannews.gov.om",
+   "rel": "A",
+   "files": [
+    "gulf"
+   ],
+   "lang": "ar",
+   "title": "سعر نفط عُمان يرتفع 53 سنتًا",
+   "url": "https://omannews.gov.om/topics/ar/7/show/477337/ona",
    "published": "",
    "relevant": false,
    "new": true
@@ -1645,86 +1741,6 @@
    "published": "",
    "relevant": false,
    "new": false
-  },
-  {
-   "id": "O-37bd22068b7b",
-   "kind": "official",
-   "source": "Oman News Agency",
-   "domain": "omannews.gov.om",
-   "rel": "A",
-   "files": [
-    "gulf"
-   ],
-   "lang": "ar",
-   "title": "الأسهم اليابانية ترتفع في التداولات الصباحية",
-   "url": "https://omannews.gov.om/topics/ar/7/show/477332/ona",
-   "published": "",
-   "relevant": false,
-   "new": true
-  },
-  {
-   "id": "O-f8afc9277237",
-   "kind": "official",
-   "source": "Oman News Agency",
-   "domain": "omannews.gov.om",
-   "rel": "A",
-   "files": [
-    "gulf"
-   ],
-   "lang": "ar",
-   "title": "سلطنة عُمان تُدين الاعتداءات على دولة الكويت الشقيقة",
-   "url": "https://omannews.gov.om/topics/ar/3/show/477333/ona",
-   "published": "",
-   "relevant": false,
-   "new": true
-  },
-  {
-   "id": "O-532619ee2791",
-   "kind": "official",
-   "source": "Oman News Agency",
-   "domain": "omannews.gov.om",
-   "rel": "A",
-   "files": [
-    "gulf"
-   ],
-   "lang": "ar",
-   "title": "وزير الخارجية يبحث مع عدد من المسؤولين اليابانيين تعزيز مجالات التعاون.",
-   "url": "https://omannews.gov.om/topics/ar/5/show/477334/ona",
-   "published": "",
-   "relevant": true,
-   "new": true
-  },
-  {
-   "id": "O-8d11a100f75d",
-   "kind": "official",
-   "source": "Oman News Agency",
-   "domain": "omannews.gov.om",
-   "rel": "A",
-   "files": [
-    "gulf"
-   ],
-   "lang": "ar",
-   "title": "غدًا نهائي كأس ليبرتادوريس بين بالميراس البرازيلي وإستوديانتس الأرجنتيني",
-   "url": "https://omannews.gov.om/topics/ar/8/show/477335/ona",
-   "published": "",
-   "relevant": false,
-   "new": true
-  },
-  {
-   "id": "O-c77cb4032579",
-   "kind": "official",
-   "source": "Oman News Agency",
-   "domain": "omannews.gov.om",
-   "rel": "A",
-   "files": [
-    "gulf"
-   ],
-   "lang": "ar",
-   "title": "وكالة الطاقة الذرية تبحث مع روسيا وأوكرانيا وقف إطلاق نار حول محطة زابوريجيا",
-   "url": "https://omannews.gov.om/topics/ar/5/show/477336/ona",
-   "published": "",
-   "relevant": true,
-   "new": true
   },
   {
    "id": "O-1c0f5b68327c",
@@ -1935,22 +1951,6 @@
    "new": false
   },
   {
-   "id": "O-1030108b601a",
-   "kind": "official",
-   "source": "Oman News Agency",
-   "domain": "omannews.gov.om",
-   "rel": "A",
-   "files": [
-    "gulf"
-   ],
-   "lang": "ar",
-   "title": "انطلاق منافسات البطولة / 12 / للرماية بالأسلحة التقليدية بالمضيبي",
-   "url": "https://omannews.gov.om/topics/ar/126/show/477271/ona",
-   "published": "",
-   "relevant": false,
-   "new": false
-  },
-  {
    "id": "O-d7a50acdf770",
    "kind": "official",
    "source": "US Treasury OFAC",
@@ -2144,7 +2144,7 @@
    "url": "https://www.spa.gov.sa/en/N2737631",
    "published": "",
    "relevant": false,
-   "new": true
+   "new": false
   },
   {
    "id": "O-d30d384bb77a",
@@ -2160,7 +2160,7 @@
    "url": "https://www.spa.gov.sa/en/N2737602",
    "published": "",
    "relevant": false,
-   "new": true
+   "new": false
   },
   {
    "id": "O-7d56748831e1",
@@ -2176,7 +2176,7 @@
    "url": "https://www.spa.gov.sa/en/N2737587",
    "published": "",
    "relevant": false,
-   "new": true
+   "new": false
   },
   {
    "id": "O-13b7923bdb8f",
@@ -2192,7 +2192,7 @@
    "url": "https://www.spa.gov.sa/en/N2737503",
    "published": "",
    "relevant": false,
-   "new": true
+   "new": false
   },
   {
    "id": "O-35f4398360ce",
@@ -2208,7 +2208,7 @@
    "url": "https://www.spa.gov.sa/en/N2737451",
    "published": "",
    "relevant": false,
-   "new": true
+   "new": false
   },
   {
    "id": "O-79e5f0df11f4",
@@ -2292,8 +2292,8 @@
   }
  ],
  "status": {
-  "viirs_n20": "ok: 977 points in watch boxes",
-  "modis": "ok: 162 points in watch boxes",
+  "viirs_n20": "ok: 1055 points in watch boxes",
+  "modis": "ok: 209 points in watch boxes",
   "defense_rss": "ok: 20 items, 0 relevant",
   "mfa_tr": "ok: 25 items",
   "qna": "ok: 16 items",
